@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="light dark">
   <script>
     (function () {
+      document.documentElement.classList.add("js");
       try {
         var mode = localStorage.getItem("brf-theme");
         if (mode === "day" || mode === "night") {

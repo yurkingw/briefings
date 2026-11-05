@@ -3,26 +3,28 @@ layout: base.njk
 permalink: /
 ---
 
-{% macro dailyRow(item, title, showDate) %}
+{% macro dailyRow(item, title, metaLabel) %}
 <a class="entry" href="/daily/{{ item.date }}/">
   <span class="entry-head">
     <span class="entry-title">{{ title }}</span>
     <span class="entry-go" aria-hidden="true">→</span>
   </span>
   <span class="entry-blurb" lang="zh-Hans">{{ item.summary | excerpt(150) }}</span>
-  <span class="entry-meta">{% if showDate %}{{ item.date }}{% endif %}{% if showDate and item.wave %} · {% endif %}{% if item.wave %}<span lang="zh-Hans">{{ item.wave }}</span>{% endif %}{% if item.sample %}{% if showDate or item.wave %} · {% endif %}Sample{% endif %}</span>
+  {% if metaLabel or item.wave or item.sample %}
+  <span class="entry-meta">{%- if metaLabel -%}{{ metaLabel }}{%- endif -%}{% if metaLabel and item.wave %} · {% endif %}{%- if item.wave -%}<span lang="zh-Hans">{{ item.wave }}</span>{%- endif -%}{% if item.sample %}{% if metaLabel or item.wave %} · {% endif %}Sample{% endif %}</span>
+  {% endif %}
 </a>
 {% endmacro %}
 
-{% macro weeklyRow(item, title, showWeek) %}
+{% macro weeklyRow(item, title, metaLabel) %}
 <a class="entry" href="/weekly/{{ item.week }}/">
   <span class="entry-head">
     <span class="entry-title">{{ title }}</span>
     <span class="entry-go" aria-hidden="true">→</span>
   </span>
   <span class="entry-blurb" lang="zh-Hans">{{ item.summary | excerpt(150) }}</span>
-  {% if showWeek or item.sample %}
-  <span class="entry-meta">{% if showWeek %}{{ item.week }}{% endif %}{% if showWeek and item.sample %} · {% endif %}{% if item.sample %}Sample{% endif %}</span>
+  {% if metaLabel or item.sample %}
+  <span class="entry-meta">{%- if metaLabel -%}{{ metaLabel }}{%- endif -%}{% if metaLabel and item.sample %} · {% endif %}{% if item.sample %}Sample{% endif %}</span>
   {% endif %}
 </a>
 {% endmacro %}
@@ -30,30 +32,39 @@ permalink: /
 <h1>Briefings</h1>
 <p class="lede">Daily and weekly intelligence, mirrored for the public web.</p>
 
-<section class="latest" id="latest" aria-labelledby="latest-heading">
-  <h2 id="latest-heading">Latest</h2>
-  {% if briefings.daily.length or briefings.weekly.length %}
+<section class="stage" aria-labelledby="now-heading">
+  <h2 id="now-heading">Now</h2>
+  {% if stage.daily or stage.weekly %}
   <div class="entries">
-    {% if briefings.daily.length %}
-    {{ dailyRow(briefings.daily[0], "Latest daily", true) | safe }}
+    {% if stage.daily %}
+    {{ dailyRow(stage.daily, stage.daily.date, "Today") | safe }}
     {% endif %}
-    {% if briefings.weekly.length %}
-    {{ weeklyRow(briefings.weekly[0], "Latest weekly", true) | safe }}
+    {% if stage.weekly %}
+    {{ weeklyRow(stage.weekly, stage.weekly.week, "This week") | safe }}
     {% endif %}
   </div>
-  {% else %}
-  <p class="empty">No briefings published yet.</p>
+  {% endif %}
+  {% if not stage.daily and not stage.weekly %}
+  <p class="empty">No briefing for today or this week yet.</p>
+  {% elif not stage.daily %}
+  <p class="empty">No daily briefing for today yet.</p>
+  {% elif not stage.weekly %}
+  <p class="empty">No weekly briefing for this week yet.</p>
   {% endif %}
 </section>
 
 <section class="archive" aria-labelledby="daily">
   <h2 id="daily">Daily</h2>
   {% if briefings.daily.length %}
-  <div class="entries">
+  <div class="entries" id="daily-archive" data-fold="daily">
     {% for item in briefings.daily %}
-    {{ dailyRow(item, item.date, false) | safe }}
+    {{ dailyRow(item, item.date, "") | safe }}
     {% endfor %}
   </div>
+  {% if briefings.daily.length > 5 %}
+  <p class="fold-note">Enable JavaScript to load more.</p>
+  {% endif %}
+  <button type="button" class="more" aria-controls="daily-archive">More</button>
   {% else %}
   <p class="empty">No briefings published yet.</p>
   {% endif %}
@@ -62,12 +73,17 @@ permalink: /
 <section class="archive" aria-labelledby="weekly">
   <h2 id="weekly">Weekly</h2>
   {% if briefings.weekly.length %}
-  <div class="entries">
+  <div class="entries" id="weekly-archive" data-fold="weekly">
     {% for item in briefings.weekly %}
-    {{ weeklyRow(item, item.week, false) | safe }}
+    {{ weeklyRow(item, item.week, "") | safe }}
     {% endfor %}
   </div>
+  {% if briefings.weekly.length > 5 %}
+  <p class="fold-note">Enable JavaScript to load more.</p>
+  {% endif %}
+  <button type="button" class="more" aria-controls="weekly-archive">More</button>
   {% else %}
   <p class="empty">No briefings published yet.</p>
   {% endif %}
 </section>
+<script type="module" src="/js/fold.js"></script>
