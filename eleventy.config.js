@@ -1,18 +1,31 @@
 import { HtmlBasePlugin } from "@11ty/eleventy";
 import { excerpt } from "./lib/excerpt.js";
 import {
+  boardInsight,
   detailCards,
   displayTitle,
+  finalJudgments,
+  financeLead,
+  githubMetrics,
+  githubMetaLine,
   githubSummary,
   hasField,
   defaultWave,
   hasWaveSplit,
   hotFromItems,
   linkLabel,
+  newsGroups,
+  ownerFace,
   ownerType,
+  pagePropertyRows,
+  papersWindow,
+  rankLabel,
   remainderNews,
+  saSteps,
   selectHot,
   statusItems,
+  statusParts,
+  summaryView,
   tocGroups,
   waveItems,
   withNotes,
@@ -59,6 +72,19 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("ownerType", (value) => ownerType(value));
   eleventyConfig.addFilter("linkLabel", (value) => linkLabel(value));
   eleventyConfig.addFilter("githubSummary", (meta) => githubSummary(meta));
+  eleventyConfig.addFilter("pagePropertyRows", (briefing) => pagePropertyRows(briefing));
+  eleventyConfig.addFilter("newsGroups", (items) => newsGroups(items));
+  eleventyConfig.addFilter("papersWindow", (briefing) => papersWindow(briefing));
+  eleventyConfig.addFilter("boardInsight", (rows, meta, kind) => boardInsight(rows, meta, kind));
+  eleventyConfig.addFilter("summaryView", (meta) => summaryView(meta));
+  eleventyConfig.addFilter("saSteps", (decisions) => saSteps(decisions));
+  eleventyConfig.addFilter("finalJudgments", (decisions) => finalJudgments(decisions));
+  eleventyConfig.addFilter("financeLead", (briefing) => financeLead(briefing));
+  eleventyConfig.addFilter("rankLabel", (rank) => rankLabel(rank));
+  eleventyConfig.addFilter("githubMetaLine", (item, kind) => githubMetaLine(item, kind));
+  eleventyConfig.addFilter("statusParts", (item) => statusParts(item));
+  eleventyConfig.addFilter("githubMetrics", (item, kind) => githubMetrics(item, kind));
+  eleventyConfig.addFilter("ownerFace", (value) => ownerFace(value));
 
   return {
     pathPrefix: site.pathPrefix,

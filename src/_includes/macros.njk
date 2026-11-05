@@ -16,50 +16,89 @@
 {%- else -%}—{%- endif -%}
 {% endmacro %}
 
+{% macro properties(rows) %}
+<dl class="brf-properties">
+  {%- for row in rows %}
+  <div class="brf-properties-row">
+    <dt>{{ row.label }}</dt>
+    <dd lang="zh-Hans">{{ row.value }}</dd>
+  </div>
+  {%- endfor %}
+</dl>
+{% endmacro %}
+
+{% macro callout(lead, body, tone) %}
+<div class="brf-callout" data-tone="{{ tone or "info" }}">
+  <p class="brf-callout-lead">{{ lead }}</p>
+  <p class="brf-callout-body" lang="zh-Hans">{{ body }}</p>
+</div>
+{% endmacro %}
+
+{% macro columnTabs(isDaily, suffix) %}
+<div class="page-tabs{% if suffix %} page-tabs-bottom{% endif %} seg" role="tablist" aria-label="栏目" data-tab-group="columns">
+  <button type="button" role="tab" id="tab-news{{ suffix }}" aria-controls="panel-news" aria-selected="true" tabindex="0">要闻</button>
+  <span class="seg-gap" aria-hidden="true">·</span>
+  <button type="button" role="tab" id="tab-papers{{ suffix }}" aria-controls="panel-papers" aria-selected="false" tabindex="-1">顶尖论文</button>
+  <span class="seg-gap" aria-hidden="true">·</span>
+  <button type="button" role="tab" id="tab-github{{ suffix }}" aria-controls="panel-github" aria-selected="false" tabindex="-1">GitHub</button>
+  <span class="seg-gap" aria-hidden="true">·</span>
+  {% if isDaily %}
+  <button type="button" role="tab" id="tab-appendix{{ suffix }}" aria-controls="panel-appendix" aria-selected="false" tabindex="-1">附录</button>
+  {% else %}
+  <button type="button" role="tab" id="tab-decisions{{ suffix }}" aria-controls="panel-decisions" aria-selected="false" tabindex="-1">金融决策</button>
+  {% endif %}
+</div>
+{% endmacro %}
+
+{% macro linkCards(sources) %}
+{% if sources and sources.length %}
+<ul class="brf-link-cards">
+  {% for source in sources %}
+  <li class="brf-link-card">
+    <p class="brf-link-card-title" lang="zh-Hans">{{ source }}</p>
+    <p class="brf-link-card-meta">公开来源</p>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endmacro %}
+
 {% macro hotJump(item) %}
 <li><a class="hot-jump hit-row" href="{{ item.href }}">{% if item.n != null %}<span class="hot-index">{{ item.n }}</span>{% endif %}<span class="hot-title" lang="zh-Hans">{{ item.title }}</span></a></li>
 {% endmacro %}
 
 {% macro detailCard(item) %}
 <article class="detail-card" id="note-{{ item.id }}">
-  {% if item.domain %}<p class="card-kicker">{{ item.domain }}</p>{% endif %}
-  <h3 class="card-title" lang="zh-Hans">{{ item | displayTitle }}</h3>
+  <h3 class="card-title" lang="zh-Hans">#{{ item.id }} · {{ item.domain }} · {{ item | displayTitle }}</h3>
   {% if item.finsec === true or item.hard_gate === true %}
-  <p class="badges">
-    {% if item.finsec === true %}<span class="badge">Finsec</span>{% endif %}
-    {% if item.hard_gate === true %}<span class="badge">Hard gate</span>{% endif %}
+  <p class="brf-status-row">
+    {% if item.finsec === true %}<span class="brf-status">finsec</span>{% endif %}
+    {% if item.hard_gate === true %}<span class="brf-status" data-tone="danger">硬门槛</span>{% endif %}
   </p>
   {% endif %}
-  {% if item.first_source_at %}
-  <p class="first-source">
-    <span class="first-source-label">First source</span>
-    <span lang="zh-Hans">{{ item.first_source_at }}</span>
-  </p>
-  {% endif %}
-  {% if item.background %}
-  <h4>背景</h4>
-  <p class="section-body" lang="zh-Hans">{{ item.background }}</p>
-  {% endif %}
-  {% if item.facts %}
-  <h4>事实</h4>
-  <p class="section-body" lang="zh-Hans">{{ item.facts }}</p>
-  {% endif %}
-  {% if item.why %}
-  <h4>为何重要</h4>
-  <p class="section-body" lang="zh-Hans">{{ item.why }}</p>
-  {% endif %}
-  {% if item.arch_impact %}
-  <h4>架构冲击</h4>
-  <p class="section-body" lang="zh-Hans">{{ item.arch_impact }}</p>
-  {% endif %}
-  {% if item.channel %}
-  <h4>通路</h4>
-  <p class="section-meta" lang="zh-Hans">{{ item.channel }}</p>
-  {% endif %}
-  {% if item.links and item.links.length %}
-  <h4>链接</h4>
-  {{ linkList(item.links) }}
-  {% endif %}
+  <dl class="brf-properties">
+    {% if item.background %}
+    <div class="brf-properties-row"><dt>背景</dt><dd lang="zh-Hans">{{ item.background }}</dd></div>
+    {% endif %}
+    {% if item.facts %}
+    <div class="brf-properties-row"><dt>事实</dt><dd lang="zh-Hans">{{ item.facts }}</dd></div>
+    {% endif %}
+    {% if item.why %}
+    <div class="brf-properties-row"><dt>为何重要</dt><dd lang="zh-Hans">{{ item.why }}</dd></div>
+    {% endif %}
+    {% if item.arch_impact %}
+    <div class="brf-properties-row"><dt>架构冲击</dt><dd lang="zh-Hans">{{ item.arch_impact }}</dd></div>
+    {% endif %}
+    {% if item.channel %}
+    <div class="brf-properties-row"><dt>通路</dt><dd lang="zh-Hans">{{ item.channel }}</dd></div>
+    {% endif %}
+    {% if item.first_source_at %}
+    <div class="brf-properties-row"><dt>最早来源·时间</dt><dd lang="zh-Hans">{{ item.first_source_at }}</dd></div>
+    {% endif %}
+    {% if item.links and item.links.length %}
+    <div class="brf-properties-row"><dt>链接</dt><dd>{{ linkList(item.links) }}</dd></div>
+    {% endif %}
+  </dl>
 </article>
 {% endmacro %}
 
@@ -69,8 +108,8 @@
 {% set rest = items | remainderNews %}
 {% if hot.length %}
 <section class="block hot-picks" id="{{ "hot" if primary else "hot-" + key }}" aria-labelledby="{{ "hot-heading" if primary else "hot-heading-" + key }}">
-  <h2 id="{{ "hot-heading" if primary else "hot-heading-" + key }}">Hot this wave</h2>
-  <ol class="hot-list">
+  <h2 id="{{ "hot-heading" if primary else "hot-heading-" + key }}">本波最热</h2>
+  <ol class="hot hot-list">
     {% for item in hot %}
     {{ hotJump(item) }}
     {% endfor %}
@@ -86,9 +125,9 @@
 {% endif %}
 {% if rest.length %}
 <section class="block" id="{{ "remainder" if primary else "remainder-" + key }}">
-  <h2>Remainder</h2>
+  <h2>其余要点</h2>
   <div class="table-wrap">
-    <table>
+    <table class="rest">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -107,9 +146,9 @@
           <td class="col-title" data-label="标题" lang="zh-Hans">
             <span class="cell-title">{{ item | displayTitle }}</span>
             {% if item.finsec === true or item.hard_gate === true %}
-            <span class="badges">
-              {% if item.finsec === true %}<span class="badge">Finsec</span>{% endif %}
-              {% if item.hard_gate === true %}<span class="badge">Hard gate</span>{% endif %}
+            <span class="brf-status-row">
+              {% if item.finsec === true %}<span class="brf-status">finsec</span>{% endif %}
+              {% if item.hard_gate === true %}<span class="brf-status" data-tone="danger">硬门槛</span>{% endif %}
             </span>
             {% endif %}
           </td>
@@ -124,6 +163,6 @@
 </section>
 {% endif %}
 {% if not hot.length and not cards.length and not rest.length %}
-<p class="empty">Nothing in this wave.</p>
+<p class="empty">本波无要闻。</p>
 {% endif %}
 {% endmacro %}
