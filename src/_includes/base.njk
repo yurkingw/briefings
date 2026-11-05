@@ -103,12 +103,58 @@
       function scrollBehavior() {
         return motionQuery.matches ? "auto" : "smooth";
       }
-      document.querySelectorAll('nav.toc a[href^="#"], .hot-picks a[href^="#"]').forEach(function (link) {
+      function selectTab(tab) {
+        var list = tab.closest('[role="tablist"]');
+        if (!list) return;
+        list.querySelectorAll('[role="tab"]').forEach(function (btn) {
+          var on = btn === tab;
+          btn.setAttribute("aria-selected", on ? "true" : "false");
+          btn.setAttribute("tabindex", on ? "0" : "-1");
+          var panel = document.getElementById(btn.getAttribute("aria-controls"));
+          if (!panel) return;
+          if (on) {
+            panel.removeAttribute("hidden");
+            panel.removeAttribute("inert");
+            if (!motionQuery.matches) {
+              panel.classList.remove("is-live");
+              void panel.offsetWidth;
+              panel.classList.add("is-live");
+            }
+          } else {
+            panel.setAttribute("hidden", "");
+            panel.setAttribute("inert", "");
+            panel.classList.remove("is-live");
+          }
+        });
+      }
+      document.querySelectorAll('[role="tab"]').forEach(function (tab) {
+        tab.addEventListener("click", function () { selectTab(tab); });
+      });
+      function revealTarget(target) {
+        var panels = [];
+        var node = target;
+        while (node && node !== document.body) {
+          if (node.getAttribute && node.getAttribute("role") === "tabpanel" && node.id) panels.push(node);
+          node = node.parentElement;
+        }
+        panels.reverse().forEach(function (panel) {
+          var tab = document.querySelector('[aria-controls="' + panel.id + '"]');
+          if (tab) selectTab(tab);
+        });
+      }
+      if (location.hash && location.hash.length > 1) {
+        var initial = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (initial) revealTarget(initial);
+      }
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener("click", function (event) {
-          var id = decodeURIComponent(link.getAttribute("href").slice(1));
+          var href = link.getAttribute("href");
+          if (!href || href.length < 2) return;
+          var id = decodeURIComponent(href.slice(1));
           var target = document.getElementById(id);
           if (!target) return;
           event.preventDefault();
+          revealTarget(target);
           target.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
           if (history.replaceState) history.replaceState(null, "", "#" + id);
         });

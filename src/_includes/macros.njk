@@ -1,0 +1,125 @@
+{% macro linkList(links) %}
+<ul class="link-list">
+  {%- for link in links %}
+  <li><a href="{{ link }}" title="{{ link }}" target="_blank" rel="noopener noreferrer">{{ link | linkLabel }}</a></li>
+  {%- endfor %}
+</ul>
+{% endmacro %}
+
+{% macro cellLinks(links) %}
+{%- if links and links.length -%}
+<div class="cell-links">
+  {%- for link in links -%}
+  <a href="{{ link }}" title="{{ link }}" target="_blank" rel="noopener noreferrer">{{ link | linkLabel }}</a>
+  {%- endfor -%}
+</div>
+{%- else -%}—{%- endif -%}
+{% endmacro %}
+
+{% macro detailCard(item) %}
+<article class="detail-card" id="note-{{ item.id }}">
+  <p class="card-kicker">#{{ item.id }} · {{ item.domain }}</p>
+  <h3 class="card-title" lang="zh-Hans">{{ item.title }}</h3>
+  {% if item.finsec === true or item.hard_gate === true %}
+  <p class="badges">
+    {% if item.finsec === true %}<span class="badge">Finsec</span>{% endif %}
+    {% if item.hard_gate === true %}<span class="badge">Hard gate</span>{% endif %}
+  </p>
+  {% endif %}
+  {% if item.first_source_at %}
+  <p class="first-source">
+    <span class="first-source-label">First source</span>
+    <span lang="zh-Hans">{{ item.first_source_at }}</span>
+  </p>
+  {% endif %}
+  {% if item.background %}
+  <h4>背景</h4>
+  <p class="section-body" lang="zh-Hans">{{ item.background }}</p>
+  {% endif %}
+  {% if item.facts %}
+  <h4>事实</h4>
+  <p class="section-body" lang="zh-Hans">{{ item.facts }}</p>
+  {% endif %}
+  {% if item.why %}
+  <h4>为何重要</h4>
+  <p class="section-body" lang="zh-Hans">{{ item.why }}</p>
+  {% endif %}
+  {% if item.arch_impact %}
+  <h4>架构冲击</h4>
+  <p class="section-body" lang="zh-Hans">{{ item.arch_impact }}</p>
+  {% endif %}
+  {% if item.channel %}
+  <h4>通路</h4>
+  <p class="section-meta" lang="zh-Hans">{{ item.channel }}</p>
+  {% endif %}
+  {% if item.links and item.links.length %}
+  <h4>链接</h4>
+  {{ linkList(item.links) }}
+  {% endif %}
+</article>
+{% endmacro %}
+
+{% macro newsDaily(items, primary, key) %}
+{% set hot = items | hotFromItems %}
+{% set cards = items | detailCards %}
+{% set rest = items | remainderNews %}
+{% if hot.length %}
+<section class="block hot-picks" id="{{ "hot" if primary else "hot-" + key }}" aria-labelledby="{{ "hot-heading" if primary else "hot-heading-" + key }}">
+  <h2 id="{{ "hot-heading" if primary else "hot-heading-" + key }}">Hot this wave</h2>
+  <ol class="hot-list">
+    {% for item in hot %}
+    <li><a class="hot-jump" href="{{ item.href }}">{{ item.title }}</a></li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+{% if cards.length %}
+<div class="detail-cards">
+  {% for item in cards %}
+  {{ detailCard(item) }}
+  {% endfor %}
+</div>
+{% endif %}
+{% if rest.length %}
+<section class="block" id="{{ "remainder" if primary else "remainder-" + key }}">
+  <h2>Remainder</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">领域</th>
+          <th scope="col">标题</th>
+          <th scope="col">通路</th>
+          <th scope="col">最早源时</th>
+          <th scope="col">链接</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in rest %}
+        <tr>
+          <td data-label="#">{{ item.id }}</td>
+          <td data-label="领域" lang="zh-Hans">{{ item.domain }}</td>
+          <td class="col-title" data-label="标题" lang="zh-Hans">
+            <span class="cell-title">{{ item.title }}</span>
+            {% if item.finsec === true or item.hard_gate === true %}
+            <span class="badges">
+              {% if item.finsec === true %}<span class="badge">Finsec</span>{% endif %}
+              {% if item.hard_gate === true %}<span class="badge">Hard gate</span>{% endif %}
+            </span>
+            {% endif %}
+          </td>
+          <td data-label="通路" lang="zh-Hans">{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
+          <td data-label="最早源时" lang="zh-Hans">{% if item.first_source_at %}{{ item.first_source_at }}{% else %}—{% endif %}</td>
+          <td data-label="链接">{{ cellLinks(item.links) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endif %}
+{% if not hot.length and not cards.length and not rest.length %}
+<p class="empty">Nothing in this wave.</p>
+{% endif %}
+{% endmacro %}
