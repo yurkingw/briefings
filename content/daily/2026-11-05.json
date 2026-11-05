@@ -1,0 +1,776 @@
+{
+  "schema": "qianji.briefing.daily.v1",
+  "date": "2026-11-05",
+  "timezone": "Asia/Shanghai",
+  "updated_at": "2026-11-05T13:20:00+08:00",
+  "wave": "午间+晨报补栏",
+  "summary": "午间 16 条 + 晨报补栏：Images 2.6；Cat Wu/Austin Lau→OpenAI；948 LPE；Vercel Reviews；硬门槛 Arkéa + CERT-In。论文 3；GitHub 涨星/新锐各 Top10（Archive 缺源双榜重合=0）。",
+  "metrics": {
+    "news": 16,
+    "finsec": 3,
+    "papers": 3,
+    "gh_rising": 10,
+    "gh_newcomers": 10,
+    "home_related": "9/16"
+  },
+  "news": [
+    {
+      "id": 1,
+      "wave": "午间",
+      "domain": "AI产品",
+      "title": "OpenAI 发布 ChatGPT Images 2.6：原生 GIF、参考图；API 上 Flare/Sunburst（生成约快 50%）",
+      "background": "图像生成是 ChatGPT/Codex/API 高频能力；此前原生一步出 GIF 能力不足，Images 迭代直接影响创作者与开发者工作流。",
+      "facts": "① @OpenAI 宣布 Images 2.6：可用提示或静图生成动画 GIF，可调速/逐帧编辑；支持参考图复用。② API 推出 GPT-Image-2.6 Flare（低质量最快约 6 秒）与 Sunburst（更高一致性）；称生成速度约提升 50%。③ ChatGPT 与 Codex 全订阅档位、web/桌面/移动可用；另有 SVG 导出与 markup。④ The Verge 等同日报道。",
+      "why": "官方重大产品发布，主帖近百万曝光。GIF 把「会动的图」变成默认能力，抬高多模态内容与营销工具链预期；API 双型号（快/精）影响计费与集成选型。jargon：Flare/Sunburst=同一代图像模型的速度档与质量档。",
+      "arch_impact": null,
+      "channel": "双通路",
+      "first_source_at": "2026-11-05 07:35 CST · @OpenAI；官网 openai.com/index/introducing-images-2-6/",
+      "links": [
+        "https://x.com/OpenAI/status/2118124944928432327",
+        "https://openai.com/index/introducing-images-2-6/",
+        "https://x.com/gdb/status/2118174986544488876",
+        "https://x.com/dotey/status/2118127825186177270"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 2,
+      "wave": "午间",
+      "domain": "AI产品",
+      "title": "Cat Wu 官宣加入 OpenAI 领导 Core Products 产品管理（昨 Claude Code 负责人离职续报）",
+      "background": "昨波已报 Cat Wu 离开 Anthropic（Claude Code/Cowork 产品负责人）；去向未明。本波本人官宣入职对手 OpenAI。",
+      "facts": "① @_catwu：加入 OpenAI 领导 Core Products 产品管理；称尊重其 scaling 与十亿用户；将与 @thsottiaux 等共建「可控」团队 Agent。② @gdb 公开欢迎。③ Business Insider 称其为重大产品负责人挖角；入职公告距离职约一周内。",
+      "why": "关键 coding-agent 产品负责人 key hire；本人帖（精确曝光已省略）。Anthropic 上市前夕对手挖走明星 PM，直接冲击 Claude Code vs Codex/ChatGPT Agent 产品叙事。续昨「离职」为「入职落地」。",
+      "arch_impact": null,
+      "channel": "双通路",
+      "first_source_at": "2026-11-05 08:25 CST · @_catwu；@gdb 欢迎帖同簇；BI 报道",
+      "links": [
+        "https://x.com/_catwu/status/2118137612577968402",
+        "https://x.com/gdb/status/2118138320375136695",
+        "https://x.com/dotey/status/2118147734376956130",
+        "https://www.businessinsider.com/cat-wu-joins-openai-from-anthropic-product-lead-coup-2026-11"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 3,
+      "wave": "午间",
+      "domain": "AI产品",
+      "title": "Anthropic 首位增长员工 Austin Lau 官宣加入 OpenAI（与 Cat Wu 同日）",
+      "background": "增长（growth）负责获客、激活与留存；Anthropic 早期增长骨干跳槽与产品负责人同日，放大「人才回流」叙事。",
+      "facts": "① @helloitsaustin（Austin Lau）：宣布近期加入 OpenAI；称 Anthropic 经历为「最好意义上的狂热梦」，参与搭建增长函数。② 中文圈与公开搜索同簇指其为 Anthropic 首位增长营销员工。③ 与 Cat Wu 入职同日发酵。",
+      "why": "key hire：懂分发/获客的人与懂 Agent 产品的人同日流向 OpenAI，补强「产品×增长」组合。对即将 IPO 的 Anthropic 是组织叙事冲击。jargon：growth=投放、SEO、注册漏斗、激活邮件等增长团队职责。",
+      "arch_impact": null,
+      "channel": "双通路",
+      "first_source_at": "2026-11-05 10:01 CST · @helloitsaustin；关注流 @dotey 综述",
+      "links": [
+        "https://x.com/helloitsaustin/status/2118161804463595931",
+        "https://x.com/dotey/status/2118175728164348187"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 4,
+      "wave": "午间",
+      "domain": "AI产品",
+      "title": "Meta 收购 Conductor：多 Agent 并行编排层；Cloud 将于 11/20 关停",
+      "background": "编码 Agent 编排层成为大厂并购焦点；Conductor 让开发者并行跑多套 coding agents（Claude Code/Codex/Cursor 等）。",
+      "facts": "① Axios：Meta 收购 Conductor；条款未披露；团队据报加入 Superintelligence Labs。② 官方公告：Conductor Cloud 11/13 只读、11/20 关停并删云端数据；本地版维护至 2027 初。③ 同日叙事常并列 OpenAI 拟收购 Pierre 等开发者工具。④ 通路记公开。",
+      "why": "大厂在「模型」之外抢「人如何指挥一队 Agent」的控制面。Cloud 关停有数据导出时限，企业用户需迁移。与 OpenAI 开发者工具并购同日，编码工具链并购赛加速。",
+      "arch_impact": null,
+      "channel": "公开",
+      "first_source_at": "2026-11-04 美东日间 · Axios 独家；conductor.build 公告",
+      "links": [
+        "https://www.axios.com/2026/11/04/meta-acquires-ai-coding-startup-conductor",
+        "https://www.conductor.build/announcement",
+        "https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/",
+        "https://x.com/MadisonMills22/status/2118048764061421861"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 5,
+      "wave": "午间",
+      "domain": "AI产品",
+      "title": "Notion：ChatGPT/Claude/Muse/Bot 共享同一记忆与 Skills",
+      "background": "多 Agent 各自为政时缺少统一记忆；Notion 把共享脑放进工作区。",
+      "facts": "① @NotionHQ：多款 Agent 可向同一 Notion 写入所学并复用 Skills。② 关注流（精确曝光已省略）。",
+      "why": "产品层「跨模型记忆」落地信号；影响企业知识库与 Agent 编排选型。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-05 03:14 CST · @NotionHQ",
+      "links": [
+        "https://x.com/NotionHQ/status/2118059335930744999"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 6,
+      "wave": "午间",
+      "domain": "AI产品",
+      "title": "Anthropic：生物学团队用 Claude 完成细菌 vault particle 首个 3D 结构映射",
+      "background": "实验室用例用于展示前沿模型在科研流程中的协作方式。",
+      "facts": "① @AnthropicAI 官方发布生物学研究协作案例。② 关注流高曝光。",
+      "why": "科研垂直用例背书；非安全事件，作产品信号短条。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-05 04:11 CST · @AnthropicAI",
+      "links": [
+        "https://x.com/AnthropicAI/status/2118073665296228863"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 7,
+      "wave": "午间",
+      "domain": "AI安全",
+      "title": "OpenAI：自主漏洞发现/利用/补丁管线单次产出 948 个 Linux 本地提权利用（约 $1.21M）",
+      "background": "漏洞发现可规模化，但验证/利用/补丁与披露仍是瓶颈；OpenAI 用 upcoming cyber model 跑端到端管线。",
+      "facts": "① 中期 10 月一次运行：候选 2308 → 动态复现 1724 → 948 个互异 LPE 利用 + 候选补丁；API 成本约 $1,213,430（约 $1,279/LPE）。② 威胁模型为本地提权（已有低权账户→root），非远程破门；目标为带标准防护的库存桌面发行版 VM。③ 称另发现至少 10 种据专家咨询属新颖的 Linux 利用手法；人类研究员复核后与维护者/Patch the Planet 合作上报。④ 候选补丁≠已合并上游；公开解读提醒勿夸大。",
+      "why": "AI 安全里程碑：Agent 管线把「找洞→打洞→出补丁」批量化，改变防守方节奏与披露容量。jargon：LPE=本地权限提升；PoC=可复现利用证明。对云主机多租户与端点安全运营冲击大——未打补丁的本地账户等价风险上升。",
+      "arch_impact": null,
+      "channel": "双通路",
+      "first_source_at": "2026-11-05 07:13 CST · @OpenAI；openai.com/index/a-thousand-fewer-paths-to-root/",
+      "links": [
+        "https://x.com/OpenAI/status/2118119451401048497",
+        "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+        "https://x.com/gdb/status/2118129547443056763",
+        "https://x.com/TheHackersNews/status/2118199701757714444",
+        "https://x.com/clintgibler/status/2118120600577487119"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 8,
+      "wave": "午间",
+      "domain": "AI安全",
+      "title": "Vercel Security Reviews：约 24h 识别 6817 漏洞（580 高危；1411 已由 Agent 修补）",
+      "background": "昨波已报 Vercel 内部安全 agent「@hacker」产品化与 Security Review；本波给出首日规模化数据。",
+      "facts": "① @rauchg：24h 内 6817 漏洞识别、580 critical/high、1411 已由 Agent 修补。② 称至 11/10 Security Reviews 免费。",
+      "why": "把「AI 修洞」从叙事变成可量化吞吐；与 OpenAI 948 管线同日对照——一方攻漏洞研究规模、一方攻应用层评审规模。续昨产品化条目。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-05 09:23 CST · @rauchg",
+      "links": [
+        "https://x.com/rauchg/status/2118152230260092940"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 9,
+      "wave": "午间",
+      "domain": "AI安全",
+      "title": "vx-underground：SmartLoader/StealC 借合法 GitHub 仓库外观 + AI 生成 Readme 投毒",
+      "background": "开发者依赖 GitHub 发现工具；AI 生成文档降低仿冒仓库识别成本。",
+      "facts": "① @vxunderground：SmartLoader 与 StealC 伪装合法 GitHub 仓库，用 AI 生成吸引性说明。② 安全媒体检索同主题跟进较少，以一手观察帖入选。",
+      "why": "AI 降低供应链仿冒文案成本；开发者工具链信任边界再次承压。",
+      "arch_impact": null,
+      "channel": "公开",
+      "first_source_at": "2026-11-05 07:46 CST · @vxunderground",
+      "links": [
+        "https://x.com/vxunderground/status/2118127715572425131"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 10,
+      "wave": "午间",
+      "domain": "AI安全",
+      "title": "SecurityWeek：WorkOS、Northflank、Trigger 等披露遭入侵（AI 相关生态）",
+      "background": "身份/云开发平台是 Agent 与 SaaS 集成枢纽；多点披露抬高供应链焦虑。",
+      "facts": "① @SecurityWeek 标题称 AI 关联生态多起 breach 披露。② 各厂商范围/影响未在本波逐一核完，标 uncertain。",
+      "why": "若确认属实，影响 OAuth/开发者平台信任链；需跟进各官方公告。",
+      "arch_impact": null,
+      "channel": "公开",
+      "first_source_at": "2026-11-05 09:46 CST · @SecurityWeek 链稿",
+      "links": [
+        "https://x.com/SecurityWeek/status/2118157852724601235"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 11,
+      "wave": "午间",
+      "domain": "其他安全",
+      "title": "Zyxel GS1900 零日被利用：近千台交换机遭入侵；厂商已发公告与固件",
+      "background": "边缘交换机管理面暴露仍是常见攻击入口。",
+      "facts": "① BleepingComputer：未认证越界写（CVE-2026-107441 等报道）被用于入侵近 1000 台 GS1900。② Zyxel 安全公告与固件可用；建议限制管理面并轮换凭据。",
+      "why": "在野利用的网络设备零日；中小企业与分支网络优先热修。",
+      "arch_impact": null,
+      "channel": "公开",
+      "first_source_at": "约 2026-11-03/04 厂商公告；BleepingComputer 跟进 · @BleepinComputer",
+      "links": [
+        "https://x.com/BleepinComputer/status/2118085520676770157",
+        "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 12,
+      "wave": "午间",
+      "domain": "其他安全",
+      "title": "DreamHost 确认数据泄露：FTP 登录与 webmail 会话暴露",
+      "background": "主机商凭据泄露可连带网站篡改与邮箱劫持。",
+      "facts": "① BleepingComputer：DreamHost 确认 breach，涉及 FTP 登录与 webmail 会话。② 用户应轮换相关密码/密钥。",
+      "why": "托管面凭据事件；站点所有者需检查异常登录与网页改动。",
+      "arch_impact": null,
+      "channel": "公开",
+      "first_source_at": "2026-11-05 03:06 CST · @BleepinComputer",
+      "links": [
+        "https://x.com/BleepinComputer/status/2118057996513079583"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 13,
+      "wave": "午间",
+      "domain": "其他安全",
+      "title": "Chrome 157：213 项安全修复（含多项 Critical）",
+      "background": "浏览器大版本修复仍是端点基线。",
+      "facts": "① @SecurityWeek：Chrome 157 含 213 项安全修复，七项标 Critical。",
+      "why": "常规但高优先级热修信号；企业应盯管线推送。",
+      "arch_impact": null,
+      "channel": "公开",
+      "first_source_at": "2026-11-05 07:45 CST · @SecurityWeek",
+      "links": [
+        "https://x.com/SecurityWeek/status/2118127402173759489"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 14,
+      "wave": "午间",
+      "domain": "加密",
+      "title": "【金融硬门槛】Crédit Mutuel Arkéa 官方确认遭网络攻击；量级可「验证」约 $133M 叙事（昨不确定→官方落地）（unconfirmed）",
+      "background": "昨波以 ZachXBT 链上簇报道约 $133M，银行未确认。本波银行官方确认攻击与欺诈转账路径，并对金额「验证数量级」。（unconfirmed）",
+      "facts": "① 银行：攻击者使用 Arkéa 自有账户向其他银行转账，再可能经专业平台换成加密资产；客户账户无资金损失。② 否认经第三方平台进入，非 Fortuneo 入口；事件已控制。③ 对「€1.18 亿/$1.33 亿」不确认精确数字，但可验证数量级；部分资金已拦截，追偿进行中。④ @TheBlockCo 等本波高曝光综述。（unconfirmed）",
+      "why": "官方确认把「链上嫌疑」升级为银行网络安全事件",
+      "arch_impact": "银行自有账户/金库支付指令与第三方平台信任链是关键控制面；DORA 报告义务与加密出金监测成为运营焦点",
+      "channel": "双通路",
+      "first_source_at": "银行 2026-11-04 公告/答问；X 发酵至本波 · @TheBlockCo / @MarioNawfal",
+      "links": [
+        "https://x.com/TheBlockCo/status/2118171691922956310",
+        "https://x.com/MarioNawfal/status/2118196475226120615",
+        "https://www.cm-arkea.com/arkea/banque/assurances/pa_38386/fr/informations-complementaires-suite-a-l-attaque-dont-le-credit-mutuel-arkea-a-ete-victime",
+        "https://decrypt.co/382486/zachxbt-names-french-bank-credit-mutuel-arkea-as-alleged-victim-of-133m-crypto-theft"
+      ],
+      "finsec": true,
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": 15,
+      "wave": "午间",
+      "domain": "加密",
+      "title": "【金融硬门槛2】印度 CERT-In 警告 AI 辅助团伙 CRAFTY FALCON 加码攻击加密交易所/BFSI",
+      "background": "监管机构点名 AI 辅助攻击金融与加密平台，强调机器速度下的监测缺口。",
+      "facts": "① CERT-In 顾问描述 CRAFTY FALCON：利用脆弱应用、暴露测试环境、云设施与支付/出金 API，窃取钱包密钥并抽干资金。② 建议 7×24 监测、隔离非生产环境、消除共享凭据/API 密钥。③ @cz_binance 转推 Cointelegraph 警报，Home 高曝光。",
+      "why": "新强制监管/官方预警级别信号",
+      "arch_impact": "出金 API、预发环境与密钥治理成为交易所/银行的同一失败模式；AI 辅助侦察使「暴露面窗口」更短",
+      "channel": "双通路",
+      "first_source_at": "约 2026-11-04 CERT-In 顾问；本波 @cz_binance RT Cointelegraph 放大",
+      "links": [
+        "https://x.com/cz_binance/status/2118194834527887679",
+        "https://cointelegraph.com/news/india-warns-ai-powered-hackers-targeting-crypto-exchanges-at-machine-speed",
+        "https://economictimes.indiatimes.com/tech/artificial-intelligence/ai-based-cyber-threat-executing-unauthorised-fund-transfers-from-banking-firms-cert-in/articleshow/135547661.cms"
+      ],
+      "finsec": true,
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": 16,
+      "wave": "午间",
+      "domain": "加密",
+      "title": "Privacy Cash：检测到币安被盗资金流入后暂停存款（Binance 事件余波）",
+      "background": "隐私协议常被赃款试探；Elliptic 等追踪迫使项目暂停入口。",
+      "facts": "① X News：Solana 隐私协议 Privacy Cash 在 Elliptic 追踪到约 $1.2M 来自 10/29 Binance 被盗资金后暂停新存款。",
+      "why": "洗钱压力传导到隐私池运营；非新黑客事件，属赃款流余波。",
+      "arch_impact": "合规预言机/链上标签成为存款闸门依赖。",
+      "channel": "公开",
+      "first_source_at": "新闻簇约 11/4–5 · X News trending",
+      "links": [
+        "https://x.com/i/trending/2118122332946633182"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "detail": false
+    }
+  ],
+  "papers": [
+    {
+      "short": "RSI-Dojo / RSI-Craft",
+      "what": "把论文变成可执行 post-training 环境（数据/指标/评测码）；筛出 281 任务，用前沿模型轨迹微调 Qwen：9B +8.74；RSI-Dojo-35B-A3B 在 PostTrainBench +16.87 至 29.95（近 GLM-5.2/GPT 5.5）。",
+      "why": "@dair_ai 原创（11/4）；递归自改进+自动跑后训练，正对当前 RSI/harness 热潮。",
+      "url": "https://arxiv.org/abs/2611.03698",
+      "dair_url": "https://x.com/dair_ai/status/2117990256297513364"
+    },
+    {
+      "short": "Length is Cheap, Competition is Not",
+      "what": "UCSD：长上下文检索失败主因不是长度。塞 32K 无关文本准确率仍 97–100%；混入「像答案」的冲突陈述则掉到 16–33%。12.6 万次试验中，正确段落注意力可解释最多 58% 误差，长度最多 8%。RAG/记忆应先去重消歧。",
+      "why": "@dair_ai 原创（11/4）；直接改写「靠加窗」叙事，对 Agent memory 工程有操作含义。",
+      "url": "https://arxiv.org/abs/2611.04169",
+      "dair_url": "https://x.com/dair_ai/status/2117958798841434118"
+    },
+    {
+      "short": "You Don't Need Long Context (NVIDIA)",
+      "what": "频繁压缩上下文：Claude Opus 4.5 在 SWE-bench Verified 70.2（全历史 70.0），峰值上下文中位数 32K→8K；简单对话末压缩可到 74.8。后期 token 生成贵至约 7×。Terminal-Bench/FRAMES/BFCLv3 等大体成立。",
+      "why": "@dair_ai RT @omarsar0（11/4）；与上条「冲突>长度」互补——先压上下文再谈百万窗成本。",
+      "url": "https://arxiv.org/abs/2611.05306",
+      "dair_url": "https://x.com/dair_ai/status/2117957719651139847"
+    }
+  ],
+  "github": {
+    "rising": [
+      {
+        "rank": 1,
+        "repo": "agent-desktop",
+        "owner": "vercel-labs",
+        "owner_type": "Organization",
+        "slogan": "给 AI Agent 用的电脑操控 CLI",
+        "gained": 2463,
+        "stars": 15008,
+        "age_h": null,
+        "seen": "续见",
+        "break": "破1万星",
+        "lang": "Rust",
+        "license": "Apache-2.0",
+        "what": "Vercel Labs computer-use CLI，让 Agent 操作本机桌面。",
+        "why": "热榜 +2,463；续见昨榜；computer-use 叙事延续。",
+        "url": "https://github.com/vercel-labs/agent-desktop",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 2,
+        "repo": "auto-ontology",
+        "owner": "NVIDIA",
+        "owner_type": "Organization",
+        "slogan": "语义图谱层，让 Agent 检索可解释",
+        "gained": 2053,
+        "stars": 4892,
+        "age_h": null,
+        "seen": "首见",
+        "break": null,
+        "lang": "Python",
+        "license": "Apache-2.0",
+        "what": "NVIDIA 语义/图推理层，服务 LLM/Agent 可解释检索。",
+        "why": "热榜 +2,053；首见；大厂语义层吸星。",
+        "url": "https://github.com/NVIDIA/auto-ontology",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 3,
+        "repo": "Scrapling",
+        "owner": "D4Vinci",
+        "owner_type": "User",
+        "slogan": "从单请求到全站爬的抓取框架",
+        "gained": 2006,
+        "stars": 96483,
+        "age_h": null,
+        "seen": "续见",
+        "break": "破5万星",
+        "lang": "Python",
+        "license": "BSD-3-Clause",
+        "what": "Python 网页抓取框架，单请求到大规模爬取。",
+        "why": "热榜 +2,006；续见；破5万星续吸。",
+        "url": "https://github.com/D4Vinci/Scrapling",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 4,
+        "repo": "DiscImageStudio",
+        "owner": "JiaFeiMiao-K-Cat",
+        "owner_type": "User",
+        "slogan": "碟片镜像读写工具",
+        "gained": 1792,
+        "stars": 6563,
+        "age_h": null,
+        "seen": "首见",
+        "break": "破5千星",
+        "lang": "C#",
+        "license": "GPL-3.0",
+        "what": "C# 碟片/镜像读写工具。",
+        "why": "热榜 +1,792；首见；破5千星。",
+        "url": "https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 5,
+        "repo": "skills",
+        "owner": "scenario-labs",
+        "owner_type": "Organization",
+        "slogan": "Agent 出图/视频/3D 的 Scenario skills",
+        "gained": 1376,
+        "stars": 2411,
+        "age_h": null,
+        "seen": "首见",
+        "break": null,
+        "lang": "Python",
+        "license": "MIT",
+        "what": "Scenario skills：选模型、估价、保角色一致并驱动 DCC。",
+        "why": "热榜 +1,376；首见；Agent skills×多模态。",
+        "url": "https://github.com/scenario-labs/skills",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 6,
+        "repo": "claude-mem",
+        "owner": "thedotmack",
+        "owner_type": "User",
+        "slogan": "跨会话记住并回注 Agent 上下文",
+        "gained": 1165,
+        "stars": 112817,
+        "age_h": null,
+        "seen": "续见",
+        "break": "破10万星",
+        "lang": "TypeScript",
+        "license": "Apache-2.0",
+        "what": "跨会话持久记忆，适配 Claude Code/Codex 等多端。",
+        "why": "热榜 +1,165；续见；破10万星。",
+        "url": "https://github.com/thedotmack/claude-mem",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 7,
+        "repo": "floci",
+        "owner": "floci-io",
+        "owner_type": "Organization",
+        "slogan": "轻量免费的 AWS 本地模拟器替代",
+        "gained": 1082,
+        "stars": 29578,
+        "age_h": null,
+        "seen": "续见",
+        "break": "破2万星",
+        "lang": "Java",
+        "license": "MIT",
+        "what": "轻量免费的 AWS 本地模拟器替代。",
+        "why": "热榜 +1,082；续见；本地 AWS 替代。",
+        "url": "https://github.com/floci-io/floci",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 8,
+        "repo": "spec-kit",
+        "owner": "github",
+        "owner_type": "Organization",
+        "slogan": "GitHub：SDD/流程起步工具包",
+        "gained": 810,
+        "stars": 147279,
+        "age_h": null,
+        "seen": "首见",
+        "break": "破10万星",
+        "lang": "Python",
+        "license": "MIT",
+        "what": "GitHub 官方 SDD/流程起步工具包。",
+        "why": "热榜 +810；首见；官方品牌。",
+        "url": "https://github.com/github/spec-kit",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 9,
+        "repo": "MoneyPrinterTurbo",
+        "owner": "harry0703",
+        "owner_type": "User",
+        "slogan": "主题关键词一键出高清短视频",
+        "gained": 615,
+        "stars": 138924,
+        "age_h": null,
+        "seen": "首见",
+        "break": "破10万星",
+        "lang": "Python",
+        "license": "MIT",
+        "what": "大模型+自动化，按主题一键生成高清短视频。",
+        "why": "热榜 +615；首见；短视频流水线回潮。",
+        "url": "https://github.com/harry0703/MoneyPrinterTurbo",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 10,
+        "repo": "worktrunk",
+        "owner": "max-sixty",
+        "owner_type": "User",
+        "slogan": "Git worktree CLI，并行跑 Agent",
+        "gained": 524,
+        "stars": 11008,
+        "age_h": null,
+        "seen": "续见",
+        "break": "破1万星",
+        "lang": "Rust",
+        "license": "NOASSERTION",
+        "what": "面向并行 AI Agent 的 Git worktree CLI。",
+        "why": "热榜 +524；续见；多 Agent worktree。",
+        "url": "https://github.com/max-sixty/worktrunk",
+        "tags": [
+          "热榜"
+        ]
+      }
+    ],
+    "newcomers": [
+      {
+        "rank": 1,
+        "repo": "agent-autoloop",
+        "owner": "KKKKhazix",
+        "owner_type": "User",
+        "slogan": "命令行 Agent 后台自己接活",
+        "gained": null,
+        "stars": 2462,
+        "age_h": 40,
+        "seen": "续见",
+        "break": "破1千星",
+        "lang": "TypeScript",
+        "license": "MIT",
+        "what": "命令行 Agent 后台接活；拿不准才弹卡片拍板。",
+        "why": "约 40h 破千星；续见昨榜。",
+        "url": "https://github.com/KKKKhazix/agent-autoloop",
+        "tags": [
+          "新锐"
+        ]
+      },
+      {
+        "rank": 2,
+        "repo": "terminal-mac",
+        "owner": "govijr",
+        "owner_type": "User",
+        "slogan": "终端里跑整台 macOS",
+        "gained": null,
+        "stars": 1499,
+        "age_h": 44.7,
+        "seen": "续见",
+        "break": "破1千星",
+        "lang": "Swift",
+        "license": "MIT",
+        "what": "宣称在终端中运行整套 macOS 体验。",
+        "why": "约 45h 破千星；续见；猎奇传播。",
+        "url": "https://github.com/govijr/terminal-mac",
+        "tags": [
+          "新锐"
+        ]
+      },
+      {
+        "rank": 3,
+        "repo": "HGhub",
+        "owner": "Minireel",
+        "owner_type": "Organization",
+        "slogan": "YellowFruit 第三方客户端",
+        "gained": null,
+        "stars": 631,
+        "age_h": 34,
+        "seen": "首见",
+        "break": "破5百星",
+        "lang": "TypeScript",
+        "license": "MIT",
+        "what": "YellowFruit 第三方客户端。",
+        "why": "约 34h 破5百星；首见。",
+        "url": "https://github.com/Minireel/HGhub",
+        "tags": [
+          "新锐"
+        ]
+      },
+      {
+        "rank": 4,
+        "repo": "personal-data-deletor-osint",
+        "owner": "brightsongwrath",
+        "owner_type": "User",
+        "slogan": "本地批量找经纪商删数据",
+        "gained": null,
+        "stars": 573,
+        "age_h": 31.3,
+        "seen": "续见",
+        "break": "破5百星",
+        "lang": "JavaScript",
+        "license": "MIT",
+        "what": "本地无账号向约 970 家经纪商发起删除。",
+        "why": "约 31h；续见并破5百星。",
+        "url": "https://github.com/brightsongwrath/personal-data-deletor-osint",
+        "tags": [
+          "新锐"
+        ]
+      },
+      {
+        "rank": 5,
+        "repo": "muse4ai",
+        "owner": "andrew-babo",
+        "owner_type": "User",
+        "slogan": "让 Agent 调 Muse 出图出视频",
+        "gained": null,
+        "stars": 487,
+        "age_h": 30.3,
+        "seen": "首见",
+        "break": null,
+        "lang": "TypeScript",
+        "license": "MIT",
+        "what": "Windows 本地桥：REST/MCP/OAuth 调 Muse。",
+        "why": "约 30h 首见；Muse Agent 桥。",
+        "url": "https://github.com/andrew-babo/muse4ai",
+        "tags": [
+          "新锐"
+        ]
+      },
+      {
+        "rank": 6,
+        "repo": "windows-animated-wallpapers",
+        "owner": "Lostuaexpand",
+        "owner_type": "User",
+        "slogan": "Windows 动态壁纸",
+        "gained": null,
+        "stars": 426,
+        "age_h": 19.2,
+        "seen": "首见",
+        "break": null,
+        "lang": null,
+        "license": "MIT",
+        "what": "Win10/11 开源便携动态壁纸。",
+        "why": "约 19h 首见。",
+        "url": "https://github.com/Lostuaexpand/windows-animated-wallpapers",
+        "tags": [
+          "新锐"
+        ]
+      },
+      {
+        "rank": 7,
+        "repo": "stolen-crypto-tracer",
+        "owner": "PatchBuilderAmplify",
+        "owner_type": "User",
+        "slogan": "贴哈希追被盗加密到可冻所",
+        "gained": null,
+        "stars": 399,
+        "age_h": 30.9,
+        "seen": "首见",
+        "break": null,
+        "lang": "JavaScript",
+        "license": "MIT",
+        "what": "跨链追踪被盗资金到可冻结交易所（需自审）。",
+        "why": "约 31h 首见；与本周加密盗窃同潮。",
+        "url": "https://github.com/PatchBuilderAmplify/stolen-crypto-tracer",
+        "tags": [
+          "新锐"
+        ]
+      },
+      {
+        "rank": 8,
+        "repo": "game-ping-multipath-router",
+        "owner": "StormSkinkGrip",
+        "owner_type": "User",
+        "slogan": "游戏路由竞速降延迟",
+        "gained": null,
+        "stars": 329,
+        "age_h": 31.4,
+        "seen": "首见",
+        "break": null,
+        "lang": "Rust",
+        "license": "MIT",
+        "what": "多路径竞速，游戏流量走最快路由（非 VPN）。",
+        "why": "约 31h 首见；游戏网络工具。",
+        "url": "https://github.com/StormSkinkGrip/game-ping-multipath-router",
+        "tags": [
+          "新锐"
+        ]
+      },
+      {
+        "rank": 9,
+        "repo": "pc-game-fps-doctor",
+        "owner": "Badgenyamultiplexer",
+        "owner_type": "User",
+        "slogan": "一键查游戏卡顿掉帧",
+        "gained": null,
+        "stars": 321,
+        "age_h": 33,
+        "seen": "首见",
+        "break": null,
+        "lang": "JavaScript",
+        "license": "MIT",
+        "what": "PresentMon 测量+白话解释卡顿，可撤销。",
+        "why": "约 33h 首见。",
+        "url": "https://github.com/Badgenyamultiplexer/pc-game-fps-doctor",
+        "tags": [
+          "新锐"
+        ]
+      },
+      {
+        "rank": 10,
+        "repo": "valorant-fps-lag-fixer",
+        "owner": "SkinkSmelter6",
+        "owner_type": "User",
+        "slogan": "VALORANT 卡顿诊断修复",
+        "gained": null,
+        "stars": 286,
+        "age_h": 30.8,
+        "seen": "首见",
+        "break": null,
+        "lang": "Rust",
+        "license": "MIT",
+        "what": "VALORANT/Vanguard 卡顿测量与可撤销修复。",
+        "why": "约 31h 首见；游戏工具扎堆需鉴别。",
+        "url": "https://github.com/SkinkSmelter6/valorant-fps-lag-fixer",
+        "tags": [
+          "新锐"
+        ]
+      }
+    ],
+    "meta": {
+      "archive": "missing",
+      "archive_note": "GH Archive 缺源（无 GCP/BigQuery）；规则双榜重合（热榜∩Archive）=0；全球补录=0；涨星∩新锐=0；GitStock∩Trending（Top10）≈10/10；星数以补全星数为准。",
+      "sources_ok": [
+        "gitstock",
+        "trending"
+      ],
+      "sources_missing": [
+        "gh_archive"
+      ],
+      "hot_tag": "热榜"
+    }
+  },
+  "sources": [
+    "X Home (user-X timeline)",
+    "公开 X search_posts_all / search_news",
+    "WebSearch 站外印证 (OpenAI/Axios/Arkéa/CERT-In/Zyxel)",
+    "公开 X @dair_ai get_users_posts",
+    "GitStock + GitHub Trending（晨报残留；Archive 缺源）"
+  ],
+  "sample": true,
+  "sample_note": "基于 2026-11-05 公开「今日情报」脱敏样例；已剔除内部画布标识、私有存储链接、本机工作区路径、例行标识与 Home 精确曝光。Arkéa 精确金额按银行口径视为 unconfirmed（仅数量级可验证）。"
+}

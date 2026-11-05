@@ -1,0 +1,229 @@
+{
+  "schema": "qianji.briefing.weekly.v1",
+  "week": "2026-W45",
+  "timezone": "Asia/Shanghai",
+  "updated_at": "2026-11-05T18:50:00+08:00",
+  "sample": true,
+  "sample_note": "ISO 周样例（截至 2026-11-05 周四公开主线）；非正式周五周报定稿。已剔除内部画布标识、私有存储链接、本机工作区路径与例行标识。勿将样例金额精确值当已确认事实。",
+  "summary": "本周公开主线：Arkéa 官方确认银行攻击（量级约 $133M 叙事 unconfirmed 精确值）；CERT-In CRAFTY FALCON；OpenAI Images 2.6 + 948 LPE 管线；GitBook AI Agent 攻入与 FlashProve 等 AI 产品/安全叙事；人才侧 Cat Wu/Austin Lau→OpenAI。",
+  "metrics": {
+    "news_featured": 5,
+    "papers_featured": 3,
+    "gh_featured": 4,
+    "decisions": 2
+  },
+  "decisions": [
+    {
+      "title": "银行自有账户/出金 API 信任链：Arkéa 官方确认 + CERT-In CRAFTY FALCON",
+      "happened": "Crédit Mutuel Arkéa 官方确认遭网络攻击：攻击者使用银行自有账户向他行转账，再可能换成加密资产；客户账户无资金损失；对约 €1.18 亿/$133M 叙事不确认精确数字但可验证数量级（标 unconfirmed）。印度 CERT-In 警告 AI 辅助团伙 CRAFTY FALCON 针对加密交易所/BFSI：脆弱应用、暴露测试环境、云设施与支付/出金 API，窃取钱包密钥抽干资金。",
+      "why": "官方确认把链上嫌疑升级为银行网络安全事件；监管硬预警把「出金 API + 预发环境 + 共享密钥」写成同一失败模式。",
+      "arch_impact": "金库/自有账户支付指令、第三方平台入口、出金 API 与非生产隔离成为同一控制面；DORA 报告与 7×24 监测义务前置。",
+      "control_domains": [
+        "资金安全",
+        "出金/支付 API",
+        "第三方平台信任链",
+        "预发/测试环境隔离",
+        "密钥与凭据治理"
+      ],
+      "actions_p0": [
+        "盘点自有账户/金库支付指令审批与异常转账熔断",
+        "出金与支付 API 强制独立密钥、去共享凭据、加速率/地理异常闸",
+        "非生产环境与生产支付面网络隔离；关闭暴露测试入口"
+      ],
+      "actions_p1": [
+        "对接链上标签/合规预言机做入金与混币池闸门（Privacy Cash 类余波）",
+        "按 CERT-In 建议补 7×24 监测与事件升级剧本",
+        "第三方平台接入面做供应商安全问卷与会话审计"
+      ],
+      "actions_p2": [
+        "演练「银行侧确认 vs 链上叙事」口径表（精确金额标 unconfirmed）",
+        "汇总 BFSI/交易所同类顾问进入季度威胁模型"
+      ],
+      "judgment": [
+        "精确被盗金额在银行未书面确认前一律 unconfirmed",
+        "硬门槛已触发：官方确认 + 监管预警，不可当「仅社媒噪音」"
+      ]
+    },
+    {
+      "title": "Agent 攻防规模化：OpenAI 948 LPE 管线 vs 应用层 Security Reviews / GitBook AI Agent",
+      "happened": "OpenAI 披露自主漏洞发现/利用/补丁管线单次产出 948 个互异 Linux LPE（候选补丁≠已合并上游；威胁模型为本地提权）。Vercel Security Reviews 约 24h 识别 6817、Agent 修补 1411。同周公开主线还包括 GitBook AI Agent 攻入叙事与 FlashProve 等（见要闻精选；细节以各日权威 Page 为准）。",
+      "why": "攻方把找洞→打洞→出补丁批量化；守方把应用评审吞吐产品化——防守节奏与披露容量被重写。",
+      "arch_impact": "端点/多租户假设「低权账户有界」变脆；应用层依赖 Agent 修洞需审计误报与合并门禁；文档/知识库 Agent 写入面成为新攻击面。",
+      "control_domains": [
+        "端点与本地提权",
+        "补丁与披露容量",
+        "应用层安全评审",
+        "Agent 写入/工具权限",
+        "供应链与文档站点"
+      ],
+      "actions_p0": [
+        "加速 Linux 桌面/服务器本地提权补丁队列；限制低权持久账户",
+        "Agent 自动开 PR/修洞须人工门禁与回滚开关"
+      ],
+      "actions_p1": [
+        "对 GitBook/文档站 AI Agent 权限做最小写入与审计日志",
+        "将 Security Review 类产品纳入 CI，但 critical 须人工复核"
+      ],
+      "actions_p2": [
+        "跟踪 FlashProve 等证明/验证向工具对内部安全研究流程的可迁移性（仅公开叙述，不扩未证实细节）"
+      ],
+      "judgment": [
+        "948 为官方自述研究管线结果，不夸大成「已远程破门」",
+        "候选补丁≠上游已修；运营以发行版公告为准"
+      ]
+    }
+  ],
+  "news": [
+    {
+      "id": "W45-N1",
+      "title": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M 叙事；精确金额 unconfirmed）",
+      "domain": "加密",
+      "why": "金融硬门槛：银行官方落地。",
+      "links": [
+        "https://www.cm-arkea.com/arkea/banque/assurances/pa_38386/fr/informations-complementaires-suite-a-l-attaque-dont-le-credit-mutuel-arkea-a-ete-victime"
+      ],
+      "finsec": true,
+      "hard_gate": true,
+      "sample": true
+    },
+    {
+      "id": "W45-N2",
+      "title": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI",
+      "domain": "加密",
+      "why": "监管硬预警 + 出金 API 失败模式。",
+      "links": [
+        "https://cointelegraph.com/news/india-warns-ai-powered-hackers-targeting-crypto-exchanges-at-machine-speed"
+      ],
+      "finsec": true,
+      "hard_gate": true,
+      "sample": true
+    },
+    {
+      "id": "W45-N3",
+      "title": "OpenAI Images 2.6：原生 GIF / 参考图；API Flare/Sunburst",
+      "domain": "AI产品",
+      "why": "官方多模态产品发布。",
+      "links": [
+        "https://openai.com/index/introducing-images-2-6/"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "sample": true
+    },
+    {
+      "id": "W45-N4",
+      "title": "OpenAI 自主漏洞管线单次 948 个 Linux LPE",
+      "domain": "AI安全",
+      "why": "AI 安全里程碑；LPE 非远程破门。",
+      "links": [
+        "https://openai.com/index/a-thousand-fewer-paths-to-root/"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "sample": true
+    },
+    {
+      "id": "W45-N5",
+      "title": "同周公开主线精选：GitBook AI Agent 攻入叙事 · FlashProve · Cat Wu/Austin Lau→OpenAI",
+      "domain": "AI产品/AI安全",
+      "why": "周级合并条目（细节见 11-04/11-05 日更权威 Page；本条仅作周精选指针，不扩未公开细节）。",
+      "links": [],
+      "finsec": false,
+      "hard_gate": false,
+      "sample": true
+    }
+  ],
+  "papers": [
+    {
+      "short": "RSI-Dojo / RSI-Craft",
+      "what": "论文→可执行 post-training 环境；281 任务轨迹微调。",
+      "why": "@dair_ai 11/4；RSI/harness 热潮。",
+      "url": "https://arxiv.org/abs/2611.03698",
+      "dair_url": "https://x.com/dair_ai/status/2117990256297513364",
+      "sample": true
+    },
+    {
+      "short": "Length is Cheap, Competition is Not",
+      "what": "长上下文失败主因是冲突陈述非长度。",
+      "why": "改写「靠加窗」；RAG/记忆先去重消歧。",
+      "url": "https://arxiv.org/abs/2611.04169",
+      "dair_url": "https://x.com/dair_ai/status/2117958798841434118",
+      "sample": true
+    },
+    {
+      "short": "You Don't Need Long Context",
+      "what": "频繁压缩上下文；SWE-bench 近全历史，峰值 32K→8K。",
+      "why": "与上条互补：先压再谈百万窗。",
+      "url": "https://arxiv.org/abs/2611.05306",
+      "dair_url": "https://x.com/dair_ai/status/2117957719651139847",
+      "sample": true
+    }
+  ],
+  "github": {
+    "rising": [
+      {
+        "rank": 1,
+        "repo": "agent-desktop",
+        "owner": "vercel-labs",
+        "slogan": "给 AI Agent 用的电脑操控 CLI",
+        "gained": 2463,
+        "stars": 15008,
+        "url": "https://github.com/vercel-labs/agent-desktop",
+        "sample": true
+      },
+      {
+        "rank": 2,
+        "repo": "auto-ontology",
+        "owner": "NVIDIA",
+        "slogan": "语义图谱层，让 Agent 检索可解释",
+        "gained": 2053,
+        "stars": 4892,
+        "url": "https://github.com/NVIDIA/auto-ontology",
+        "sample": true
+      },
+      {
+        "rank": 3,
+        "repo": "claude-mem",
+        "owner": "thedotmack",
+        "slogan": "跨会话记住并回注 Agent 上下文",
+        "gained": 1165,
+        "stars": 112817,
+        "url": "https://github.com/thedotmack/claude-mem",
+        "sample": true
+      }
+    ],
+    "newcomers": [
+      {
+        "rank": 1,
+        "repo": "agent-autoloop",
+        "owner": "KKKKhazix",
+        "slogan": "命令行 Agent 后台自己接活",
+        "stars": 2462,
+        "age_h": 40,
+        "url": "https://github.com/KKKKhazix/agent-autoloop",
+        "sample": true
+      },
+      {
+        "rank": 2,
+        "repo": "terminal-mac",
+        "owner": "govijr",
+        "slogan": "终端里跑整台 macOS",
+        "stars": 1499,
+        "age_h": 44.7,
+        "url": "https://github.com/govijr/terminal-mac",
+        "sample": true
+      }
+    ],
+    "meta": {
+      "note": "周精选摘自 2026-11-05 日榜；Archive 缺源未周聚合。",
+      "archive": "missing",
+      "sample": true
+    }
+  },
+  "sources": [
+    "本周公开「今日情报」日更主线（11-02…11-05）",
+    "OpenAI / Arkéa / CERT-In / Axios 等站外公告与报道",
+    "@dair_ai 论文窗",
+    "GitStock + Trending（日榜；Archive 缺源）"
+  ]
+}

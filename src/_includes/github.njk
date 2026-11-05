@@ -1,0 +1,106 @@
+<h2>GitHub · Rising</h2>
+{% if briefing.github.rising and briefing.github.rising.length %}
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Repo</th>
+        <th>Slogan</th>
+        <th>Gained</th>
+        <th>Stars</th>
+        <th>Seen</th>
+        <th>Break</th>
+        <th>Lang</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in briefing.github.rising %}
+      <tr>
+        <td>{{ item.rank }}</td>
+        <td>
+          <a href="{{ item.url }}">{{ item.owner }}/{{ item.repo }}</a>
+          {% if item.owner_type or item.license %}
+          <div class="sub">{{ item.owner_type }}{% if item.owner_type and item.license %} · {% endif %}{{ item.license }}</div>
+          {% endif %}
+        </td>
+        <td lang="zh-Hans">
+          {{ item.slogan }}
+          {% if item.what %}<div class="sub">{{ item.what }}</div>{% endif %}
+          {% if item.why %}<div class="sub">{{ item.why }}</div>{% endif %}
+          {% if item.tags and item.tags.length %}<div class="sub">{{ item.tags | join(", ") }}</div>{% endif %}
+        </td>
+        <td>{% if item.gained == null %}—{% else %}+{{ item.gained }}{% endif %}</td>
+        <td>{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
+        <td lang="zh-Hans">{% if item.seen %}{{ item.seen }}{% else %}—{% endif %}</td>
+        <td lang="zh-Hans">{% if item.break %}{{ item.break }}{% else %}—{% endif %}</td>
+        <td>{% if item.lang %}{{ item.lang }}{% else %}—{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<p>Nothing in this section.</p>
+{% endif %}
+
+<h2>GitHub · Newcomers</h2>
+{% if briefing.github.newcomers and briefing.github.newcomers.length %}
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Repo</th>
+        <th>Slogan</th>
+        <th>Stars</th>
+        <th>Age (h)</th>
+        <th>Seen</th>
+        <th>Break</th>
+        <th>Lang</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in briefing.github.newcomers %}
+      <tr>
+        <td>{{ item.rank }}</td>
+        <td>
+          <a href="{{ item.url }}">{{ item.owner }}/{{ item.repo }}</a>
+          {% if item.owner_type or item.license %}
+          <div class="sub">{{ item.owner_type }}{% if item.owner_type and item.license %} · {% endif %}{{ item.license }}</div>
+          {% endif %}
+        </td>
+        <td lang="zh-Hans">
+          {{ item.slogan }}
+          {% if item.what %}<div class="sub">{{ item.what }}</div>{% endif %}
+          {% if item.why %}<div class="sub">{{ item.why }}</div>{% endif %}
+          {% if item.tags and item.tags.length %}<div class="sub">{{ item.tags | join(", ") }}</div>{% endif %}
+        </td>
+        <td>{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
+        <td>{% if item.age_h == null %}—{% else %}{{ item.age_h }}{% endif %}</td>
+        <td lang="zh-Hans">{% if item.seen %}{{ item.seen }}{% else %}—{% endif %}</td>
+        <td lang="zh-Hans">{% if item.break %}{{ item.break }}{% else %}—{% endif %}</td>
+        <td>{% if item.lang %}{{ item.lang }}{% else %}—{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<p>Nothing in this section.</p>
+{% endif %}
+
+<h2>GitHub notes</h2>
+{% set meta = briefing.github.meta %}
+{% if meta %}
+<ul>
+  {% if meta.archive %}<li>Archive: {{ meta.archive }}</li>{% endif %}
+  {% if meta.archive_note %}<li lang="zh-Hans">{{ meta.archive_note }}</li>{% endif %}
+  {% if meta.note %}<li lang="zh-Hans">{{ meta.note }}</li>{% endif %}
+  {% if meta.sources_missing and meta.sources_missing.length %}
+  <li>Missing sources: {{ meta.sources_missing | join(", ") }}</li>
+  {% endif %}
+</ul>
+{% else %}
+<p>Nothing in this section.</p>
+{% endif %}

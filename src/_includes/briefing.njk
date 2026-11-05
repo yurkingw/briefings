@@ -1,0 +1,188 @@
+<p class="kicker">
+  {% if briefing.date %}Daily · {{ briefing.date }}{% else %}Weekly · {{ briefing.week }}{% endif %}
+  · {{ briefing.timezone }}
+  {% if briefing.sample %} · Sample{% endif %}
+</p>
+<h1 lang="zh-Hans">{% if briefing.date %}今日情报 · {{ briefing.date }}{% else %}本周情报 · {{ briefing.week }}{% endif %}</h1>
+<p class="kicker">Updated {{ briefing.updated_at }}{% if briefing.wave %} · Wave <span lang="zh-Hans">{{ briefing.wave }}</span>{% endif %}</p>
+{% if briefing.sample_note %}
+<p lang="zh-Hans">{{ briefing.sample_note }}</p>
+{% endif %}
+
+<h2>Conclusion</h2>
+<p class="conclusion" lang="zh-Hans">{{ briefing.summary }}</p>
+
+<h2>Metrics</h2>
+<table>
+  <thead>
+    <tr><th>Metric</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    {% for key, value in briefing.metrics %}
+    <tr>
+      <th>{{ key | metricLabel }}</th>
+      <td>{{ value }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if briefing.decisions and briefing.decisions.length %}
+<h2>Decisions</h2>
+{% for card in briefing.decisions %}
+<article class="decision">
+  <h3 lang="zh-Hans">{{ card.title }}</h3>
+  <h4>What happened</h4>
+  <p lang="zh-Hans">{{ card.happened }}</p>
+  <h4>Why it matters</h4>
+  <p lang="zh-Hans">{{ card.why }}</p>
+  <h4>Architecture impact</h4>
+  <p lang="zh-Hans">{{ card.arch_impact }}</p>
+  {% if card.control_domains and card.control_domains.length %}
+  <h4>Control domains</h4>
+  <ul lang="zh-Hans">
+    {% for domain in card.control_domains %}<li>{{ domain }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+  <h4>P0</h4>
+  {% if card.actions_p0 and card.actions_p0.length %}
+  <ul lang="zh-Hans">{% for action in card.actions_p0 %}<li>{{ action }}</li>{% endfor %}</ul>
+  {% else %}
+  <p>Nothing in this section.</p>
+  {% endif %}
+  <h4>P1</h4>
+  {% if card.actions_p1 and card.actions_p1.length %}
+  <ul lang="zh-Hans">{% for action in card.actions_p1 %}<li>{{ action }}</li>{% endfor %}</ul>
+  {% else %}
+  <p>Nothing in this section.</p>
+  {% endif %}
+  <h4>P2</h4>
+  {% if card.actions_p2 and card.actions_p2.length %}
+  <ul lang="zh-Hans">{% for action in card.actions_p2 %}<li>{{ action }}</li>{% endfor %}</ul>
+  {% else %}
+  <p>Nothing in this section.</p>
+  {% endif %}
+  <h4>Judgment</h4>
+  {% if card.judgment and card.judgment.length %}
+  <ul lang="zh-Hans">{% for line in card.judgment %}<li>{{ line }}</li>{% endfor %}</ul>
+  {% else %}
+  <p>Nothing in this section.</p>
+  {% endif %}
+</article>
+{% endfor %}
+{% endif %}
+
+<h2>News</h2>
+{% if briefing.news and briefing.news.length %}
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Domain</th>
+        <th>Title</th>
+        <th>Channel</th>
+        <th>Finsec</th>
+        <th>Hard gate</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in briefing.news %}
+      <tr>
+        <td>{{ item.id }}</td>
+        <td lang="zh-Hans">{{ item.domain }}</td>
+        <td lang="zh-Hans">{{ item.title }}</td>
+        <td lang="zh-Hans">{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
+        <td>{% if item.finsec == null %}—{% else %}{{ item.finsec | yesNo }}{% endif %}</td>
+        <td>{% if item.hard_gate == null %}—{% else %}{{ item.hard_gate | yesNo }}{% endif %}</td>
+        <td>{% if item.detail == null %}—{% else %}{{ item.detail | yesNo }}{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<p>Nothing in this section.</p>
+{% endif %}
+
+{% set notes = briefing.news | withNotes %}
+{% if notes.length %}
+<h2>Notes</h2>
+{% for item in notes %}
+<article class="card">
+  <h3 lang="zh-Hans">#{{ item.id }} · {{ item.domain }} · {{ item.title }}</h3>
+  {% if item.detail == true %}<p class="kicker">Full card</p>{% elif item.detail == false %}<p class="kicker">Brief</p>{% endif %}
+  {% if item.background %}
+  <h4>Background</h4>
+  <p lang="zh-Hans">{{ item.background }}</p>
+  {% endif %}
+  {% if item.facts %}
+  <h4>Facts</h4>
+  <p lang="zh-Hans">{{ item.facts }}</p>
+  {% endif %}
+  {% if item.why %}
+  <h4>Why it matters</h4>
+  <p lang="zh-Hans">{{ item.why }}</p>
+  {% endif %}
+  {% if item.arch_impact %}
+  <h4>Architecture impact</h4>
+  <p lang="zh-Hans">{{ item.arch_impact }}</p>
+  {% endif %}
+  {% if item.first_source_at %}
+  <h4>First source</h4>
+  <p lang="zh-Hans">{{ item.first_source_at }}</p>
+  {% endif %}
+  {% if item.links and item.links.length %}
+  <h4>Links</h4>
+  <ul>
+    {% for link in item.links %}
+    <li><a href="{{ link }}">{{ link }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</article>
+{% endfor %}
+{% endif %}
+
+<h2>Papers</h2>
+{% if briefing.papers and briefing.papers.length %}
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Short</th>
+        <th>What</th>
+        <th>Why</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for paper in briefing.papers %}
+      <tr>
+        <td lang="zh-Hans">{{ paper.short }}</td>
+        <td lang="zh-Hans">{% if paper.what %}{{ paper.what }}{% else %}—{% endif %}</td>
+        <td lang="zh-Hans">{% if paper.why %}{{ paper.why }}{% else %}—{% endif %}</td>
+        <td>
+          <a href="{{ paper.url }}">{{ paper.url }}</a>
+          {% if paper.dair_url %}<div class="sub"><a href="{{ paper.dair_url }}">{{ paper.dair_url }}</a></div>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<p>Nothing in this section.</p>
+{% endif %}
+
+{% include "github.njk" %}
+
+<h2>Sources</h2>
+{% if briefing.sources and briefing.sources.length %}
+<ul lang="zh-Hans">
+  {% for source in briefing.sources %}<li>{{ source }}</li>{% endfor %}
+</ul>
+{% else %}
+<p>Nothing in this section.</p>
+{% endif %}
