@@ -4,6 +4,7 @@ import { excerpt } from "../lib/excerpt.js";
 import { FOLD_STEP, nextFoldCount } from "../src/js/fold.js";
 import { loadBriefings } from "../lib/load-briefings.js";
 import { isoWeekId, selectStage, shanghaiDate } from "../lib/stage.js";
+import { selectHot, tocGroups, withNotes } from "../lib/pages-parity.js";
 import { absoluteUrl } from "../lib/site.js";
 import {
   annotateUnconfirmed,
@@ -396,20 +397,150 @@ function assertOrder(name, text, markers) {
   }
 }
 if (html.daily) {
-  assertOrder("daily", html.daily, [">Conclusion<", ">Metrics<", ">News<"]);
-  const metrics = sliceBetween(html.daily, ">Metrics<", ">News<");
+  assertOrder("daily", html.daily, ['id="conclusion"', 'id="hot"', 'id="metrics"', 'id="news"']);
+  const metrics = sliceBetween(html.daily, 'id="metrics"', 'id="news"');
   if (metrics.includes("<table") || metrics.includes(">Metric<")) fail("daily metrics is still a metric table");
   if (!metrics.includes("News 16")) fail("daily metrics line missing");
   if (!html.daily.includes('class="conclusion"')) fail("daily conclusion block missing");
   if (!html.daily.includes('aria-current="page">Daily')) fail("daily page does not mark the Daily nav");
 }
 if (html.weekly) {
-  assertOrder("weekly", html.weekly, [">Conclusion<", ">Metrics<", ">Decisions<", ">News<"]);
-  const metrics = sliceBetween(html.weekly, ">Metrics<", ">Decisions<");
+  assertOrder("weekly", html.weekly, ['id="conclusion"', 'id="hot"', 'id="metrics"', 'id="decisions"', 'id="news"']);
+  const metrics = sliceBetween(html.weekly, 'id="metrics"', 'id="decisions"');
   if (metrics.includes("<table") || metrics.includes(">Metric<")) fail("weekly metrics is still a metric table");
   if (!html.weekly.includes('class="decision"')) fail("weekly decisions are missing the hairline article");
   if (!html.weekly.includes('aria-current="page">Weekly')) fail("weekly page does not mark the Weekly nav");
 }
+
+function assertPagesParity(name, text, data) {
+  if (!text) return;
+  const head = text.indexOf('class="page-head"');
+  const toc = text.indexOf('<nav class="toc"');
+  const conclusion = text.indexOf('id="conclusion"');
+  if (!(head >= 0 && toc > head && conclusion > toc)) {
+    fail(`${name} TOC must sit between page-head and Conclusion`);
+  }
+  if (!text.includes(">On this page<")) fail(`${name} is missing the On this page label`);
+  if (text.includes("<h4>First source</h4>")) fail(`${name} still renders First source as a body heading`);
+  if (text.includes("text-overflow:ellipsis") || text.includes("text-overflow: ellipsis")) {
+    fail(`${name} truncates a title`);
+  }
+  const notes = withNotes(data.news);
+  notes.forEach((item, index) => {
+    if (!text.includes(`id="note-${index + 1}"`)) fail(`${name} is missing id note-${index + 1}`);
+  });
+  const decisions = data.decisions || [];
+  decisions.forEach((card, index) => {
+    if (!text.includes(`id="decision-${index + 1}"`)) fail(`${name} is missing id decision-${index + 1}`);
+  });
+  if (notes.length >= 3) {
+    const groups = tocGroups(notes, "note");
+    const notesToc = sliceBetween(text, 'href="#notes"', 'href="#papers"');
+    let cursor = -1;
+    for (const group of groups) {
+      const labelAt = notesToc.indexOf(htmlEscape(group.label));
+      if (labelAt < 0) fail(`${name} notes TOC is missing group ${group.label}`);
+      if (labelAt < cursor) fail(`${name} notes TOC group order failed at ${group.label}`);
+      cursor = labelAt;
+      if (!notesToc.includes(`class="toc-count">${group.items.length}<`)) {
+        fail(`${name} notes TOC is missing the count for ${group.label}`);
+      }
+      let itemCursor = labelAt;
+      for (const item of group.items) {
+        const href = `href="#${item.anchor}"`;
+        const at = notesToc.indexOf(href, itemCursor);
+        if (at < 0) fail(`${name} notes TOC is missing ${item.anchor} in ${group.label}`);
+        if (!notesToc.includes(htmlEscape(item.title))) fail(`${name} notes TOC truncated ${item.anchor}`);
+        itemCursor = at + 1;
+      }
+    }
+  }
+  if (decisions.length >= 2) {
+    const groups = tocGroups(decisions, "decision");
+    const decisionToc = sliceBetween(text, 'href="#decisions"', 'href="#news"');
+    for (const group of groups) {
+      if (!decisionToc.includes(htmlEscape(group.label))) fail(`${name} decisions TOC is missing group ${group.label}`);
+      for (const item of group.items) {
+        if (!decisionToc.includes(`href="#${item.anchor}"`)) {
+          fail(`${name} decisions TOC is missing ${item.anchor}`);
+        }
+        if (!decisionToc.includes(htmlEscape(item.title))) fail(`${name} decisions TOC truncated ${item.anchor}`);
+      }
+    }
+  }
+  const hot = selectHot(data);
+  const hotHtml = sliceBetween(text, 'id="hot"', 'id="metrics"');
+  if (!hot.length) {
+    if (text.includes("Hot this wave")) fail(`${name} rendered Hot this wave without data`);
+  } else {
+    if (!hotHtml.includes("Hot this wave")) fail(`${name} is missing Hot this wave`);
+    if (!hotHtml.includes("hot-jump")) fail(`${name} hot list is not clickable`);
+    let cursor = -1;
+    for (const item of hot) {
+      const href = `href="${item.href}"`;
+      const at = hotHtml.indexOf(href, cursor);
+      if (at < 0) fail(`${name} hot list is missing ${item.href}`);
+      if (!hotHtml.includes(htmlEscape(item.title))) fail(`${name} hot list truncated ${item.href}`);
+      cursor = at + 1;
+    }
+  }
+  const cardRe = /<article class="card"[\s\S]*?(?=<article class="card"|<section |$)/g;
+  const cards = text.match(cardRe) || [];
+  if (cards.length !== notes.length) fail(`${name} card count ${cards.length} != notes ${notes.length}`);
+  cards.forEach((card, index) => {
+    const item = notes[index];
+    if (item.first_source_at) {
+      const strip = card.indexOf('class="first-source"');
+      const background = card.indexOf("<h4>Background</h4>");
+      const facts = card.indexOf("<h4>Facts</h4>");
+      if (strip < 0) fail(`${name} note-${index + 1} is missing the First source strip`);
+      if (background >= 0 && strip > background) fail(`${name} note-${index + 1} First source is after Background`);
+      if (facts >= 0 && strip > facts) fail(`${name} note-${index + 1} First source is after Facts`);
+    }
+    const labels = [...card.matchAll(/<h4>([^<]+)<\/h4>/g)].map((match) => match[1]);
+    const expected = ["Background", "Facts", "Why it matters", "Architecture impact", "Links"].filter((label) => {
+      if (label === "Background") return item.background;
+      if (label === "Facts") return item.facts;
+      if (label === "Why it matters") return item.why;
+      if (label === "Architecture impact") return item.arch_impact;
+      return item.links && item.links.length;
+    });
+    if (labels.join("|") !== expected.join("|")) {
+      fail(`${name} note-${index + 1} section order ${labels.join("|")}`);
+    }
+  });
+  const tdCount = (text.match(/<td\b/g) || []).length;
+  const labelCount = (text.match(/data-label="/g) || []).length;
+  if (tdCount !== labelCount) fail(`${name} data-label count ${labelCount} != td count ${tdCount}`);
+  if (!text.includes('<button type="button" class="back-to-top"') || !text.includes(">Top</button>")) {
+    fail(`${name} is missing the Top button`);
+  }
+}
+
+if (html.daily) assertPagesParity("daily", html.daily, dailyJson);
+if (html.weekly) assertPagesParity("weekly", html.weekly, weeklyJson);
+if (html.home && html.home.includes('class="back-to-top"')) fail("home should not render BackToTop");
+if (html.home && html.home.includes('class="toc"')) fail("home should not render a detail TOC");
+
+if (!cssSource.includes("scroll-margin-top: calc(var(--s-7) + var(--s-3))")) {
+  fail("section targets are missing scroll-margin-top");
+}
+if (!cssSource.includes("content: attr(data-label)") || !cssSource.includes("@media (max-width: 640px)")) {
+  fail("mobile tables are missing the card stack");
+}
+if (!cssSource.includes("overflow-x: clip")) fail("page is missing horizontal clip");
+if (/text-overflow\s*:\s*ellipsis/.test(cssSource)) fail("site.css ellipsizes text");
+if (!baseSource.includes('nav.toc a[href^="#"]') || !baseSource.includes(".hot-picks a[href^=\"#\"]")) {
+  fail("smooth scroll does not intercept TOC and hot jumps");
+}
+if (!baseSource.includes("scrollIntoView") || !baseSource.includes('block: "start"')) {
+  fail("smooth scroll is missing scrollIntoView block start");
+}
+if (!baseSource.includes("(prefers-reduced-motion: reduce)") || !baseSource.includes('"smooth"') || !baseSource.includes('"auto"')) {
+  fail("reduced motion does not switch scroll behavior to auto");
+}
+if (!baseSource.includes("replaceState")) fail("in-page jumps do not call history.replaceState");
+if (!baseSource.includes('button type="button" class="back-to-top"')) fail("BackToTop is not a public button");
 if (!cssSource.includes("border-left: 2px solid var(--ink)")) fail("conclusion is missing the ink rule");
 if (!fs.existsSync(path.join(root, "_site/fonts/inter-latin-wght-normal.woff2"))) {
   fail("missing self-hosted Inter latin font");

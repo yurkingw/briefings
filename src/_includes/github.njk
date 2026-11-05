@@ -18,24 +18,24 @@
       <tbody>
         {% for item in briefing.github.rising %}
         <tr>
-          <td>{{ item.rank }}</td>
-          <td class="col-repo">
-            <a href="{{ item.url }}">{{ item.owner }}/{{ item.repo }}</a>
+          <td data-label="#">{{ item.rank }}</td>
+          <td class="col-repo" data-label="Repo">
+            <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.owner }}/{{ item.repo }}</a>
             {% if item.owner_type or item.license %}
             <div class="sub">{{ item.owner_type }}{% if item.owner_type and item.license %} · {% endif %}{{ item.license }}</div>
             {% endif %}
           </td>
-          <td class="col-title" lang="zh-Hans">
+          <td class="col-title" data-label="Slogan" lang="zh-Hans">
             {{ item.slogan }}
             {% if item.what %}<div class="sub">{{ item.what }}</div>{% endif %}
             {% if item.why %}<div class="sub">{{ item.why }}</div>{% endif %}
             {% if item.tags and item.tags.length %}<div class="sub">{{ item.tags | join(", ") }}</div>{% endif %}
           </td>
-          <td>{% if item.gained == null %}—{% else %}+{{ item.gained }}{% endif %}</td>
-          <td>{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
-          <td lang="zh-Hans">{% if item.seen %}{{ item.seen }}{% else %}—{% endif %}</td>
-          <td lang="zh-Hans">{% if item.break %}{{ item.break }}{% else %}—{% endif %}</td>
-          <td>{% if item.lang %}{{ item.lang }}{% else %}—{% endif %}</td>
+          <td data-label="Gained">{% if item.gained == null %}—{% else %}+{{ item.gained }}{% endif %}</td>
+          <td data-label="Stars">{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
+          <td data-label="Seen" lang="zh-Hans">{% if item.seen %}{{ item.seen }}{% else %}—{% endif %}</td>
+          <td data-label="Break" lang="zh-Hans">{% if item.break %}{{ item.break }}{% else %}—{% endif %}</td>
+          <td data-label="Lang">{% if item.lang %}{{ item.lang }}{% else %}—{% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>
@@ -64,24 +64,24 @@
       <tbody>
         {% for item in briefing.github.newcomers %}
         <tr>
-          <td>{{ item.rank }}</td>
-          <td class="col-repo">
-            <a href="{{ item.url }}">{{ item.owner }}/{{ item.repo }}</a>
+          <td data-label="#">{{ item.rank }}</td>
+          <td class="col-repo" data-label="Repo">
+            <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.owner }}/{{ item.repo }}</a>
             {% if item.owner_type or item.license %}
             <div class="sub">{{ item.owner_type }}{% if item.owner_type and item.license %} · {% endif %}{{ item.license }}</div>
             {% endif %}
           </td>
-          <td class="col-title" lang="zh-Hans">
+          <td class="col-title" data-label="Slogan" lang="zh-Hans">
             {{ item.slogan }}
             {% if item.what %}<div class="sub">{{ item.what }}</div>{% endif %}
             {% if item.why %}<div class="sub">{{ item.why }}</div>{% endif %}
             {% if item.tags and item.tags.length %}<div class="sub">{{ item.tags | join(", ") }}</div>{% endif %}
           </td>
-          <td>{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
-          <td>{% if item.age_h == null %}—{% else %}{{ item.age_h }}{% endif %}</td>
-          <td lang="zh-Hans">{% if item.seen %}{{ item.seen }}{% else %}—{% endif %}</td>
-          <td lang="zh-Hans">{% if item.break %}{{ item.break }}{% else %}—{% endif %}</td>
-          <td>{% if item.lang %}{{ item.lang }}{% else %}—{% endif %}</td>
+          <td data-label="Stars">{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
+          <td data-label="Age (h)">{% if item.age_h == null %}—{% else %}{{ item.age_h }}{% endif %}</td>
+          <td data-label="Seen" lang="zh-Hans">{% if item.seen %}{{ item.seen }}{% else %}—{% endif %}</td>
+          <td data-label="Break" lang="zh-Hans">{% if item.break %}{{ item.break }}{% else %}—{% endif %}</td>
+          <td data-label="Lang">{% if item.lang %}{{ item.lang }}{% else %}—{% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>

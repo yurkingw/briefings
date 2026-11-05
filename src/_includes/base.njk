@@ -67,6 +67,9 @@
       <p><a href="{{ site.baseUrl }}/">{{ site.baseUrl }}/</a></p>
     </div>
   </footer>
+  {% if briefing %}
+  <button type="button" class="back-to-top" hidden>Top</button>
+  {% endif %}
   <script>
     (function () {
       var root = document.documentElement;
@@ -95,6 +98,38 @@
           apply(button.getAttribute("data-theme-set"), true);
         });
       });
+
+      var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      function scrollBehavior() {
+        return motionQuery.matches ? "auto" : "smooth";
+      }
+      document.querySelectorAll('nav.toc a[href^="#"], .hot-picks a[href^="#"]').forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          var id = decodeURIComponent(link.getAttribute("href").slice(1));
+          var target = document.getElementById(id);
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
+          if (history.replaceState) history.replaceState(null, "", "#" + id);
+        });
+      });
+      var topButton = document.querySelector("button.back-to-top");
+      if (topButton) {
+        function syncTop() {
+          var y = window.scrollY || document.documentElement.scrollTop || 0;
+          var show = y >= (window.innerHeight || 1) * 2;
+          if (show) topButton.removeAttribute("hidden");
+          else topButton.setAttribute("hidden", "");
+        }
+        syncTop();
+        window.addEventListener("scroll", syncTop, { passive: true });
+        topButton.addEventListener("click", function () {
+          document.documentElement.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
+          if (history.replaceState) {
+            history.replaceState(null, "", window.location.pathname + window.location.search);
+          }
+        });
+      }
     })();
   </script>
 </body>
