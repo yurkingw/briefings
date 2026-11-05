@@ -1,5 +1,6 @@
 import { HtmlBasePlugin } from "@11ty/eleventy";
 import { excerpt } from "./lib/excerpt.js";
+import { selectHot, tocGroups, withNotes } from "./lib/pages-parity.js";
 import { absoluteUrl, site } from "./lib/site.js";
 
 const METRIC_LABELS = {
@@ -27,11 +28,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("absoluteUrl", (url) => absoluteUrl(url));
   eleventyConfig.addFilter("yesNo", (value) => (value ? "Yes" : "No"));
   eleventyConfig.addFilter("metricLabel", (key) => METRIC_LABELS[key] || key);
-  eleventyConfig.addFilter("withNotes", (items) =>
-    (items || []).filter(
-      (item) => item && (item.background || item.facts || item.why || item.arch_impact || (item.links && item.links.length)),
-    ),
-  );
+  eleventyConfig.addFilter("withNotes", (items) => withNotes(items));
+  eleventyConfig.addFilter("tocGroups", (items, kind) => tocGroups(items, kind));
+  eleventyConfig.addFilter("hotThisWave", (briefing) => selectHot(briefing));
 
   return {
     pathPrefix: site.pathPrefix,

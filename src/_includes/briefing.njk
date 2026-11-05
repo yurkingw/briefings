@@ -11,10 +11,96 @@
   {% endif %}
 </div>
 
+{% set notes = briefing.news | withNotes %}
+{% set decisions = briefing.decisions if briefing.decisions else [] %}
+{% set hotItems = briefing | hotThisWave %}
+{% set noteGroups = notes | tocGroups("note") %}
+{% set decisionGroups = decisions | tocGroups("decision") %}
+{% set gh = briefing.github if briefing.github else {} %}
+{% set ghMeta = gh.meta if gh.meta else {} %}
+{% set showRising = gh.rising and gh.rising.length %}
+{% set showNewcomers = gh.newcomers and gh.newcomers.length %}
+{% set showGhNotes = ghMeta.archive or ghMeta.archive_note or ghMeta.note or (ghMeta.sources_missing and ghMeta.sources_missing.length) %}
+
+<nav class="toc" aria-label="On this page">
+  <h2>On this page</h2>
+  <ol class="toc-sections">
+    <li><a href="#conclusion">Conclusion</a></li>
+    {% if hotItems.length %}
+    <li><a href="#hot">Hot this wave</a></li>
+    {% endif %}
+    <li><a href="#metrics">Metrics</a></li>
+    {% if decisions.length %}
+    <li>
+      <a href="#decisions">Decisions</a>
+      {% if decisions.length >= 2 %}
+      {% for group in decisionGroups %}
+      <p class="toc-group"><span class="toc-group-label">{{ group.label }}</span> <span class="toc-count">{{ group.items | length }}</span></p>
+      <ol>
+        {% for item in group.items %}
+        <li>
+          <a href="#{{ item.anchor }}">
+            <span class="toc-index">{{ item.index }}</span>
+            <span class="toc-title" lang="zh-Hans">{{ item.title }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
+      {% endfor %}
+      {% endif %}
+    </li>
+    {% endif %}
+    {% if briefing.news and briefing.news.length %}
+    <li><a href="#news">News</a></li>
+    {% endif %}
+    {% if notes.length %}
+    <li>
+      <a href="#notes">Notes</a>
+      {% if notes.length >= 3 %}
+      {% for group in noteGroups %}
+      <p class="toc-group"><span class="toc-group-label">{{ group.label }}</span> <span class="toc-count">{{ group.items | length }}</span></p>
+      <ol>
+        {% for item in group.items %}
+        <li>
+          <a href="#{{ item.anchor }}">
+            <span class="toc-index">{{ item.index }}</span>
+            <span class="toc-title" lang="zh-Hans">{{ item.title }}</span>
+            {% if item.channel %}<span class="toc-channel" lang="zh-Hans">{{ item.channel }}</span>{% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
+      {% endfor %}
+      {% endif %}
+    </li>
+    {% endif %}
+    {% if briefing.papers and briefing.papers.length %}
+    <li><a href="#papers">Papers</a></li>
+    {% endif %}
+    {% if showRising %}<li><a href="#github-rising">GitHub · Rising</a></li>{% endif %}
+    {% if showNewcomers %}<li><a href="#github-newcomers">GitHub · Newcomers</a></li>{% endif %}
+    {% if showGhNotes %}<li><a href="#github-notes">GitHub notes</a></li>{% endif %}
+    {% if briefing.sources and briefing.sources.length %}
+    <li><a href="#sources">Sources</a></li>
+    {% endif %}
+  </ol>
+</nav>
+
 <section class="block" id="conclusion">
   <h2>Conclusion</h2>
   <p class="conclusion" lang="zh-Hans">{{ briefing.summary }}</p>
 </section>
+
+{% if hotItems.length %}
+<section class="block hot-picks" id="hot">
+  <h2 id="hot-heading">Hot this wave</h2>
+  <ol class="hot-list">
+    {% for item in hotItems %}
+    <li><a class="hot-jump" href="{{ item.href }}">{{ item.title }}</a></li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
 
 <section class="block" id="metrics">
   <h2>Metrics</h2>
@@ -26,11 +112,11 @@
   </p>
 </section>
 
-{% if briefing.decisions and briefing.decisions.length %}
+{% if decisions.length %}
 <section class="block" id="decisions">
   <h2>Decisions</h2>
-  {% for card in briefing.decisions %}
-  <article class="decision">
+  {% for card in decisions %}
+  <article class="decision" id="decision-{{ loop.index }}">
     <h3 lang="zh-Hans">{{ card.title }}</h3>
     <h4>What happened</h4>
     <p lang="zh-Hans">{{ card.happened }}</p>
@@ -90,13 +176,13 @@
       <tbody>
         {% for item in briefing.news %}
         <tr>
-          <td>{{ item.id }}</td>
-          <td lang="zh-Hans">{{ item.domain }}</td>
-          <td class="col-title" lang="zh-Hans">{{ item.title }}</td>
-          <td lang="zh-Hans">{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
-          <td class="col-flag{% if item.finsec %} is-yes{% endif %}">{% if item.finsec == null %}—{% else %}{{ item.finsec | yesNo }}{% endif %}</td>
-          <td class="col-flag{% if item.hard_gate %} is-yes{% endif %}">{% if item.hard_gate == null %}—{% else %}{{ item.hard_gate | yesNo }}{% endif %}</td>
-          <td>{% if item.detail == null %}—{% else %}{{ item.detail | yesNo }}{% endif %}</td>
+          <td data-label="#">{{ item.id }}</td>
+          <td data-label="Domain" lang="zh-Hans">{{ item.domain }}</td>
+          <td class="col-title" data-label="Title" lang="zh-Hans">{{ item.title }}</td>
+          <td data-label="Channel" lang="zh-Hans">{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
+          <td class="col-flag{% if item.finsec %} is-yes{% endif %}" data-label="Finsec">{% if item.finsec == null %}—{% else %}{{ item.finsec | yesNo }}{% endif %}</td>
+          <td class="col-flag{% if item.hard_gate %} is-yes{% endif %}" data-label="Hard gate">{% if item.hard_gate == null %}—{% else %}{{ item.hard_gate | yesNo }}{% endif %}</td>
+          <td data-label="Detail">{% if item.detail == null %}—{% else %}{{ item.detail | yesNo }}{% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>
@@ -105,14 +191,19 @@
 </section>
 {% endif %}
 
-{% set notes = briefing.news | withNotes %}
 {% if notes.length %}
 <section class="block notes" id="notes">
   <h2>Notes</h2>
   {% for item in notes %}
-  <article class="card">
+  <article class="card" id="note-{{ loop.index }}">
     <h3 lang="zh-Hans">#{{ item.id }} · {{ item.domain }} · {{ item.title }}</h3>
     {% if item.detail == true %}<p class="kicker">Full card</p>{% elif item.detail == false %}<p class="kicker">Brief</p>{% endif %}
+    {% if item.first_source_at %}
+    <p class="first-source">
+      <span class="first-source-label">First source</span>
+      <span lang="zh-Hans">{{ item.first_source_at }}</span>
+    </p>
+    {% endif %}
     {% if item.background %}
     <h4>Background</h4>
     <p lang="zh-Hans">{{ item.background }}</p>
@@ -129,15 +220,11 @@
     <h4>Architecture impact</h4>
     <p lang="zh-Hans">{{ item.arch_impact }}</p>
     {% endif %}
-    {% if item.first_source_at %}
-    <h4>First source</h4>
-    <p lang="zh-Hans">{{ item.first_source_at }}</p>
-    {% endif %}
     {% if item.links and item.links.length %}
     <h4>Links</h4>
     <ul>
       {% for link in item.links %}
-      <li><a href="{{ link }}">{{ link }}</a></li>
+      <li><a href="{{ link }}" target="_blank" rel="noopener noreferrer">{{ link }}</a></li>
       {% endfor %}
     </ul>
     {% endif %}
@@ -162,12 +249,12 @@
       <tbody>
         {% for paper in briefing.papers %}
         <tr>
-          <td class="col-title" lang="zh-Hans">{{ paper.short }}</td>
-          <td class="col-title" lang="zh-Hans">{% if paper.what %}{{ paper.what }}{% else %}—{% endif %}</td>
-          <td class="col-title" lang="zh-Hans">{% if paper.why %}{{ paper.why }}{% else %}—{% endif %}</td>
-          <td>
-            <a href="{{ paper.url }}">{{ paper.url }}</a>
-            {% if paper.dair_url %}<div class="sub"><a href="{{ paper.dair_url }}">{{ paper.dair_url }}</a></div>{% endif %}
+          <td class="col-title" data-label="Short" lang="zh-Hans">{{ paper.short }}</td>
+          <td class="col-title" data-label="What" lang="zh-Hans">{% if paper.what %}{{ paper.what }}{% else %}—{% endif %}</td>
+          <td class="col-title" data-label="Why" lang="zh-Hans">{% if paper.why %}{{ paper.why }}{% else %}—{% endif %}</td>
+          <td data-label="Link">
+            <a href="{{ paper.url }}" target="_blank" rel="noopener noreferrer">{{ paper.url }}</a>
+            {% if paper.dair_url %}<div class="sub"><a href="{{ paper.dair_url }}" target="_blank" rel="noopener noreferrer">{{ paper.dair_url }}</a></div>{% endif %}
           </td>
         </tr>
         {% endfor %}
