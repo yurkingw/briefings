@@ -6,9 +6,9 @@ import { loadBriefings } from "../lib/load-briefings.js";
 import { isoWeekId, selectStage, shanghaiDate } from "../lib/stage.js";
 import {
   detailCards,
+  displayTitle,
   remainderNews,
   selectHot,
-  tocGroups,
 } from "../lib/pages-parity.js";
 import { absoluteUrl } from "../lib/site.js";
 import {
@@ -70,6 +70,12 @@ if (/unconfirmed/i.test(stated)) fail("stated amount was marked unconfirmed");
 const tableRow = annotateUnconfirmed("| 14 | 加密 | 约 $133M 不确定 | 是 |");
 if (!tableRow.endsWith("|") || !tableRow.includes("（unconfirmed）|")) {
   fail(`table-row annotation escaped the cell: ${tableRow}`);
+}
+if (displayTitle({ id: 1, domain: "AI产品", title: "#1 · AI产品 · Hello" }) !== "Hello") {
+  fail("displayTitle did not strip a baked #N · domain prefix");
+}
+if (displayTitle({ title: "Plain title" }) !== "Plain title") {
+  fail("displayTitle changed a title that has no #N prefix");
 }
 
 const dailyJson = JSON.parse(read("content/daily/2026-11-05.json"));
@@ -274,7 +280,7 @@ if (html.home.indexOf('id="daily"') > html.home.indexOf('id="weekly"')) {
 }
 
 function assertEntry(slice, label, href, blurb, meta) {
-  const open = `<a class="entry" href="${href}">`;
+  const open = `<a class="entry hit-row" href="${href}">`;
   const start = slice.indexOf(open);
   const end = start < 0 ? -1 : slice.indexOf("</a>", start);
   const row = start < 0 || end < 0 ? "" : slice.slice(start, end);
@@ -403,8 +409,9 @@ function assertOrder(name, text, markers) {
 }
 if (html.daily) {
   assertOrder("daily", html.daily, [
-    'id="conclusion"',
+    'class="page-head"',
     'id="metrics"',
+    'id="conclusion"',
     'class="page-tabs',
     'id="panel-news"',
     'id="hot"',
@@ -425,8 +432,9 @@ if (html.daily) {
 }
 if (html.weekly) {
   assertOrder("weekly", html.weekly, [
-    'id="conclusion"',
+    'class="page-head"',
     'id="metrics"',
+    'id="conclusion"',
     'class="page-tabs',
     'id="panel-news"',
     'id="hot"',
@@ -445,13 +453,23 @@ if (html.weekly) {
 
 function assertPagesParity(name, text, data) {
   if (!text) return;
-  const head = text.indexOf('class="page-head"');
-  const toc = text.indexOf('<nav class="toc"');
-  const conclusion = text.indexOf('id="conclusion"');
-  if (!(head >= 0 && toc > head && conclusion > toc)) {
-    fail(`${name} TOC must sit between page-head and Conclusion`);
+  for (const marker of [
+    '<nav class="toc"',
+    "toc-sections",
+    'aria-label="On this page"',
+    ">On this page<",
+    "toc-group",
+    "toc-index",
+  ]) {
+    if (text.includes(marker)) fail(`${name} still renders an in-page TOC (${marker})`);
   }
-  if (!text.includes(">On this page<")) fail(`${name} is missing the On this page label`);
+  const head = text.indexOf('class="page-head"');
+  const metrics = text.indexOf('id="metrics"');
+  const conclusion = text.indexOf('id="conclusion"');
+  const tabs = text.indexOf('class="page-tabs');
+  if (!(head >= 0 && metrics > head && conclusion > metrics && tabs > conclusion)) {
+    fail(`${name} order must be page-head, status, Conclusion, then page-tabs`);
+  }
   if (text.includes("<h4>First source</h4>")) fail(`${name} still renders First source as a body heading`);
   if (text.includes("text-overflow:ellipsis") || text.includes("text-overflow: ellipsis")) {
     fail(`${name} truncates a title`);
@@ -464,41 +482,6 @@ function assertPagesParity(name, text, data) {
   decisions.forEach((card, index) => {
     if (!text.includes(`id="decision-${index + 1}"`)) fail(`${name} is missing id decision-${index + 1}`);
   });
-  if (notes.length >= 3) {
-    const groups = tocGroups(notes, "note");
-    const notesToc = sliceBetween(text, 'href="#panel-news"', 'href="#panel-papers"');
-    let cursor = -1;
-    for (const group of groups) {
-      const labelAt = notesToc.indexOf(htmlEscape(group.label));
-      if (labelAt < 0) fail(`${name} notes TOC is missing group ${group.label}`);
-      if (labelAt < cursor) fail(`${name} notes TOC group order failed at ${group.label}`);
-      cursor = labelAt;
-      if (!notesToc.includes(`class="toc-count">${group.items.length}<`)) {
-        fail(`${name} notes TOC is missing the count for ${group.label}`);
-      }
-      let itemCursor = labelAt;
-      for (const item of group.items) {
-        const href = `href="#${item.anchor}"`;
-        const at = notesToc.indexOf(href, itemCursor);
-        if (at < 0) fail(`${name} notes TOC is missing ${item.anchor} in ${group.label}`);
-        if (!notesToc.includes(htmlEscape(item.title))) fail(`${name} notes TOC truncated ${item.anchor}`);
-        itemCursor = at + 1;
-      }
-    }
-  }
-  if (decisions.length >= 2) {
-    const groups = tocGroups(decisions, "decision");
-    const decisionToc = sliceBetween(text, 'href="#panel-decisions"', 'href="#sources"');
-    for (const group of groups) {
-      if (!decisionToc.includes(htmlEscape(group.label))) fail(`${name} decisions TOC is missing group ${group.label}`);
-      for (const item of group.items) {
-        if (!decisionToc.includes(`href="#${item.anchor}"`)) {
-          fail(`${name} decisions TOC is missing ${item.anchor}`);
-        }
-        if (!decisionToc.includes(htmlEscape(item.title))) fail(`${name} decisions TOC truncated ${item.anchor}`);
-      }
-    }
-  }
   const hot = selectHot(data);
   const hotEnd = text.includes('class="detail-cards"') ? 'class="detail-cards"' : 'id="weekly-news"';
   const hotHtml = sliceBetween(text, 'id="hot"', hotEnd);
@@ -507,15 +490,21 @@ function assertPagesParity(name, text, data) {
   } else {
     if (!hotHtml.includes("Hot this wave")) fail(`${name} is missing Hot this wave`);
     if (!hotHtml.includes("hot-jump")) fail(`${name} hot list is not clickable`);
+    if (/class="hot-title"[^>]*>[^<]*#\s*\d+/.test(hotHtml)) fail(`${name} hot title still contains #N`);
     let cursor = -1;
     for (const item of hot) {
       const href = `href="${item.href}"`;
       const at = hotHtml.indexOf(href, cursor);
       if (at < 0) fail(`${name} hot list is missing ${item.href}`);
       if (!hotHtml.includes(htmlEscape(item.title))) fail(`${name} hot list truncated ${item.href}`);
+      if (item.n != null && !hotHtml.includes(`class="hot-index">${item.n}<`)) {
+        fail(`${name} hot list is missing tabular index ${item.n}`);
+      }
       cursor = at + 1;
     }
   }
+  if (/class="card-kicker">[^<]*#/.test(text)) fail(`${name} card kicker is not domain-only`);
+  if (/class="card-title"[^>]*>[^<]*#\s*\d+/.test(text)) fail(`${name} card title still contains #N`);
   const cardRe = /<article class="detail-card"[\s\S]*?<\/article>/g;
   const cards = text.match(cardRe) || [];
   if (cards.length !== notes.length) fail(`${name} card count ${cards.length} != notes ${notes.length}`);
@@ -733,6 +722,33 @@ if (!baseSource.includes("(prefers-reduced-motion: reduce)") || !baseSource.incl
 if (!baseSource.includes("replaceState")) fail("in-page jumps do not call history.replaceState");
 if (!baseSource.includes('button type="button" class="back-to-top"')) fail("BackToTop is not a public button");
 if (!cssSource.includes("border-left: 2px solid var(--ink)")) fail("conclusion is missing the ink rule");
+const globalHover = cssSource.match(/(?:^|[{}]|\n)\s*a:hover\s*\{[^}]*\}/);
+if (!globalHover) fail("missing the global a:hover rule");
+if (globalHover && /background/i.test(globalHover[0])) {
+  fail("global a:hover still paints a background");
+}
+if (!/\.hit-row\s*\{[^}]*padding-inline:\s*var\(--s-3\)/.test(cssSource)) {
+  fail("hit-row is missing padding-inline --s-3");
+}
+if (!/\.hit-row\s*\{[^}]*padding-block:\s*var\(--s-2\)/.test(cssSource)) {
+  fail("hit-row is missing padding-block --s-2");
+}
+if (!/\.entry\s*\{[^}]*padding-inline:\s*var\(--s-3\)/.test(cssSource)) {
+  fail(".entry is missing padding-inline --s-3");
+}
+if (!/\.hot-list a\s*\{[^}]*padding-inline:\s*var\(--s-3\)/.test(cssSource)) {
+  fail("hot rows are missing padding-inline --s-3");
+}
+for (const name of ["home", "daily", "weekly"]) {
+  const text = html[name];
+  if (!text) continue;
+  if (!text.includes('class="brand-lockup"')) fail(`${name} is missing the Home lockup`);
+  if (!text.includes('class="root-link" href="https://yurkingw.github.io/"')) {
+    fail(`${name} Home does not point at the site root`);
+  }
+  if (!text.includes(">Home</a>")) fail(`${name} is missing the Home label`);
+  if (!text.includes('class="brand" href="/briefings/"')) fail(`${name} Briefings mark is missing`);
+}
 if (!fs.existsSync(path.join(root, "_site/fonts/inter-latin-wght-normal.woff2"))) {
   fail("missing self-hosted Inter latin font");
 }

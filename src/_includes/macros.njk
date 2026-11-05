@@ -16,10 +16,14 @@
 {%- else -%}—{%- endif -%}
 {% endmacro %}
 
+{% macro hotJump(item) %}
+<li><a class="hot-jump hit-row" href="{{ item.href }}">{% if item.n != null %}<span class="hot-index">{{ item.n }}</span>{% endif %}<span class="hot-title" lang="zh-Hans">{{ item.title }}</span></a></li>
+{% endmacro %}
+
 {% macro detailCard(item) %}
 <article class="detail-card" id="note-{{ item.id }}">
-  <p class="card-kicker">#{{ item.id }} · {{ item.domain }}</p>
-  <h3 class="card-title" lang="zh-Hans">{{ item.title }}</h3>
+  {% if item.domain %}<p class="card-kicker">{{ item.domain }}</p>{% endif %}
+  <h3 class="card-title" lang="zh-Hans">{{ item | displayTitle }}</h3>
   {% if item.finsec === true or item.hard_gate === true %}
   <p class="badges">
     {% if item.finsec === true %}<span class="badge">Finsec</span>{% endif %}
@@ -68,7 +72,7 @@
   <h2 id="{{ "hot-heading" if primary else "hot-heading-" + key }}">Hot this wave</h2>
   <ol class="hot-list">
     {% for item in hot %}
-    <li><a class="hot-jump" href="{{ item.href }}">{{ item.title }}</a></li>
+    {{ hotJump(item) }}
     {% endfor %}
   </ol>
 </section>
@@ -101,7 +105,7 @@
           <td data-label="#">{{ item.id }}</td>
           <td data-label="领域" lang="zh-Hans">{{ item.domain }}</td>
           <td class="col-title" data-label="标题" lang="zh-Hans">
-            <span class="cell-title">{{ item.title }}</span>
+            <span class="cell-title">{{ item | displayTitle }}</span>
             {% if item.finsec === true or item.hard_gate === true %}
             <span class="badges">
               {% if item.finsec === true %}<span class="badge">Finsec</span>{% endif %}

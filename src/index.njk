@@ -4,7 +4,7 @@ permalink: /
 ---
 
 {% macro dailyRow(item, title, metaLabel) %}
-<a class="entry" href="/daily/{{ item.date }}/">
+<a class="entry hit-row" href="/daily/{{ item.date }}/">
   <span class="entry-head">
     <span class="entry-title">{{ title }}</span>
     <span class="entry-go" aria-hidden="true">→</span>
@@ -17,7 +17,7 @@ permalink: /
 {% endmacro %}
 
 {% macro weeklyRow(item, title, metaLabel) %}
-<a class="entry" href="/weekly/{{ item.week }}/">
+<a class="entry hit-row" href="/weekly/{{ item.week }}/">
   <span class="entry-head">
     <span class="entry-title">{{ title }}</span>
     <span class="entry-go" aria-hidden="true">→</span>

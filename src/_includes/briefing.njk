@@ -1,11 +1,8 @@
 {% import "macros.njk" as ui %}
 {% set isDaily = briefing.date %}
 {% set news = briefing.news if briefing.news else [] %}
-{% set cards = news | detailCards %}
 {% set decisions = briefing.decisions if briefing.decisions else [] %}
 {% set hotItems = briefing | hotThisWave %}
-{% set noteGroups = cards | tocGroups("note") %}
-{% set decisionGroups = decisions | tocGroups("decision") %}
 {% set gh = briefing.github if briefing.github else {} %}
 {% set ghSummary = gh.meta | githubSummary if gh.meta else [] %}
 {% set showGithub = (gh.rising and gh.rising.length) or (gh.newcomers and gh.newcomers.length) or ghSummary.length %}
@@ -28,76 +25,16 @@
   {% endif %}
 </div>
 
-<nav class="toc" aria-label="On this page">
-  <h2>On this page</h2>
-  <ol class="toc-sections">
-    <li><a href="#conclusion">Conclusion</a></li>
-    {% if hotItems.length %}
-    <li><a href="#hot">Hot this wave</a></li>
-    {% endif %}
-    <li>
-      <a href="#panel-news">News</a>
-      {% if cards.length >= 3 %}
-      {% for group in noteGroups %}
-      <p class="toc-group"><span class="toc-group-label">{{ group.label }}</span> <span class="toc-count">{{ group.items | length }}</span></p>
-      <ol>
-        {% for item in group.items %}
-        <li>
-          <a href="#{{ item.anchor }}">
-            <span class="toc-index">{{ item.index }}</span>
-            <span class="toc-title" lang="zh-Hans">{{ item.title }}</span>
-            {% if item.channel %}<span class="toc-channel" lang="zh-Hans">{{ item.channel }}</span>{% endif %}
-          </a>
-        </li>
-        {% endfor %}
-      </ol>
-      {% endfor %}
-      {% endif %}
-    </li>
-    {% if showPapers %}
-    <li><a href="#panel-papers">Papers</a></li>
-    {% endif %}
-    {% if showGithub %}
-    <li><a href="#panel-github">GitHub</a></li>
-    {% endif %}
-    {% if isDaily %}
-    <li><a href="#panel-appendix">Appendix</a></li>
-    {% elif decisions.length %}
-    <li>
-      <a href="#panel-decisions">Decisions</a>
-      {% if decisions.length >= 2 %}
-      {% for group in decisionGroups %}
-      <p class="toc-group"><span class="toc-group-label">{{ group.label }}</span> <span class="toc-count">{{ group.items | length }}</span></p>
-      <ol>
-        {% for item in group.items %}
-        <li>
-          <a href="#{{ item.anchor }}">
-            <span class="toc-index">{{ item.index }}</span>
-            <span class="toc-title" lang="zh-Hans">{{ item.title }}</span>
-          </a>
-        </li>
-        {% endfor %}
-      </ol>
-      {% endfor %}
-      {% endif %}
-    </li>
-    {% endif %}
-    {% if briefing.sources and briefing.sources.length %}
-    <li><a href="#sources">Sources</a></li>
-    {% endif %}
-  </ol>
-</nav>
-
-<section class="block" id="conclusion">
-  <h2>Conclusion</h2>
-  <p class="conclusion" lang="zh-Hans">{{ briefing.summary }}</p>
-</section>
-
 <p class="status-strip" id="metrics">
   {%- for item in briefing | statusItems -%}
   {%- if not loop.first %} · {% endif -%}<span class="status-item">{{ item.label }} {{ item.value }}</span>
   {%- endfor -%}
 </p>
+
+<section class="block" id="conclusion">
+  <h2>Conclusion</h2>
+  <p class="conclusion" lang="zh-Hans">{{ briefing.summary }}</p>
+</section>
 
 <div class="columns">
   <div class="page-tabs seg" role="tablist" aria-label="Columns">
@@ -134,7 +71,7 @@
       <h2 id="hot-heading">Hot this wave</h2>
       <ol class="hot-list">
         {% for item in hotItems %}
-        <li><a class="hot-jump" href="{{ item.href }}">{{ item.title }}</a></li>
+        {{ ui.hotJump(item) }}
         {% endfor %}
       </ol>
     </section>
@@ -155,7 +92,7 @@
           <tr id="feature-{{ item.id }}">
             <td data-label="领域" lang="zh-Hans">{{ item.domain }}</td>
             <td class="col-title" data-label="标题" lang="zh-Hans">
-              <span class="cell-title">{{ item.title }}</span>
+              <span class="cell-title">{{ item | displayTitle }}</span>
               {% if item.finsec === true or item.hard_gate === true %}
               <span class="badges">
                 {% if item.finsec === true %}<span class="badge">Finsec</span>{% endif %}
@@ -236,7 +173,7 @@
             <td data-label="#">{{ item.id }}</td>
             <td data-label="领域" lang="zh-Hans">{{ item.domain }}</td>
             <td class="col-title" data-label="标题" lang="zh-Hans">
-              <span class="cell-title">{{ item.title }}</span>
+              <span class="cell-title">{{ item | displayTitle }}</span>
               {% if item.hard_gate === true %}<span class="badges"><span class="badge">Hard gate</span></span>{% endif %}
             </td>
             <td data-label="波次" lang="zh-Hans">{% if item.wave %}{{ item.wave }}{% else %}—{% endif %}</td>

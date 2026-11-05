@@ -39,7 +39,11 @@
   <header class="chrome">
     <div class="top">
       <div class="top-inner">
-        <a class="brand" href="/">{{ site.name }}</a>
+        <div class="brand-lockup">
+          <a class="root-link" href="{{ site.origin }}/">Home</a>
+          <span class="brand-gap" aria-hidden="true">·</span>
+          <a class="brand" href="/">{{ site.name }}</a>
+        </div>
         <nav class="nav" aria-label="Sections">
           <a href="/#daily"{% if briefing and briefing.date %} aria-current="page"{% endif %}>Daily</a>
           <a href="/#weekly"{% if briefing and briefing.week %} aria-current="page"{% endif %}>Weekly</a>

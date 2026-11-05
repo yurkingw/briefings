@@ -2,6 +2,7 @@ import { HtmlBasePlugin } from "@11ty/eleventy";
 import { excerpt } from "./lib/excerpt.js";
 import {
   detailCards,
+  displayTitle,
   githubSummary,
   hasField,
   defaultWave,
@@ -47,6 +48,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("tocGroups", (items, kind) => tocGroups(items, kind));
   eleventyConfig.addFilter("hotThisWave", (briefing) => selectHot(briefing));
   eleventyConfig.addFilter("detailCards", (items) => detailCards(items));
+  eleventyConfig.addFilter("displayTitle", (item) => displayTitle(item));
   eleventyConfig.addFilter("remainderNews", (items) => remainderNews(items));
   eleventyConfig.addFilter("hotFromItems", (items) => hotFromItems(items));
   eleventyConfig.addFilter("waveItems", (items, bucket) => waveItems(items, bucket));
