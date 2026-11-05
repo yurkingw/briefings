@@ -3,55 +3,71 @@ layout: base.njk
 permalink: /
 ---
 
+{% macro dailyRow(item, title, showDate) %}
+<a class="entry" href="/daily/{{ item.date }}/">
+  <span class="entry-head">
+    <span class="entry-title">{{ title }}</span>
+    <span class="entry-go" aria-hidden="true">→</span>
+  </span>
+  <span class="entry-blurb" lang="zh-Hans">{{ item.summary | excerpt(150) }}</span>
+  <span class="entry-meta">{% if showDate %}{{ item.date }}{% endif %}{% if showDate and item.wave %} · {% endif %}{% if item.wave %}<span lang="zh-Hans">{{ item.wave }}</span>{% endif %}{% if item.sample %}{% if showDate or item.wave %} · {% endif %}Sample{% endif %}</span>
+</a>
+{% endmacro %}
+
+{% macro weeklyRow(item, title, showWeek) %}
+<a class="entry" href="/weekly/{{ item.week }}/">
+  <span class="entry-head">
+    <span class="entry-title">{{ title }}</span>
+    <span class="entry-go" aria-hidden="true">→</span>
+  </span>
+  <span class="entry-blurb" lang="zh-Hans">{{ item.summary | excerpt(150) }}</span>
+  {% if showWeek or item.sample %}
+  <span class="entry-meta">{% if showWeek %}{{ item.week }}{% endif %}{% if showWeek and item.sample %} · {% endif %}{% if item.sample %}Sample{% endif %}</span>
+  {% endif %}
+</a>
+{% endmacro %}
+
 <h1>Briefings</h1>
-<p>Public mirror of daily and weekly intelligence briefings. Navigation is English. Briefing text stays in its original language.</p>
+<p class="lede">Daily and weekly intelligence, mirrored for the public web.</p>
 
-<h2 id="daily">Daily</h2>
-{% if briefings.daily.length %}
-<div class="table-wrap">
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Wave</th>
-        <th>Conclusion</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for item in briefings.daily %}
-      <tr>
-        <td><a href="/daily/{{ item.date }}/">{{ item.date }}</a>{% if item.sample %} · Sample{% endif %}</td>
-        <td lang="zh-Hans">{{ item.wave }}</td>
-        <td lang="zh-Hans">{{ item.summary }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-{% else %}
-<p>No daily briefings yet.</p>
-{% endif %}
+<section class="latest" id="latest" aria-labelledby="latest-heading">
+  <h2 id="latest-heading">Latest</h2>
+  {% if briefings.daily.length or briefings.weekly.length %}
+  <div class="entries">
+    {% if briefings.daily.length %}
+    {{ dailyRow(briefings.daily[0], "Latest daily", true) | safe }}
+    {% endif %}
+    {% if briefings.weekly.length %}
+    {{ weeklyRow(briefings.weekly[0], "Latest weekly", true) | safe }}
+    {% endif %}
+  </div>
+  {% else %}
+  <p class="empty">No briefings published yet.</p>
+  {% endif %}
+</section>
 
-<h2 id="weekly">Weekly</h2>
-{% if briefings.weekly.length %}
-<div class="table-wrap">
-  <table>
-    <thead>
-      <tr>
-        <th>Week</th>
-        <th>Conclusion</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for item in briefings.weekly %}
-      <tr>
-        <td><a href="/weekly/{{ item.week }}/">{{ item.week }}</a>{% if item.sample %} · Sample{% endif %}</td>
-        <td lang="zh-Hans">{{ item.summary }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-{% else %}
-<p>No weekly briefings yet.</p>
-{% endif %}
+<section class="archive" aria-labelledby="daily">
+  <h2 id="daily">Daily</h2>
+  {% if briefings.daily.length %}
+  <div class="entries">
+    {% for item in briefings.daily %}
+    {{ dailyRow(item, item.date, false) | safe }}
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty">No briefings published yet.</p>
+  {% endif %}
+</section>
+
+<section class="archive" aria-labelledby="weekly">
+  <h2 id="weekly">Weekly</h2>
+  {% if briefings.weekly.length %}
+  <div class="entries">
+    {% for item in briefings.weekly %}
+    {{ weeklyRow(item, item.week, false) | safe }}
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty">No briefings published yet.</p>
+  {% endif %}
+</section>

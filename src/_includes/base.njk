@@ -3,6 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("brf-theme");
+        if (mode === "day" || mode === "night") {
+          document.documentElement.setAttribute("data-theme", mode);
+        }
+      } catch (e) {}
+    })();
+  </script>
   {% if briefing and briefing.date %}
   <title>Daily {{ briefing.date }} · {{ site.name }}</title>
   {% elif briefing and briefing.week %}
@@ -20,23 +31,70 @@
   {% else %}
   <meta name="description" content="Public mirror of daily and weekly briefings. The in-chat Canvas remains authoritative.">
   {% endif %}
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23111'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0a0a'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="/css/site.css">
 </head>
-<body>
-  <header>
-    <a class="brand" href="/">{{ site.name }}</a>
-    <nav>
-      <a href="/#daily">Daily</a>
-      <a href="/#weekly">Weekly</a>
-    </nav>
+<body class="{% if briefing %}is-briefing{% else %}is-home{% endif %}">
+  <header class="chrome">
+    <div class="top">
+      <div class="top-inner">
+        <a class="brand" href="/">{{ site.name }}</a>
+        <nav class="nav" aria-label="Sections">
+          <a href="/#daily"{% if briefing and briefing.date %} aria-current="page"{% endif %}>Daily</a>
+          <a href="/#weekly"{% if briefing and briefing.week %} aria-current="page"{% endif %}>Weekly</a>
+        </nav>
+        <div class="seg theme-switch" role="group" aria-label="Color theme">
+          <button type="button" data-theme-set="system" aria-pressed="true">Auto</button>
+          <span class="seg-gap" aria-hidden="true">·</span>
+          <button type="button" data-theme-set="day" aria-pressed="false">Day</button>
+          <span class="seg-gap" aria-hidden="true">·</span>
+          <button type="button" data-theme-set="night" aria-pressed="false">Night</button>
+        </div>
+      </div>
+    </div>
     <p class="mirror">Public mirror. The briefing in chat (Canvas) remains authoritative.</p>
   </header>
   <main>
     {{ content | safe }}
   </main>
-  <footer>
-    <a href="{{ site.baseUrl }}/">{{ site.baseUrl }}/</a>
+  <footer class="site-foot">
+    <div class="site-foot-inner">
+      {% if briefing %}
+      <p><a href="/">Index</a></p>
+      {% endif %}
+      <p>Independent mirror. Sources stay with their authors.</p>
+      <p><a href="{{ site.baseUrl }}/">{{ site.baseUrl }}/</a></p>
+    </div>
   </footer>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var storageKey = "brf-theme";
+      var buttons = document.querySelectorAll(".theme-switch button[data-theme-set]");
+      function read() {
+        try {
+          var mode = localStorage.getItem(storageKey);
+          if (mode === "day" || mode === "night" || mode === "system") return mode;
+        } catch (e) {}
+        return "system";
+      }
+      function apply(mode, persist) {
+        if (mode === "day" || mode === "night") root.setAttribute("data-theme", mode);
+        else root.removeAttribute("data-theme");
+        buttons.forEach(function (button) {
+          button.setAttribute("aria-pressed", button.getAttribute("data-theme-set") === mode ? "true" : "false");
+        });
+        if (persist) {
+          try { localStorage.setItem(storageKey, mode); } catch (e) {}
+        }
+      }
+      apply(read(), false);
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          apply(button.getAttribute("data-theme-set"), true);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
