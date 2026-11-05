@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if briefing and briefing.date %}
+  <title>Daily {{ briefing.date }} · {{ site.name }}</title>
+  {% elif briefing and briefing.week %}
+  <title>Weekly {{ briefing.week }} · {{ site.name }}</title>
+  {% else %}
+  <title>{{ site.name }}</title>
+  {% endif %}
+  <link rel="canonical" href="{{ page.url | absoluteUrl }}">
+  <meta property="og:url" content="{{ page.url | absoluteUrl }}">
+  {% if briefing and briefing.schema %}
+  <meta name="briefing-schema" content="{{ briefing.schema }}">
+  {% endif %}
+  {% if briefing and briefing.summary %}
+  <meta name="description" content="{{ briefing.summary }}">
+  {% else %}
+  <meta name="description" content="Public mirror of daily and weekly briefings. The in-chat Canvas remains authoritative.">
+  {% endif %}
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23111'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">{{ site.name }}</a>
+    <nav>
+      <a href="/#daily">Daily</a>
+      <a href="/#weekly">Weekly</a>
+    </nav>
+    <p class="mirror">Public mirror. The briefing in chat (Canvas) remains authoritative.</p>
+  </header>
+  <main>
+    {{ content | safe }}
+  </main>
+  <footer>
+    <a href="{{ site.baseUrl }}/">{{ site.baseUrl }}/</a>
+  </footer>
+</body>
+</html>
