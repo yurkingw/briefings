@@ -4,7 +4,12 @@ import { excerpt } from "../lib/excerpt.js";
 import { FOLD_STEP, nextFoldCount } from "../src/js/fold.js";
 import { loadBriefings } from "../lib/load-briefings.js";
 import { isoWeekId, selectStage, shanghaiDate } from "../lib/stage.js";
-import { selectHot, tocGroups, withNotes } from "../lib/pages-parity.js";
+import {
+  detailCards,
+  remainderNews,
+  selectHot,
+  tocGroups,
+} from "../lib/pages-parity.js";
 import { absoluteUrl } from "../lib/site.js";
 import {
   annotateUnconfirmed,
@@ -397,17 +402,43 @@ function assertOrder(name, text, markers) {
   }
 }
 if (html.daily) {
-  assertOrder("daily", html.daily, ['id="conclusion"', 'id="hot"', 'id="metrics"', 'id="news"']);
-  const metrics = sliceBetween(html.daily, 'id="metrics"', 'id="news"');
+  assertOrder("daily", html.daily, [
+    'id="conclusion"',
+    'id="metrics"',
+    'class="page-tabs',
+    'id="panel-news"',
+    'id="hot"',
+    'class="detail-cards"',
+    'id="remainder"',
+    'id="panel-papers"',
+    'id="panel-github"',
+    'id="panel-appendix"',
+    'id="sources"',
+  ]);
+  const metrics = sliceBetween(html.daily, 'id="metrics"', 'class="page-tabs');
   if (metrics.includes("<table") || metrics.includes(">Metric<")) fail("daily metrics is still a metric table");
   if (!metrics.includes("News 16")) fail("daily metrics line missing");
+  if (!metrics.includes("GH rising")) fail("daily status strip is missing GH rising");
+  if (!metrics.includes("Home-related")) fail("daily status strip is missing Home-related");
   if (!html.daily.includes('class="conclusion"')) fail("daily conclusion block missing");
   if (!html.daily.includes('aria-current="page">Daily')) fail("daily page does not mark the Daily nav");
 }
 if (html.weekly) {
-  assertOrder("weekly", html.weekly, ['id="conclusion"', 'id="hot"', 'id="metrics"', 'id="decisions"', 'id="news"']);
-  const metrics = sliceBetween(html.weekly, 'id="metrics"', 'id="decisions"');
+  assertOrder("weekly", html.weekly, [
+    'id="conclusion"',
+    'id="metrics"',
+    'class="page-tabs',
+    'id="panel-news"',
+    'id="hot"',
+    'id="weekly-news"',
+    'id="panel-papers"',
+    'id="panel-github"',
+    'id="panel-decisions"',
+    'id="sources"',
+  ]);
+  const metrics = sliceBetween(html.weekly, 'id="metrics"', 'class="page-tabs');
   if (metrics.includes("<table") || metrics.includes(">Metric<")) fail("weekly metrics is still a metric table");
+  if (!metrics.includes("Featured news")) fail("weekly status strip is missing Featured news");
   if (!html.weekly.includes('class="decision"')) fail("weekly decisions are missing the hairline article");
   if (!html.weekly.includes('aria-current="page">Weekly')) fail("weekly page does not mark the Weekly nav");
 }
@@ -425,9 +456,9 @@ function assertPagesParity(name, text, data) {
   if (text.includes("text-overflow:ellipsis") || text.includes("text-overflow: ellipsis")) {
     fail(`${name} truncates a title`);
   }
-  const notes = withNotes(data.news);
-  notes.forEach((item, index) => {
-    if (!text.includes(`id="note-${index + 1}"`)) fail(`${name} is missing id note-${index + 1}`);
+  const notes = detailCards(data.news);
+  notes.forEach((item) => {
+    if (!text.includes(`id="note-${item.id}"`)) fail(`${name} is missing id note-${item.id}`);
   });
   const decisions = data.decisions || [];
   decisions.forEach((card, index) => {
@@ -435,7 +466,7 @@ function assertPagesParity(name, text, data) {
   });
   if (notes.length >= 3) {
     const groups = tocGroups(notes, "note");
-    const notesToc = sliceBetween(text, 'href="#notes"', 'href="#papers"');
+    const notesToc = sliceBetween(text, 'href="#panel-news"', 'href="#panel-papers"');
     let cursor = -1;
     for (const group of groups) {
       const labelAt = notesToc.indexOf(htmlEscape(group.label));
@@ -457,7 +488,7 @@ function assertPagesParity(name, text, data) {
   }
   if (decisions.length >= 2) {
     const groups = tocGroups(decisions, "decision");
-    const decisionToc = sliceBetween(text, 'href="#decisions"', 'href="#news"');
+    const decisionToc = sliceBetween(text, 'href="#panel-decisions"', 'href="#sources"');
     for (const group of groups) {
       if (!decisionToc.includes(htmlEscape(group.label))) fail(`${name} decisions TOC is missing group ${group.label}`);
       for (const item of group.items) {
@@ -469,7 +500,8 @@ function assertPagesParity(name, text, data) {
     }
   }
   const hot = selectHot(data);
-  const hotHtml = sliceBetween(text, 'id="hot"', 'id="metrics"');
+  const hotEnd = text.includes('class="detail-cards"') ? 'class="detail-cards"' : 'id="weekly-news"';
+  const hotHtml = sliceBetween(text, 'id="hot"', hotEnd);
   if (!hot.length) {
     if (text.includes("Hot this wave")) fail(`${name} rendered Hot this wave without data`);
   } else {
@@ -484,31 +516,37 @@ function assertPagesParity(name, text, data) {
       cursor = at + 1;
     }
   }
-  const cardRe = /<article class="card"[\s\S]*?(?=<article class="card"|<section |$)/g;
+  const cardRe = /<article class="detail-card"[\s\S]*?<\/article>/g;
   const cards = text.match(cardRe) || [];
   if (cards.length !== notes.length) fail(`${name} card count ${cards.length} != notes ${notes.length}`);
+  if (cards.length > 8) fail(`${name} rendered more than 8 detail cards`);
   cards.forEach((card, index) => {
     const item = notes[index];
     if (item.first_source_at) {
       const strip = card.indexOf('class="first-source"');
-      const background = card.indexOf("<h4>Background</h4>");
-      const facts = card.indexOf("<h4>Facts</h4>");
-      if (strip < 0) fail(`${name} note-${index + 1} is missing the First source strip`);
-      if (background >= 0 && strip > background) fail(`${name} note-${index + 1} First source is after Background`);
-      if (facts >= 0 && strip > facts) fail(`${name} note-${index + 1} First source is after Facts`);
+      const background = card.indexOf("<h4>背景</h4>");
+      const facts = card.indexOf("<h4>事实</h4>");
+      if (strip < 0) fail(`${name} note-${item.id} is missing the First source strip`);
+      if (background >= 0 && strip > background) fail(`${name} note-${item.id} First source is after 背景`);
+      if (facts >= 0 && strip > facts) fail(`${name} note-${item.id} First source is after 事实`);
+      if (card.includes("<h4>最早源时</h4>")) fail(`${name} note-${item.id} repeats 最早源时 after the First source strip`);
     }
     const labels = [...card.matchAll(/<h4>([^<]+)<\/h4>/g)].map((match) => match[1]);
-    const expected = ["Background", "Facts", "Why it matters", "Architecture impact", "Links"].filter((label) => {
-      if (label === "Background") return item.background;
-      if (label === "Facts") return item.facts;
-      if (label === "Why it matters") return item.why;
-      if (label === "Architecture impact") return item.arch_impact;
+    const expected = ["背景", "事实", "为何重要", "架构冲击", "通路", "链接"].filter((label) => {
+      if (label === "背景") return item.background;
+      if (label === "事实") return item.facts;
+      if (label === "为何重要") return item.why;
+      if (label === "架构冲击") return item.arch_impact;
+      if (label === "通路") return item.channel;
       return item.links && item.links.length;
     });
     if (labels.join("|") !== expected.join("|")) {
-      fail(`${name} note-${index + 1} section order ${labels.join("|")}`);
+      fail(`${name} note-${item.id} section order ${labels.join("|")}`);
     }
   });
+  for (const banned of ["<h4>Background</h4>", "<h4>Facts</h4>", "<h4>Why it matters</h4>", "<h4>Architecture impact</h4>", "Full card"]) {
+    if (text.includes(banned)) fail(`${name} still shows ${banned}`);
+  }
   const tdCount = (text.match(/<td\b/g) || []).length;
   const labelCount = (text.match(/data-label="/g) || []).length;
   if (tdCount !== labelCount) fail(`${name} data-label count ${labelCount} != td count ${tdCount}`);
@@ -522,6 +560,159 @@ if (html.weekly) assertPagesParity("weekly", html.weekly, weeklyJson);
 if (html.home && html.home.includes('class="back-to-top"')) fail("home should not render BackToTop");
 if (html.home && html.home.includes('class="toc"')) fail("home should not render a detail TOC");
 
+function openingTag(text, id) {
+  const at = text.indexOf(`id="${id}"`);
+  if (at < 0) return "";
+  const start = text.lastIndexOf("<", at);
+  const end = text.indexOf(">", at);
+  return text.slice(start, end + 1);
+}
+
+function tabLabels(text) {
+  const bar = sliceBetween(text, 'class="page-tabs', "</div>");
+  return [...bar.matchAll(/>(News|Papers|GitHub|Appendix|Decisions)</g)].map((match) => match[1]);
+}
+
+function fieldCells(text, label) {
+  const re = new RegExp(`data-label="${label}"[^>]*>([\\s\\S]*?)<\\/td>`, "g");
+  return [...text.matchAll(re)].map((match) => match[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim());
+}
+
+function assertSlogan(name, panelHtml, rows) {
+  const cells = fieldCells(panelHtml, "slogan");
+  const repos = fieldCells(panelHtml, "repo");
+  const owners = fieldCells(panelHtml, "owner_type·owner");
+  rows.forEach((item, index) => {
+    const want = (item.slogan || "—").replace(/\s+/g, " ").trim();
+    if (cells[index] !== want) fail(`${name} slogan cell ${index + 1} is "${cells[index]}"`);
+    if (item.what && cells[index] && cells[index].includes(item.what)) {
+      fail(`${name} slogan cell ${index + 1} glues what`);
+    }
+    if (item.why && cells[index] && cells[index].includes(item.why)) {
+      fail(`${name} slogan cell ${index + 1} glues why`);
+    }
+    if ((item.tags || []).some((tag) => cells[index] && cells[index].includes(tag) && !(item.slogan || "").includes(tag))) {
+      fail(`${name} slogan cell ${index + 1} glues a tag`);
+    }
+    if (repos[index] !== item.repo) fail(`${name} repo cell ${index + 1} is "${repos[index]}"`);
+    if (item.what && repos[index] && repos[index].includes(item.what)) fail(`${name} repo cell glues what`);
+    if (item.why && repos[index] && repos[index].includes(item.why)) fail(`${name} repo cell glues why`);
+    if (item.license && repos[index] && repos[index].includes(item.license)) fail(`${name} repo cell glues license`);
+    if (item.license && owners[index] && owners[index].includes(item.license)) fail(`${name} owner cell glues license`);
+    if (item.owner && owners[index] && !owners[index].includes(item.owner)) fail(`${name} owner cell dropped ${item.owner}`);
+  });
+}
+
+if (html.daily) {
+  const tabs = tabLabels(html.daily);
+  if (tabs.join("|") !== "News|Papers|GitHub|Appendix") fail(`D1.1 tabs ${tabs.join("|")}`);
+  const bar = sliceBetween(html.daily, 'class="page-tabs', "</div>");
+  if (!/aria-controls="panel-news"[^>]*aria-selected="true"/.test(bar)) fail("D1.1 default tab is not News");
+  for (const id of ["panel-papers", "panel-github", "panel-appendix"]) {
+    const open = openingTag(html.daily, id);
+    if (!open.includes(" hidden")) fail(`D1.1 ${id} is not hidden`);
+    if (!open.includes("inert")) fail(`D1.1 ${id} is not inert`);
+  }
+  if (openingTag(html.daily, "panel-news").includes(" hidden")) fail("D1.1 News panel is hidden");
+  const rest = remainderNews(dailyJson.news);
+  const cardsHtml = (html.daily.match(/<article class="detail-card"[\s\S]*?<\/article>/g) || []).join("\n");
+  for (const item of rest) {
+    if (cardsHtml.includes(item.title)) fail(`D1.2 non-detail ${item.id} is inside a detail card`);
+  }
+  const remainderHtml = sliceBetween(html.daily, 'id="remainder"', 'id="panel-papers"');
+  if (!remainderHtml.includes(">Remainder<")) fail("D1.2 remainder label missing");
+  for (const header of ["#", "领域", "标题", "通路", "最早源时", "链接"]) {
+    if (!remainderHtml.includes(`>${header}<`)) fail(`D1.2 remainder missing ${header}`);
+  }
+  if (/<th[^>]*>\s*(Detail|Finsec|Hard gate)\s*<\/th>/.test(remainderHtml)) fail("D1.8 remainder still has a Yes/No flag column");
+  for (const item of detailCards(dailyJson.news)) {
+    if (remainderHtml.includes(item.title)) fail(`D1.2 detail ${item.id} is also in the remainder table`);
+  }
+  const hot = selectHot(dailyJson);
+  if (hot.length < 1 || hot.length > 5) fail(`D1.2 hot count ${hot.length}`);
+  if (hot.some((item) => item.href === "#note-14")) fail("D1.2 hot passed the first five detail cards");
+  if (!html.daily.includes(">背景<") || !html.daily.includes(">事实<") || !html.daily.includes(">为何重要<")) {
+    fail("D1.3 Chinese section labels missing");
+  }
+  if (!sliceBetween(html.daily, 'class="page-head"', 'id="conclusion"').includes(dailyJson.wave)) {
+    fail("D1.4 page meta dropped the wave");
+  }
+  if (!html.daily.includes(">Morning<") || !html.daily.includes(">Afternoon<")) fail("D1.4 wave sub-tabs missing");
+  const morning = openingTag(html.daily, "wave-morning");
+  const afternoon = openingTag(html.daily, "wave-afternoon");
+  if (!morning.includes(" hidden") || afternoon.includes(" hidden")) fail("D1.4 default wave is not the populated Afternoon panel");
+  const papers = sliceBetween(html.daily, 'id="panel-papers"', 'id="panel-github"');
+  for (const paper of dailyJson.papers) {
+    if (!papers.includes(`href="${paper.url}"`)) fail(`D1.5 missing paper url ${paper.url}`);
+    if (paper.dair_url && !papers.includes(`href="${paper.dair_url}"`)) fail(`D1.5 missing dair url`);
+    if (paper.dair_url && !papers.includes('class="paper-dair"')) fail("D1.5 dair link is not a second line");
+  }
+  if (/https?:\/\/\S+\s+https?:\/\//.test(papers.replace(/<[^>]+>/g, " "))) fail("D1.5 paper URLs are glued in one cell");
+  const rising = sliceBetween(html.daily, 'id="gh-rising"', 'id="gh-newcomers"');
+  const newcomers = sliceBetween(html.daily, 'id="gh-newcomers"', 'id="gh-summary"');
+  assertSlogan("D1.6 rising", rising, dailyJson.github.rising);
+  assertSlogan("D1.6 newcomers", newcomers, dailyJson.github.newcomers);
+  if (!/aria-controls="gh-rising"[^>]*aria-selected="true"/.test(html.daily)) fail("D1.7 Rising is not the default GitHub tab");
+  if (!html.daily.includes(">Newcomers<") || !html.daily.includes(">Summary<")) fail("D1.7 GitHub sub-tabs missing");
+  const summary = sliceBetween(html.daily, 'id="gh-summary"', 'id="panel-appendix"');
+  if (summary.includes("<table")) fail("D1.7 Summary is a wide table");
+  for (const part of ["Archive", "Overlap", "Risk"]) {
+    if (!summary.includes(part)) fail(`D1.7 Summary is missing ${part}`);
+  }
+  if (/<td[^>]*>\s*Yes\s*<\/td>/.test(html.daily) || /<td[^>]*>\s*No\s*<\/td>/.test(html.daily)) {
+    fail("D1.8 Yes/No cells are back");
+  }
+  if (/<th[^>]*>\s*Detail\s*<\/th>/.test(html.daily)) fail("D1.8 Detail column is back");
+}
+
+if (html.weekly) {
+  const tabs = tabLabels(html.weekly);
+  if (tabs.join("|") !== "News|Papers|GitHub|Decisions") fail(`W1.1 tabs ${tabs.join("|")}`);
+  const bar = sliceBetween(html.weekly, 'class="page-tabs', "</div>");
+  if (!/aria-controls="panel-news"[^>]*aria-selected="true"/.test(bar)) fail("W1.1 default tab is not News");
+  if (!/aria-controls="panel-decisions"[^>]*aria-selected="false"/.test(bar)) fail("W1.1 Decisions is selected by default");
+  const decisionsOpen = openingTag(html.weekly, "panel-decisions");
+  if (!decisionsOpen.includes(" hidden") || !decisionsOpen.includes("inert")) fail("W1.2 Decisions panel is in the default reading flow");
+  if (openingTag(html.weekly, "panel-news").includes(" hidden")) fail("W1.2 News panel is hidden");
+  const newsPanel = sliceBetween(html.weekly, 'id="panel-news"', 'id="panel-papers"');
+  if (newsPanel.includes("<h4>P0</h4>") || newsPanel.includes("<h4>发生了什么</h4>")) {
+    fail("W1.2 P0 or decision prose is in the News panel");
+  }
+  const decisionHtml = (html.weekly.match(/<article class="decision"[\s\S]*?<\/article>/g) || []);
+  if (decisionHtml.length !== weeklyJson.decisions.length) fail(`W1.3 decision count ${decisionHtml.length}`);
+  decisionHtml.forEach((card, index) => {
+    const item = weeklyJson.decisions[index];
+    const labels = [...card.matchAll(/<h4>([^<]+)<\/h4>/g)].map((match) => match[1]);
+    const expected = ["发生了什么", "为何重要", "架构影响", "控制域", "P0", "P1", "P2", "判断"].filter((label) => {
+      if (label === "发生了什么") return item.happened;
+      if (label === "为何重要") return item.why;
+      if (label === "架构影响") return item.arch_impact;
+      if (label === "控制域") return item.control_domains && item.control_domains.length;
+      if (label === "P0") return item.actions_p0 && item.actions_p0.length;
+      if (label === "P1") return item.actions_p1 && item.actions_p1.length;
+      if (label === "P2") return item.actions_p2 && item.actions_p2.length;
+      return item.judgment && item.judgment.length;
+    });
+    if (labels.join("|") !== expected.join("|")) fail(`W1.3 decision ${index + 1} order ${labels.join("|")}`);
+    if (!/<h4>P0<\/h4>\s*<ol/.test(card)) fail(`W1.3 decision ${index + 1} P0 is not an ordered list`);
+  });
+  if (newsPanel.includes('class="detail-card"') || newsPanel.includes("<h4>为何重要</h4>") || newsPanel.includes("Why it matters")) {
+    fail("W1.4 weekly news repeats a Why block");
+  }
+  for (const item of weeklyJson.news) {
+    const count = newsPanel.split(item.why).length - 1;
+    if (item.why && count !== 1) fail(`W1.4 ${item.id} why appears ${count} times`);
+  }
+  const weeklyGh = sliceBetween(html.weekly, 'id="panel-github"', 'id="panel-decisions"');
+  for (const label of ["seen", "break", "lang"]) {
+    if (weeklyGh.includes(`data-label="${label}"`) || weeklyGh.includes(`>${label}<`)) {
+      fail(`W1.5 empty ${label} column is still rendered`);
+    }
+  }
+  const weeklyRising = sliceBetween(weeklyGh, 'id="gh-rising"', 'id="gh-newcomers"');
+  assertSlogan("W1.5 rising", weeklyRising, weeklyJson.github.rising);
+}
+
 if (!cssSource.includes("scroll-margin-top: calc(var(--s-7) + var(--s-3))")) {
   fail("section targets are missing scroll-margin-top");
 }
@@ -530,7 +721,7 @@ if (!cssSource.includes("content: attr(data-label)") || !cssSource.includes("@me
 }
 if (!cssSource.includes("overflow-x: clip")) fail("page is missing horizontal clip");
 if (/text-overflow\s*:\s*ellipsis/.test(cssSource)) fail("site.css ellipsizes text");
-if (!baseSource.includes('nav.toc a[href^="#"]') || !baseSource.includes(".hot-picks a[href^=\"#\"]")) {
+if (!baseSource.includes('a[href^="#"]') || !baseSource.includes("revealTarget") || !baseSource.includes("selectTab")) {
   fail("smooth scroll does not intercept TOC and hot jumps");
 }
 if (!baseSource.includes("scrollIntoView") || !baseSource.includes('block: "start"')) {

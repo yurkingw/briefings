@@ -1,108 +1,185 @@
-{% if briefing.github and briefing.github.rising and briefing.github.rising.length %}
-<section class="block" id="github-rising">
-  <h2>GitHub · Rising</h2>
+{% import "macros.njk" as ui %}
+{% set gh = briefing.github if briefing.github else {} %}
+{% set rising = gh.rising if gh.rising else [] %}
+{% set newcomers = gh.newcomers if gh.newcomers else [] %}
+{% set summary = gh.meta | githubSummary %}
+{% set risingSeen = rising | hasField("seen") %}
+{% set risingBreak = rising | hasField("break") %}
+{% set newSeen = newcomers | hasField("seen") %}
+{% set newBreak = newcomers | hasField("break") %}
+{% set newAge = newcomers | hasField("age_h") %}
+
+<div class="sub-tabs seg" role="tablist" aria-label="GitHub">
+  <button type="button" role="tab" id="tab-gh-rising" aria-controls="gh-rising" aria-selected="true" tabindex="0">Rising</button>
+  <button type="button" role="tab" id="tab-gh-newcomers" aria-controls="gh-newcomers" aria-selected="false" tabindex="-1">Newcomers</button>
+  <button type="button" role="tab" id="tab-gh-summary" aria-controls="gh-summary" aria-selected="false" tabindex="-1">Summary</button>
+</div>
+
+<div class="sub-panel" id="gh-rising" role="tabpanel" aria-labelledby="tab-gh-rising">
+  {% if rising.length %}
   <div class="table-wrap">
-    <table>
+    <table class="gh-table">
+      <colgroup>
+        <col class="c-rank">
+        <col class="c-repo">
+        <col class="c-owner">
+        <col class="c-slogan">
+        <col class="c-num">
+        <col class="c-num">
+        {% if risingSeen %}<col class="c-seen">{% endif %}
+        {% if risingBreak %}<col class="c-break">{% endif %}
+      </colgroup>
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Repo</th>
-          <th scope="col">Slogan</th>
-          <th scope="col">Gained</th>
-          <th scope="col">Stars</th>
-          <th scope="col">Seen</th>
-          <th scope="col">Break</th>
-          <th scope="col">Lang</th>
+          <th scope="col">repo</th>
+          <th scope="col">owner_type·owner</th>
+          <th scope="col">slogan</th>
+          <th scope="col">+gained</th>
+          <th scope="col">stars</th>
+          {% if risingSeen %}<th scope="col">seen</th>{% endif %}
+          {% if risingBreak %}<th scope="col">break</th>{% endif %}
         </tr>
       </thead>
       <tbody>
-        {% for item in briefing.github.rising %}
+        {% for item in rising %}
         <tr>
-          <td data-label="#">{{ item.rank }}</td>
-          <td class="col-repo" data-label="Repo">
-            <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.owner }}/{{ item.repo }}</a>
-            {% if item.owner_type or item.license %}
-            <div class="sub">{{ item.owner_type }}{% if item.owner_type and item.license %} · {% endif %}{{ item.license }}</div>
-            {% endif %}
-          </td>
-          <td class="col-title" data-label="Slogan" lang="zh-Hans">
-            {{ item.slogan }}
-            {% if item.what %}<div class="sub">{{ item.what }}</div>{% endif %}
-            {% if item.why %}<div class="sub">{{ item.why }}</div>{% endif %}
-            {% if item.tags and item.tags.length %}<div class="sub">{{ item.tags | join(", ") }}</div>{% endif %}
-          </td>
-          <td data-label="Gained">{% if item.gained == null %}—{% else %}+{{ item.gained }}{% endif %}</td>
-          <td data-label="Stars">{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
-          <td data-label="Seen" lang="zh-Hans">{% if item.seen %}{{ item.seen }}{% else %}—{% endif %}</td>
-          <td data-label="Break" lang="zh-Hans">{% if item.break %}{{ item.break }}{% else %}—{% endif %}</td>
-          <td data-label="Lang">{% if item.lang %}{{ item.lang }}{% else %}—{% endif %}</td>
+          <td class="num" data-label="#">{{ item.rank }}</td>
+          <td class="col-repo" data-label="repo"><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.repo }}</a></td>
+          <td class="col-owner" data-label="owner_type·owner">{% if item.owner_type %}{{ item.owner_type | ownerType }} · {% endif %}{{ item.owner or "—" }}</td>
+          <td class="col-slogan" data-label="slogan" lang="zh-Hans">{% if item.slogan %}{{ item.slogan }}{% else %}—{% endif %}</td>
+          <td class="num" data-label="+gained">{% if item.gained == null %}—{% else %}+{{ item.gained }}{% endif %}</td>
+          <td class="num" data-label="stars">{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
+          {% if risingSeen %}<td data-label="seen" lang="zh-Hans">{% if item.seen %}{{ item.seen }}{% else %}—{% endif %}</td>{% endif %}
+          {% if risingBreak %}<td data-label="break" lang="zh-Hans">{% if item.break %}{{ item.break }}{% else %}—{% endif %}</td>{% endif %}
         </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-</section>
-{% endif %}
+  <div class="gh-cards">
+    {% for item in rising %}
+    <article class="gh-card" id="gh-rising-{{ item.rank }}">
+      <h3 class="card-title"><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.repo }}</a></h3>
+      <p class="gh-meta">
+        {%- if item.owner %}{{ item.owner }}{% endif -%}
+        {%- if item.stars != null %} · {{ item.stars }} stars{% endif -%}
+        {%- if item.gained != null %} · +{{ item.gained }}{% endif -%}
+      </p>
+      {% if item.slogan %}<p class="gh-lead" lang="zh-Hans">{{ item.slogan }}</p>{% endif %}
+      {% if item.what %}
+      <h4>是什么</h4>
+      <p class="section-body" lang="zh-Hans">{{ item.what }}</p>
+      {% endif %}
+      {% if item.why %}
+      <h4>为什么涨</h4>
+      <p class="section-body" lang="zh-Hans">{{ item.why }}</p>
+      {% endif %}
+      {% if item.url %}
+      <h4>链接</h4>
+      {{ ui.linkList([item.url]) }}
+      {% endif %}
+      {% if item.tags and item.tags.length %}
+      <h4>标签</h4>
+      <p class="tag-row">{% for tag in item.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty">Nothing in this section.</p>
+  {% endif %}
+</div>
 
-{% if briefing.github and briefing.github.newcomers and briefing.github.newcomers.length %}
-<section class="block" id="github-newcomers">
-  <h2>GitHub · Newcomers</h2>
+<div class="sub-panel" id="gh-newcomers" role="tabpanel" aria-labelledby="tab-gh-newcomers" hidden inert>
+  {% if newcomers.length %}
   <div class="table-wrap">
-    <table>
+    <table class="gh-table">
+      <colgroup>
+        <col class="c-rank">
+        <col class="c-repo">
+        <col class="c-owner">
+        <col class="c-slogan">
+        <col class="c-num">
+        {% if newAge %}<col class="c-num">{% endif %}
+        {% if newSeen %}<col class="c-seen">{% endif %}
+        {% if newBreak %}<col class="c-break">{% endif %}
+      </colgroup>
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Repo</th>
-          <th scope="col">Slogan</th>
-          <th scope="col">Stars</th>
-          <th scope="col">Age (h)</th>
-          <th scope="col">Seen</th>
-          <th scope="col">Break</th>
-          <th scope="col">Lang</th>
+          <th scope="col">repo</th>
+          <th scope="col">owner_type·owner</th>
+          <th scope="col">slogan</th>
+          <th scope="col">stars</th>
+          {% if newAge %}<th scope="col">age_h</th>{% endif %}
+          {% if newSeen %}<th scope="col">seen</th>{% endif %}
+          {% if newBreak %}<th scope="col">break</th>{% endif %}
         </tr>
       </thead>
       <tbody>
-        {% for item in briefing.github.newcomers %}
+        {% for item in newcomers %}
         <tr>
-          <td data-label="#">{{ item.rank }}</td>
-          <td class="col-repo" data-label="Repo">
-            <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.owner }}/{{ item.repo }}</a>
-            {% if item.owner_type or item.license %}
-            <div class="sub">{{ item.owner_type }}{% if item.owner_type and item.license %} · {% endif %}{{ item.license }}</div>
-            {% endif %}
-          </td>
-          <td class="col-title" data-label="Slogan" lang="zh-Hans">
-            {{ item.slogan }}
-            {% if item.what %}<div class="sub">{{ item.what }}</div>{% endif %}
-            {% if item.why %}<div class="sub">{{ item.why }}</div>{% endif %}
-            {% if item.tags and item.tags.length %}<div class="sub">{{ item.tags | join(", ") }}</div>{% endif %}
-          </td>
-          <td data-label="Stars">{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
-          <td data-label="Age (h)">{% if item.age_h == null %}—{% else %}{{ item.age_h }}{% endif %}</td>
-          <td data-label="Seen" lang="zh-Hans">{% if item.seen %}{{ item.seen }}{% else %}—{% endif %}</td>
-          <td data-label="Break" lang="zh-Hans">{% if item.break %}{{ item.break }}{% else %}—{% endif %}</td>
-          <td data-label="Lang">{% if item.lang %}{{ item.lang }}{% else %}—{% endif %}</td>
+          <td class="num" data-label="#">{{ item.rank }}</td>
+          <td class="col-repo" data-label="repo"><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.repo }}</a></td>
+          <td class="col-owner" data-label="owner_type·owner">{% if item.owner_type %}{{ item.owner_type | ownerType }} · {% endif %}{{ item.owner or "—" }}</td>
+          <td class="col-slogan" data-label="slogan" lang="zh-Hans">{% if item.slogan %}{{ item.slogan }}{% else %}—{% endif %}</td>
+          <td class="num" data-label="stars">{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
+          {% if newAge %}<td class="num" data-label="age_h">{% if item.age_h == null %}—{% else %}{{ item.age_h }}{% endif %}</td>{% endif %}
+          {% if newSeen %}<td data-label="seen" lang="zh-Hans">{% if item.seen %}{{ item.seen }}{% else %}—{% endif %}</td>{% endif %}
+          {% if newBreak %}<td data-label="break" lang="zh-Hans">{% if item.break %}{{ item.break }}{% else %}—{% endif %}</td>{% endif %}
         </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-</section>
-{% endif %}
+  <div class="gh-cards">
+    {% for item in newcomers %}
+    <article class="gh-card" id="gh-newcomer-{{ item.rank }}">
+      <h3 class="card-title"><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.repo }}</a></h3>
+      <p class="gh-meta">
+        {%- if item.owner %}{{ item.owner }}{% endif -%}
+        {%- if item.stars != null %} · {{ item.stars }} stars{% endif -%}
+        {%- if item.age_h != null %} · {{ item.age_h }}h{% endif -%}
+      </p>
+      {% if item.slogan %}<p class="gh-lead" lang="zh-Hans">{{ item.slogan }}</p>{% endif %}
+      {% if item.what %}
+      <h4>是什么</h4>
+      <p class="section-body" lang="zh-Hans">{{ item.what }}</p>
+      {% endif %}
+      {% if item.why %}
+      <h4>为什么新锐</h4>
+      <p class="section-body" lang="zh-Hans">{{ item.why }}</p>
+      {% endif %}
+      {% if item.url %}
+      <h4>链接</h4>
+      {{ ui.linkList([item.url]) }}
+      {% endif %}
+      {% if item.tags and item.tags.length %}
+      <h4>标签</h4>
+      <p class="tag-row">{% for tag in item.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty">Nothing in this section.</p>
+  {% endif %}
+</div>
 
-{% if briefing.github and briefing.github.meta %}
-{% set gh = briefing.github.meta %}
-{% if gh.archive or gh.archive_note or gh.note or (gh.sources_missing and gh.sources_missing.length) %}
-<section class="block" id="github-notes">
-  <h2>GitHub notes</h2>
-  <ul class="sources">
-    {% if gh.archive %}<li>Archive: {{ gh.archive }}</li>{% endif %}
-    {% if gh.archive_note %}<li lang="zh-Hans">{{ gh.archive_note }}</li>{% endif %}
-    {% if gh.note %}<li lang="zh-Hans">{{ gh.note }}</li>{% endif %}
-    {% if gh.sources_missing and gh.sources_missing.length %}
-    <li>Missing sources: {{ gh.sources_missing | join(", ") }}</li>
-    {% endif %}
-  </ul>
-</section>
-{% endif %}
-{% endif %}
+<div class="sub-panel summary" id="gh-summary" role="tabpanel" aria-labelledby="tab-gh-summary" hidden inert>
+  {% if summary.length %}
+  {% for section in summary %}
+  <section class="summary-block" id="gh-summary-{{ section.id }}">
+    <h3 class="summary-label">{{ section.title }}</h3>
+    <ul>
+      {% for line in section.lines %}
+      <li lang="zh-Hans">{{ line }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+  {% else %}
+  <p class="empty">Nothing in this section.</p>
+  {% endif %}
+</div>

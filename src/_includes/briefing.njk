@@ -1,26 +1,32 @@
+{% import "macros.njk" as ui %}
+{% set isDaily = briefing.date %}
+{% set news = briefing.news if briefing.news else [] %}
+{% set cards = news | detailCards %}
+{% set decisions = briefing.decisions if briefing.decisions else [] %}
+{% set hotItems = briefing | hotThisWave %}
+{% set noteGroups = cards | tocGroups("note") %}
+{% set decisionGroups = decisions | tocGroups("decision") %}
+{% set gh = briefing.github if briefing.github else {} %}
+{% set ghSummary = gh.meta | githubSummary if gh.meta else [] %}
+{% set showGithub = (gh.rising and gh.rising.length) or (gh.newcomers and gh.newcomers.length) or ghSummary.length %}
+{% set showPapers = briefing.papers and briefing.papers.length %}
+{% set split = briefing | hasWaveSplit %}
+{% set morningNews = news | waveItems("morning") %}
+{% set afternoonNews = news | waveItems("afternoon") %}
+{% set defaultWave = briefing | defaultWave %}
+
 <div class="page-head">
   <p class="kicker">
-    {% if briefing.date %}Daily · {{ briefing.date }}{% else %}Weekly · {{ briefing.week }}{% endif %}
+    {% if isDaily %}Daily · {{ briefing.date }}{% else %}Weekly · {{ briefing.week }}{% endif %}
     · {{ briefing.timezone }}
     {% if briefing.sample %} · <span class="sample">Sample</span>{% endif %}
   </p>
-  <h1 lang="zh-Hans">{% if briefing.date %}今日情报 · {{ briefing.date }}{% else %}本周情报 · {{ briefing.week }}{% endif %}</h1>
+  <h1 lang="zh-Hans">{% if isDaily %}今日情报 · {{ briefing.date }}{% else %}本周情报 · {{ briefing.week }}{% endif %}</h1>
   <p class="updated">Updated <time datetime="{{ briefing.updated_at }}">{{ briefing.updated_at }}</time>{% if briefing.wave %} · Wave <span lang="zh-Hans">{{ briefing.wave }}</span>{% endif %}</p>
   {% if briefing.sample_note %}
   <p class="scope" lang="zh-Hans">{{ briefing.sample_note }}</p>
   {% endif %}
 </div>
-
-{% set notes = briefing.news | withNotes %}
-{% set decisions = briefing.decisions if briefing.decisions else [] %}
-{% set hotItems = briefing | hotThisWave %}
-{% set noteGroups = notes | tocGroups("note") %}
-{% set decisionGroups = decisions | tocGroups("decision") %}
-{% set gh = briefing.github if briefing.github else {} %}
-{% set ghMeta = gh.meta if gh.meta else {} %}
-{% set showRising = gh.rising and gh.rising.length %}
-{% set showNewcomers = gh.newcomers and gh.newcomers.length %}
-{% set showGhNotes = ghMeta.archive or ghMeta.archive_note or ghMeta.note or (ghMeta.sources_missing and ghMeta.sources_missing.length) %}
 
 <nav class="toc" aria-label="On this page">
   <h2>On this page</h2>
@@ -29,10 +35,36 @@
     {% if hotItems.length %}
     <li><a href="#hot">Hot this wave</a></li>
     {% endif %}
-    <li><a href="#metrics">Metrics</a></li>
-    {% if decisions.length %}
     <li>
-      <a href="#decisions">Decisions</a>
+      <a href="#panel-news">News</a>
+      {% if cards.length >= 3 %}
+      {% for group in noteGroups %}
+      <p class="toc-group"><span class="toc-group-label">{{ group.label }}</span> <span class="toc-count">{{ group.items | length }}</span></p>
+      <ol>
+        {% for item in group.items %}
+        <li>
+          <a href="#{{ item.anchor }}">
+            <span class="toc-index">{{ item.index }}</span>
+            <span class="toc-title" lang="zh-Hans">{{ item.title }}</span>
+            {% if item.channel %}<span class="toc-channel" lang="zh-Hans">{{ item.channel }}</span>{% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
+      {% endfor %}
+      {% endif %}
+    </li>
+    {% if showPapers %}
+    <li><a href="#panel-papers">Papers</a></li>
+    {% endif %}
+    {% if showGithub %}
+    <li><a href="#panel-github">GitHub</a></li>
+    {% endif %}
+    {% if isDaily %}
+    <li><a href="#panel-appendix">Appendix</a></li>
+    {% elif decisions.length %}
+    <li>
+      <a href="#panel-decisions">Decisions</a>
       {% if decisions.length >= 2 %}
       {% for group in decisionGroups %}
       <p class="toc-group"><span class="toc-group-label">{{ group.label }}</span> <span class="toc-count">{{ group.items | length }}</span></p>
@@ -50,36 +82,6 @@
       {% endif %}
     </li>
     {% endif %}
-    {% if briefing.news and briefing.news.length %}
-    <li><a href="#news">News</a></li>
-    {% endif %}
-    {% if notes.length %}
-    <li>
-      <a href="#notes">Notes</a>
-      {% if notes.length >= 3 %}
-      {% for group in noteGroups %}
-      <p class="toc-group"><span class="toc-group-label">{{ group.label }}</span> <span class="toc-count">{{ group.items | length }}</span></p>
-      <ol>
-        {% for item in group.items %}
-        <li>
-          <a href="#{{ item.anchor }}">
-            <span class="toc-index">{{ item.index }}</span>
-            <span class="toc-title" lang="zh-Hans">{{ item.title }}</span>
-            {% if item.channel %}<span class="toc-channel" lang="zh-Hans">{{ item.channel }}</span>{% endif %}
-          </a>
-        </li>
-        {% endfor %}
-      </ol>
-      {% endfor %}
-      {% endif %}
-    </li>
-    {% endif %}
-    {% if briefing.papers and briefing.papers.length %}
-    <li><a href="#papers">Papers</a></li>
-    {% endif %}
-    {% if showRising %}<li><a href="#github-rising">GitHub · Rising</a></li>{% endif %}
-    {% if showNewcomers %}<li><a href="#github-newcomers">GitHub · Newcomers</a></li>{% endif %}
-    {% if showGhNotes %}<li><a href="#github-notes">GitHub notes</a></li>{% endif %}
     {% if briefing.sources and briefing.sources.length %}
     <li><a href="#sources">Sources</a></li>
     {% endif %}
@@ -91,180 +93,207 @@
   <p class="conclusion" lang="zh-Hans">{{ briefing.summary }}</p>
 </section>
 
-{% if hotItems.length %}
-<section class="block hot-picks" id="hot">
-  <h2 id="hot-heading">Hot this wave</h2>
-  <ol class="hot-list">
-    {% for item in hotItems %}
-    <li><a class="hot-jump" href="{{ item.href }}">{{ item.title }}</a></li>
+<p class="status-strip" id="metrics">
+  {%- for item in briefing | statusItems -%}
+  {%- if not loop.first %} · {% endif -%}<span class="status-item">{{ item.label }} {{ item.value }}</span>
+  {%- endfor -%}
+</p>
+
+<div class="columns">
+  <div class="page-tabs seg" role="tablist" aria-label="Columns">
+    <button type="button" role="tab" id="tab-news" aria-controls="panel-news" aria-selected="true" tabindex="0">News</button>
+    <span class="seg-gap" aria-hidden="true">·</span>
+    <button type="button" role="tab" id="tab-papers" aria-controls="panel-papers" aria-selected="false" tabindex="-1">Papers</button>
+    <span class="seg-gap" aria-hidden="true">·</span>
+    <button type="button" role="tab" id="tab-github" aria-controls="panel-github" aria-selected="false" tabindex="-1">GitHub</button>
+    <span class="seg-gap" aria-hidden="true">·</span>
+    {% if isDaily %}
+    <button type="button" role="tab" id="tab-appendix" aria-controls="panel-appendix" aria-selected="false" tabindex="-1">Appendix</button>
+    {% else %}
+    <button type="button" role="tab" id="tab-decisions" aria-controls="panel-decisions" aria-selected="false" tabindex="-1">Decisions</button>
+    {% endif %}
+  </div>
+
+  <section class="page-panel" id="panel-news" role="tabpanel" aria-labelledby="tab-news" tabindex="0">
+    {% if isDaily and split %}
+    <div class="sub-tabs seg" role="tablist" aria-label="Wave">
+      <button type="button" role="tab" id="tab-morning" aria-controls="wave-morning" aria-selected="{{ "true" if defaultWave == "morning" else "false" }}" tabindex="{{ "0" if defaultWave == "morning" else "-1" }}">Morning</button>
+      <button type="button" role="tab" id="tab-afternoon" aria-controls="wave-afternoon" aria-selected="{{ "true" if defaultWave == "afternoon" else "false" }}" tabindex="{{ "0" if defaultWave == "afternoon" else "-1" }}">Afternoon</button>
+    </div>
+    <div class="sub-panel" id="wave-morning" role="tabpanel" aria-labelledby="tab-morning"{% if defaultWave != "morning" %} hidden inert{% endif %}>
+      {{ ui.newsDaily(morningNews, defaultWave == "morning", "morning") }}
+    </div>
+    <div class="sub-panel" id="wave-afternoon" role="tabpanel" aria-labelledby="tab-afternoon"{% if defaultWave != "afternoon" %} hidden inert{% endif %}>
+      {{ ui.newsDaily(afternoonNews, defaultWave == "afternoon", "afternoon") }}
+    </div>
+    {% elif isDaily %}
+    {{ ui.newsDaily(news, true, "news") }}
+    {% else %}
+    {% if hotItems.length %}
+    <section class="block hot-picks" id="hot" aria-labelledby="hot-heading">
+      <h2 id="hot-heading">Hot this wave</h2>
+      <ol class="hot-list">
+        {% for item in hotItems %}
+        <li><a class="hot-jump" href="{{ item.href }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+    {% if news.length %}
+    <div class="table-wrap feature-table" id="weekly-news">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">领域</th>
+            <th scope="col">标题</th>
+            <th scope="col">为何仍重要</th>
+            <th scope="col">链接</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in news %}
+          <tr id="feature-{{ item.id }}">
+            <td data-label="领域" lang="zh-Hans">{{ item.domain }}</td>
+            <td class="col-title" data-label="标题" lang="zh-Hans">
+              <span class="cell-title">{{ item.title }}</span>
+              {% if item.finsec === true or item.hard_gate === true %}
+              <span class="badges">
+                {% if item.finsec === true %}<span class="badge">Finsec</span>{% endif %}
+                {% if item.hard_gate === true %}<span class="badge">Hard gate</span>{% endif %}
+              </span>
+              {% endif %}
+            </td>
+            <td class="why-cell" data-label="为何仍重要" lang="zh-Hans">{% if item.why %}{{ item.why }}{% else %}—{% endif %}</td>
+            <td data-label="链接">{{ ui.cellLinks(item.links) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    {% endif %}
+  </section>
+
+  <section class="page-panel" id="panel-papers" role="tabpanel" aria-labelledby="tab-papers" hidden inert>
+    {% if showPapers %}
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">短名</th>
+            <th scope="col">抢了什么</th>
+            <th scope="col">为何值得看</th>
+            <th scope="col">链接</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for paper in briefing.papers %}
+          <tr>
+            <td class="col-title" data-label="短名" lang="zh-Hans">{{ paper.short }}</td>
+            <td data-label="抢了什么" lang="zh-Hans">{% if paper.what %}{{ paper.what }}{% else %}—{% endif %}</td>
+            <td data-label="为何值得看" lang="zh-Hans">{% if paper.why %}{{ paper.why }}{% else %}—{% endif %}</td>
+            <td data-label="链接">
+              <a class="paper-main" href="{{ paper.url }}" title="{{ paper.url }}" target="_blank" rel="noopener noreferrer">{{ paper.url | linkLabel }}</a>
+              {% if paper.dair_url %}<a class="paper-dair" href="{{ paper.dair_url }}" title="{{ paper.dair_url }}" target="_blank" rel="noopener noreferrer">DAIR</a>{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <p class="empty">Nothing in this section.</p>
+    {% endif %}
+  </section>
+
+  <section class="page-panel" id="panel-github" role="tabpanel" aria-labelledby="tab-github" hidden inert>
+    {% if showGithub %}
+    {% include "github.njk" %}
+    {% else %}
+    <p class="empty">Nothing in this section.</p>
+    {% endif %}
+  </section>
+
+  {% if isDaily %}
+  <section class="page-panel" id="panel-appendix" role="tabpanel" aria-labelledby="tab-appendix" hidden inert>
+    {% if news.length %}
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">领域</th>
+            <th scope="col">标题</th>
+            <th scope="col">波次</th>
+            <th scope="col">通路</th>
+            <th scope="col">Finsec</th>
+            <th scope="col">链接</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in news %}
+          <tr>
+            <td data-label="#">{{ item.id }}</td>
+            <td data-label="领域" lang="zh-Hans">{{ item.domain }}</td>
+            <td class="col-title" data-label="标题" lang="zh-Hans">
+              <span class="cell-title">{{ item.title }}</span>
+              {% if item.hard_gate === true %}<span class="badges"><span class="badge">Hard gate</span></span>{% endif %}
+            </td>
+            <td data-label="波次" lang="zh-Hans">{% if item.wave %}{{ item.wave }}{% else %}—{% endif %}</td>
+            <td data-label="通路" lang="zh-Hans">{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
+            <td data-label="Finsec">{% if item.finsec === true %}<span class="badge">Finsec</span>{% else %}—{% endif %}</td>
+            <td data-label="链接">{{ ui.cellLinks(item.links) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <p class="empty">Nothing in this section.</p>
+    {% endif %}
+  </section>
+  {% else %}
+  <section class="page-panel" id="panel-decisions" role="tabpanel" aria-labelledby="tab-decisions" hidden inert>
+    {% for card in decisions %}
+    <article class="decision" id="decision-{{ loop.index }}">
+      <h3 lang="zh-Hans">{{ card.title }}</h3>
+      {% if card.happened %}
+      <h4>发生了什么</h4>
+      <p class="section-body" lang="zh-Hans">{{ card.happened }}</p>
+      {% endif %}
+      {% if card.why %}
+      <h4>为何重要</h4>
+      <p class="section-body" lang="zh-Hans">{{ card.why }}</p>
+      {% endif %}
+      {% if card.arch_impact %}
+      <h4>架构影响</h4>
+      <p class="section-body" lang="zh-Hans">{{ card.arch_impact }}</p>
+      {% endif %}
+      {% if card.control_domains and card.control_domains.length %}
+      <h4>控制域</h4>
+      <p class="section-meta domains" lang="zh-Hans">{{ card.control_domains | join("、") }}</p>
+      {% endif %}
+      {% if card.actions_p0 and card.actions_p0.length %}
+      <h4>P0</h4>
+      <ol lang="zh-Hans">{% for action in card.actions_p0 %}<li>{{ action }}</li>{% endfor %}</ol>
+      {% endif %}
+      {% if card.actions_p1 and card.actions_p1.length %}
+      <h4>P1</h4>
+      <ol lang="zh-Hans">{% for action in card.actions_p1 %}<li>{{ action }}</li>{% endfor %}</ol>
+      {% endif %}
+      {% if card.actions_p2 and card.actions_p2.length %}
+      <h4>P2</h4>
+      <ol lang="zh-Hans">{% for action in card.actions_p2 %}<li>{{ action }}</li>{% endfor %}</ol>
+      {% endif %}
+      {% if card.judgment and card.judgment.length %}
+      <h4>判断</h4>
+      <ul lang="zh-Hans">{% for line in card.judgment %}<li>{{ line }}</li>{% endfor %}</ul>
+      {% endif %}
+    </article>
     {% endfor %}
-  </ol>
-</section>
-{% endif %}
-
-<section class="block" id="metrics">
-  <h2>Metrics</h2>
-  <p class="metrics">
-    {%- for key, value in briefing.metrics -%}
-    {%- if not loop.first %} · {% endif -%}
-    {{ key | metricLabel }} {{ value }}
-    {%- endfor -%}
-  </p>
-</section>
-
-{% if decisions.length %}
-<section class="block" id="decisions">
-  <h2>Decisions</h2>
-  {% for card in decisions %}
-  <article class="decision" id="decision-{{ loop.index }}">
-    <h3 lang="zh-Hans">{{ card.title }}</h3>
-    <h4>What happened</h4>
-    <p lang="zh-Hans">{{ card.happened }}</p>
-    <h4>Why it matters</h4>
-    <p lang="zh-Hans">{{ card.why }}</p>
-    <h4>Architecture impact</h4>
-    <p lang="zh-Hans">{{ card.arch_impact }}</p>
-    {% if card.control_domains and card.control_domains.length %}
-    <h4>Control domains</h4>
-    <p class="domains" lang="zh-Hans">{{ card.control_domains | join("、") }}</p>
-    {% endif %}
-    <h4>P0</h4>
-    {% if card.actions_p0 and card.actions_p0.length %}
-    <ul lang="zh-Hans">{% for action in card.actions_p0 %}<li>{{ action }}</li>{% endfor %}</ul>
-    {% else %}
-    <p class="empty-line">Nothing in this section.</p>
-    {% endif %}
-    <h4>P1</h4>
-    {% if card.actions_p1 and card.actions_p1.length %}
-    <ul lang="zh-Hans">{% for action in card.actions_p1 %}<li>{{ action }}</li>{% endfor %}</ul>
-    {% else %}
-    <p class="empty-line">Nothing in this section.</p>
-    {% endif %}
-    <h4>P2</h4>
-    {% if card.actions_p2 and card.actions_p2.length %}
-    <ul lang="zh-Hans">{% for action in card.actions_p2 %}<li>{{ action }}</li>{% endfor %}</ul>
-    {% else %}
-    <p class="empty-line">Nothing in this section.</p>
-    {% endif %}
-    <h4>Judgment</h4>
-    {% if card.judgment and card.judgment.length %}
-    <ul lang="zh-Hans">{% for line in card.judgment %}<li>{{ line }}</li>{% endfor %}</ul>
-    {% else %}
-    <p class="empty-line">Nothing in this section.</p>
-    {% endif %}
-  </article>
-  {% endfor %}
-</section>
-{% endif %}
-
-{% if briefing.news and briefing.news.length %}
-<section class="block" id="news">
-  <h2>News</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Domain</th>
-          <th scope="col">Title</th>
-          <th scope="col">Channel</th>
-          <th scope="col">Finsec</th>
-          <th scope="col">Hard gate</th>
-          <th scope="col">Detail</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in briefing.news %}
-        <tr>
-          <td data-label="#">{{ item.id }}</td>
-          <td data-label="Domain" lang="zh-Hans">{{ item.domain }}</td>
-          <td class="col-title" data-label="Title" lang="zh-Hans">{{ item.title }}</td>
-          <td data-label="Channel" lang="zh-Hans">{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
-          <td class="col-flag{% if item.finsec %} is-yes{% endif %}" data-label="Finsec">{% if item.finsec == null %}—{% else %}{{ item.finsec | yesNo }}{% endif %}</td>
-          <td class="col-flag{% if item.hard_gate %} is-yes{% endif %}" data-label="Hard gate">{% if item.hard_gate == null %}—{% else %}{{ item.hard_gate | yesNo }}{% endif %}</td>
-          <td data-label="Detail">{% if item.detail == null %}—{% else %}{{ item.detail | yesNo }}{% endif %}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</section>
-{% endif %}
-
-{% if notes.length %}
-<section class="block notes" id="notes">
-  <h2>Notes</h2>
-  {% for item in notes %}
-  <article class="card" id="note-{{ loop.index }}">
-    <h3 lang="zh-Hans">#{{ item.id }} · {{ item.domain }} · {{ item.title }}</h3>
-    {% if item.detail == true %}<p class="kicker">Full card</p>{% elif item.detail == false %}<p class="kicker">Brief</p>{% endif %}
-    {% if item.first_source_at %}
-    <p class="first-source">
-      <span class="first-source-label">First source</span>
-      <span lang="zh-Hans">{{ item.first_source_at }}</span>
-    </p>
-    {% endif %}
-    {% if item.background %}
-    <h4>Background</h4>
-    <p lang="zh-Hans">{{ item.background }}</p>
-    {% endif %}
-    {% if item.facts %}
-    <h4>Facts</h4>
-    <p lang="zh-Hans">{{ item.facts }}</p>
-    {% endif %}
-    {% if item.why %}
-    <h4>Why it matters</h4>
-    <p lang="zh-Hans">{{ item.why }}</p>
-    {% endif %}
-    {% if item.arch_impact %}
-    <h4>Architecture impact</h4>
-    <p lang="zh-Hans">{{ item.arch_impact }}</p>
-    {% endif %}
-    {% if item.links and item.links.length %}
-    <h4>Links</h4>
-    <ul>
-      {% for link in item.links %}
-      <li><a href="{{ link }}" target="_blank" rel="noopener noreferrer">{{ link }}</a></li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </article>
-  {% endfor %}
-</section>
-{% endif %}
-
-{% if briefing.papers and briefing.papers.length %}
-<section class="block" id="papers">
-  <h2>Papers</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Short</th>
-          <th scope="col">What</th>
-          <th scope="col">Why</th>
-          <th scope="col">Link</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for paper in briefing.papers %}
-        <tr>
-          <td class="col-title" data-label="Short" lang="zh-Hans">{{ paper.short }}</td>
-          <td class="col-title" data-label="What" lang="zh-Hans">{% if paper.what %}{{ paper.what }}{% else %}—{% endif %}</td>
-          <td class="col-title" data-label="Why" lang="zh-Hans">{% if paper.why %}{{ paper.why }}{% else %}—{% endif %}</td>
-          <td data-label="Link">
-            <a href="{{ paper.url }}" target="_blank" rel="noopener noreferrer">{{ paper.url }}</a>
-            {% if paper.dair_url %}<div class="sub"><a href="{{ paper.dair_url }}" target="_blank" rel="noopener noreferrer">{{ paper.dair_url }}</a></div>{% endif %}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</section>
-{% endif %}
-
-{% include "github.njk" %}
+  </section>
+  {% endif %}
+</div>
 
 {% if briefing.sources and briefing.sources.length %}
 <section class="block" id="sources">

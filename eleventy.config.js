@@ -1,6 +1,21 @@
 import { HtmlBasePlugin } from "@11ty/eleventy";
 import { excerpt } from "./lib/excerpt.js";
-import { selectHot, tocGroups, withNotes } from "./lib/pages-parity.js";
+import {
+  detailCards,
+  githubSummary,
+  hasField,
+  defaultWave,
+  hasWaveSplit,
+  hotFromItems,
+  linkLabel,
+  ownerType,
+  remainderNews,
+  selectHot,
+  statusItems,
+  tocGroups,
+  waveItems,
+  withNotes,
+} from "./lib/pages-parity.js";
 import { absoluteUrl, site } from "./lib/site.js";
 
 const METRIC_LABELS = {
@@ -31,6 +46,17 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("withNotes", (items) => withNotes(items));
   eleventyConfig.addFilter("tocGroups", (items, kind) => tocGroups(items, kind));
   eleventyConfig.addFilter("hotThisWave", (briefing) => selectHot(briefing));
+  eleventyConfig.addFilter("detailCards", (items) => detailCards(items));
+  eleventyConfig.addFilter("remainderNews", (items) => remainderNews(items));
+  eleventyConfig.addFilter("hotFromItems", (items) => hotFromItems(items));
+  eleventyConfig.addFilter("waveItems", (items, bucket) => waveItems(items, bucket));
+  eleventyConfig.addFilter("hasWaveSplit", (briefing) => hasWaveSplit(briefing));
+  eleventyConfig.addFilter("defaultWave", (briefing) => defaultWave(briefing));
+  eleventyConfig.addFilter("statusItems", (briefing) => statusItems(briefing));
+  eleventyConfig.addFilter("hasField", (rows, key) => hasField(rows, key));
+  eleventyConfig.addFilter("ownerType", (value) => ownerType(value));
+  eleventyConfig.addFilter("linkLabel", (value) => linkLabel(value));
+  eleventyConfig.addFilter("githubSummary", (meta) => githubSummary(meta));
 
   return {
     pathPrefix: site.pathPrefix,
