@@ -1,4 +1,5 @@
 import { HtmlBasePlugin } from "@11ty/eleventy";
+import { excerpt } from "./lib/excerpt.js";
 import { absoluteUrl, site } from "./lib/site.js";
 
 const METRIC_LABELS = {
@@ -16,7 +17,12 @@ const METRIC_LABELS = {
 
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(HtmlBasePlugin);
-  eleventyConfig.addPassthroughCopy({ "src/css": "css" });
+  eleventyConfig.addPassthroughCopy({
+    "src/css": "css",
+    "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2": "fonts/inter-latin-wght-normal.woff2",
+    "node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2": "fonts/inter-latin-ext-wght-normal.woff2",
+  });
+  eleventyConfig.addFilter("excerpt", (value, max = 150) => excerpt(value, max));
   eleventyConfig.addFilter("absoluteUrl", (url) => absoluteUrl(url));
   eleventyConfig.addFilter("yesNo", (value) => (value ? "Yes" : "No"));
   eleventyConfig.addFilter("metricLabel", (key) => METRIC_LABELS[key] || key);
