@@ -1,7 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { excerpt } from "../lib/excerpt.js";
+import { FOLD_STEP, nextFoldCount } from "../src/js/fold.js";
 import { loadBriefings } from "../lib/load-briefings.js";
+import { isoWeekId, selectStage, shanghaiDate } from "../lib/stage.js";
 import { absoluteUrl } from "../lib/site.js";
 import {
   annotateUnconfirmed,
@@ -196,29 +198,184 @@ for (const [name, text] of Object.entries(html)) {
   }
 }
 
-const briefings = loadBriefings(path.join(root, "content"));
-const latestDaily = briefings.daily[0];
-const latestWeekly = briefings.weekly[0];
-if (!latestDaily || !latestWeekly) fail("sample daily and weekly JSON must both load");
-const latestHtml = sliceBetween(html.home, 'id="latest"', 'id="daily"');
-if (!latestHtml) fail("home is missing the Latest section before the archive");
-for (const [label, href, blurb] of [
-  ["Latest daily", `/briefings/daily/${latestDaily.date}/`, excerpt(latestDaily.summary, 150)],
-  ["Latest weekly", `/briefings/weekly/${latestWeekly.week}/`, excerpt(latestWeekly.summary, 150)],
+if (shanghaiDate(new Date("2026-11-05T15:59:00Z")) !== "2026-11-05") {
+  fail("Asia/Shanghai date must stay on Nov 5 before 16:00Z");
+}
+if (shanghaiDate(new Date("2026-11-05T16:30:00Z")) !== "2026-11-06") {
+  fail("Asia/Shanghai date must roll to Nov 6 at 16:30Z");
+}
+for (const [date, week] of [
+  ["2026-11-02", "2026-W45"],
+  ["2026-11-05", "2026-W45"],
+  ["2026-11-08", "2026-W45"],
+  ["2026-11-09", "2026-W46"],
+  ["2025-12-29", "2026-W01"],
+  ["2026-01-01", "2026-W01"],
 ]) {
-  const open = `<a class="entry" href="${href}">`;
-  const start = latestHtml.indexOf(open);
-  const end = start < 0 ? -1 : latestHtml.indexOf("</a>", start);
-  const row = start < 0 || end < 0 ? "" : latestHtml.slice(start, end);
-  if (!row) fail(`latest row is missing or not a whole-row link: ${label}`);
-  else {
-    if (!row.includes(label)) fail(`latest row label missing: ${label}`);
-    if (!row.includes(htmlEscape(blurb))) fail(`latest row is missing the conclusion excerpt: ${label}`);
+  if (isoWeekId(date) !== week) fail(`iso week of ${date} was ${isoWeekId(date)}, expected ${week}`);
+}
+if (FOLD_STEP !== 5) fail("archive More step must be 5");
+for (const [shown, total, expectedShown, more] of [
+  [0, 12, 5, true],
+  [5, 12, 10, true],
+  [10, 12, 12, false],
+  [0, 1, 1, false],
+  [0, 0, 0, false],
+]) {
+  const page = nextFoldCount(shown, total);
+  if (page.shown !== expectedShown || page.more !== more) {
+    fail(`fold ${shown}/${total} => ${page.shown} more=${page.more}, expected ${expectedShown} more=${more}`);
   }
 }
-if (html.home.indexOf('id="latest"') > html.home.indexOf('id="daily"')) {
-  fail("Latest must sit above the Daily archive");
+
+const briefings = loadBriefings(path.join(root, "content"));
+const stage = selectStage(briefings, new Date("2026-11-05T04:00:00Z"));
+if (!stage.daily || stage.daily.date !== "2026-11-05" || stage.week !== "2026-W45" || !stage.weekly) {
+  fail(`stage selector missed the sample day/week: ${JSON.stringify({ date: stage.date, week: stage.week, daily: stage.daily && stage.daily.date, weekly: stage.weekly && stage.weekly.week })}`);
 }
+const missedDay = selectStage(briefings, new Date("2026-11-06T04:00:00Z"));
+if (missedDay.daily || !missedDay.weekly || missedDay.week !== "2026-W45") {
+  fail("stage selector should keep this week's weekly when today's daily is missing");
+}
+const missedBoth = selectStage(briefings, new Date("2026-12-01T04:00:00Z"));
+if (missedBoth.daily || missedBoth.weekly) fail("stage selector should be empty off the sample week");
+
+const builtStage = selectStage(briefings);
+const indexSource = read("src/index.njk");
+const emptyCopy = {
+  both: "No briefing for today or this week yet.",
+  daily: "No daily briefing for today yet.",
+  weekly: "No weekly briefing for this week yet.",
+};
+for (const copy of Object.values(emptyCopy)) {
+  if (!indexSource.includes(copy)) fail(`index template missing empty copy: ${copy}`);
+}
+if (indexSource.includes("Latest")) fail("index must not keep a Latest section beside the stage");
+if (!indexSource.includes(">Now<")) fail("stage heading must be Now");
+if (!html.home.includes('id="now-heading"') || !html.home.includes(">Now<")) {
+  fail("home is missing the Now stage");
+}
+if (html.home.includes('id="latest"') || html.home.includes("Latest daily") || html.home.includes("Latest weekly")) {
+  fail("Latest must be replaced by the Now stage, not kept as a third block");
+}
+const stageHtml = sliceBetween(html.home, 'id="now-heading"', 'id="daily"');
+if (!stageHtml) fail("Now stage must sit above the Daily archive");
+if (html.home.indexOf('id="now-heading"') > html.home.indexOf('id="daily"')) {
+  fail("Now stage must sit above the Daily archive");
+}
+if (html.home.indexOf('id="daily"') > html.home.indexOf('id="weekly"')) {
+  fail("archive anchors must stay Daily then Weekly");
+}
+
+function assertEntry(slice, label, href, blurb, meta) {
+  const open = `<a class="entry" href="${href}">`;
+  const start = slice.indexOf(open);
+  const end = start < 0 ? -1 : slice.indexOf("</a>", start);
+  const row = start < 0 || end < 0 ? "" : slice.slice(start, end);
+  if (!row) {
+    fail(`entry row is missing or not a whole-row link: ${label}`);
+    return;
+  }
+  if (!row.includes(`class="entry-title">${label}</span>`)) fail(`entry title missing: ${label}`);
+  if (meta && !row.includes(meta)) fail(`entry meta missing ${meta} on ${label}`);
+  if (!row.includes(htmlEscape(blurb))) fail(`entry is missing the conclusion excerpt: ${label}`);
+}
+
+if (builtStage.daily) {
+  assertEntry(
+    stageHtml,
+    builtStage.daily.date,
+    `/briefings/daily/${builtStage.daily.date}/`,
+    excerpt(builtStage.daily.summary, 150),
+    "Today",
+  );
+} else if (!stageHtml.includes(builtStage.weekly ? emptyCopy.daily : emptyCopy.both)) {
+  fail("missing daily stage row has no empty state");
+}
+if (builtStage.weekly) {
+  assertEntry(
+    stageHtml,
+    builtStage.weekly.week,
+    `/briefings/weekly/${builtStage.weekly.week}/`,
+    excerpt(builtStage.weekly.summary, 150),
+    "This week",
+  );
+} else if (!stageHtml.includes(builtStage.daily ? emptyCopy.weekly : emptyCopy.both)) {
+  fail("missing weekly stage row has no empty state");
+}
+if (builtStage.daily && builtStage.weekly) {
+  for (const copy of Object.values(emptyCopy)) {
+    if (html.home.includes(copy)) fail(`stage showed an empty state while both rows exist: ${copy}`);
+  }
+}
+if (!builtStage.daily && builtStage.weekly && !stageHtml.includes(emptyCopy.daily)) {
+  fail("daily-only miss copy missing");
+}
+if (builtStage.daily && !builtStage.weekly && !stageHtml.includes(emptyCopy.weekly)) {
+  fail("weekly-only miss copy missing");
+}
+if (!builtStage.daily && !builtStage.weekly && !stageHtml.includes(emptyCopy.both)) {
+  fail("dual-miss copy missing");
+}
+
+const dailyArchive = sliceBetween(html.home, 'id="daily"', 'id="weekly"');
+const weeklyArchive = sliceBetween(html.home, 'id="weekly"', "</main>");
+if (!dailyArchive.includes(">Daily<") || !weeklyArchive.includes(">Weekly<")) {
+  fail("archive headings must stay on #daily and #weekly");
+}
+for (const item of briefings.daily) {
+  const href = `/briefings/daily/${item.date}/`;
+  if (!dailyArchive.includes(`href="${href}"`)) fail(`archive dropped daily ${item.date}`);
+  const occurrences = html.home.split(href).length - 1;
+  const onStage = builtStage.daily && builtStage.daily.date === item.date;
+  if (onStage && occurrences < 2) fail(`today's daily must stay in the archive as well as the stage`);
+}
+for (const item of briefings.weekly) {
+  const href = `/briefings/weekly/${item.week}/`;
+  if (!weeklyArchive.includes(`href="${href}"`)) fail(`archive dropped weekly ${item.week}`);
+  const occurrences = html.home.split(href).length - 1;
+  const onStage = builtStage.weekly && builtStage.weekly.week === item.week;
+  if (onStage && occurrences < 2) fail(`this week's weekly must stay in the archive as well as the stage`);
+}
+const note = "Enable JavaScript to load more.";
+if (briefings.daily.length > 5) {
+  if (!dailyArchive.includes(note)) fail("daily no-JS fold note missing");
+} else if (dailyArchive.includes(note)) {
+  fail("daily fold note should appear only when more than 5 rows exist");
+}
+if (briefings.weekly.length > 5) {
+  if (!weeklyArchive.includes(note)) fail("weekly no-JS fold note missing");
+} else if (weeklyArchive.includes(note)) {
+  fail("weekly fold note should appear only when more than 5 rows exist");
+}
+if (indexSource.includes("<noscript")) fail("no-JS degradation is the static five-row cap, not a noscript list");
+const moreCount = (html.home.match(/class="more"/g) || []).length;
+const expectedMore = (briefings.daily.length ? 1 : 0) + (briefings.weekly.length ? 1 : 0);
+if (moreCount !== expectedMore) fail(`expected ${expectedMore} More controls, found ${moreCount}`);
+if (!html.home.includes('data-fold="daily"') || !html.home.includes('data-fold="weekly"')) {
+  fail("Daily and Weekly archives must fold independently");
+}
+if (!html.home.includes("/briefings/js/fold.js")) fail("home is missing the archive fold script");
+if (!baseSource.includes('classList.add("js")')) fail("js class must be set before first paint");
+
+const narrowStart = cssSource.indexOf("@media (max-width: 380px)");
+const narrowEnd = cssSource.indexOf("@media", narrowStart + 10);
+const narrow = narrowStart < 0 ? "" : cssSource.slice(narrowStart, narrowEnd < 0 ? undefined : narrowEnd);
+if (!narrow) fail("missing the 380px header breakpoint");
+for (const piece of ["height: auto", "flex-wrap: wrap", "row-gap: var(--s-2)", "min-height: 44px"]) {
+  if (!narrow.includes(piece)) fail(`380 header missing ${piece}`);
+}
+if (!narrow.includes(".seg") || !/flex:\s*1\s*0\s*100%/.test(narrow)) {
+  fail("at 380px .seg must sit on its own full row");
+}
+if (/overflow\s*:\s*hidden/.test(narrow)) fail("380 layout must not clip Night with overflow:hidden");
+if (!cssSource.includes("height: 44px")) fail("theme hit target must stay 44px");
+if (!cssSource.includes("border-bottom: 1px solid var(--line)")) fail("header hairline must stay 1px --line");
+if (cssSource.includes("#111")) fail("header must not bring back a thick #111 bar");
+if (!cssSource.includes(":nth-child(n + 6)") || !cssSource.includes("html.js") || !cssSource.includes(".is-open")) {
+  fail("archive fold CSS must hide rows after five without JS and reveal .is-open with JS");
+}
+
 if (!html.home.includes('class="lede"') || !html.home.includes("Daily and weekly intelligence, mirrored for the public web.")) {
   fail("home lede is missing");
 }
