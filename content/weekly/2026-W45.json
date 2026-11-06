@@ -2,7 +2,7 @@
   "schema": "qianji.briefing.weekly.v1",
   "week": "2026-W45",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-06T13:58:13+08:00",
+  "updated_at": "2026-11-06T15:43:39+08:00",
   "window": {
     "from": "2026-11-02",
     "to": "2026-11-06",
@@ -582,5 +582,6 @@
     "PolFin 栏自 11-06 起建；周精选目前仅覆盖当日迁栏+新扫 5 条，更早政经角未回溯重标",
     "Arkéa 精确金额与部分二手 X News 标 unconfirmed",
     "ISO 周至周日未满；本版为周五检阅窗"
-  ]
+  ],
+  "news_digest": "8 条要点表（非整周合订）。主线：银行/BFSI 硬门槛（Arkéa · CRAFTY FALCON · DarkSword）｜Agent/模型供给（Images 2.6 · GPT-6 Cyber · Claude Finance/Hooks · ARTEX）｜币安提现恢复簇。政经角见「政治金融」。"
 }

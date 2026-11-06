@@ -95,7 +95,7 @@
 {% set risingRest = rising | takeRest(5) %}
 {% set newLead = newcomers | takeFeatured(5) %}
 {% set newRest = newcomers | takeRest(5) %}
-{% set ghLead = "今日看点" if briefing.date else "本周看点" %}
+{% set ghLead = "今日看点" if briefing.date else "本周精选" %}
 
 <div class="sub-panel" id="gh-rising" role="tabpanel" aria-labelledby="tab-gh-rising">
   {% if rising.length %}

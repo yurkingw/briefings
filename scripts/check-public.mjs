@@ -90,6 +90,9 @@ if (dailyJson.schema !== "qianji.briefing.daily.v1") fail("daily schema missing"
 if (weeklyJson.schema !== "qianji.briefing.weekly.v1") fail("weekly schema missing");
 if (!Array.isArray(dailyJson.news) || dailyJson.news.length < 1) fail("daily news missing");
 if (!Array.isArray(weeklyJson.decisions) || weeklyJson.decisions.length < 1) fail("weekly decisions missing");
+if (weeklyJson.updated_at !== "2026-11-06T15:43:39+08:00") fail("W45 updated_at drifted from export");
+const exportDigest = "8 条要点表（非整周合订）。主线：银行/BFSI 硬门槛（Arkéa · CRAFTY FALCON · DarkSword）｜Agent/模型供给（Images 2.6 · GPT-6 Cyber · Claude Finance/Hooks · ARTEX）｜币安提现恢复簇。政经角见「政治金融」。";
+if (weeklyJson.news_digest !== exportDigest) fail("W45 news_digest missing or drifted from export");
 
 for (const file of walk(path.join(root, "content"))) {
   if (!/\.(json|md)$/.test(file)) continue;
@@ -505,6 +508,22 @@ function openingTag(text, id) {
   return text.slice(start, end + 1);
 }
 
+function calloutLeads(panelHtml) {
+  return [...panelHtml.matchAll(/<p class="brf-callout-lead">([^<]*)<\/p>/g)].map((match) => match[1].trim());
+}
+
+function calloutBodies(panelHtml) {
+  return [...panelHtml.matchAll(/<p class="brf-callout-body"[^>]*>([\s\S]*?)<\/p>/g)].map((match) =>
+    match[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim(),
+  );
+}
+
+function assertLeadAbsent(name, panelHtml, banned) {
+  for (const lead of calloutLeads(panelHtml)) {
+    if (banned.includes(lead)) fail(`${name} brf-callout-lead is ${lead}`);
+  }
+}
+
 function assertNoToc(name, text) {
   for (const marker of [
     '<nav class="toc"',
@@ -693,7 +712,10 @@ if (html.daily) {
     if (!papers.includes(`>${header}<`)) fail(`S3 papers missing ${header}`);
   }
   if (!papers.includes(">本波必读<")) fail("F1 papers lead list missing");
-  if (!papers.includes('class="brf-callout"') || !papers.includes(">窗口<")) fail("S3 papers window callout missing");
+  if (!papers.includes('class="brf-callout"') || !calloutLeads(papers).includes("今日看点")) {
+    fail("S3 papers lead is not 今日看点");
+  }
+  assertLeadAbsent("S3 papers", papers, ["窗口", "本周看点", "本周精选", "今日精选"]);
   for (const paper of dailyJson.papers) {
     if (!papers.includes(`href="${paper.url}"`)) fail(`S3 missing paper url ${paper.url}`);
     if (paper.dair_url && !papers.includes(`href="${paper.dair_url}"`)) fail("S3 missing dair url");
@@ -702,6 +724,10 @@ if (html.daily) {
   const newcomers = sliceBetween(html.daily, 'id="gh-newcomers"', 'id="gh-summary"');
   assertGithubRows("S4 rising", rising, dailyJson.github.rising.slice(0, 5), "gh-rising");
   assertGithubRows("S4 newcomers", newcomers, dailyJson.github.newcomers.slice(0, 5), "gh-newcomer");
+  for (const [name, panel] of [["S4 rising", rising], ["S4 newcomers", newcomers]]) {
+    if (!calloutLeads(panel).includes("今日看点")) fail(`${name} lead is not 今日看点`);
+    assertLeadAbsent(name, panel, ["窗口", "本周看点", "本周精选", "今日精选"]);
+  }
   if (!rising.includes(">其余仓库<") || !newcomers.includes(">其余仓库<")) fail("F2 rest repo table missing");
   if (!/aria-controls="gh-rising"[^>]*aria-selected="true"/.test(html.daily)) fail("S4 涨星榜 is not the default GitHub tab");
   if (!html.daily.includes(">涨星榜<") || !html.daily.includes(">新锐榜<") || !html.daily.includes(">总结<")) {
@@ -799,6 +825,30 @@ if (html.weekly) {
   if (!html.weekly.includes('class="brf-rows"') || !html.weekly.includes('class="brf-status"') || !html.weekly.includes('class="brf-steps"')) {
     fail("weekly is missing Rows, Status, or Steps");
   }
+  const weeklyHead = sliceBetween(html.weekly, 'id="conclusion"', 'id="page-top"');
+  if (!weeklyHead.includes(">本周主线<") || !weeklyHead.includes('class="brf-callout-lead">结论<')) {
+    fail("W45 page top 本周主线 or 结论 lead changed");
+  }
+  const digestAt = newsPanel.indexOf('<p class="brf-callout-lead">本周精选</p>');
+  const tableAt = newsPanel.indexOf("<table");
+  if (digestAt < 0 || tableAt < 0 || digestAt > tableAt) {
+    fail("W45 panel-news 本周精选 callout is missing or not above the domain tables");
+  }
+  const digestBody = calloutBodies(newsPanel)[0] || "";
+  if (!digestBody.includes(weeklyJson.news_digest)) fail("W45 panel-news digest body drifted");
+  if (!digestBody.includes("非整周合订") || !digestBody.includes("银行/BFSI")) {
+    fail("W45 panel-news digest is missing key fragments");
+  }
+  const weeklyPapers = sliceBetween(html.weekly, 'id="panel-papers"', 'id="panel-github"');
+  if (!calloutLeads(weeklyPapers).includes("本周精选")) fail("W45 papers lead is not 本周精选");
+  assertLeadAbsent("W45 papers", weeklyPapers, ["窗口", "本周看点"]);
+  for (const [name, panel] of [["W45 rising", weeklyRising], ["W45 newcomers", weeklyNew]]) {
+    if (!calloutLeads(panel).includes("本周精选")) fail(`${name} lead is not 本周精选`);
+    assertLeadAbsent(name, panel, ["窗口", "本周看点"]);
+  }
+  const weeklyGhSummary = sliceBetween(html.weekly, 'id="gh-summary"', 'id="panel-decisions"');
+  if (!weeklyGhSummary.includes('class="brf-callout-lead">口径<')) fail("W45 GH 口径 lead changed");
+  if (!finance.includes('class="brf-callout-lead">硬门槛<')) fail("W45 finance lead is no longer 硬门槛");
   assertChrome("weekly", html.weekly);
 }
 
