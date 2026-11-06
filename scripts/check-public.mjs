@@ -91,7 +91,7 @@ if (dailyJson.schema !== "qianji.briefing.daily.v1") fail("daily schema missing"
 if (weeklyJson.schema !== "qianji.briefing.weekly.v1") fail("weekly schema missing");
 if (!Array.isArray(dailyJson.news) || dailyJson.news.length < 1) fail("daily news missing");
 if (!Array.isArray(weeklyJson.decisions) || weeklyJson.decisions.length < 1) fail("weekly decisions missing");
-if (weeklyJson.updated_at !== "2026-11-06T16:58:24+08:00") fail("W45 updated_at drifted from export");
+if (weeklyJson.updated_at !== "2026-11-06T18:27:49+08:00") fail("W45 updated_at drifted from export");
 const exportDigest = "8 条要点表（非整周合订）。主线：银行/BFSI 硬门槛（Arkéa · CRAFTY FALCON · DarkSword）｜Agent/模型供给（Images 2.6 · GPT-6 Cyber · Claude Finance/Hooks · ARTEX）｜币安提现恢复簇。政经角见「政治金融」。";
 if (weeklyJson.news_digest !== exportDigest) fail("W45 news_digest missing or drifted from export");
 
