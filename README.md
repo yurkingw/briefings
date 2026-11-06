@@ -46,6 +46,8 @@ This repository does not receive pushes from 千机阁. Add a briefing with a pu
 4. Keep the public strip rules: no canvas ids, store or internal URLs, `/workspace` paths, routine folder ids, Home pagination or post counts, exact Home impression counts, or raw internal package names. Mark uncertain amounts `unconfirmed` instead of stating them as fact. `metrics.home_related` stays an `a/b` ratio.
 5. Open a pull request. CI runs `npm test`.
 
+Same-day update: `node scripts/ingest-daily.mjs path/to/YYYY-MM-DD.json` overwrites `content/daily/YYYY-MM-DD.json` and `.md`. Then open one pull request. No extra service or workflow.
+
 `workflow_dispatch` does not fetch a private archive.
 
 ## GitHub Pages
