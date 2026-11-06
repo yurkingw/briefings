@@ -11,23 +11,23 @@ function fail(message) {
   process.exit(1);
 }
 
-function flattenLinks(links, notes) {
+function normalizeLinks(links, notes) {
   if (links == null) return links;
-  if (!Array.isArray(links)) fail("news.links must be an array when present");
-  const urls = [];
+  if (!Array.isArray(links)) fail("links must be an array when present");
+  const out = [];
   for (const link of links) {
     if (typeof link === "string") {
-      urls.push(link);
+      out.push(link);
       continue;
     }
     if (link && typeof link === "object" && typeof link.url === "string") {
-      urls.push(link.url);
       if (link.label) notes.linkLabels += 1;
+      out.push(link.label ? { label: link.label, url: link.url } : link.url);
       continue;
     }
     notes.droppedLinks += 1;
   }
-  return urls;
+  return out;
 }
 
 function markSoftAmount(value, notes) {
@@ -90,6 +90,15 @@ function renderMarkdown(data, notes) {
   lines.push("");
   lines.push("源 JSON 无独立主线字段，本段沿用 summary，未另写主线。");
   lines.push("");
+  lines.push("## 政治金融");
+  lines.push("");
+  lines.push("| # | 角 | 标题 | 波次 | 详卡 |");
+  lines.push("|---|----|------|------|------|");
+  for (const item of data.polfin || []) {
+    lines.push(`| ${cell(item.id)} | ${cell(item.angle)} | ${cell(item.title)} | ${cell(item.wave)} | ${yn(item.detail)} |`);
+  }
+  if (!(data.polfin || []).length) lines.push("| — | — | 今日无新（政治金融） | — | — |");
+  lines.push("");
   lines.push("## 要闻");
   lines.push("");
   lines.push("| # | 领域 | 标题 | 通路 | finsec | 硬门槛 | 详卡 |");
@@ -112,7 +121,9 @@ function renderMarkdown(data, notes) {
       if (item.arch_impact) lines.push(`- **架构冲击**：${item.arch_impact}`);
       if (item.channel) lines.push(`- **通路**：${item.channel}`);
       if (item.first_source_at) lines.push(`- **最早来源·时间**：${item.first_source_at}`);
-      if (item.links?.length) lines.push(`- **链接**：${item.links.join(" · ")}`);
+      if (item.links?.length) {
+        lines.push(`- **链接**：${item.links.map((link) => (typeof link === "string" ? link : link.url)).join(" · ")}`);
+      }
       lines.push("");
     }
   }
@@ -183,7 +194,7 @@ function collectNotes(data, notes) {
   if (truncated) lines.push(`${truncated} 条 slogan 或 what 在源中已截断，未补全。`);
   const noArch = (data.news || []).filter((item) => item.detail === true && !item.arch_impact).length;
   if (noArch) lines.push(`${noArch} 张详卡没有架构冲击，页内不单列该行。`);
-  if (notes.linkLabels) lines.push(`链接从带标签对象收成 ${notes.linkLabels} 条 URL，展示名由网址派生。`);
+  if (notes.linkLabels) lines.push(`保留 ${notes.linkLabels} 条带标签链接，表内只显示短标。`);
   if (notes.droppedLinks) lines.push(`丢弃 ${notes.droppedLinks} 条没有可用 URL 的链接。`);
   if (notes.markedAmounts) lines.push(`${notes.markedAmounts} 处源文字自带量级、叙事或回顾称的金额已标 unconfirmed。`);
   if (data.github?.meta?.sources_missing?.length) {
@@ -206,8 +217,10 @@ if (data.schema !== "qianji.briefing.daily.v1") fail(`schema must be qianji.brie
 if (!/^\d{4}-\d{2}-\d{2}$/.test(data.date || "")) fail("date must be YYYY-MM-DD");
 
 const notes = { linkLabels: 0, droppedLinks: 0, markedAmounts: 0, lines: [] };
-if (Array.isArray(data.news)) {
-  data.news = data.news.map((item) => ({ ...item, links: flattenLinks(item.links, notes) }));
+for (const key of ["news", "polfin"]) {
+  if (Array.isArray(data[key])) {
+    data[key] = data[key].map((item) => ({ ...item, links: normalizeLinks(item.links, notes) }));
+  }
 }
 data = walkStrings(data, notes);
 data = stripValue(data);

@@ -15,6 +15,13 @@
 {% set steps = decisions | saSteps %}
 {% set judgments = decisions | finalJudgments %}
 {% set groups = news | newsGroups %}
+{% set polfin = briefing.polfin if briefing.polfin else [] %}
+{% set polfinMorning = polfin | waveItems("morning") %}
+{% set polfinAfternoon = polfin | waveItems("afternoon") %}
+{% set polfinDefault = { news: polfin, wave: briefing.wave } | defaultWave %}
+{% set paperCap = 5 if isDaily else 6 %}
+{% set paperLead = briefing.papers | takeFeatured(paperCap) if briefing.papers else [] %}
+{% set paperRest = briefing.papers | takeRest(paperCap) if briefing.papers else [] %}
 
 <div class="page-head">
   <p class="kicker">
@@ -85,7 +92,7 @@
                 <td data-label="#">{{ loop.index }}</td>
                 <td data-label="领域" lang="zh-Hans">{{ item.domain }}</td>
                 <td class="col-title" data-label="标题" lang="zh-Hans">
-                  <span class="cell-title">{{ item | displayTitle }}</span>
+                  <span class="cell-short is-title" title="{{ item | displayTitle }}">{{ item | displayTitle }}</span>
                   {% if item.finsec === true or item.hard_gate === true %}
                   <span class="brf-status-row">
                     {% if item.finsec === true %}<span class="brf-status">finsec</span>{% endif %}
@@ -115,34 +122,134 @@
     {% endif %}
   </section>
 
+  <section class="page-panel" id="panel-polfin" role="tabpanel" aria-labelledby="tab-polfin" hidden inert>
+    {% if isDaily %}
+    {% if not polfin.length %}
+    <p class="empty">今日无新（政治金融）</p>
+    {% endif %}
+    <div class="sub-tabs seg" role="tablist" aria-label="波次">
+      <button type="button" role="tab" id="tab-pf-morning" data-tab="morning" aria-controls="pf-wave-morning" aria-selected="{{ "true" if polfinDefault == "morning" else "false" }}" tabindex="{{ "0" if polfinDefault == "morning" else "-1" }}">晨间</button>
+      <span class="seg-gap" aria-hidden="true">·</span>
+      <button type="button" role="tab" id="tab-pf-afternoon" data-tab="afternoon" aria-controls="pf-wave-afternoon" aria-selected="{{ "true" if polfinDefault == "afternoon" else "false" }}" tabindex="{{ "0" if polfinDefault == "afternoon" else "-1" }}">午间</button>
+    </div>
+    <div class="sub-panel" id="pf-wave-morning" role="tabpanel" aria-labelledby="tab-pf-morning"{% if polfinDefault != "morning" %} hidden inert{% endif %}>
+      {{ ui.newsDaily(polfinMorning, false, "polfin-morning", "polfin") }}
+    </div>
+    <div class="sub-panel" id="pf-wave-afternoon" role="tabpanel" aria-labelledby="tab-pf-afternoon"{% if polfinDefault != "afternoon" %} hidden inert{% endif %}>
+      {{ ui.newsDaily(polfinAfternoon, false, "polfin-afternoon", "polfin") }}
+    </div>
+    {% elif polfin.length %}
+    {% set pfLead = polfin | takeFeatured(10) %}
+    {% set pfRest = polfin | takeRest(10) %}
+    <section class="block hot-picks" id="polfin-hot">
+      <h2>本周精选</h2>
+      <ol class="hot hot-list">
+        {% for item in pfLead %}
+        <li><a class="hot-jump hit-row" href="#note-{{ item.id }}"><span class="hot-index">{{ loop.index }}</span><span class="hot-title" lang="zh-Hans">{{ item | displayTitle }}</span></a></li>
+        {% endfor %}
+      </ol>
+    </section>
+    <div class="detail-cards">
+      {% for item in pfLead %}
+      {{ ui.detailCard(item) }}
+      {% endfor %}
+    </div>
+    {% if pfRest.length %}
+    <section class="block" id="polfin-rest">
+      <h2>其余要点</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">角</th>
+              <th scope="col">标题</th>
+              <th scope="col">通路</th>
+              <th scope="col">最早源时</th>
+              <th scope="col">链接</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in pfRest %}
+            <tr>
+              <td data-label="#">{{ item.id }}</td>
+              <td data-label="角" lang="zh-Hans">{{ item | itemKicker }}</td>
+              <td class="col-title" data-label="标题" lang="zh-Hans"><span class="cell-short is-title" title="{{ item | displayTitle }}">{{ item | displayTitle }}</span></td>
+              <td data-label="通路" lang="zh-Hans">{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
+              <td data-label="最早源时" lang="zh-Hans">{% if item.first_source_at %}{{ item.first_source_at }}{% else %}—{% endif %}</td>
+              <td data-label="链接">{{ ui.cellLinks(item.links) }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endif %}
+    {% else %}
+    {{ ui.callout("状态", "本窗口尚未写入政治金融。", "info") }}
+    {% endif %}
+  </section>
+
   <section class="page-panel" id="panel-papers" role="tabpanel" aria-labelledby="tab-papers" hidden inert>
     {% if showPapers %}
     {% if windowText %}{{ ui.callout("窗口", windowText, "info") }}{% endif %}
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">短名</th>
-            <th scope="col">抢了什么</th>
-            <th scope="col">为何值得看</th>
-            <th scope="col">链接</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for paper in briefing.papers %}
-          <tr>
-            <td class="col-title" data-label="短名" lang="zh-Hans">{{ paper.short }}</td>
-            <td data-label="抢了什么" lang="zh-Hans">{% if paper.what %}{{ paper.what }}{% else %}—{% endif %}</td>
-            <td data-label="为何值得看" lang="zh-Hans">{% if paper.why %}{{ paper.why }}{% else %}—{% endif %}</td>
-            <td data-label="链接">
-              <a class="paper-main" href="{{ paper.url }}" title="{{ paper.url }}" target="_blank" rel="noopener noreferrer">{{ paper.url | linkLabel }}</a>
-              {% if paper.dair_url %}<a class="paper-dair" href="{{ paper.dair_url }}" title="{{ paper.dair_url }}" target="_blank" rel="noopener noreferrer">DAIR</a>{% endif %}
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    {% if paperLead.length %}
+    <section class="block hot-picks" id="papers-hot">
+      <h2>{% if isDaily %}本波必读{% else %}本周必读{% endif %}</h2>
+      <ol class="hot hot-list">
+        {% for paper in paperLead %}
+        <li><a class="hot-jump hit-row" href="#paper-{{ loop.index }}"><span class="hot-index">{{ loop.index }}</span><span class="hot-title cell-short" title="{{ paper.short }}">{{ paper.short }}</span></a></li>
+        {% endfor %}
+      </ol>
+    </section>
+    <div class="paper-cards">
+      {% for paper in paperLead %}
+      {% set fields = paper | paperFields %}
+      <article class="paper-card" id="paper-{{ loop.index }}">
+        <h3 class="card-title" title="{{ paper.short }}">#{{ loop.index }} · <span class="cell-short">{{ paper.short }}</span></h3>
+        <dl class="brf-properties">
+          <div class="brf-properties-row"><dt>抢了什么</dt><dd lang="zh-Hans">{{ fields.grabbed }}</dd></div>
+          <div class="brf-properties-row"><dt>要点</dt><dd lang="zh-Hans">{{ fields.points }}</dd></div>
+          <div class="brf-properties-row"><dt>为何值得看</dt><dd lang="zh-Hans">{{ fields.why }}</dd></div>
+          <div class="brf-properties-row"><dt>链接</dt><dd>
+            {% for view in paper | paperLinkList %}
+            <a class="{{ "paper-dair" if view.label == "DAIR" else "paper-main" }}" href="{{ view.href }}" title="{{ view.title }}" target="_blank" rel="noopener noreferrer">{{ view.label }}</a>
+            {% endfor %}
+          </dd></div>
+        </dl>
+      </article>
+      {% endfor %}
     </div>
+    {% endif %}
+    {% if paperRest.length %}
+    <section class="block" id="papers-rest">
+      <h2>其余论文</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">短名</th>
+              <th scope="col">抢了什么</th>
+              <th scope="col">为何值得看</th>
+              <th scope="col">链接</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for paper in paperRest %}
+            <tr>
+              <td data-label="#">{{ loop.index }}</td>
+              <td class="col-short" data-label="短名" lang="zh-Hans"><span class="cell-short" title="{{ paper.short }}">{{ paper.short }}</span></td>
+              <td data-label="抢了什么" lang="zh-Hans">{% if paper.what %}{{ paper.what }}{% else %}—{% endif %}</td>
+              <td data-label="为何值得看" lang="zh-Hans">{% if paper.why %}{{ paper.why }}{% else %}—{% endif %}</td>
+              <td data-label="链接">{{ ui.cellLinks(paper | paperLinkList) }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endif %}
     {% else %}
     {{ ui.callout("状态", "本日尚未写入。" if isDaily else "本窗口尚未写入周精选。", "info") }}
     {% endif %}
@@ -165,6 +272,7 @@
         <thead>
           <tr>
             <th scope="col">#</th>
+            <th scope="col">栏</th>
             <th scope="col">领域</th>
             <th scope="col">标题</th>
             <th scope="col">波次</th>
@@ -177,14 +285,27 @@
           {% for item in news %}
           <tr>
             <td data-label="#">{{ item.id }}</td>
+            <td data-label="栏">要闻</td>
             <td data-label="领域" lang="zh-Hans">{{ item.domain }}</td>
             <td class="col-title" data-label="标题" lang="zh-Hans">
-              <span class="cell-title">{{ item | displayTitle }}</span>
+              <span class="cell-short is-title" title="{{ item | displayTitle }}">{{ item | displayTitle }}</span>
               {% if item.hard_gate === true %}<span class="brf-status-row"><span class="brf-status" data-tone="danger">硬门槛</span></span>{% endif %}
             </td>
             <td data-label="波次" lang="zh-Hans">{% if item.wave %}{{ item.wave }}{% else %}—{% endif %}</td>
             <td data-label="通路" lang="zh-Hans">{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
             <td data-label="finsec">{% if item.finsec === true %}<span class="brf-status">finsec</span>{% else %}—{% endif %}</td>
+            <td data-label="链接">{{ ui.cellLinks(item.links) }}</td>
+          </tr>
+          {% endfor %}
+          {% for item in polfin %}
+          <tr>
+            <td data-label="#">{{ item.id }}</td>
+            <td data-label="栏">政治金融</td>
+            <td data-label="领域" lang="zh-Hans">{{ item | itemKicker }}</td>
+            <td class="col-title" data-label="标题" lang="zh-Hans"><span class="cell-short is-title" title="{{ item | displayTitle }}">{{ item | displayTitle }}</span></td>
+            <td data-label="波次" lang="zh-Hans">{% if item.wave %}{{ item.wave }}{% else %}—{% endif %}</td>
+            <td data-label="通路" lang="zh-Hans">{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
+            <td data-label="finsec">{% if item.finsec === true or item.hard_gate === true %}<span class="brf-status">finsec</span>{% else %}—{% endif %}</td>
             <td data-label="链接">{{ ui.cellLinks(item.links) }}</td>
           </tr>
           {% endfor %}

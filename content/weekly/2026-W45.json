@@ -2,161 +2,277 @@
   "schema": "qianji.briefing.weekly.v1",
   "week": "2026-W45",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-05T18:50:00+08:00",
-  "sample": true,
-  "sample_note": "ISO 周样例（截至 2026-11-05 周四公开主线）；非正式周五周报定稿。已剔除内部画布标识、私有存储链接、本机工作区路径与例行标识。勿将样例金额精确值当已确认事实。",
-  "summary": "本周公开主线：Arkéa 官方确认银行攻击（量级约 $133M 叙事 unconfirmed 精确值）；CERT-In CRAFTY FALCON；OpenAI Images 2.6 + 948 LPE 管线；GitBook AI Agent 攻入与 FlashProve 等 AI 产品/安全叙事；人才侧 Cat Wu/Austin Lau→OpenAI。",
+  "updated_at": "2026-11-06T13:58:13+08:00",
+  "window": {
+    "from": "2026-11-02",
+    "to": "2026-11-06",
+    "note": "周五检阅窗；ISO 周至周日未满"
+  },
+  "summary": "本周主线三线并行：① 银行/BFSI 硬门槛（Arkéa 官方确认；CERT-In CRAFTY FALCON；DarkSword 自托管 Safari）② 政经制裁与数字银行政治（Ueno/巴拉圭；Treasury 假船旗；StateDept 对古+中籍供应商；SEC 加密券商规则进 OIRA）③ Agent/模型供给（Images 2.6、948 LPE、GPT-6 Cyber、Claude Finance/Hooks、ARTEX 扫密钥）。PolFin 周精选 5；要闻精选 8；论文 8；GH 涨星 10/新锐 8；决策卡 2。改帽≤10；非整周合订。",
   "metrics": {
-    "news_featured": 5,
-    "papers_featured": 3,
-    "gh_featured": 4,
+    "news_featured": 8,
+    "polfin": 5,
+    "papers_featured": 8,
+    "gh_rising": 10,
+    "gh_newcomers": 8,
     "decisions": 2
   },
-  "decisions": [
-    {
-      "title": "银行自有账户/出金 API 信任链：Arkéa 官方确认 + CERT-In CRAFTY FALCON",
-      "happened": "Crédit Mutuel Arkéa 官方确认遭网络攻击：攻击者使用银行自有账户向他行转账，再可能换成加密资产；客户账户无资金损失；对约 €1.18 亿/$133M 叙事不确认精确数字但可验证数量级（标 unconfirmed）。印度 CERT-In 警告 AI 辅助团伙 CRAFTY FALCON 针对加密交易所/BFSI：脆弱应用、暴露测试环境、云设施与支付/出金 API，窃取钱包密钥抽干资金。",
-      "why": "官方确认把链上嫌疑升级为银行网络安全事件；监管硬预警把「出金 API + 预发环境 + 共享密钥」写成同一失败模式。",
-      "arch_impact": "金库/自有账户支付指令、第三方平台入口、出金 API 与非生产隔离成为同一控制面；DORA 报告与 7×24 监测义务前置。",
-      "control_domains": [
-        "资金安全",
-        "出金/支付 API",
-        "第三方平台信任链",
-        "预发/测试环境隔离",
-        "密钥与凭据治理"
-      ],
-      "actions_p0": [
-        "盘点自有账户/金库支付指令审批与异常转账熔断",
-        "出金与支付 API 强制独立密钥、去共享凭据、加速率/地理异常闸",
-        "非生产环境与生产支付面网络隔离；关闭暴露测试入口"
-      ],
-      "actions_p1": [
-        "对接链上标签/合规预言机做入金与混币池闸门（Privacy Cash 类余波）",
-        "按 CERT-In 建议补 7×24 监测与事件升级剧本",
-        "第三方平台接入面做供应商安全问卷与会话审计"
-      ],
-      "actions_p2": [
-        "演练「银行侧确认 vs 链上叙事」口径表（精确金额标 unconfirmed）",
-        "汇总 BFSI/交易所同类顾问进入季度威胁模型"
-      ],
-      "judgment": [
-        "精确被盗金额在银行未书面确认前一律 unconfirmed",
-        "硬门槛已触发：官方确认 + 监管预警，不可当「仅社媒噪音」"
-      ]
-    },
-    {
-      "title": "Agent 攻防规模化：OpenAI 948 LPE 管线 vs 应用层 Security Reviews / GitBook AI Agent",
-      "happened": "OpenAI 披露自主漏洞发现/利用/补丁管线单次产出 948 个互异 Linux LPE（候选补丁≠已合并上游；威胁模型为本地提权）。Vercel Security Reviews 约 24h 识别 6817、Agent 修补 1411。同周公开主线还包括 GitBook AI Agent 攻入叙事与 FlashProve 等（见要闻精选；细节以各日权威 Page 为准）。",
-      "why": "攻方把找洞→打洞→出补丁批量化；守方把应用评审吞吐产品化——防守节奏与披露容量被重写。",
-      "arch_impact": "端点/多租户假设「低权账户有界」变脆；应用层依赖 Agent 修洞需审计误报与合并门禁；文档/知识库 Agent 写入面成为新攻击面。",
-      "control_domains": [
-        "端点与本地提权",
-        "补丁与披露容量",
-        "应用层安全评审",
-        "Agent 写入/工具权限",
-        "供应链与文档站点"
-      ],
-      "actions_p0": [
-        "加速 Linux 桌面/服务器本地提权补丁队列；限制低权持久账户",
-        "Agent 自动开 PR/修洞须人工门禁与回滚开关"
-      ],
-      "actions_p1": [
-        "对 GitBook/文档站 AI Agent 权限做最小写入与审计日志",
-        "将 Security Review 类产品纳入 CI，但 critical 须人工复核"
-      ],
-      "actions_p2": [
-        "跟踪 FlashProve 等证明/验证向工具对内部安全研究流程的可迁移性（仅公开叙述，不扩未证实细节）"
-      ],
-      "judgment": [
-        "948 为官方自述研究管线结果，不夸大成「已远程破门」",
-        "候选补丁≠上游已修；运营以发行版公告为准"
-      ]
-    }
-  ],
   "news": [
     {
       "id": "W45-N1",
-      "title": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M 叙事；精确金额 unconfirmed）",
-      "domain": "加密",
+      "title": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+      "domain": "加密/银行",
       "why": "金融硬门槛：银行官方落地。",
       "links": [
-        "https://www.cm-arkea.com/arkea/banque/assurances/pa_38386/fr/informations-complementaires-suite-a-l-attaque-dont-le-credit-mutuel-arkea-a-ete-victime"
+        "https://www.cm-arkea.com/arkea/banque/assurances/pa_38386/fr/informations-complementaires-suite-a-l-attaque-dont-le-credit-mutuel-arkea-a-ete-victime",
+        "https://x.com/TheBlockCo/status/2118171691922956310"
       ],
       "finsec": true,
       "hard_gate": true,
-      "sample": true
+      "first_seen": "2026-11-05"
     },
     {
       "id": "W45-N2",
-      "title": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI",
+      "title": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
       "domain": "加密",
-      "why": "监管硬预警 + 出金 API 失败模式。",
+      "why": "监管硬预警 + 出金 API 失败模式；11-06 续热。",
       "links": [
-        "https://cointelegraph.com/news/india-warns-ai-powered-hackers-targeting-crypto-exchanges-at-machine-speed"
+        "https://cointelegraph.com/news/india-warns-ai-powered-hackers-targeting-crypto-exchanges-at-machine-speed",
+        "https://x.com/cz_binance/status/2118194834527887679"
       ],
       "finsec": true,
       "hard_gate": true,
-      "sample": true
+      "first_seen": "2026-11-05"
     },
     {
       "id": "W45-N3",
-      "title": "OpenAI Images 2.6：原生 GIF / 参考图；API Flare/Sunburst",
-      "domain": "AI产品",
-      "why": "官方多模态产品发布。",
+      "title": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+      "domain": "加密",
+      "why": "自托管客户端面硬门槛。",
       "links": [
-        "https://openai.com/index/introducing-images-2-6/"
+        "https://x.com/cz_binance/status/2118534211854626833"
       ],
-      "finsec": false,
-      "hard_gate": false,
-      "sample": true
+      "finsec": true,
+      "hard_gate": true,
+      "first_seen": "2026-11-06"
     },
     {
       "id": "W45-N4",
-      "title": "OpenAI 自主漏洞管线单次 948 个 Linux LPE",
-      "domain": "AI安全",
-      "why": "AI 安全里程碑；LPE 非远程破门。",
+      "title": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+      "domain": "AI产品/AI安全",
+      "why": "官方多模态发布 + AI 安全里程碑（LPE 非远程破门）。",
       "links": [
+        "https://openai.com/index/introducing-images-2-6/",
         "https://openai.com/index/a-thousand-fewer-paths-to-root/"
       ],
       "finsec": false,
       "hard_gate": false,
-      "sample": true
+      "first_seen": "2026-11-05"
     },
     {
       "id": "W45-N5",
-      "title": "同周公开主线精选：GitBook AI Agent 攻入叙事 · FlashProve · Cat Wu/Austin Lau→OpenAI",
-      "domain": "AI产品/AI安全",
-      "why": "周级合并条目（细节见 11-04/11-05 日更权威 Page；本条仅作周精选指针，不扩未公开细节）。",
-      "links": [],
+      "title": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+      "domain": "AI安全",
+      "why": "受控客户开放；续热驱动 LPE 叙事。",
+      "links": [
+        "https://x.com/OpenAI/status/2118390190246879554"
+      ],
       "finsec": false,
       "hard_gate": false,
-      "sample": true
+      "first_seen": "2026-11-06"
+    },
+    {
+      "id": "W45-N6",
+      "title": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+      "domain": "AI产品/金融",
+      "why": "Agent 连银行 + 企业 DLP 钩子同日。",
+      "links": [
+        "https://x.com/claudeai/status/2118403114890137895",
+        "https://claude.com/resources/articles/claude-enterprise-security-updates"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "first_seen": "2026-11-06"
+    },
+    {
+      "id": "W45-N7",
+      "title": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+      "domain": "AI安全",
+      "why": "密钥暴露面被 agentic 工具产品化。",
+      "links": [
+        "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets/",
+        "https://x.com/MsftSecIntel/status/2118491118308352329"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "first_seen": "2026-11-06"
+    },
+    {
+      "id": "W45-N8",
+      "title": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+      "domain": "加密",
+      "why": "周级合并：11-02 恢复/净流出与 11-03 CZ 100%+ 自担。",
+      "links": [
+        "https://x.com/binance/status/2116799757507305516",
+        "https://x.com/cz_binance/status/2117300264738889901"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "first_seen": "2026-11-02"
+    }
+  ],
+  "polfin": [
+    {
+      "id": "pf-20261106-01",
+      "angle": "geo_finance",
+      "title": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+      "background": "南美数字银行集中度与政商关联风险集中爆发；政治危机与存款可得性叠合。",
+      "facts": "NYT Breaking：巴拉圭总统因关联银行倒闭辞职，约半数国民无法使用存款。公开检索指 Ueno Bank 被央行接管/倒闭叙事，影响约 300 万客户。",
+      "why": "数字银行单点承载国民级存款访问；治理失败可瞬间转化为政治与支付系统危机。",
+      "channel": "双通路",
+      "first_source_at": "2026-11-06T06:11:00+08:00",
+      "links": [
+        {
+          "label": "NYT Breaking",
+          "url": "https://x.com/nytimes/status/2118466231107752042"
+        },
+        {
+          "label": "nyti.ms",
+          "url": "https://nyti.ms/4kzsDUy"
+        }
+      ],
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-02",
+      "angle": "industrial_policy",
+      "title": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+      "background": "美中期选举后地方能源/数据中心政策成为 AI 产能约束变量。",
+      "facts": "@GavinSBaker 称得州州长当选人 Gina Hinojosa 明确表示应对目前已获许可的数据中心设限。",
+      "why": "地方收紧已许可数据中心会改写 AI 产能与电力规划；云与模型供应商选址假设需更新。",
+      "channel": "关注流",
+      "first_source_at": "2026-11-06T03:07:00+08:00",
+      "links": [
+        {
+          "label": "GavinSBaker",
+          "url": "https://x.com/GavinSBaker/status/2118420042283102604"
+        }
+      ],
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-03",
+      "angle": "sanctions",
+      "title": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+      "background": "美国对伊朗石油规避制裁的海事欺诈链持续升级。",
+      "facts": "@USTreasury 制裁昌迪加尔籍 Suniel Kumar Sharma 等：称向伊朗影子船队提供假船旗与证书。",
+      "why": "制裁扩到假旗登记中介层，抬高航运/保赔/贸易融资尽调成本。",
+      "channel": "公开",
+      "first_source_at": "2026-11-05T02:43:00+08:00",
+      "links": [
+        {
+          "label": "USTreasury",
+          "url": "https://x.com/USTreasury/status/2118051503982383268"
+        }
+      ],
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-04",
+      "angle": "sanctions",
+      "title": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+      "background": "美国对古巴政权资金与军需供应链施压。",
+      "facts": "@StateDept 宣布不坐视古巴政权资源流向军政精英、离岸网络与外国供应商；报道覆盖中籍电子进口相关主体。",
+      "why": "第三国供应商入清单，抬高对古贸易与支付通道二次制裁风险。",
+      "channel": "公开",
+      "first_source_at": "2026-11-06T05:32:00+08:00",
+      "links": [
+        {
+          "label": "StateDept",
+          "url": "https://x.com/StateDept/status/2118456535320027284"
+        }
+      ],
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-05",
+      "angle": "regulation",
+      "title": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+      "background": "美国加密券商资本、客户资产与记录规则长期缺位；进 OIRA 是程序硬节点≠终裁。",
+      "facts": "多源称 SEC 于 11/3 将 RIN 3235-AN48 提交 OIRA；覆盖净资本、客户保护与记录留存等。",
+      "why": "若推进，传统券商进入加密托管/交易的合规门槛更清晰，也可能提高资本与客户资产隔离成本。",
+      "channel": "公开",
+      "first_source_at": "2026-11-06T04:24:00+08:00",
+      "links": [
+        {
+          "label": "DigPerspectives",
+          "url": "https://x.com/DigPerspectives/status/2118439221426065874"
+        }
+      ],
+      "hard_gate": false,
+      "detail": true
     }
   ],
   "papers": [
     {
+      "short": "LifeVal (OpenAI)",
+      "what": "生活任务愿付价值>$1.7T；169 agent 任务；memory 使胜率 33%→48%。",
+      "why": "有 memory 却找不到用户史实——建带记忆助手必测。",
+      "url": "https://arxiv.org/abs/2611.06687",
+      "dair_url": "https://x.com/dair_ai/status/2118337806120718495"
+    },
+    {
+      "short": "Recursa",
+      "what": "权重不动，自写可验证知识库；法律任务 all-pass 30%→55%。",
+      "why": "与 RSI-Dojo 互补；企业域适配更轻。",
+      "url": "https://arxiv.org/abs/2611.04035",
+      "dair_url": "https://x.com/dair_ai/status/2118362454141100189"
+    },
+    {
+      "short": "ServerBench (CMU)",
+      "what": "coding agent 设计专用 LLM serving；相对 vLLM 达 4.87× 价值指标。",
+      "why": "agent 从写应用扩到调 serving 栈。",
+      "url": "https://arxiv.org/abs/2611.06841",
+      "dair_url": "https://x.com/dair_ai/status/2118339967025815843"
+    },
+    {
       "short": "RSI-Dojo / RSI-Craft",
-      "what": "论文→可执行 post-training 环境；281 任务轨迹微调。",
-      "why": "@dair_ai 11/4；RSI/harness 热潮。",
+      "what": "论文→可执行 post-training；281 任务轨迹微调。",
+      "why": "RSI/harness 热潮可操作入口。",
       "url": "https://arxiv.org/abs/2611.03698",
-      "dair_url": "https://x.com/dair_ai/status/2117990256297513364",
-      "sample": true
+      "dair_url": "https://x.com/dair_ai/status/2117990256297513364"
     },
     {
       "short": "Length is Cheap, Competition is Not",
-      "what": "长上下文失败主因是冲突陈述非长度。",
+      "what": "长上下文失败主因冲突陈述非长度。",
       "why": "改写「靠加窗」；RAG/记忆先去重消歧。",
       "url": "https://arxiv.org/abs/2611.04169",
-      "dair_url": "https://x.com/dair_ai/status/2117958798841434118",
-      "sample": true
+      "dair_url": "https://x.com/dair_ai/status/2117958798841434118"
     },
     {
       "short": "You Don't Need Long Context",
-      "what": "频繁压缩上下文；SWE-bench 近全历史，峰值 32K→8K。",
-      "why": "与上条互补：先压再谈百万窗。",
+      "what": "频繁压缩：SWE-bench 近全历史，峰值 32K→8K。",
+      "why": "先压再谈百万窗成本。",
       "url": "https://arxiv.org/abs/2611.05306",
-      "dair_url": "https://x.com/dair_ai/status/2117957719651139847",
-      "sample": true
+      "dair_url": "https://x.com/dair_ai/status/2117957719651139847"
+    },
+    {
+      "short": "Skill++",
+      "what": "只改技能 name/description；731 技能路由命中 36%→76%。",
+      "why": "Skills 扩库踩踏的工程解法。",
+      "url": "https://arxiv.org/abs/2611.00544",
+      "dair_url": "https://x.com/dair_ai/status/2117612013258228030"
+    },
+    {
+      "short": "Agentic Backdoors (pretrain poison)",
+      "what": "约 0.1% 预训污染植入 CLI agent RCE；后训仍存活。",
+      "why": "与本周 agent 供应链风险共振。",
+      "url": "https://academy.dair.ai/papers/agentic-backdoors-via-pretraining-poisoning-2610.37741",
+      "dair_url": "https://x.com/dair_ai/status/2116949232737522076"
     }
   ],
   "github": {
@@ -165,31 +281,140 @@
         "rank": 1,
         "repo": "agent-desktop",
         "owner": "vercel-labs",
-        "slogan": "给 AI Agent 用的电脑操控 CLI",
-        "gained": 2463,
-        "stars": 15008,
-        "url": "https://github.com/vercel-labs/agent-desktop",
-        "sample": true
+        "slogan": "Computer use CLI for AI agents",
+        "gained_week_approx": 10702,
+        "stars": 16791,
+        "days_seen": [
+          "11-03",
+          "11-04",
+          "11-05",
+          "11-06"
+        ],
+        "url": "https://github.com/vercel-labs/agent-desktop"
       },
       {
         "rank": 2,
-        "repo": "auto-ontology",
-        "owner": "NVIDIA",
-        "slogan": "语义图谱层，让 Agent 检索可解释",
-        "gained": 2053,
-        "stars": 4892,
-        "url": "https://github.com/NVIDIA/auto-ontology",
-        "sample": true
+        "repo": "t3code",
+        "owner": "pingdotgg",
+        "slogan": "t3code",
+        "gained_week_approx": 6323,
+        "stars": 41837,
+        "days_seen": [
+          "11-02",
+          "11-03"
+        ],
+        "url": "https://github.com/pingdotgg/t3code"
       },
       {
         "rank": 3,
+        "repo": "Scrapling",
+        "owner": "D4Vinci",
+        "slogan": "Web scraping framework",
+        "gained_week_approx": 6031,
+        "stars": 97926,
+        "days_seen": [
+          "11-03",
+          "11-04",
+          "11-05",
+          "11-06"
+        ],
+        "url": "https://github.com/D4Vinci/Scrapling"
+      },
+      {
+        "rank": 4,
         "repo": "claude-mem",
         "owner": "thedotmack",
-        "slogan": "跨会话记住并回注 Agent 上下文",
-        "gained": 1165,
+        "slogan": "跨会话 Agent 记忆",
+        "gained_week_approx": 5633,
         "stars": 112817,
-        "url": "https://github.com/thedotmack/claude-mem",
-        "sample": true
+        "days_seen": [
+          "11-02",
+          "11-03",
+          "11-04",
+          "11-05"
+        ],
+        "url": "https://github.com/thedotmack/claude-mem"
+      },
+      {
+        "rank": 5,
+        "repo": "auto-ontology",
+        "owner": "NVIDIA",
+        "slogan": "语义图谱层，Agent 检索可解释",
+        "gained_week_approx": 4760,
+        "stars": 7255,
+        "days_seen": [
+          "11-05",
+          "11-06"
+        ],
+        "url": "https://github.com/NVIDIA/auto-ontology"
+      },
+      {
+        "rank": 6,
+        "repo": "skills",
+        "owner": "mattpocock",
+        "slogan": "Skills for Real Engineers",
+        "gained_week_approx": 4075,
+        "stars": 315166,
+        "days_seen": [
+          "11-03",
+          "11-04",
+          "11-06"
+        ],
+        "url": "https://github.com/mattpocock/skills"
+      },
+      {
+        "rank": 7,
+        "repo": "Claude-Code-Game-Studios",
+        "owner": "Donchitos",
+        "slogan": "Claude Code game studios",
+        "gained_week_approx": 3528,
+        "stars": 34830,
+        "days_seen": [
+          "11-02",
+          "11-03",
+          "11-04"
+        ],
+        "url": "https://github.com/Donchitos/Claude-Code-Game-Studios"
+      },
+      {
+        "rank": 8,
+        "repo": "DiscImageStudio",
+        "owner": "JiaFeiMiao-K-Cat",
+        "slogan": "DiscImageStudio",
+        "gained_week_approx": 2769,
+        "stars": 7247,
+        "days_seen": [
+          "11-05",
+          "11-06"
+        ],
+        "url": "https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio"
+      },
+      {
+        "rank": 9,
+        "repo": "floci",
+        "owner": "floci-io",
+        "slogan": "floci",
+        "gained_week_approx": 2348,
+        "stars": 30379,
+        "days_seen": [
+          "11-04",
+          "11-05",
+          "11-06"
+        ],
+        "url": "https://github.com/floci-io/floci"
+      },
+      {
+        "rank": 10,
+        "repo": "skills",
+        "owner": "scenario-labs",
+        "slogan": "scenario-labs skills",
+        "gained_week_approx": 2050,
+        "stars": 3032,
+        "days_seen": [
+          "11-05",
+          "11-06"
+        ],
+        "url": "https://github.com/scenario-labs/skills"
       }
     ],
     "newcomers": [
@@ -197,33 +422,165 @@
         "rank": 1,
         "repo": "agent-autoloop",
         "owner": "KKKKhazix",
-        "slogan": "命令行 Agent 后台自己接活",
+        "slogan": "命令行 Agent 后台接活",
         "stars": 2462,
-        "age_h": 40,
-        "url": "https://github.com/KKKKhazix/agent-autoloop",
-        "sample": true
+        "days_seen": [
+          "11-04",
+          "11-05"
+        ],
+        "url": "https://github.com/KKKKhazix/agent-autoloop"
       },
       {
         "rank": 2,
         "repo": "terminal-mac",
         "owner": "govijr",
-        "slogan": "终端里跑整台 macOS",
+        "slogan": "终端里跑 macOS",
         "stars": 1499,
-        "age_h": 44.7,
-        "url": "https://github.com/govijr/terminal-mac",
-        "sample": true
+        "days_seen": [
+          "11-04",
+          "11-05"
+        ],
+        "url": "https://github.com/govijr/terminal-mac"
+      },
+      {
+        "rank": 3,
+        "repo": "HGhub",
+        "owner": "Minireel",
+        "stars": 631,
+        "days_seen": [
+          "11-05"
+        ],
+        "url": "https://github.com/Minireel/HGhub"
+      },
+      {
+        "rank": 4,
+        "repo": "personal-data-deletor-osint",
+        "owner": "brightsongwrath",
+        "stars": 573,
+        "days_seen": [
+          "11-04",
+          "11-05"
+        ],
+        "url": "https://github.com/brightsongwrath/personal-data-deletor-osint"
+      },
+      {
+        "rank": 5,
+        "repo": "muse4ai",
+        "owner": "andrew-babo",
+        "stars": 487,
+        "days_seen": [
+          "11-05"
+        ],
+        "url": "https://github.com/andrew-babo/muse4ai"
+      },
+      {
+        "rank": 6,
+        "repo": "java-mod-rust-port-tool",
+        "owner": "Wallbycontact",
+        "stars": 408,
+        "days_seen": [
+          "11-06"
+        ],
+        "url": "https://github.com/Wallbycontact/java-mod-rust-port-tool"
+      },
+      {
+        "rank": 7,
+        "repo": "pixel-gif-sticker-pack",
+        "owner": "WoYun520",
+        "stars": 405,
+        "days_seen": [
+          "11-06"
+        ],
+        "url": "https://github.com/WoYun520/pixel-gif-sticker-pack"
+      },
+      {
+        "rank": 8,
+        "repo": "stack-diagram",
+        "owner": "caru-ini",
+        "stars": 344,
+        "days_seen": [
+          "11-02"
+        ],
+        "url": "https://github.com/caru-ini/stack-diagram"
       }
     ],
     "meta": {
-      "note": "周精选摘自 2026-11-05 日榜；Archive 缺源未周聚合。",
+      "note": "周涨星=日榜 gained 累加（11-02–11-06）；非 WatchEvent 真差量。",
       "archive": "missing",
-      "sample": true
+      "gitstock": "ok_except_2026-11-06_missing"
     }
   },
+  "decisions": [
+    {
+      "title": "银行自有账户/出金 API 信任链：Arkéa 官方确认 + CERT-In CRAFTY FALCON",
+      "happened": "Arkéa 官方确认遭网络攻击：攻击者使用银行自有账户向他行转账，再可能换成加密资产；客户账户无资金损失；约 $133M/€100M 叙事标 unconfirmed。CERT-In 警告 CRAFTY FALCON 瞄准 BFSI/加密：脆弱应用、暴露测试环境、支付/出金 API。",
+      "why": "官方确认升级为银行网络安全事件；监管硬预警把出金 API+预发+共享密钥写成同一失败模式。",
+      "arch_impact": "金库/自有账户支付指令、第三方入口、出金 API 与非生产隔离同一控制面。",
+      "control_domains": [
+        "资金安全",
+        "出金/支付 API",
+        "第三方平台信任链",
+        "预发/测试环境隔离",
+        "密钥与凭据治理"
+      ],
+      "actions_p0": [
+        "盘点自有账户支付指令审批与异常转账熔断",
+        "出金 API 独立密钥、去共享凭据、速率/地理闸",
+        "非生产与生产支付面隔离；关闭暴露测试入口"
+      ],
+      "actions_p1": [
+        "按 CERT-In 建议补 7×24 监测与事件升级剧本",
+        "第三方平台接入面供应商安全问卷与会话审计"
+      ],
+      "actions_p2": [
+        "演练「银行侧确认 vs 链上叙事」口径表（精确金额 unconfirmed）",
+        "汇总 BFSI/交易所同类顾问进入季度威胁模型"
+      ],
+      "judgment": [
+        "精确被盗金额在银行未书面确认前一律 unconfirmed",
+        "硬门槛已触发：官方确认 + 监管预警"
+      ]
+    },
+    {
+      "title": "自托管钱包客户端面 + Agent 连银行：DarkSword / Claude Personal Finance",
+      "happened": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级。Claude Personal Finance（美区 beta）经 Plaid 只读连银行；Inference Hooks GA 可过企业 DLP。",
+      "why": "浏览器/WebView 仍是自托管弱点；Agent 银行连接需分权与审计。",
+      "arch_impact": "移动 Safari/WebView 基线、钱包升级 SLA、Plaid/OAuth 只读范围、Agent 工具出站与 DLP。",
+      "control_domains": [
+        "终端",
+        "IAM",
+        "变更",
+        "合规/考试",
+        "事件"
+      ],
+      "actions_p0": [
+        "对照 DarkSword 升级指引；资金操作机核对 Safari/系统版本"
+      ],
+      "actions_p1": [
+        "Plaid/只读范围抽样；Inference Hooks/DLP 覆盖提示词与工具",
+        "扫 GitHub 密钥与 ARTEX 类 agentic 侦察面并轮换"
+      ],
+      "actions_p2": [
+        "禁止生产凭证进消费级 Agent；高净值自托管改硬件或隔离浏览器"
+      ],
+      "judgment": [
+        "只读聚合不等于无欺诈面",
+        "客户侧钱包与机构侧 Agent 银行连接同入威胁模型"
+      ]
+    }
+  ],
   "sources": [
-    "本周公开「今日情报」日更主线（11-02…11-05）",
-    "OpenAI / Arkéa / CERT-In / Axios 等站外公告与报道",
-    "@dair_ai 论文窗",
-    "GitStock + Trending（日榜；Archive 缺源）"
+    "千机阁台账 qianji-2026-11-02…11-06 与 briefings/daily/2026-11-06.json",
+    "OpenAI / Anthropic / Microsoft / Arkéa / CERT-In / USTreasury / StateDept 等公开通告与报道",
+    "@dair_ai 论文窗 11-03…11-06",
+    "GitStock + GitHub Trending 日榜（Archive 缺源；11-06 GitStock 缺源）"
+  ],
+  "gaps": [
+    "GH Archive 全周缺源——周涨星为日热榜 gained 累加，非 WatchEvent 真差量",
+    "2026-11-06 GitStock 缺源",
+    "11-02…11-05 尚无独立 daily JSON export（以台账/items 与 11-06 daily 为准）",
+    "PolFin 栏自 11-06 起建；周精选目前仅覆盖当日迁栏+新扫 5 条，更早政经角未回溯重标",
+    "Arkéa 精确金额与部分二手 X News 标 unconfirmed",
+    "ISO 周至周日未满；本版为周五检阅窗"
   ]
 }

@@ -2,16 +2,24 @@
   "schema": "qianji.briefing.daily.v1",
   "date": "2026-11-06",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-06T12:41:19+08:00",
-  "wave": "午间",
-  "summary": "午间 +9（详卡6）：Claude Personal Finance；Inference Hooks GA；微软 ARTEX 扫 GitHub 密钥；Paint CVE-2026-83844；【硬门槛】DarkSword/CZ 升 iOS。全日要闻 29（晨20+午9）；论文3与 GitHub 双榜未改。",
+  "updated_at": "2026-11-06T13:58:00+08:00",
+  "wave": "§11改帽检阅重出·晨午同页",
+  "summary": "§11 改帽检阅重出（原上限不足10→≤10；不必强凑满）。要闻27（晨18/午9；详卡7+6）；PolFin7（晨3/午4；详卡7）；论文3；GH涨星/新锐各Top10。增量：MOEX开BTC、众院民主党加密监管案。公网未动。",
   "metrics": {
-    "news": 29,
-    "finsec": 15,
+    "news": 27,
+    "news_morning": 18,
+    "news_noon": 9,
+    "news_detail_morning": 7,
+    "news_detail_noon": 6,
+    "polfin": 7,
+    "polfin_morning": 3,
+    "polfin_noon": 4,
+    "polfin_detail": 7,
+    "finsec": 14,
     "papers": 3,
     "gh_rising": 10,
     "gh_newcomers": 10,
-    "home_related": "18/29"
+    "home_related": "16/27"
   },
   "news": [
     {
@@ -26,9 +34,18 @@
       "channel": "双通路",
       "first_source_at": "2026-11-06 01:09",
       "links": [
-        "https://x.com/OpenAI/status/2118390190246879554",
-        "https://x.com/thsottiaux/status/2118402103907655903",
-        "https://x.com/testingcatalog/status/2118390979459776709"
+        {
+          "label": "OpenAI 官方帖",
+          "url": "https://x.com/OpenAI/status/2118390190246879554"
+        },
+        {
+          "label": "thsottiaux Daybreak Red",
+          "url": "https://x.com/thsottiaux/status/2118402103907655903"
+        },
+        {
+          "label": "testingcatalog 摘要",
+          "url": "https://x.com/testingcatalog/status/2118390979459776709"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -46,9 +63,18 @@
       "channel": "双通路",
       "first_source_at": "2026-11-06 05:41",
       "links": [
-        "https://x.com/cursor_ai/status/2118458629091426304",
-        "https://x.com/vercel/status/2118464668444557411",
-        "https://vercel.com/for/platforms"
+        {
+          "label": "Cursor 官方",
+          "url": "https://x.com/cursor_ai/status/2118458629091426304"
+        },
+        {
+          "label": "Vercel×Cursor",
+          "url": "https://x.com/vercel/status/2118464668444557411"
+        },
+        {
+          "label": "Vercel for Platforms",
+          "url": "https://vercel.com/for/platforms"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -66,7 +92,10 @@
       "channel": "关注流",
       "first_source_at": "2026-11-06 02:12",
       "links": [
-        "https://x.com/GeminiApp/status/2118406227533435391"
+        {
+          "label": "GeminiApp",
+          "url": "https://x.com/GeminiApp/status/2118406227533435391"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -84,7 +113,10 @@
       "channel": "关注流",
       "first_source_at": "2026-11-06 06:24",
       "links": [
-        "https://x.com/thsottiaux/status/2118469621011677521"
+        {
+          "label": "thsottiaux 统计",
+          "url": "https://x.com/thsottiaux/status/2118469621011677521"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -102,8 +134,14 @@
       "channel": "公开",
       "first_source_at": "2026-11-06 04:19",
       "links": [
-        "https://x.com/vercel/status/2118438184594149784",
-        "https://vercel.com/blog/introducing-vercel-schedules"
+        {
+          "label": "Vercel 公告帖",
+          "url": "https://x.com/vercel/status/2118438184594149784"
+        },
+        {
+          "label": "博文",
+          "url": "https://vercel.com/blog/introducing-vercel-schedules"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -121,7 +159,10 @@
       "channel": "关注流",
       "first_source_at": "2026-11-06 03:59",
       "links": [
-        "https://x.com/AndrewCurran_/status/2118433070428852592"
+        {
+          "label": "AndrewCurran_ Model 4",
+          "url": "https://x.com/AndrewCurran_/status/2118433070428852592"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -139,7 +180,10 @@
       "channel": "关注流",
       "first_source_at": "2026-11-06 03:08",
       "links": [
-        "https://x.com/AndrewCurran_/status/2118420279882092681"
+        {
+          "label": "AndrewCurran_ RSP",
+          "url": "https://x.com/AndrewCurran_/status/2118420279882092681"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -157,7 +201,10 @@
       "channel": "关注流",
       "first_source_at": "2026-11-06 06:14",
       "links": [
-        "https://x.com/AndrewCurran_/status/2118466929887502748"
+        {
+          "label": "AndrewCurran_ 转述",
+          "url": "https://x.com/AndrewCurran_/status/2118466929887502748"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -175,8 +222,14 @@
       "channel": "关注流",
       "first_source_at": "2026-11-06 02:33",
       "links": [
-        "https://x.com/alexandr_wang/status/2118411432161403375",
-        "https://x.com/alexandr_wang/status/2118454097104056645"
+        {
+          "label": "Muse Voice US",
+          "url": "https://x.com/alexandr_wang/status/2118411432161403375"
+        },
+        {
+          "label": "Muse Mexico",
+          "url": "https://x.com/alexandr_wang/status/2118454097104056645"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -194,7 +247,10 @@
       "channel": "双通路",
       "first_source_at": "2026-11-05 08:29",
       "links": [
-        "https://x.com/thsottiaux/status/2118138648214585591"
+        {
+          "label": "thsottiaux Welcome Cat",
+          "url": "https://x.com/thsottiaux/status/2118138648214585591"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -212,8 +268,14 @@
       "channel": "双通路",
       "first_source_at": "2026-11-05 08:25",
       "links": [
-        "https://x.com/OpenAI/status/2118390190246879554",
-        "https://x.com/DarkWebInformer/status/2118137654382358720"
+        {
+          "label": "OpenAI GPT‑6 Cyber",
+          "url": "https://x.com/OpenAI/status/2118390190246879554"
+        },
+        {
+          "label": "DarkWebInformer 传播",
+          "url": "https://x.com/DarkWebInformer/status/2118137654382358720"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -231,7 +293,10 @@
       "channel": "公开",
       "first_source_at": "2026-11-06 01:26",
       "links": [
-        "https://x.com/CISAgov/status/2118394576314466486"
+        {
+          "label": "CISAgov",
+          "url": "https://x.com/CISAgov/status/2118394576314466486"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -249,8 +314,14 @@
       "channel": "公开",
       "first_source_at": "2026-11-05 22:13",
       "links": [
-        "https://x.com/CISAgov/status/2118346077413781627",
-        "https://go.dhs.gov/5j9"
+        {
+          "label": "CISAgov 帖",
+          "url": "https://x.com/CISAgov/status/2118346077413781627"
+        },
+        {
+          "label": "DHS 指引",
+          "url": "https://go.dhs.gov/5j9"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -268,30 +339,17 @@
       "channel": "双通路",
       "first_source_at": "2026-11-06 03:59",
       "links": [
-        "https://x.com/vxunderground/status/2118432930145952173",
-        "https://x.com/i/trending/2118336300994671088"
+        {
+          "label": "vxunderground",
+          "url": "https://x.com/vxunderground/status/2118432930145952173"
+        },
+        {
+          "label": "X News 故事（OpenSSH Alpine）",
+          "url": "https://x.com/i/trending/2118336300994671088"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
-      "detail": true
-    },
-    {
-      "id": 15,
-      "wave": "晨间",
-      "domain": "其他",
-      "title": "【金融硬门槛】巴拉圭总统辞职：与其关联的数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
-      "background": "南美数字银行集中度与政商关联风险集中爆发；非典型「网络入侵」硬门槛，但是系统性存款可得性事件。",
-      "facts": "@nytimes Breaking：巴拉圭总统因一家与其执政关联的银行倒闭辞职，导致约半数国民无法使用存款。公开检索指 Ueno Bank 被央行接管/倒闭叙事，影响约 300 万客户。一级印证以 NYT 链为准（nyti.ms）。",
-      "why": "数字银行单点承载国民级存款访问；治理与关联交易失败可瞬间转化为政治与支付系统危机。对金融架构：集中式数字存款通道的可替代清算与应急取现预案是硬需求。",
-      "arch_impact": "评估单一数字银行/钱包通道的存款可得性与应急取现；集团内关联贷款与政商风险纳入流动性与声誉压力测试。",
-      "channel": "双通路",
-      "first_source_at": "2026-11-06 06:11",
-      "links": [
-        "https://x.com/nytimes/status/2118466231107752042",
-        "https://nyti.ms/4kzsDUy"
-      ],
-      "finsec": true,
-      "hard_gate": true,
       "detail": true
     },
     {
@@ -306,9 +364,18 @@
       "channel": "公开",
       "first_source_at": "2026-11-05 08:00",
       "links": [
-        "https://x.com/beincrypto/status/2118232328187396249",
-        "https://x.com/RT_India_news/status/2118242307493511200",
-        "https://x.com/mitigata/status/2118303573213847694"
+        {
+          "label": "beincrypto",
+          "url": "https://x.com/beincrypto/status/2118232328187396249"
+        },
+        {
+          "label": "RT_India_news",
+          "url": "https://x.com/RT_India_news/status/2118242307493511200"
+        },
+        {
+          "label": "mitigata 操作要点",
+          "url": "https://x.com/mitigata/status/2118303573213847694"
+        }
       ],
       "finsec": true,
       "hard_gate": true,
@@ -326,7 +393,10 @@
       "channel": "公开",
       "first_source_at": "2026-11-05 06:30",
       "links": [
-        "https://x.com/neo_logos_/status/2118471015701377164"
+        {
+          "label": "neo_logos_ 24h 回顾",
+          "url": "https://x.com/neo_logos_/status/2118471015701377164"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -344,26 +414,10 @@
       "channel": "关注流",
       "first_source_at": "2026-11-06 05:54",
       "links": [
-        "https://x.com/IntCyberDigest/status/2118461855861776603"
-      ],
-      "finsec": false,
-      "hard_gate": false,
-      "detail": false
-    },
-    {
-      "id": 19,
-      "wave": "晨间",
-      "domain": "其他",
-      "title": "得州州长当选人 Gina Hinojosa 被指主张对现有许可数据中心设限（AI 基建政治化）",
-      "background": "美中期选举后地方能源/数据中心政策成为 AI 产能约束变量。",
-      "facts": "@GavinSBaker 称得州州长当选人 Gina Hinojosa 明确表示应对目前已获许可的数据中心设限，并贴出其官方立场材料；讨论热度高。",
-      "why": "若地方对已许可数据中心收紧，AI 训练/推理产能与电力规划出现政策尾部风险；云与模型供应商选址假设需更新。",
-      "arch_impact": null,
-      "channel": "关注流",
-      "first_source_at": "2026-11-06 03:07",
-      "links": [
-        "https://x.com/GavinSBaker/status/2118420042283102604",
-        "https://x.com/GavinSBaker/status/2118420049115705717"
+        {
+          "label": "IntCyberDigest",
+          "url": "https://x.com/IntCyberDigest/status/2118461855861776603"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -381,7 +435,10 @@
       "channel": "公开",
       "first_source_at": "2026-11-05 14:16",
       "links": [
-        "https://x.com/AISafetyMemes/status/2118226006800793822"
+        {
+          "label": "AISafetyMemes",
+          "url": "https://x.com/AISafetyMemes/status/2118226006800793822"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -399,7 +456,10 @@
       "channel": "双通路",
       "first_source_at": "2026-11-05 18:00 UTC / 11-06 02:00 CST",
       "links": [
-        "https://x.com/claudeai/status/2118403114890137895"
+        {
+          "label": "@claudeai 官方",
+          "url": "https://x.com/claudeai/status/2118403114890137895"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -417,7 +477,10 @@
       "channel": "公开",
       "first_source_at": "文档更新 · 盘中窗内摘要",
       "links": [
-        "https://claude.com/resources/articles/claude-enterprise-security-updates"
+        {
+          "label": "Anthropic 企业安全更新",
+          "url": "https://claude.com/resources/articles/claude-enterprise-security-updates"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -435,7 +498,10 @@
       "channel": "公开",
       "first_source_at": "2026-11-05 22:45 UTC",
       "links": [
-        "https://x.com/ProductHunt/status/2118474799123194285"
+        {
+          "label": "Product Hunt",
+          "url": "https://x.com/ProductHunt/status/2118474799123194285"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -453,8 +519,14 @@
       "channel": "关注流",
       "first_source_at": "2026-11-05 23:50 UTC",
       "links": [
-        "https://x.com/MsftSecIntel/status/2118491118308352329",
-        "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets/"
+        {
+          "label": "@MsftSecIntel",
+          "url": "https://x.com/MsftSecIntel/status/2118491118308352329"
+        },
+        {
+          "label": "Microsoft Security Blog",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets/"
+        }
       ],
       "finsec": true,
       "hard_gate": false,
@@ -472,7 +544,10 @@
       "channel": "公开",
       "first_source_at": "2026-11-06 03:40 UTC",
       "links": [
-        "https://x.com/Sunil_kumawat17/status/2118549057727865302"
+        {
+          "label": "窗内报告",
+          "url": "https://x.com/Sunil_kumawat17/status/2118549057727865302"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -490,7 +565,10 @@
       "channel": "公开",
       "first_source_at": "2026-11-06 00:29 UTC",
       "links": [
-        "https://x.com/hackerlogs/status/2118500976344592894"
+        {
+          "label": "@hackerlogs",
+          "url": "https://x.com/hackerlogs/status/2118500976344592894"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -508,7 +586,10 @@
       "channel": "公开",
       "first_source_at": "2026-11-05 新闻稿",
       "links": [
-        "https://www.globenewswire.com/news-release/2026/11/05/3396084/0/en/capgemini-selected-to-lead-european-commission-consortium-for-ai-safety-and-cyber-risk-assessment-of-advanced-ai-models.html"
+        {
+          "label": "GlobeNewswire",
+          "url": "https://www.globenewswire.com/news-release/2026/11/05/3396084/0/en/capgemini-selected-to-lead-european-commission-consortium-for-ai-safety-and-cyber-risk-assessment-of-advanced-ai-models.html"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -526,8 +607,14 @@
       "channel": "双通路",
       "first_source_at": "2026-11-05 21:40 UTC",
       "links": [
-        "https://x.com/DarkWebInformer/status/2118458452796137689",
-        "https://x.com/jedisct1/status/2118426473576972603"
+        {
+          "label": "@DarkWebInformer",
+          "url": "https://x.com/DarkWebInformer/status/2118458452796137689"
+        },
+        {
+          "label": "CVE 记录讨论",
+          "url": "https://x.com/jedisct1/status/2118426473576972603"
+        }
       ],
       "finsec": false,
       "hard_gate": false,
@@ -545,8 +632,14 @@
       "channel": "双通路",
       "first_source_at": "盘中续热 · CZ 2026-11-06 02:41 UTC",
       "links": [
-        "https://x.com/cz_binance/status/2118534211854626833",
-        "https://x.com/Marvins_Degen2/status/2118342432949514668"
+        {
+          "label": "@cz_binance",
+          "url": "https://x.com/cz_binance/status/2118534211854626833"
+        },
+        {
+          "label": "引用链说明",
+          "url": "https://x.com/Marvins_Degen2/status/2118342432949514668"
+        }
       ],
       "finsec": true,
       "hard_gate": true,
@@ -995,5 +1088,171 @@
     "GitHub Trending（GitStock + GH Archive 缺源）",
     "站外印证（NYT Ueno 等公开报道）",
     "盘中 12:30：Home skim + 公开 search；论文/GitHub 未重扫"
+  ],
+  "polfin": [
+    {
+      "id": "pf-20261106-01",
+      "wave": "晨间",
+      "angle": "geo_finance",
+      "title": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+      "background": "南美数字银行集中度与政商关联风险集中爆发；政治危机与存款可得性叠合。",
+      "facts": "@nytimes Breaking：巴拉圭总统因关联银行倒闭辞职，约半数国民无法使用存款。公开检索指 Ueno Bank 被央行接管/倒闭叙事，影响约 300 万客户；国会加速还款立法，反对派推动弹劾后总统去职。一级印证以 NYT 为准。",
+      "why": "数字银行单点承载国民级存款访问；治理与关联交易失败可瞬间转化为政治与支付系统危机。对金融架构：集中式数字存款通道的可替代清算与应急取现预案是硬需求。",
+      "arch_impact": "评估单一数字银行/钱包通道的存款可得性与应急取现；集团内关联贷款与政商风险纳入流动性与声誉压力测试。",
+      "channel": "双通路",
+      "first_source_at": "2026-11-06T06:11:00+08:00",
+      "links": [
+        {
+          "label": "NYT Breaking",
+          "url": "https://x.com/nytimes/status/2118466231107752042"
+        },
+        {
+          "label": "nyti.ms",
+          "url": "https://nyti.ms/4kzsDUy"
+        }
+      ],
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-02",
+      "wave": "晨间",
+      "angle": "industrial_policy",
+      "title": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+      "background": "美中期选举后地方能源/数据中心政策成为 AI 产能约束变量。",
+      "facts": "@GavinSBaker 称得州州长当选人 Gina Hinojosa 明确表示应对目前已获许可的数据中心设限，并贴出其官方立场材料；讨论热度高。",
+      "why": "若地方对已许可数据中心收紧，AI 训练/推理产能与电力规划出现政策尾部风险；云与模型供应商选址假设需更新。产业政策政治直接改写资本开支时间表。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-06T03:07:00+08:00",
+      "links": [
+        {
+          "label": "GavinSBaker",
+          "url": "https://x.com/GavinSBaker/status/2118420042283102604"
+        },
+        {
+          "label": "官方立场附图帖",
+          "url": "https://x.com/GavinSBaker/status/2118420049115705717"
+        }
+      ],
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-03",
+      "wave": "午间",
+      "angle": "sanctions",
+      "title": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+      "background": "美国对伊朗石油规避制裁的海事欺诈链持续升级；影子船队（shadow fleet，用假旗/关 AIS 等手法规避制裁的油轮群）是资金通道关键节点。",
+      "facts": "@USTreasury 宣布作为 Operation Economic Outcast 一部分，制裁昌迪加尔籍 Suniel Kumar Sharma 与配偶 Jaspreet Preeti Shahid 及相关实体：称其向伊朗影子船队提供假船旗与证书。官方帖约 3.8 千赞 / （精确曝光已省略）。",
+      "why": "制裁从名单实体扩到「假旗登记」中介层，抬高航运、保赔与贸易融资的合规尽调成本；BFSI 须把船旗/船东受益所有人核验嵌进贸易融资与制裁筛查。",
+      "arch_impact": "贸易融资/保函筛查补船旗登记与受益所有人；高风险走廊船队自动升级人工复核。",
+      "channel": "公开",
+      "first_source_at": "2026-11-05T02:43:00+08:00",
+      "links": [
+        {
+          "label": "USTreasury 官方帖",
+          "url": "https://x.com/USTreasury/status/2118051503982383268"
+        },
+        {
+          "label": "X News 故事",
+          "url": "https://x.com/i/trending/2118065128914759767"
+        }
+      ],
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-04",
+      "wave": "午间",
+      "angle": "sanctions",
+      "title": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+      "background": "美国对古巴政权资金与军需供应链施压；把外国供应商纳入同一轮制裁叙事。",
+      "facts": "@StateDept 宣布不坐视古巴政权资源流向军政精英、离岸网络与外国供应商；同日媒体称鲁比奥追加制裁，覆盖实体/个人/船只及中国籍电子进口相关主体。官方帖约 3.3 千赞 / （精确曝光已省略）。",
+      "why": "制裁清单扩到第三国电子/军需供应商，抬高对古贸易、航运与支付通道的二次制裁风险；出口管制与支付合规需同步刷新名单。",
+      "arch_impact": "制裁名单与支付路由日更；涉古/涉名单供应商的开证与汇款默认增强尽调。",
+      "channel": "公开",
+      "first_source_at": "2026-11-06T05:32:00+08:00",
+      "links": [
+        {
+          "label": "StateDept 官方帖",
+          "url": "https://x.com/StateDept/status/2118456535320027284"
+        },
+        {
+          "label": "The Hill",
+          "url": "https://x.com/thehill/status/2118545406460096863"
+        }
+      ],
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-05",
+      "wave": "午间",
+      "angle": "regulation",
+      "title": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+      "background": "美国加密券商（broker-dealer）资本、客户资产与记录规则长期缺位；提案进入白宫预算办法规审议是程序硬节点，不等于终裁。",
+      "facts": "多源称 SEC 于 11/3 将 RIN 3235-AN48（Amendments to Broker-Dealer Financial Responsibility and Recordkeeping and Reporting Rules Regarding Crypto Assets）提交 OIRA；覆盖净资本、客户保护与记录留存等。仍为拟议规则阶段。",
+      "why": "若推进，传统券商进入加密托管/交易的合规门槛会更清晰，也可能提高资本与客户资产隔离成本；观察点是终稿对托管与 MPC（多方计算）钱包的口径。",
+      "arch_impact": "加密托管与券商中台预留净资本/客户资产隔离与审计日志接口；勿把「进入审议」当成已生效。",
+      "channel": "公开",
+      "first_source_at": "2026-11-06T04:24:00+08:00",
+      "links": [
+        {
+          "label": "DigPerspectives 摘要",
+          "url": "https://x.com/DigPerspectives/status/2118439221426065874"
+        },
+        {
+          "label": "X News 故事",
+          "url": "https://x.com/i/trending/2118424043120431593"
+        }
+      ],
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-06",
+      "wave": "晨间",
+      "angle": "geo_finance",
+      "title": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+      "background": "俄罗斯 2024-09 加密法落地后推动境内合规交易；莫斯科交易所（MOEX）自 2024-06 受美制裁，开 BTC 现货把制裁规避与本币化支付政治叠在一起。",
+      "facts": "多源称 MOEX 拟 2026-12-01 起试点 BTC/ETH/USDT 现货，沿用现有交易时段与国家清算中心；零售须过知识测试且年购上限约 30 万卢布，合格投资者无上限。@CryptoPatel 等二次传播约 222 赞 /（精确曝光已省略）；X News 故事同步。",
+      "why": "受制裁交易所承接加密现货，抬高二次制裁、稳定币结算与跨境清算风险；BFSI 须重估涉俄加密通道与对手方筛查。",
+      "arch_impact": "制裁名单与加密交易对手日更；涉 MOEX/俄清算通道的托管与做市默认升级增强尽调。",
+      "channel": "公开",
+      "first_source_at": "2026-11-05T09:35:00+08:00",
+      "links": [
+        {
+          "label": "X News",
+          "url": "https://x.com/i/trending/2118110189291524534"
+        },
+        {
+          "label": "CryptoPatel",
+          "url": "https://x.com/CryptoPatel/status/2118229072081752345"
+        }
+      ],
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-07",
+      "wave": "午间",
+      "angle": "regulation",
+      "title": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+      "background": "2026 中期选举后民主党掌控国会；加密监管叙事从「明确规则」转向更强 SEC 监督与投资者保护。",
+      "facts": "X News 等多源：众院民主党拟推进更广加密监管法案， 据称沿 Maxine Waters 2025《Crypto Investor and Consumer Bill of Rights》加码，强化 SEC 角色、限制 CFTC 扩张，并可能含公职人员伦理与资产隔离条款。尚无终稿。",
+      "why": "监管管辖权（SEC vs CFTC）与交易所/稳定币合规门槛将重写；政治周期直接改变合规时间表与资本成本。勿把「酝酿」当成已立法。",
+      "arch_impact": "加密业务线预留双监管口径与客户资产隔离接口；跟踪 Waters 主导的金融服务委员会立法日程。",
+      "channel": "公开",
+      "first_source_at": "2026-11-06T10:15:00+08:00",
+      "links": [
+        {
+          "label": "X News",
+          "url": "https://x.com/i/trending/2118057889285968039"
+        }
+      ],
+      "hard_gate": false,
+      "detail": true
+    }
   ]
 }

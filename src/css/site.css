@@ -740,7 +740,8 @@ td .badges { margin-top: var(--s-1); }
 .gh-card + .gh-card { margin-top: var(--s-4); }
 
 .detail-card,
-.gh-card {
+.gh-card,
+.paper-card {
   margin: 0;
   padding: var(--inset-card);
   border: 1px solid var(--line);
@@ -820,6 +821,32 @@ td .badges { margin-top: var(--s-1); }
 .cell-links a + a { margin-top: var(--s-1); }
 
 .cell-title { display: block; }
+
+.cell-short {
+  display: inline-block;
+  max-width: 16ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+
+.cell-short.is-title { max-width: 32ch; }
+
+.cell-link {
+  display: inline-block;
+  max-width: 12ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+
+.cell-more {
+  margin-left: var(--s-2);
+  color: var(--muted);
+  font-size: var(--t6-size);
+}
 
 .paper-main,
 .paper-dair { display: block; }
@@ -1422,8 +1449,16 @@ td a {
   }
 
   .table-wrap td.col-title,
-  .table-wrap td.col-repo {
+  .table-wrap td.col-repo,
+  .table-wrap td.col-short {
     min-width: 0;
+  }
+
+  .table-wrap .cell-short,
+  .table-wrap .cell-short.is-title,
+  .table-wrap .cell-link {
+    display: block;
+    max-width: 100%;
   }
 
   .table-wrap td.col-repo,
@@ -1882,5 +1917,57 @@ td .brf-status-row { margin: var(--s-1) 0 0; }
 
   .page-tabs.seg {
     gap: var(--s-2);
+  }
+}
+
+@media (min-width: 641px) {
+  .table-wrap table {
+    table-layout: auto;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .table-wrap th {
+    white-space: nowrap;
+  }
+
+  .table-wrap td {
+    overflow-wrap: break-word;
+  }
+
+  .table-wrap td[data-label="#"],
+  .table-wrap td[data-label="栏"],
+  .table-wrap td[data-label="角"],
+  .table-wrap td[data-label="领域"],
+  .table-wrap td[data-label="波次"],
+  .table-wrap td[data-label="通路"],
+  .table-wrap td[data-label="finsec"],
+  .table-wrap td[data-label="最早源时"],
+  .table-wrap td[data-label="+N"],
+  .table-wrap td[data-label="总星"],
+  .table-wrap td[data-label="链接"] {
+    width: 1%;
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
+
+  .table-wrap td[data-label="标题"],
+  .table-wrap td[data-label="短名"] {
+    width: 28ch;
+    max-width: 36ch;
+  }
+
+  .table-wrap td[data-label="标题"] .cell-short,
+  .table-wrap td[data-label="短名"] .cell-short {
+    max-width: 100%;
+  }
+
+  .table-wrap td[data-label="slogan"],
+  .table-wrap td[data-label="抢了什么"],
+  .table-wrap td[data-label="为何值得看"],
+  .table-wrap td[data-label="为何仍重要"] {
+    min-width: 14ch;
+    max-width: 36ch;
+    white-space: normal;
   }
 }
