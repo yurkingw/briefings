@@ -145,6 +145,13 @@ if (todayPage) {
     if (!todayPage.includes(label)) fail(`2026-11-06 page missing label ${label}`);
   }
   if (!todayPage.includes("晨间")) fail("2026-11-06 page dropped the morning wave");
+  if (!todayPage.includes(">午间</span>")) fail("2026-11-06 wave is not 午间");
+  if (!todayPage.includes('datetime="2026-11-06T12:41:19+08:00"')) {
+    fail("2026-11-06 updated_at is not 12:41");
+  }
+  if (!/要闻条数<\/dt>\s*<dd[^>]*>29<\/dd>/.test(todayPage) || !/全日累计<\/dt>\s*<dd[^>]*>29<\/dd>/.test(todayPage)) {
+    fail("2026-11-06 news count is not 29");
+  }
   if ((todayPage.includes("€100") || todayPage.includes("$133")) && !/unconfirmed/i.test(todayPage)) {
     fail("2026-11-06 states an unconfirmed amount without the unconfirmed marker");
   }
@@ -329,6 +336,9 @@ if (builtStage.daily) {
     excerpt(builtStage.daily.summary, 150),
     "Today",
   );
+  if (builtStage.daily.date === "2026-11-06" && (builtStage.daily.wave !== "午间" || !stageHtml.includes("午间"))) {
+    fail("home Now stage must show Today · 午间");
+  }
 } else if (!stageHtml.includes(builtStage.weekly ? emptyCopy.daily : emptyCopy.both)) {
   fail("missing daily stage row has no empty state");
 }
