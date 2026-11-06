@@ -45,7 +45,7 @@
     </p>
     <h3 title="{{ item.repo }}">#{{ item.rank }} · {{ item.repo }}</h3>
     <dl class="brf-properties">
-      <div class="brf-properties-row"><dt>是什么</dt><dd lang="zh-Hans">{% if item.what %}{{ item.what }}{% else %}—{% endif %}</dd></div>
+      <div class="brf-properties-row"><dt>是什么</dt><dd lang="zh-Hans">{% if item.what %}{{ item.what }}{% elif item.slogan %}{{ item.slogan }}{% else %}—{% endif %}</dd></div>
       <div class="brf-properties-row"><dt>为什么涨</dt><dd lang="zh-Hans">{% if item.why %}{{ item.why }}{% else %}—{% endif %}</dd></div>
       <div class="brf-properties-row"><dt>+N/窗</dt><dd>{{ item | ghWindowValue(kind) }}</dd></div>
       <div class="brf-properties-row"><dt>总星</dt><dd>{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</dd></div>

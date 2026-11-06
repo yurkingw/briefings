@@ -2,7 +2,7 @@
   "schema": "qianji.briefing.weekly.v1",
   "week": "2026-W45",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-06T15:43:39+08:00",
+  "updated_at": "2026-11-06T16:58:24+08:00",
   "window": {
     "from": "2026-11-02",
     "to": "2026-11-06",
@@ -22,103 +22,139 @@
       "id": "W45-N1",
       "title": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
       "domain": "加密/银行",
-      "why": "金融硬门槛：银行官方落地。",
+      "why": "官方确认把「链上嫌疑」升级为银行网络安全事件。架构冲击：银行自有账户/金库支付指令与第三方平台信任链是关键控制面；DORA 报告义务与加密出金监测成为运营焦点。硬门槛：交易所/银行资金安全 + 官方确认。",
       "links": [
         "https://www.cm-arkea.com/arkea/banque/assurances/pa_38386/fr/informations-complementaires-suite-a-l-attaque-dont-le-credit-mutuel-arkea-a-ete-victime",
         "https://x.com/TheBlockCo/status/2118171691922956310"
       ],
       "finsec": true,
       "hard_gate": true,
-      "first_seen": "2026-11-05"
+      "first_seen": "2026-11-05",
+      "background": "前序链上报道将约 $133M 失窃叙事指向 Arkéa；本周银行官方确认遭网络攻击及自有账户转账路径。精确金额仍未获银行确认。",
+      "facts": "① 银行：攻击者使用 Arkéa 自有账户向其他银行转账，再可能经专业平台换成加密资产；客户账户无资金损失。② 否认经第三方平台进入，非 Fortuneo 入口；事件已控制。③ 对「€1.18 亿/$1.33 亿」不确认精确数字，但可验证数量级；部分资金已拦截，追偿进行中。④ @TheBlockCo 等本波高曝光综述。",
+      "channel": "双通路",
+      "arch_impact": "银行自有账户/金库支付指令、异常转出熔断与清算账户监测需独立于客户支付风控；不得把第三方平台假设写成已确认入口。",
+      "detail": true
     },
     {
       "id": "W45-N2",
       "title": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
       "domain": "加密",
-      "why": "监管硬预警 + 出金 API 失败模式；11-06 续热。",
+      "why": "新强制监管/官方预警级别信号。架构冲击：出金 API、预发环境与密钥治理成为交易所/银行的同一失败模式；AI 辅助侦察使「暴露面窗口」更短。硬门槛：监管硬新闻 + 交易所资金安全。",
       "links": [
         "https://cointelegraph.com/news/india-warns-ai-powered-hackers-targeting-crypto-exchanges-at-machine-speed",
         "https://x.com/cz_binance/status/2118194834527887679"
       ],
       "finsec": true,
       "hard_gate": true,
-      "first_seen": "2026-11-05"
+      "first_seen": "2026-11-05",
+      "background": "监管机构点名 AI 辅助攻击金融与加密平台，强调机器速度下的监测缺口。",
+      "facts": "① CERT-In 顾问描述 CRAFTY FALCON：利用脆弱应用、暴露测试环境、云设施与支付/出金 API，窃取钱包密钥并抽干资金。② 建议 7×24 监测、隔离非生产环境、消除共享凭据/API 密钥。③ @cz_binance 转推 Cointelegraph 警报，Home 高曝光。",
+      "channel": "双通路",
+      "detail": true
     },
     {
       "id": "W45-N3",
       "title": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
       "domain": "加密",
-      "why": "自托管客户端面硬门槛。",
+      "why": "交易所/钱包用户教育与最低 iOS 版本策略直接相关；自托管≠免除 OS 补丁责任。",
       "links": [
         "https://x.com/cz_binance/status/2118534211854626833"
       ],
       "finsec": true,
       "hard_gate": true,
-      "first_seen": "2026-11-06"
+      "first_seen": "2026-11-06",
+      "background": "自托管钱包×移动浏览器供应链；晨报未收。",
+      "facts": "多源称 DarkSword 针对较旧 iOS，经 Safari 打开恶意链即可暴露钱包/种子，无需签名授权；报道称数十钱包受影响，损失数字多源不一（约数十万至更高，待复核）。@cz_binance 盘中发帖催升 iOS，强调钱包软件无法代升系统。SlowMist 等预警被二次传播。",
+      "arch_impact": "对客提示最低系统版本；高风险链接触发额外确认；监测异常 Safari WebView 行为。",
+      "channel": "双通路",
+      "detail": true
     },
     {
       "id": "W45-N4",
       "title": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
       "domain": "AI产品/AI安全",
-      "why": "官方多模态发布 + AI 安全里程碑（LPE 非远程破门）。",
+      "why": "官方多模态发布影响创作与 API 集成；端到端漏洞研究批量化则抬高补丁验证和披露容量要求。两者是同周两项发布，不应混写成同一模型的能力。",
       "links": [
         "https://openai.com/index/introducing-images-2-6/",
         "https://openai.com/index/a-thousand-fewer-paths-to-root/"
       ],
       "finsec": false,
       "hard_gate": false,
-      "first_seen": "2026-11-05"
+      "first_seen": "2026-11-05",
+      "background": "多模态产品迭代与 AI 漏洞研究管线在同一周发布；产品供给与安全运营节奏同时变化。",
+      "facts": "OpenAI 宣布 Images 2.6 支持原生 GIF 与参考图复用；另公布自主漏洞发现、利用与候选补丁管线，单次产出约 948 个 Linux 本地提权利用。LPE 前提是已有低权限访问，并非远程破门；候选补丁不等于已合并上游。",
+      "channel": "双通路",
+      "detail": true
     },
     {
       "id": "W45-N5",
       "title": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
       "domain": "AI安全",
-      "why": "受控客户开放；续热驱动 LPE 叙事。",
+      "why": "专用模型的受控开放影响安全研究工具采购与使用权限；不应把受控研究能力等同公开可用攻击服务。",
       "links": [
         "https://x.com/OpenAI/status/2118390190246879554"
       ],
       "finsec": false,
       "hard_gate": false,
-      "first_seen": "2026-11-06"
+      "first_seen": "2026-11-06",
+      "background": "本周自主漏洞研究管线发布后，安全研究专用模型供给成为续热主线。",
+      "facts": "现有周报与官方帖记录 OpenAI GPT-6 Cyber（Daybreak Red）为安全研究专用模型，向受控客户开放；具体访问条件与能力边界以所列官方帖为准。",
+      "channel": "公开",
+      "detail": true
     },
     {
       "id": "W45-N6",
       "title": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
       "domain": "AI产品/金融",
-      "why": "Agent 连银行 + 企业 DLP 钩子同日。",
+      "why": "AI 助手直连银行账户把多年交易流水带进聊天产品面。只读仍触发同意、留存、跨境与 Open Banking 责任边界；银行需评估第三方 AI 读账户的供应商与 DLP 策略。",
       "links": [
         "https://x.com/claudeai/status/2118403114890137895",
         "https://claude.com/resources/articles/claude-enterprise-security-updates"
       ],
       "finsec": true,
       "hard_gate": false,
-      "first_seen": "2026-11-06"
+      "first_seen": "2026-11-06",
+      "background": "消费级助手直连银行账户进入主流产品竞争；晨报漏收，盘中窗内官方帖与二次传播仍热。",
+      "facts": "Anthropic 宣布 Claude Personal Finance 美国 beta，经 Plaid 只读连接用户选定银行账户，可查询余额、消费与账单，不能转账或投资；同周 Inference Hooks GA，使企业提示词与工具调用可接入 DLP。",
+      "arch_impact": "若试点：只读 scope 最小化、会话与训练隔离可审计、禁止广告/交叉售、异常访问告警接入 SOC。",
+      "channel": "双通路",
+      "detail": true
     },
     {
       "id": "W45-N7",
       "title": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
       "domain": "AI安全",
-      "why": "密钥暴露面被 agentic 工具产品化。",
+      "why": "把「密钥泄露」从人工节奏改成 AI 加速杀伤链。金融云租户须假设公开仓任一密钥已被机器利用，并按分钟级响应演练。",
       "links": [
         "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets/",
         "https://x.com/MsftSecIntel/status/2118491118308352329"
       ],
       "finsec": true,
       "hard_gate": false,
-      "first_seen": "2026-11-06"
+      "first_seen": "2026-11-06",
+      "background": "公开仓密钥扫描并不新；agentic 工具把扫描→分析→后续利用压缩到分钟级。",
+      "facts": "@MsftSecIntel / Microsoft Security Blog：观察到威胁方用 ARTEX 等 agentic 进攻框架搜公开 GitHub 密钥（含 OAuth/云/AI API），并开展后续入侵；至少一例从扫仓到 Azure Key Vault 外泄约 5 分钟。后续含 Entra 服务主体登录、跨租户应用凭据滥用；点名 IP 199.19.77.84 等。建议扫仓、立即轮换、最小权限与 Defender 检测。",
+      "arch_impact": "强制密钥扫描+push protection；workload identity 少用长效 secret；阻断/狩猎点名 IP；Key Vault/Storage/Graph 异常读告警。",
+      "channel": "关注流",
+      "detail": true
     },
     {
       "id": "W45-N8",
       "title": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
       "domain": "加密",
-      "why": "周级合并：11-02 恢复/净流出与 11-03 CZ 100%+ 自担。",
+      "why": "周级合并避免把恢复与补偿拆成多条。交易所需分别披露提现可用性、拨付责任与审计状态；恢复服务不等于事件调查已终结。",
       "links": [
         "https://x.com/binance/status/2116799757507305516",
         "https://x.com/cz_binance/status/2117300264738889901"
       ],
       "finsec": true,
       "hard_gate": false,
-      "first_seen": "2026-11-02"
+      "first_seen": "2026-11-02",
+      "background": "周初围绕币安资金事件，提现可用性、资金拨付和后续洗钱/冻资叙事并行；本条合并恢复与自担拨付两次更新。",
+      "facts": "现有台账及本周 Page 记录：11-02 币安提现分阶段恢复；11-03 CZ 称以资产负债表 100%+ 自担拨付。此处按官方账户表述汇总，不把社媒承诺当作独立审计结论。",
+      "channel": "公开",
+      "detail": true
     }
   ],
   "polfin": [
@@ -290,7 +326,10 @@
           "11-05",
           "11-06"
         ],
-        "url": "https://github.com/vercel-labs/agent-desktop"
+        "url": "https://github.com/vercel-labs/agent-desktop",
+        "what": "Rust 项目：Computer use CLI for AI agents",
+        "gained": 10702,
+        "why": "本周 11-03、11-04、11-05、11-06 见榜，日热榜 gained 累计 +10702，据此入选周涨星榜；仅为榜单观察，未核实传播或增长因果。"
       },
       {
         "rank": 2,
@@ -303,7 +342,11 @@
           "11-02",
           "11-03"
         ],
-        "url": "https://github.com/pingdotgg/t3code"
+        "url": "https://github.com/pingdotgg/t3code",
+        "what": "pingdotgg/t3code；现有周报 Page 仅有仓库名，功能说明待补源。",
+        "gained": 6323,
+        "why": "本周 11-02、11-03 见榜，日热榜 gained 累计 +6323，据此入选周涨星榜；仅为榜单观察，未核实传播或增长因果。",
+        "content_note": "现有 Page/台账仅有名称或 slogan，功能说明缺源；未扩写未证实能力。"
       },
       {
         "rank": 3,
@@ -318,7 +361,10 @@
           "11-05",
           "11-06"
         ],
-        "url": "https://github.com/D4Vinci/Scrapling"
+        "url": "https://github.com/D4Vinci/Scrapling",
+        "what": "Python 项目：🕷️ The BEST Web Scraping framework that handles everything from a single request to a full-scale crawl! Don't be shy, join here: https://discord.gg/EMgGbDceNQ and follow here for daily tips and tricks: https://x.com/Scrapling_dev",
+        "gained": 6031,
+        "why": "本周 11-03、11-04、11-05、11-06 见榜，日热榜 gained 累计 +6031，据此入选周涨星榜；仅为榜单观察，未核实传播或增长因果。"
       },
       {
         "rank": 4,
@@ -333,7 +379,10 @@
           "11-04",
           "11-05"
         ],
-        "url": "https://github.com/thedotmack/claude-mem"
+        "url": "https://github.com/thedotmack/claude-mem",
+        "what": "跨会话 Agent 记忆层。",
+        "gained": 5633,
+        "why": "本周 11-02、11-03、11-04、11-05 见榜，日热榜 gained 累计 +5633，据此入选周涨星榜；仅为榜单观察，未核实传播或增长因果。"
       },
       {
         "rank": 5,
@@ -346,7 +395,10 @@
           "11-05",
           "11-06"
         ],
-        "url": "https://github.com/NVIDIA/auto-ontology"
+        "url": "https://github.com/NVIDIA/auto-ontology",
+        "what": "Python 项目：Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
+        "gained": 4760,
+        "why": "本周 11-05、11-06 见榜，日热榜 gained 累计 +4760，据此入选周涨星榜；仅为榜单观察，未核实传播或增长因果。"
       },
       {
         "rank": 6,
@@ -360,7 +412,10 @@
           "11-04",
           "11-06"
         ],
-        "url": "https://github.com/mattpocock/skills"
+        "url": "https://github.com/mattpocock/skills",
+        "what": "Shell 项目：Skills for Real Engineers. Straight from my .agents directory.",
+        "gained": 4075,
+        "why": "本周 11-03、11-04、11-06 见榜，日热榜 gained 累计 +4075，据此入选周涨星榜；仅为榜单观察，未核实传播或增长因果。"
       },
       {
         "rank": 7,
@@ -374,7 +429,11 @@
           "11-03",
           "11-04"
         ],
-        "url": "https://github.com/Donchitos/Claude-Code-Game-Studios"
+        "url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
+        "what": "面向 Claude Code 的 game studios 项目；现有材料仅有 slogan，具体功能待补源。",
+        "gained": 3528,
+        "why": "本周 11-02、11-03、11-04 见榜，日热榜 gained 累计 +3528，据此入选周涨星榜；仅为榜单观察，未核实传播或增长因果。",
+        "content_note": "现有 Page/台账仅有名称或 slogan，功能说明缺源；未扩写未证实能力。"
       },
       {
         "rank": 8,
@@ -387,7 +446,10 @@
           "11-05",
           "11-06"
         ],
-        "url": "https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio"
+        "url": "https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio",
+        "what": "C# 仓库 JiaFeiMiao-K-Cat/DiscImageStudio",
+        "gained": 2769,
+        "why": "本周 11-05、11-06 见榜，日热榜 gained 累计 +2769，据此入选周涨星榜；仅为榜单观察，未核实传播或增长因果。"
       },
       {
         "rank": 9,
@@ -401,7 +463,10 @@
           "11-05",
           "11-06"
         ],
-        "url": "https://github.com/floci-io/floci"
+        "url": "https://github.com/floci-io/floci",
+        "what": "Java 项目：Light, fluffy, and always free - The AWS Local Emulator alternative",
+        "gained": 2348,
+        "why": "本周 11-04、11-05、11-06 见榜，日热榜 gained 累计 +2348，据此入选周涨星榜；仅为榜单观察，未核实传播或增长因果。"
       },
       {
         "rank": 10,
@@ -414,7 +479,10 @@
           "11-05",
           "11-06"
         ],
-        "url": "https://github.com/scenario-labs/skills"
+        "url": "https://github.com/scenario-labs/skills",
+        "what": "Python 项目：Get production-ready images, video, audio, and 3D from any AI agent: skills that pick the right model, price before spending, and keep characters and brands consistent through the Scenario MCP, plus expert teams that drive Blender, Maya, ZBrush, Unreal, and Unity.",
+        "gained": 2050,
+        "why": "本周 11-05、11-06 见榜，日热榜 gained 累计 +2050，据此入选周涨星榜；仅为榜单观察，未核实传播或增长因果。"
       }
     ],
     "newcomers": [
@@ -428,7 +496,10 @@
           "11-04",
           "11-05"
         ],
-        "url": "https://github.com/KKKKhazix/agent-autoloop"
+        "url": "https://github.com/KKKKhazix/agent-autoloop",
+        "what": "命令行 Agent 后台接活。",
+        "gained": null,
+        "why": "本周 11-04、11-05 入选新锐榜，记录总星 2462；据见榜与关注度入选，不推断增长因果，缺周涨星差量。"
       },
       {
         "rank": 2,
@@ -440,7 +511,10 @@
           "11-04",
           "11-05"
         ],
-        "url": "https://github.com/govijr/terminal-mac"
+        "url": "https://github.com/govijr/terminal-mac",
+        "what": "终端里跑 macOS。",
+        "gained": null,
+        "why": "本周 11-04、11-05 入选新锐榜，记录总星 1499；据见榜与关注度入选，不推断增长因果，缺周涨星差量。"
       },
       {
         "rank": 3,
@@ -450,7 +524,11 @@
         "days_seen": [
           "11-05"
         ],
-        "url": "https://github.com/Minireel/HGhub"
+        "url": "https://github.com/Minireel/HGhub",
+        "what": "Minireel/HGhub（11-05 单日新锐）；现有材料缺功能说明，待补源。",
+        "gained": null,
+        "why": "本周 11-05 入选新锐榜，记录总星 631；据见榜与关注度入选，不推断增长因果，缺周涨星差量。",
+        "content_note": "现有 Page/台账仅有名称或 slogan，功能说明缺源；未扩写未证实能力。"
       },
       {
         "rank": 4,
@@ -461,7 +539,10 @@
           "11-04",
           "11-05"
         ],
-        "url": "https://github.com/brightsongwrath/personal-data-deletor-osint"
+        "url": "https://github.com/brightsongwrath/personal-data-deletor-osint",
+        "what": "OSINT 向的个人数据删除工具。",
+        "gained": null,
+        "why": "本周 11-04、11-05 入选新锐榜，记录总星 573；据见榜与关注度入选，不推断增长因果，缺周涨星差量。"
       },
       {
         "rank": 5,
@@ -471,7 +552,11 @@
         "days_seen": [
           "11-05"
         ],
-        "url": "https://github.com/andrew-babo/muse4ai"
+        "url": "https://github.com/andrew-babo/muse4ai",
+        "what": "andrew-babo/muse4ai；现有材料仅有仓库名，功能说明待补源。",
+        "gained": null,
+        "why": "本周 11-05 入选新锐榜，记录总星 487；据见榜与关注度入选，不推断增长因果，缺周涨星差量。",
+        "content_note": "现有 Page/台账仅有名称或 slogan，功能说明缺源；未扩写未证实能力。"
       },
       {
         "rank": 6,
@@ -481,7 +566,10 @@
         "days_seen": [
           "11-06"
         ],
-        "url": "https://github.com/Wallbycontact/java-mod-rust-port-tool"
+        "url": "https://github.com/Wallbycontact/java-mod-rust-port-tool",
+        "what": "Feed it a Fabric or NeoForge mod jar and Smelt writes the Rust side for Horizon, with the unfinished parts flagged in the report.",
+        "gained": null,
+        "why": "本周 11-06 入选新锐榜，记录总星 408；据见榜与关注度入选，不推断增长因果，缺周涨星差量。"
       },
       {
         "rank": 7,
@@ -491,7 +579,10 @@
         "days_seen": [
           "11-06"
         ],
-        "url": "https://github.com/WoYun520/pixel-gif-sticker-pack"
+        "url": "https://github.com/WoYun520/pixel-gif-sticker-pack",
+        "what": "A Codex skill for creating and verifying animated GIF sticker packs from character references.",
+        "gained": null,
+        "why": "本周 11-06 入选新锐榜，记录总星 405；据见榜与关注度入选，不推断增长因果，缺周涨星差量。"
       },
       {
         "rank": 8,
@@ -501,7 +592,11 @@
         "days_seen": [
           "11-02"
         ],
-        "url": "https://github.com/caru-ini/stack-diagram"
+        "url": "https://github.com/caru-ini/stack-diagram",
+        "what": "caru-ini/stack-diagram（周一新锐头名）；现有材料缺功能说明，待补源。",
+        "gained": null,
+        "why": "本周 11-02 入选新锐榜，记录总星 344；据见榜与关注度入选，不推断增长因果，缺周涨星差量。",
+        "content_note": "现有 Page/台账仅有名称或 slogan，功能说明缺源；未扩写未证实能力。"
       }
     ],
     "meta": {
@@ -581,7 +676,10 @@
     "11-02…11-05 尚无独立 daily JSON export（以台账/items 与 11-06 daily 为准）",
     "PolFin 栏自 11-06 起建；周精选目前仅覆盖当日迁栏+新扫 5 条，更早政经角未回溯重标",
     "Arkéa 精确金额与部分二手 X News 标 unconfirmed",
-    "ISO 周至周日未满；本版为周五检阅窗"
+    "ISO 周至周日未满；本版为周五检阅窗",
+    "GitHub 功能说明缺源：pingdotgg/t3code、Donchitos/Claude-Code-Game-Studios、Minireel/HGhub、andrew-babo/muse4ai、caru-ini/stack-diagram；what 已诚实标注待补源。",
+    "GitHub 新锐 8 条均无周涨星差量：gained=null；未用总星冒充涨星，未补造 age_h/创建时间。",
+    "要闻最早来源精确时分未统一核实：保留 first_seen 日期，不推算 first_source_at；通路沿用既有日报/台账，合并条按既有来源说明。"
   ],
   "news_digest": "8 条要点表（非整周合订）。主线：银行/BFSI 硬门槛（Arkéa · CRAFTY FALCON · DarkSword）｜Agent/模型供给（Images 2.6 · GPT-6 Cyber · Claude Finance/Hooks · ARTEX）｜币安提现恢复簇。政经角见「政治金融」。"
 }
