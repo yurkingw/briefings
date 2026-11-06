@@ -2,16 +2,16 @@
   "schema": "qianji.briefing.weekly.v1",
   "week": "2026-W45",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-06T16:58:24+08:00",
+  "updated_at": "2026-11-06T18:27:49+08:00",
   "window": {
-    "from": "2026-11-02",
-    "to": "2026-11-06",
-    "note": "周五检阅窗；ISO 周至周日未满"
+    "start": "2026-11-02",
+    "end": "2026-11-06",
+    "note": "周五晚例行定稿窗（ISO 周至周日未满）"
   },
-  "summary": "本周主线三线并行：① 银行/BFSI 硬门槛（Arkéa 官方确认；CERT-In CRAFTY FALCON；DarkSword 自托管 Safari）② 政经制裁与数字银行政治（Ueno/巴拉圭；Treasury 假船旗；StateDept 对古+中籍供应商；SEC 加密券商规则进 OIRA）③ Agent/模型供给（Images 2.6、948 LPE、GPT-6 Cyber、Claude Finance/Hooks、ARTEX 扫密钥）。PolFin 周精选 5；要闻精选 8；论文 8；GH 涨星 10/新锐 8；决策卡 2。改帽≤10；非整周合订。",
+  "summary": "本周主线三线并行：① 银行/BFSI 硬门槛（Arkéa 官方确认；CERT-In CRAFTY FALCON；DarkSword 自托管 Safari）② 政经制裁与数字银行政治（Ueno/巴拉圭；Treasury 假船旗；StateDept 对古+中籍供应商；SEC 加密券商规则进 OIRA；MOEX 拟开 BTC 现货；众院民主党酝酿加密监管案）③ Agent/模型供给（Images 2.6、948 LPE、GPT-6 Cyber、Claude Finance/Hooks、ARTEX 扫密钥）。周级精选非整周合订；金融决策 2 卡建议周一钉选。",
   "metrics": {
     "news_featured": 8,
-    "polfin": 5,
+    "polfin": 7,
     "papers_featured": 8,
     "gh_rising": 10,
     "gh_newcomers": 8,
@@ -31,7 +31,7 @@
       "hard_gate": true,
       "first_seen": "2026-11-05",
       "background": "前序链上报道将约 $133M 失窃叙事指向 Arkéa；本周银行官方确认遭网络攻击及自有账户转账路径。精确金额仍未获银行确认。",
-      "facts": "① 银行：攻击者使用 Arkéa 自有账户向其他银行转账，再可能经专业平台换成加密资产；客户账户无资金损失。② 否认经第三方平台进入，非 Fortuneo 入口；事件已控制。③ 对「€1.18 亿/$1.33 亿」不确认精确数字，但可验证数量级；部分资金已拦截，追偿进行中。④ @TheBlockCo 等本波高曝光综述。",
+      "facts": "① 银行：攻击者使用 Arkéa 自有账户向其他银行转账，再可能经专业平台换成加密资产；客户账户无资金损失。② 否认经第三方平台进入，非 Fortuneo 入口；事件已控制。③ 对「€1.18 亿/$1.33 亿」不确认精确数字，但可验证数量级；部分资金已拦截，追偿进行中。④ @TheBlockCo 等本波高曝光综述。（unconfirmed）",
       "channel": "双通路",
       "arch_impact": "银行自有账户/金库支付指令、异常转出熔断与清算账户监测需独立于客户支付风控；不得把第三方平台假设写成已确认入口。",
       "detail": true
@@ -247,6 +247,48 @@
         {
           "label": "DigPerspectives",
           "url": "https://x.com/DigPerspectives/status/2118439221426065874"
+        }
+      ],
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-06",
+      "angle": "geo_finance",
+      "title": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+      "background": "俄罗斯 2024-09 加密法落地后推动境内合规交易；莫斯科交易所（MOEX）自 2024-06 受美制裁，开 BTC 现货把制裁规避与本币化支付政治叠在一起。",
+      "facts": "多源称 MOEX 拟 2026-12-01 起试点 BTC/ETH/USDT 现货，沿用现有交易时段与国家清算中心；零售须过知识测试且年购上限约 30 万卢布，合格投资者无上限。@CryptoPatel 等二次传播约 222 赞 /（精确曝光已省略）；X News 故事同步。",
+      "why": "受制裁交易所承接加密现货，抬高二次制裁、稳定币结算与跨境清算风险；BFSI 须重估涉俄加密通道与对手方筛查。",
+      "arch_impact": "制裁名单与加密交易对手日更；涉 MOEX/俄清算通道的托管与做市默认升级增强尽调。",
+      "channel": "公开",
+      "first_source_at": "2026-11-05T09:35:00+08:00",
+      "links": [
+        {
+          "label": "X News",
+          "url": "https://x.com/i/trending/2118110189291524534"
+        },
+        {
+          "label": "CryptoPatel",
+          "url": "https://x.com/CryptoPatel/status/2118229072081752345"
+        }
+      ],
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": "pf-20261106-07",
+      "angle": "regulation",
+      "title": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+      "background": "2026 中期选举后民主党掌控国会；加密监管叙事从「明确规则」转向更强 SEC 监督与投资者保护。",
+      "facts": "X News 等多源：众院民主党拟推进更广加密监管法案， 据称沿 Maxine Waters 2025《Crypto Investor and Consumer Bill of Rights》加码，强化 SEC 角色、限制 CFTC 扩张，并可能含公职人员伦理与资产隔离条款。尚无终稿。",
+      "why": "监管管辖权（SEC vs CFTC）与交易所/稳定币合规门槛将重写；政治周期直接改变合规时间表与资本成本。勿把「酝酿」当成已立法。",
+      "arch_impact": "加密业务线预留双监管口径与客户资产隔离接口；跟踪 Waters 主导的金融服务委员会立法日程。",
+      "channel": "公开",
+      "first_source_at": "2026-11-06T10:15:00+08:00",
+      "links": [
+        {
+          "label": "X News",
+          "url": "https://x.com/i/trending/2118057889285968039"
         }
       ],
       "hard_gate": false,
@@ -674,12 +716,12 @@
     "GH Archive 全周缺源——周涨星为日热榜 gained 累加，非 WatchEvent 真差量",
     "2026-11-06 GitStock 缺源",
     "11-02…11-05 尚无独立 daily JSON export（以台账/items 与 11-06 daily 为准）",
-    "PolFin 栏自 11-06 起建；周精选目前仅覆盖当日迁栏+新扫 5 条，更早政经角未回溯重标",
     "Arkéa 精确金额与部分二手 X News 标 unconfirmed",
-    "ISO 周至周日未满；本版为周五检阅窗",
     "GitHub 功能说明缺源：pingdotgg/t3code、Donchitos/Claude-Code-Game-Studios、Minireel/HGhub、andrew-babo/muse4ai、caru-ini/stack-diagram；what 已诚实标注待补源。",
     "GitHub 新锐 8 条均无周涨星差量：gained=null；未用总星冒充涨星，未补造 age_h/创建时间。",
-    "要闻最早来源精确时分未统一核实：保留 first_seen 日期，不推算 first_source_at；通路沿用既有日报/台账，合并条按既有来源说明。"
+    "要闻最早来源精确时分未统一核实：保留 first_seen 日期，不推算 first_source_at；通路沿用既有日报/台账，合并条按既有来源说明。",
+    "ISO 周至周日未满；本版为周五晚例行定稿（含 11-06 盘中/§11 PolFin 增量 MOEX+众院案）",
+    "PolFin 周精选 7 条均来自 11-06 日更（栏自当日建）；更早政经角未回溯重标"
   ],
   "news_digest": "8 条要点表（非整周合订）。主线：银行/BFSI 硬门槛（Arkéa · CRAFTY FALCON · DarkSword）｜Agent/模型供给（Images 2.6 · GPT-6 Cyber · Claude Finance/Hooks · ARTEX）｜币安提现恢复簇。政经角见「政治金融」。"
 }
