@@ -99,6 +99,7 @@ for (const file of walk(path.join(root, "content"))) {
 const pages = {
   "home": "_site/index.html",
   "daily": "_site/daily/2026-11-05/index.html",
+  "daily-2026-11-06": "_site/daily/2026-11-06/index.html",
   "weekly": "_site/weekly/2026-W45/index.html",
 };
 const html = {};
@@ -110,11 +111,17 @@ if (html.home && !html.home.includes("https://yurkingw.github.io/briefings/")) {
 if (html.home && !html.home.includes("/briefings/daily/2026-11-05/")) {
   fail("home is missing the daily pathPrefix link");
 }
+if (html.home && !html.home.includes("/briefings/daily/2026-11-06/")) {
+  fail("home is missing the 2026-11-06 daily path");
+}
 if (html.home && !html.home.includes("/briefings/weekly/2026-W45/")) {
   fail("home is missing the weekly pathPrefix link");
 }
 if (html.daily && !html.daily.includes("https://yurkingw.github.io/briefings/daily/2026-11-05/")) {
   fail("daily absolute URL is missing the baseUrl");
+}
+if (html["daily-2026-11-06"] && !html["daily-2026-11-06"].includes("https://yurkingw.github.io/briefings/daily/2026-11-06/")) {
+  fail("2026-11-06 absolute URL is missing the baseUrl");
 }
 if (html.weekly && !html.weekly.includes("https://yurkingw.github.io/briefings/weekly/2026-W45/")) {
   fail("weekly absolute URL is missing the baseUrl");
@@ -131,6 +138,17 @@ for (const [name, text] of Object.entries(html)) {
 const css = path.join(root, "_site/css/site.css");
 if (!fs.existsSync(css)) fail("missing _site/css/site.css");
 
+const todayPage = html["daily-2026-11-06"];
+if (todayPage) {
+  assertNoToc("2026-11-06", todayPage);
+  for (const label of ["今日主线", "要闻", "顶尖论文", "GitHub", "附录"]) {
+    if (!todayPage.includes(label)) fail(`2026-11-06 page missing label ${label}`);
+  }
+  if (!todayPage.includes("晨间")) fail("2026-11-06 page dropped the morning wave");
+  if ((todayPage.includes("€100") || todayPage.includes("$133")) && !/unconfirmed/i.test(todayPage)) {
+    fail("2026-11-06 states an unconfirmed amount without the unconfirmed marker");
+  }
+}
 if (html.daily) {
   for (const label of ["今日主线", "要闻", "顶尖论文", "附录", "本波最热"]) {
     if (!html.daily.includes(label)) fail(`daily page missing label ${label}`);
@@ -251,7 +269,11 @@ const stage = selectStage(briefings, new Date("2026-11-05T04:00:00Z"));
 if (!stage.daily || stage.daily.date !== "2026-11-05" || stage.week !== "2026-W45" || !stage.weekly) {
   fail(`stage selector missed the sample day/week: ${JSON.stringify({ date: stage.date, week: stage.week, daily: stage.daily && stage.daily.date, weekly: stage.weekly && stage.weekly.week })}`);
 }
-const missedDay = selectStage(briefings, new Date("2026-11-06T04:00:00Z"));
+const openedDay = selectStage(briefings, new Date("2026-11-06T04:00:00Z"));
+if (!openedDay.daily || openedDay.daily.date !== "2026-11-06" || openedDay.week !== "2026-W45" || !openedDay.weekly) {
+  fail("stage selector should surface 2026-11-06 and keep this week's weekly");
+}
+const missedDay = selectStage(briefings, new Date("2026-11-07T04:00:00Z"));
 if (missedDay.daily || !missedDay.weekly || missedDay.week !== "2026-W45") {
   fail("stage selector should keep this week's weekly when today's daily is missing");
 }
