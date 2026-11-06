@@ -40,8 +40,8 @@ Home, daily, and weekly links are root-absolute (`/briefings/...`). Canonical UR
 
 This repository does not receive pushes from 千机阁. Add a briefing with a pull request, or run **Deploy GitHub Pages** → **Run workflow** only to rebuild what is already on the selected branch.
 
-1. Add JSON at `content/daily/YYYY-MM-DD.json` or `content/weekly/YYYY-Www.json` (`YYYY-Www` is the ISO week in Asia/Shanghai).
-2. Optionally add a Markdown mirror with the same basename. The site renders JSON only. Markdown must not introduce fields the JSON does not have.
+1. Add JSON at `content/daily/YYYY-MM-DD.json` or `content/weekly/YYYY-Www.json` (`YYYY-Www` is the ISO week in Asia/Shanghai). For a daily file, `node scripts/ingest-daily.mjs path/to/YYYY-MM-DD.json` writes that JSON and a Markdown mirror. It keeps the `2026-11-05` shape: `{label,url}` links become URL strings, internal fields are stripped, and amounts the source itself calls 量级 / 叙事 / 回顾 are marked `unconfirmed`. It does not fill missing slogans, licenses, waves, or star counts.
+2. Optionally add a Markdown mirror with the same basename. The site renders JSON only. Markdown must not introduce fields the JSON does not have. The ingest script writes this mirror.
 3. `schema` must be `qianji.briefing.daily.v1` or `qianji.briefing.weekly.v1`. The filename must match `date` or `week`.
 4. Keep the public strip rules: no canvas ids, store or internal URLs, `/workspace` paths, routine folder ids, Home pagination or post counts, exact Home impression counts, or raw internal package names. Mark uncertain amounts `unconfirmed` instead of stating them as fact. `metrics.home_related` stays an `a/b` ratio.
 5. Open a pull request. CI runs `npm test`.
