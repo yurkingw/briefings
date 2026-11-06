@@ -444,6 +444,15 @@ if (!/th,\s*\ntd\s*\{[^}]*padding-left:\s*var\(--s-4\)/.test(cssSource) || !/th,
 }
 if (!stack.includes("padding-inline: var(--inset-row)")) fail("E6 stacked tables are missing inset-row");
 if (/padding:\s*var\(--s-2\)\s+0/.test(stack)) fail("E6 stacked td still has zero inline padding");
+const deskTableStart = cssSource.indexOf("@media (min-width: 641px)");
+const deskTable = deskTableStart < 0 ? "" : cssSource.slice(deskTableStart, cssSource.indexOf("@media", deskTableStart + 10) < 0 ? undefined : cssSource.indexOf("@media", deskTableStart + 10));
+if (!deskTable.includes("white-space: nowrap")) fail("desktop compact columns must stay on one line");
+for (const label of ["最早源时", "总星", "+N", "栏", "通路", "finsec"]) {
+  if (!deskTable.includes(`data-label="${label}"`)) fail(`desktop nowrap missing ${label}`);
+}
+if (deskTable.includes("padding-inline: 0") || deskTable.includes("padding: 0")) {
+  fail("desktop table fix must not clear cell padding");
+}
 if (html.home) {
   const homeTops = html.home.match(/class="back-to-top"/g) || [];
   if (homeTops.length !== 1 || !html.home.includes(">回顶</button>")) fail("home must have exactly one 回顶 control");
