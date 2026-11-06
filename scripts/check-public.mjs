@@ -376,17 +376,20 @@ if (!html.home.includes('data-fold="daily"') || !html.home.includes('data-fold="
 if (!html.home.includes("/briefings/js/fold.js")) fail("home is missing the archive fold script");
 if (!baseSource.includes('classList.add("js")')) fail("js class must be set before first paint");
 
-const narrowStart = cssSource.indexOf("@media (max-width: 380px)");
+const narrowStart = cssSource.indexOf("@media (max-width: 390px)");
 const narrowEnd = cssSource.indexOf("@media", narrowStart + 10);
 const narrow = narrowStart < 0 ? "" : cssSource.slice(narrowStart, narrowEnd < 0 ? undefined : narrowEnd);
-if (!narrow) fail("missing the 380px header breakpoint");
+if (!narrow) fail("missing the 390px header breakpoint");
 for (const piece of ["height: auto", "flex-wrap: wrap", "row-gap: var(--s-2)", "min-height: 44px"]) {
-  if (!narrow.includes(piece)) fail(`380 header missing ${piece}`);
+  if (!narrow.includes(piece)) fail(`390 header missing ${piece}`);
 }
 if (!narrow.includes(".seg") || !/flex:\s*1\s*0\s*100%/.test(narrow)) {
-  fail("at 380px .seg must sit on its own full row");
+  fail("at 390px .seg must sit on its own full row");
 }
-if (/overflow\s*:\s*hidden/.test(narrow)) fail("380 layout must not clip Night with overflow:hidden");
+if (/overflow\s*:\s*hidden/.test(narrow)) fail("390 layout must not clip Night with overflow:hidden");
+if (!cssSource.includes("--accent: #2f5f9e") || !cssSource.includes("--accent: #b54a4a")) {
+  fail("day-blue / night-red accent tokens changed");
+}
 if (!cssSource.includes("height: 44px")) fail("theme hit target must stay 44px");
 if (!cssSource.includes("border-bottom: 1px solid var(--line)")) fail("header hairline must stay 1px --line");
 if (cssSource.includes("#111")) fail("header must not bring back a thick #111 bar");
@@ -396,6 +399,13 @@ if (!cssSource.includes(":nth-child(n + 6)") || !cssSource.includes("html.js") |
 
 if (!html.home.includes('class="lede"') || !html.home.includes("Daily and weekly intelligence, mirrored for the public web.")) {
   fail("home lede is missing");
+}
+if (html.home) {
+  const homeTops = html.home.match(/class="back-to-top"/g) || [];
+  if (homeTops.length !== 1 || !html.home.includes(">回顶</button>")) fail("home must have exactly one 回顶 control");
+  if (html.home.includes("back-page") || html.home.includes("回到顶部") || html.home.includes(">Top</button>")) {
+    fail("home still has a second back control");
+  }
 }
 
 function assertOrder(name, text, markers) {
@@ -518,11 +528,11 @@ function assertPageChrome(name, text) {
     fail(`${name} is missing Properties or Callout`);
   }
   if (!text.includes('id="page-top"')) fail(`${name} is missing #page-top`);
-  if (!text.includes('data-scroll="page-top"') || !text.includes(">回到顶部</button>")) {
-    fail(`${name} is missing the bottom 回到顶部 control`);
-  }
-  if (!text.includes('<button type="button" class="back-to-top"') || !text.includes(">Top</button>")) {
-    fail(`${name} is missing the floating Top button`);
+  const tops = text.match(/class="back-to-top"/g) || [];
+  if (tops.length !== 1) fail(`${name} back-to-top count ${tops.length}`);
+  if (!text.includes(">回顶</button>")) fail(`${name} floating label is not 回顶`);
+  if (text.includes("back-page") || text.includes("回到顶部") || text.includes(">Top</button>")) {
+    fail(`${name} still has a second back control`);
   }
   const bars = [...text.matchAll(/<div class="page-tabs[\s\S]*?<\/div>/g)].map((match) => match[0]);
   if (bars.length < 2) fail(`${name} is missing the bottom segmented control`);
@@ -554,7 +564,6 @@ if (html.daily) {
     'id="panel-appendix"',
     ">全日累计（去重）<",
     'class="brf-link-cards"',
-    'data-scroll="page-top"',
   ]);
   const shown = propertyPairs(html.daily);
   if (shown.labels.join("|") !== dailyProps.map((row) => row.label).join("|")) {
@@ -672,7 +681,6 @@ if (html.weekly) {
     'data-tone="danger"',
     'class="brf-steps"',
     ">最终判断<",
-    'data-scroll="page-top"',
   ]);
   const shown = propertyPairs(html.weekly);
   if (shown.labels.join("|") !== weeklyProps.map((row) => row.label).join("|")) {
