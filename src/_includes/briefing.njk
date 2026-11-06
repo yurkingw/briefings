@@ -71,6 +71,9 @@
     {{ ui.newsDaily(news, true, "news") }}
     {% else %}
     <div id="weekly-news">
+      {% if briefing.news_digest %}
+      {{ ui.callout("本周精选", briefing.news_digest, "info") }}
+      {% endif %}
       {% if groups.length %}
       {% for group in groups %}
       <section class="block" id="weekly-news-{{ group.id }}">
@@ -192,7 +195,7 @@
 
   <section class="page-panel" id="panel-papers" role="tabpanel" aria-labelledby="tab-papers" hidden inert>
     {% if showPapers %}
-    {% if windowText %}{{ ui.callout("窗口", windowText, "info") }}{% endif %}
+    {% if windowText %}{{ ui.callout("今日看点" if isDaily else "本周精选", windowText, "info") }}{% endif %}
     {% if paperLead.length %}
     <section class="block hot-picks" id="papers-hot">
       <h2>{% if isDaily %}本波必读{% else %}本周必读{% endif %}</h2>
