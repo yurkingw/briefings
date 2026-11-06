@@ -71,9 +71,7 @@
       <p><a href="{{ site.baseUrl }}/">{{ site.baseUrl }}/</a></p>
     </div>
   </footer>
-  {% if briefing %}
-  <button type="button" class="back-to-top" hidden>Top</button>
-  {% endif %}
+  <button type="button" class="back-to-top" hidden>回顶</button>
   <script>
     (function () {
       var root = document.documentElement;
@@ -175,15 +173,6 @@
           if (!target) return;
           event.preventDefault();
           revealTarget(target);
-          target.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
-          if (history.replaceState) history.replaceState(null, "", "#" + id);
-        });
-      });
-      document.querySelectorAll("[data-scroll]").forEach(function (button) {
-        button.addEventListener("click", function () {
-          var id = button.getAttribute("data-scroll");
-          var target = id && document.getElementById(id);
-          if (!target) return;
           target.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
           if (history.replaceState) history.replaceState(null, "", "#" + id);
         });
