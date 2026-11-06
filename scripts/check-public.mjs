@@ -791,17 +791,51 @@ if (!globalHover) fail("missing the global a:hover rule");
 if (globalHover && /background/i.test(globalHover[0])) {
   fail("global a:hover still paints a background");
 }
-if (!/\.hit-row\s*\{[^}]*padding-inline:\s*var\(--s-3\)/.test(cssSource)) {
-  fail("hit-row is missing padding-inline --s-3");
+if (!/\.hit-row\s*\{[^}]*padding-inline:\s*var\(--inset-row\)/.test(cssSource)) {
+  fail("hit-row is missing padding-inline --inset-row");
 }
 if (!/\.hit-row\s*\{[^}]*padding-block:\s*var\(--s-2\)/.test(cssSource)) {
   fail("hit-row is missing padding-block --s-2");
 }
-if (!/\.entry\s*\{[^}]*padding-inline:\s*var\(--s-3\)/.test(cssSource)) {
-  fail(".entry is missing padding-inline --s-3");
+if (!/\.entry\s*\{[^}]*padding-inline:\s*var\(--inset-row\)/.test(cssSource)) {
+  fail(".entry is missing padding-inline --inset-row");
 }
-if (!/\.hot-list a\s*\{[^}]*padding-inline:\s*var\(--s-3\)/.test(cssSource)) {
-  fail("hot rows are missing padding-inline --s-3");
+if (!/\.hot-list a\s*\{[^}]*padding-inline:\s*var\(--inset-row\)/.test(cssSource)) {
+  fail("hot rows are missing padding-inline --inset-row");
+}
+if (!cssSource.includes("--pad-x: var(--s-5)") || !cssSource.includes("--inset-row: var(--s-4)") || !cssSource.includes("--inset-card: var(--s-5)")) {
+  fail("B1 desktop pad-x / inset tokens are missing");
+}
+if (!narrow.includes("--pad-x: var(--s-4)") || !narrow.includes("--inset-card: var(--s-4)")) {
+  fail("B1/B3 narrow pad must be 16px");
+}
+if (cssSource.includes("--pad-x: var(--s-3)")) fail("pad-x must not fall to 12px");
+if (!/\.detail-card,\s*\n\.gh-card\s*\{[^}]*padding:\s*var\(--inset-card\)/.test(cssSource)) {
+  fail("B3 detail card is missing inset-card");
+}
+if (!/\.decision\s*\{[^}]*padding-inline:\s*var\(--inset-row\)/.test(cssSource)) {
+  fail("B3 decision is missing horizontal inset");
+}
+if (!cssSource.includes("--t3-size: 15px") || !cssSource.includes("--t3-lh: 1.65") || !cssSource.includes("--t3-size: 16px")) {
+  fail("B4 T3 ladder missing");
+}
+if (!cssSource.includes("--t1-size: 26px") || !cssSource.includes("--t1-size: 30px") || !cssSource.includes("--t1-weight: 650")) {
+  fail("B4 T1 ladder missing");
+}
+if (!cssSource.includes("--t2-size: 20px") || !cssSource.includes("--t2-size: 22px") || !cssSource.includes("--t2-weight: 600")) {
+  fail("B4 T2 ladder missing");
+}
+if (!cssSource.includes("--t4-size: 14px") || !cssSource.includes("--t5-size: 13px") || !cssSource.includes("--t5-weight: 560")) {
+  fail("B4 T4/T5 ladder missing");
+}
+if (!cssSource.includes("--t6-size: 11px") || !cssSource.includes("--t6-weight: 500") || !cssSource.includes("--t6-lh: 1.35")) {
+  fail("B4 T6 ladder missing");
+}
+if (!/\.decision > h3\s*\{[^}]*font-size:\s*var\(--t2-size\)/.test(cssSource)) {
+  fail("B4 decision heading must stay above body size");
+}
+if (!/\.detail-card \.card-title[\s\S]*?font-weight:\s*600/.test(cssSource)) {
+  fail("B4 card title must be weight 600");
 }
 for (const name of ["home", "daily", "weekly"]) {
   const text = html[name];
