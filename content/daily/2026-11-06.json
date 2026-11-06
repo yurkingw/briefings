@@ -1,0 +1,833 @@
+{
+  "schema": "qianji.briefing.daily.v1",
+  "date": "2026-11-06",
+  "timezone": "Asia/Shanghai",
+  "updated_at": "2026-11-06T07:52:00+08:00",
+  "wave": "晨间",
+  "summary": "晨间 20 条（关注流相关 14/20）+ 论文 3 + GitHub 涨星/新锐各 Top10。主线：GPT-6 Cyber（Daybreak Red）、Cursor live apps / Vercel Schedules、Gemini Omni 1.2、Anthropic Model 4 / METR；硬门槛巴拉圭 Ueno/NYT + CERT-In CRAFTY FALCON 续报。GitStock+Archive 缺源，双榜重合=0。",
+  "metrics": {
+    "news": 20,
+    "finsec": 11,
+    "papers": 3,
+    "gh_rising": 10,
+    "gh_newcomers": 10,
+    "home_related": "14/20"
+  },
+  "news": [
+    {
+      "id": 1,
+      "wave": "晨间",
+      "domain": "AI安全",
+      "title": "OpenAI 发布 GPT‑6 Cyber：安全研究专用模型，经 Daybreak Red 向受控客户开放",
+      "background": "继前一日披露自主漏洞发现管线产出约 948 个 Linux LPE 后，OpenAI 将对应能力产品化为专用 cyber 模型。",
+      "facts": "OpenAI 官方帖宣布 Introducing GPT‑6 Cyber，称其在安全研究能力与对齐上前进，并驱动昨日 Linux kernel 研究；提及与 Mozilla、Palo Alto Networks 等安全团队协作。同日 @thsottiaux 称最新 cyber-specialized 模型经 Daybreak Red 开放。二级源称网络安全 Preparedness 档升至 Critical，并向 Daybreak Red 受控客户放量。",
+      "why": "把「AI 找洞/利用/补丁」从研究叙事推进到可交付安全产品线。Daybreak Red 受控访问约束外溢，但金融与关键基础设施采购方需同步评估红队滥用、输出物审核与供应链审计。与昨日 948 LPE 形成模型→管线→能力分级闭环。",
+      "arch_impact": "银行/清算若试点 AI 漏洞狩猎，应纳入受控通道、人工复核闸门，以及与 ASM/漏洞工单的隔离写入策略。",
+      "channel": "双通路",
+      "first_source_at": "2026-11-06 01:09",
+      "links": [
+        "https://x.com/OpenAI/status/2118390190246879554",
+        "https://x.com/thsottiaux/status/2118402103907655903",
+        "https://x.com/testingcatalog/status/2118390979459776709"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 2,
+      "wave": "晨间",
+      "domain": "AI产品",
+      "title": "Cursor：一键生成可分享 live apps（含库、确定性+Agent 安检与部署）",
+      "background": "Agent 编码降低写码门槛，但多数原型停在 localhost；Cursor 补齐构建→安检→部署→分享闭环。",
+      "facts": "@cursor_ai 宣布描述需求即可构建应用、配置数据库、运行 deterministic 与 agentic security checks 并部署，生成可分享链接。@vercel 同步官宣与 Cursor 一键部署（无需新建账号/部署配置，含库开通），基于 Vercel for Platforms。",
+      "why": "把 vibe coding 推到可外发多租户应用，分享链接即生产面。Agentic 安检成默认可观测控制点；未过检即部署的风险需产品硬拦。对标金融内部 Agent 工坊。",
+      "arch_impact": "内部 Agent 应用平台应对标：分享链接默认私有、租户隔离、密钥不进 prompt、部署前 SAST/密钥扫描硬门禁写入 SLA。",
+      "channel": "双通路",
+      "first_source_at": "2026-11-06 05:41",
+      "links": [
+        "https://x.com/cursor_ai/status/2118458629091426304",
+        "https://x.com/vercel/status/2118464668444557411",
+        "https://vercel.com/for/platforms"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 3,
+      "wave": "晨间",
+      "domain": "AI产品",
+      "title": "Google：Gemini Omni 1.2 Flash 向全部 Google AI 订阅者开推；Ultra 可剪至约 15 秒视频",
+      "background": "多模态视频编辑下沉到订阅层；与 OpenAI 图像侧放量同周共振。",
+      "facts": "@GeminiApp 称 Gemini Omni 1.2 Flash 即日起向全部 Google AI 订阅者滚动发布，支持多轮对话式视频精修与更稳视觉；Google AI Ultra 可创建/编辑最长约 15 秒视频。",
+      "why": "视频多轮编辑进入大众订阅层，加深生成内容即生产资产趋势；安全侧关注深度伪造与品牌资产被二次编辑的治理。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-06 02:12",
+      "links": [
+        "https://x.com/GeminiApp/status/2118406227533435391"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 4,
+      "wave": "晨间",
+      "domain": "AI产品",
+      "title": "OpenAI 图像侧放量：ChatGPT+API 周生成逾 40 亿张（约 8 周前逾 30 亿）",
+      "background": "Images 2.6 发布后的产能与采用验证。",
+      "facts": "@thsottiaux 称 ChatGPT 与 API 合计每周生成逾 4B 张图像，较约 8 周前的逾 3B/周继续爬升。",
+      "why": "图像模型已成超大规模生产系统；内容审核、版权与品牌安全需按日产数亿量级设计。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-06 06:24",
+      "links": [
+        "https://x.com/thsottiaux/status/2118469621011677521"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 5,
+      "wave": "晨间",
+      "domain": "AI产品",
+      "title": "Vercel Schedules 公测：Agent/应用可静态或运行时动态调度任务",
+      "background": "Agent 需要持久化定时与事件驱动执行面；Schedules 补齐平台原语。",
+      "facts": "@vercel 宣布 Vercel Schedules 进入 public beta：可在代码定义静态 job，也可运行时动态创建，可在含 preview 的环境运行；博文 vercel.com/blog/introducing-vercel-schedules。",
+      "why": "Agent 获官方调度原语后，自动化滥用与密钥驻留风险上升；preview 可跑 schedule 扩大非生产攻击面。",
+      "arch_impact": "对标云函数/Cron：生产 schedule 需绑定身份、密钥轮换、并发上限与出站策略；preview 默认禁外呼金融接口。",
+      "channel": "公开",
+      "first_source_at": "2026-11-06 04:19",
+      "links": [
+        "https://x.com/vercel/status/2118438184594149784",
+        "https://vercel.com/blog/introducing-vercel-schedules"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 6,
+      "wave": "晨间",
+      "domain": "AI产品",
+      "title": "METR 口径：Anthropic 内部 Model 4（上月训完）为分析集最高分，首次各基准均过 50%",
+      "background": "外部以 METR 评测口径观测 Anthropic 内部模型进展。",
+      "facts": "@AndrewCurran_ 称 Anthropic 新内部模型上月完成训练，METR 称为 Model 4（Anthropic 另有内部代号）；为 METR 分析集最高分，并首次在所测全部基准超过 50%。非官方发版公告。",
+      "why": "若 METR 口径成立，内部前沿已越过多项任务半数门槛，影响 RSP/发版节奏与竞品压力。须以 METR 原帖/报告为准，勿当正式发版。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-06 03:59",
+      "links": [
+        "https://x.com/AndrewCurran_/status/2118433070428852592"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 7,
+      "wave": "晨间",
+      "domain": "AI安全",
+      "title": "METR：Anthropic 或已触及 RSP「2× 加速」阈值，估当前加速可达约 3×（约 80% 来自 AI）",
+      "background": "RSP 将研发加速与安全缓冲挂钩；外部评测机构跟踪阈值。",
+      "facts": "@AndrewCurran_ 转述 METR：Anthropic 可能已达 2× RSP 加速阈值，并或运行在约 3×；METR 猜测 2026-10 加速中约 80% 来自 AI。",
+      "why": "阈值触发意味着安全评估节奏应按政策加速。采购方应将供应商 RSP/ASL 状态纳入第三方风险问卷。",
+      "arch_impact": "金融模型供应商尽职调查应索取 RSP/Preparedness 阈值状态与第三方评测摘要，而非只看 benchmark。",
+      "channel": "关注流",
+      "first_source_at": "2026-11-06 03:08",
+      "links": [
+        "https://x.com/AndrewCurran_/status/2118420279882092681"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 8,
+      "wave": "晨间",
+      "domain": "AI产品",
+      "title": "Anthropic 联合创始人/首席架构师 Sam McCandlish 首帖：称 AI 正在加速 Anthropic 自身研究",
+      "background": "与 Model 4 / RSP 加速叙事同日的高层直接发声。",
+      "facts": "@AndrewCurran_ 指出 Sam McCandlish（联合创始人、Chief Architect，负责预训练与 RL）发出首帖，称 AI 正在加速 Anthropic 研究。",
+      "why": "高层亲述「AI 加速 AI 研发」强化递归自改进行业叙事，与 METR 加速估计互相印证。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-06 06:14",
+      "links": [
+        "https://x.com/AndrewCurran_/status/2118466929887502748"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 9,
+      "wave": "晨间",
+      "domain": "AI产品",
+      "title": "Muse：美国全量开放 Voice；并宣布登陆墨西哥",
+      "background": "消费级助手持续地域扩张。",
+      "facts": "@alexandr_wang 宣布 Muse Voice 对美国用户全量开放，并另帖宣布 Muse 登陆墨西哥。",
+      "why": "语音助手全量与跨境扩张抬高实时语音数据驻留与合规议题。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-06 02:33",
+      "links": [
+        "https://x.com/alexandr_wang/status/2118411432161403375",
+        "https://x.com/alexandr_wang/status/2118454097104056645"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 10,
+      "wave": "晨间",
+      "domain": "AI产品",
+      "title": "OpenAI @thsottiaux 公开欢迎 Cat Wu 加盟（Claude Code 产品负责人转投续报）",
+      "background": "昨日已报 Cat Wu / Austin Lau 自 Anthropic 转 OpenAI；今日高层互动仍热。",
+      "facts": "@thsottiaux 发帖 Welcome Cat；公开侧仍大量讨论其领导 OpenAI Core Products 及 Austin Lau 同行。",
+      "why": "编码 Agent 产品领导权向 OpenAI 集中，可能影响 Claude Code vs Codex/Cursor 生态节奏。",
+      "arch_impact": null,
+      "channel": "双通路",
+      "first_source_at": "2026-11-05 08:29",
+      "links": [
+        "https://x.com/thsottiaux/status/2118138648214585591"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 11,
+      "wave": "晨间",
+      "domain": "AI安全",
+      "title": "续报：GPT‑6 Cyber 驱动昨日 Linux 内核 LPE 研究（约 948 洞叙事仍热）",
+      "background": "昨日盘中已报自主管线约 948 Linux LPE；今日与 GPT‑6 Cyber 发布互相引用。",
+      "facts": "OpenAI 在 GPT‑6 Cyber 公告中明确该模型 powered 昨日 Linux kernel 研究；公开检索仍广泛传播 948 LPE / 成本约 $1.21M 等数字。",
+      "why": "能力公告与漏洞产出数字绑定，抬高 AI 红队规模化预期；Linux 资产方应假设披露后利用技术更快扩散。",
+      "arch_impact": "内核/主机加固 SLA 应缩短；金融主机镜像加速补丁并监控本地提权信号。",
+      "channel": "双通路",
+      "first_source_at": "2026-11-05 08:25",
+      "links": [
+        "https://x.com/OpenAI/status/2118390190246879554",
+        "https://x.com/DarkWebInformer/status/2118137654382358720"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 12,
+      "wave": "晨间",
+      "domain": "其他安全",
+      "title": "CISA：工业制冷与冷链监控系统遭恶意网络活动瞄准，联合发布 Fact Sheet",
+      "background": "关键基础设施 OT/冷链监控暴露面受联邦关注。",
+      "facts": "@CISAgov 称恶意网络活动正瞄准工业制冷与冷链监控系统，与联邦伙伴联合发布 Fact Sheet，列出降低库存/设备/运营风险的关键步骤。",
+      "why": "冷链与食品/医药物流属关键运营；OT 与 IT 汇合点常缺补丁与网络隔离。对有仓储/现金中心温控依赖的机构有直接运维含义。",
+      "arch_impact": "金融现金中心/灾备机房若依赖环境监控厂商，应将冷链类物联网设备纳入 OT 资产清单与外联最小化。",
+      "channel": "公开",
+      "first_source_at": "2026-11-06 01:26",
+      "links": [
+        "https://x.com/CISAgov/status/2118394576314466486"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 13,
+      "wave": "晨间",
+      "domain": "其他安全",
+      "title": "CISA×澳大利亚 CyberGov×NSA：发布后量子密码厂商就绪评估指引与速查清单",
+      "background": "PQC 迁移进入采购与合同续约实操阶段。",
+      "facts": "@CISAgov 宣布与 @CyberGovAu、@NSAgov 发布新指引与速查清单，帮助机构评估厂商后量子密码迁移就绪；可用于采购、合同续约与厂商保证对话；链接 go.dhs.gov/5j9。",
+      "why": "把 PQC 从技术路线图落到采购问卷；金融密码模块与 HSM/TLS 供应商合同窗口可据此施压时间表。",
+      "arch_impact": "支付、密钥管理与专线加密供应商 RFP 应加入 PQC 就绪问题集；长期会话密钥与证书生命周期对齐迁移里程碑。",
+      "channel": "公开",
+      "first_source_at": "2026-11-05 22:13",
+      "links": [
+        "https://x.com/CISAgov/status/2118346077413781627",
+        "https://go.dhs.gov/5j9"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 14,
+      "wave": "晨间",
+      "domain": "其他安全",
+      "title": "OpenSSH/Alpine（musl）认证绕过热议：vx-underground 等传播「连按 4 键 257 次即 root」叙事",
+      "background": "新闻聚合亦出现 Alpine/musl 系 OpenSSH 密码可被绕过的故事；关注流高互动梗图放大。",
+      "facts": "@vxunderground 以梗图转述：忘记密码时连按「4」257 次即可认证成功并获 root，称问题可追溯至约 2016。公开新闻故事称 Alpine Linux / musl 系 OpenSSH 存在可用用户名即可登录类缺陷。需以厂商/CVE 公告二次核对，本条按高互动信号收录。",
+      "why": "容器与边缘设备大量使用 Alpine；若缺陷属实，SSH 暴露面可被极低成本打穿。金融构建链、跳板与 IoT 网关需紧急盘点 Alpine/musl OpenSSH 版本。",
+      "arch_impact": "CI 基础镜像与堡垒机若基于 Alpine，应优先验证 OpenSSH 补丁级别并临时限制密码认证、强制密钥+IP allowlist。",
+      "channel": "双通路",
+      "first_source_at": "2026-11-06 03:59",
+      "links": [
+        "https://x.com/vxunderground/status/2118432930145952173",
+        "https://x.com/i/trending/2118336300994671088"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "detail": true
+    },
+    {
+      "id": 15,
+      "wave": "晨间",
+      "domain": "其他",
+      "title": "【金融硬门槛】巴拉圭总统辞职：与其关联的数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+      "background": "南美数字银行集中度与政商关联风险集中爆发；非典型「网络入侵」硬门槛，但是系统性存款可得性事件。",
+      "facts": "@nytimes Breaking：巴拉圭总统因一家与其执政关联的银行倒闭辞职，导致约半数国民无法使用存款。公开检索指 Ueno Bank 被央行接管/倒闭叙事，影响约 300 万客户。一级印证以 NYT 链为准（nyti.ms）。",
+      "why": "数字银行单点承载国民级存款访问；治理与关联交易失败可瞬间转化为政治与支付系统危机。对金融架构：集中式数字存款通道的可替代清算与应急取现预案是硬需求。",
+      "arch_impact": "评估单一数字银行/钱包通道的存款可得性与应急取现；集团内关联贷款与政商风险纳入流动性与声誉压力测试。",
+      "channel": "双通路",
+      "first_source_at": "2026-11-06 06:11",
+      "links": [
+        "https://x.com/nytimes/status/2118466231107752042",
+        "https://nyti.ms/4kzsDUy"
+      ],
+      "finsec": true,
+      "hard_gate": true,
+      "detail": true
+    },
+    {
+      "id": 16,
+      "wave": "晨间",
+      "domain": "其他安全",
+      "title": "续报：印度 CERT-In / I4C 警告 AI 辅助团伙 CRAFTY FALCON 持续瞄准 BFSI/加密与支付 API",
+      "background": "昨日已作金融硬门槛；24–30h 窗口内仍多源在传，含支付 API 滥用与周末打击节奏。",
+      "facts": "公开检索多源（@beincrypto、@RT_India_news、@MoneylifeIndia、@mitigata 等）继续引用 CERT-In 对 CRAFTY FALCON 的 Critical 警告：AI 辅助侦察、窃取钱包密钥、经合法支付 API 转移、先小额测试再大额；部分称工具链含中国来源组件并波及韩国银行先例。",
+      "why": "「机器速度」资金转移对银行反欺诈与支付 API 授权模型构成直接压力；周末/非工作时段监控缺口被点名。",
+      "arch_impact": "支付 API 需强化异常小额试探检测、非工作时段高风险出金二次审批、测试环境与生产支付密钥严格隔离。",
+      "channel": "公开",
+      "first_source_at": "2026-11-05 08:00",
+      "links": [
+        "https://x.com/beincrypto/status/2118232328187396249",
+        "https://x.com/RT_India_news/status/2118242307493511200",
+        "https://x.com/mitigata/status/2118303573213847694"
+      ],
+      "finsec": true,
+      "hard_gate": true,
+      "detail": false
+    },
+    {
+      "id": 17,
+      "wave": "晨间",
+      "domain": "其他安全",
+      "title": "续报：Crédit Mutuel Arkéa 遭攻击后资金缺失叙事仍在流传（量级约 €100M / 昨报约 $133M）（unconfirmed）",
+      "background": "昨日已报官方确认与约 $133M 可验证叙事；今日 24h 回顾帖仍提约 €100M 经自有账户欺诈转出、客户资产未受影响。（unconfirmed）",
+      "facts": "@neo_logos_ 等 24h 回顾称 Arkéa 称约 €100 million 缺失，攻击者利用其自有账户做欺诈转账，客户资产未受影响并在推进追回。以昨日官方确认为准，本条为热度续报。（unconfirmed）",
+      "why": "银行「自有账户/内部转账通道」被滥用仍是核心架构教训；与支付 API 滥用同属授权边界问题。",
+      "arch_impact": "内部清算与 nostro 类账户的异常转出应独立于客户支付风控，设金额/对手方/时段硬阈值。",
+      "channel": "公开",
+      "first_source_at": "2026-11-05 06:30",
+      "links": [
+        "https://x.com/neo_logos_/status/2118471015701377164"
+      ],
+      "finsec": true,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 18,
+      "wave": "晨间",
+      "domain": "其他",
+      "title": "Discord 弃 Electron、以 Rust 重写客户端；早期构建内存约 290MB（IntCyberDigest）",
+      "background": "大型桌面客户端性能与供应链（Electron）长期被安全/工程社区诟病。",
+      "facts": "@IntCyberDigest 称 Discord 弃 Electron、以 Rust 重写应用；截图显示早期构建约 290MB RAM；并提及去年曾测试 Windows 应用内存过高时自动重启等权宜之计。",
+      "why": "头部协作客户端离开 Electron 具行业风向标意义；Rust 重写降低部分内存破坏类风险，但新客户端供应链与更新通道需重新审计。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-06 05:54",
+      "links": [
+        "https://x.com/IntCyberDigest/status/2118461855861776603"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 19,
+      "wave": "晨间",
+      "domain": "其他",
+      "title": "得州州长当选人 Gina Hinojosa 被指主张对现有许可数据中心设限（AI 基建政治化）",
+      "background": "美中期选举后地方能源/数据中心政策成为 AI 产能约束变量。",
+      "facts": "@GavinSBaker 称得州州长当选人 Gina Hinojosa 明确表示应对目前已获许可的数据中心设限，并贴出其官方立场材料；讨论热度高。",
+      "why": "若地方对已许可数据中心收紧，AI 训练/推理产能与电力规划出现政策尾部风险；云与模型供应商选址假设需更新。",
+      "arch_impact": null,
+      "channel": "关注流",
+      "first_source_at": "2026-11-06 03:07",
+      "links": [
+        "https://x.com/GavinSBaker/status/2118420042283102604",
+        "https://x.com/GavinSBaker/status/2118420049115705717"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    },
+    {
+      "id": 20,
+      "wave": "晨间",
+      "domain": "AI安全",
+      "title": "AISafetyMemes「Black October」更新：称近 48h 新增约 55 起攻击、含数起极严重事件（二手汇总）",
+      "background": "AI 相关安全事件月度叙事聚合；需逐条核验，不作单一事实源。",
+      "facts": "@AISafetyMemes 发 Black October 更新，称过去 48h 新增约 55 起攻击，其中约 5 起为「非常严重」。具体条目未在本采集中逐一核验官方源。",
+      "why": "反映从业者对 AI 相关攻击节奏的主观热度；适合作为扫描线索而非结论。",
+      "arch_impact": null,
+      "channel": "公开",
+      "first_source_at": "2026-11-05 14:16",
+      "links": [
+        "https://x.com/AISafetyMemes/status/2118226006800793822"
+      ],
+      "finsec": false,
+      "hard_gate": false,
+      "detail": false
+    }
+  ],
+  "papers": [
+    {
+      "short": "LifeVal (OpenAI)",
+      "what": "OpenAI 日常生活代理基准：调查 3837 名美国消费者，对 148 项生活任务按「愿付助手费」排序，合计年价值超 $1.7T；筛成 169 个可跑 agent 任务（理财/搬家/求职/托儿等），每任务含 rubric、工作环境、离线网页副本，经三轮人工审。分数从 GPT-5.2 升至 GPT-6 Astra；最常见失败是错误答案/建议，常因漏掉用户历史对话里的事实。仅依赖过去对话的标准胜率 33%，依赖已存 memory 的 48%。",
+      "why": "@dair_ai 原创（11/5）；直接打「有 memory 却找不到几周前用户说过什么」——建带记忆助手必测。",
+      "url": "https://arxiv.org/abs/2611.06687",
+      "dair_url": "https://x.com/dair_ai/status/2118337806120718495"
+    },
+    {
+      "short": "Recursa",
+      "what": "面向基础模型系统的递归自改进：提出 Recursa，不换更强教师/人类专家、权重不动，靠系统自写知识库（领域技能、何时用、任务记忆、反思）；并行学习者跑任务、只合并验证过的修复。DeepSeek-V4.1-Flash 在 held-out 法律任务 all-pass 30.0%→55.0%；Harvey LAB Firm Knowledge 上 Qwen3.8-Flash 35.0%→46.0%。",
+      "why": "@dair_ai 引用 @omarsar0（11/5）；与昨报 RSI-Dojo（权重微调）互补——先验证技能库再谈 fine-tune，对企业域适配更轻。",
+      "url": "https://arxiv.org/abs/2611.04035",
+      "dair_url": "https://x.com/dair_ai/status/2118362454141100189"
+    },
+    {
+      "short": "ServerBench (CMU)",
+      "what": "CMU：让 coding agent 设计整套专用 LLM serving。Claude Sonnet 5.5 为 Gemma E4B 搭出的系统相对 vLLM 参考达到 4.87×「每 GPU 美元的延迟合格 token 价值」。回放真实 coding session（依赖完整）打分，独立检查验证。11 个 coding-agent ×3 部署：33 跑中 22 产出可验证系统，13 超最强基线；失败常因优化路径未测到。",
+      "why": "@dair_ai RT @omarsar0（11/5）；coding agent 从写应用扩到调 serving 栈——基础设施自动化新前沿。",
+      "url": "https://arxiv.org/abs/2611.06841",
+      "dair_url": "https://x.com/dair_ai/status/2118339967025815843"
+    }
+  ],
+  "github": {
+    "rising": [
+      {
+        "rank": 1,
+        "repo": "auto-ontology",
+        "owner": "NVIDIA",
+        "owner_type": "Organization",
+        "slogan": "Auto Ontology is a Python framework for building…",
+        "gained": 2707,
+        "stars": 7255,
+        "age_h": null,
+        "seen": "续见",
+        "break": null,
+        "lang": "Python",
+        "license": "Apache-2.0",
+        "what": "Python 项目：Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
+        "why": "今日热榜 +2707 星（热榜；Archive 缺源无差量校正）",
+        "url": "https://github.com/NVIDIA/auto-ontology",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 2,
+        "repo": "agent-desktop",
+        "owner": "vercel-labs",
+        "owner_type": "Organization",
+        "slogan": "Computer use CLI for AI agents",
+        "gained": 2173,
+        "stars": 16791,
+        "age_h": null,
+        "seen": "续见",
+        "break": null,
+        "lang": "Rust",
+        "license": "Apache-2.0",
+        "what": "Rust 项目：Computer use CLI for AI agents",
+        "why": "今日热榜 +2173 星（热榜；Archive 缺源无差量校正）",
+        "url": "https://github.com/vercel-labs/agent-desktop",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 3,
+        "repo": "skills",
+        "owner": "mattpocock",
+        "owner_type": "User",
+        "slogan": "Skills for Real Engineers",
+        "gained": 2053,
+        "stars": 315166,
+        "age_h": null,
+        "seen": "首见",
+        "break": null,
+        "lang": "Shell",
+        "license": "MIT",
+        "what": "Shell 项目：Skills for Real Engineers. Straight from my .agents directory.",
+        "why": "今日热榜 +2053 星（热榜；Archive 缺源无差量校正）",
+        "url": "https://github.com/mattpocock/skills",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 4,
+        "repo": "Scrapling",
+        "owner": "D4Vinci",
+        "owner_type": "User",
+        "slogan": "🕷️ The BEST Web Scraping framework that handles …",
+        "gained": 1661,
+        "stars": 97926,
+        "age_h": null,
+        "seen": "续见",
+        "break": null,
+        "lang": "Python",
+        "license": "BSD-3-Clause",
+        "what": "Python 项目：🕷️ The BEST Web Scraping framework that handles everything from a single request to a full-scale crawl! Don't be shy, join here: https://discord.gg/EMgGbDceNQ and follow here for daily tips and tricks: https://x.com/Scrapling_dev",
+        "why": "今日热榜 +1661 星（热榜；Archive 缺源无差量校正）",
+        "url": "https://github.com/D4Vinci/Scrapling",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 5,
+        "repo": "DiscImageStudio",
+        "owner": "JiaFeiMiao-K-Cat",
+        "owner_type": "User",
+        "slogan": "DiscImageStudio",
+        "gained": 977,
+        "stars": 7247,
+        "age_h": null,
+        "seen": "续见",
+        "break": null,
+        "lang": "C#",
+        "license": "GPL-3.0",
+        "what": "C# 仓库 JiaFeiMiao-K-Cat/DiscImageStudio",
+        "why": "今日热榜 +977 星（热榜；Archive 缺源无差量校正）",
+        "url": "https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 6,
+        "repo": "floci",
+        "owner": "floci-io",
+        "owner_type": "Organization",
+        "slogan": "Light, fluffy, and always free - The AWS Local E…",
+        "gained": 784,
+        "stars": 30379,
+        "age_h": null,
+        "seen": "续见",
+        "break": null,
+        "lang": "Java",
+        "license": "MIT",
+        "what": "Java 项目：Light, fluffy, and always free - The AWS Local Emulator alternative",
+        "why": "今日热榜 +784 星（热榜；Archive 缺源无差量校正）",
+        "url": "https://github.com/floci-io/floci",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 7,
+        "repo": "skills",
+        "owner": "scenario-labs",
+        "owner_type": "Organization",
+        "slogan": "Get production-ready images, video, audio, and 3…",
+        "gained": 674,
+        "stars": 3032,
+        "age_h": null,
+        "seen": "续见",
+        "break": null,
+        "lang": "Python",
+        "license": "MIT",
+        "what": "Python 项目：Get production-ready images, video, audio, and 3D from any AI agent: skills that pick the right model, price before spending, and keep characters and brands consistent through the Scenario MCP, plus expert teams that drive Blender, Maya, ZBrush, Unreal, and Unity.",
+        "why": "今日热榜 +674 星（热榜；Archive 缺源无差量校正）",
+        "url": "https://github.com/scenario-labs/skills",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 8,
+        "repo": "gstack",
+        "owner": "garrytan",
+        "owner_type": "User",
+        "slogan": "Use Garry Tan's exact Claude Code setup: 23 opin…",
+        "gained": 608,
+        "stars": 139925,
+        "age_h": null,
+        "seen": "首见",
+        "break": null,
+        "lang": "TypeScript",
+        "license": "MIT",
+        "what": "TypeScript 项目：Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA",
+        "why": "今日热榜 +608 星（热榜；Archive 缺源无差量校正）",
+        "url": "https://github.com/garrytan/gstack",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 9,
+        "repo": "worktrunk",
+        "owner": "max-sixty",
+        "owner_type": "User",
+        "slogan": "Worktrunk is a CLI for Git worktree management, …",
+        "gained": 546,
+        "stars": 11496,
+        "age_h": null,
+        "seen": "续见",
+        "break": null,
+        "lang": "Rust",
+        "license": "NOASSERTION",
+        "what": "Rust 项目：Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows",
+        "why": "今日热榜 +546 星（热榜；Archive 缺源无差量校正）",
+        "url": "https://github.com/max-sixty/worktrunk",
+        "tags": [
+          "热榜"
+        ]
+      },
+      {
+        "rank": 10,
+        "repo": "ai-goofish-monitor",
+        "owner": "Usagi-org",
+        "owner_type": "Organization",
+        "slogan": "基于 Playwright 和AI实现的闲鱼多任务实时/定时监控与智能分析系统，配备了功能完善的…",
+        "gained": 242,
+        "stars": 17502,
+        "age_h": null,
+        "seen": "首见",
+        "break": null,
+        "lang": "Python",
+        "license": "MIT",
+        "what": "Python 项目：基于 Playwright 和AI实现的闲鱼多任务实时/定时监控与智能分析系统，配备了功能完善的后台管理UI。帮助用户从闲鱼海量商品中，找到心仪产品。",
+        "why": "今日热榜 +242 星（热榜；Archive 缺源无差量校正）",
+        "url": "https://github.com/Usagi-org/ai-goofish-monitor",
+        "tags": [
+          "热榜"
+        ]
+      }
+    ],
+    "newcomers": [
+      {
+        "rank": 1,
+        "repo": "java-mod-rust-port-tool",
+        "owner": "Wallbycontact",
+        "owner_type": "User",
+        "slogan": "Feed it a Fabric or NeoForge mod jar and Smelt w…",
+        "gained": null,
+        "stars": 408,
+        "age_h": 17.5,
+        "seen": "首见",
+        "break": null,
+        "lang": "JavaScript",
+        "license": "MIT",
+        "what": "Feed it a Fabric or NeoForge mod jar and Smelt writes the Rust side for Horizon, with the unfinished parts flagged in the report.",
+        "why": "今日新锐榜入选。",
+        "url": "https://github.com/Wallbycontact/java-mod-rust-port-tool",
+        "tags": [
+          "JavaScript"
+        ]
+      },
+      {
+        "rank": 2,
+        "repo": "pixel-gif-sticker-pack",
+        "owner": "WoYun520",
+        "owner_type": "User",
+        "slogan": "A Codex skill for creating and verifying animate…",
+        "gained": null,
+        "stars": 405,
+        "age_h": 19.6,
+        "seen": "首见",
+        "break": null,
+        "lang": "Python",
+        "license": "MIT",
+        "what": "A Codex skill for creating and verifying animated GIF sticker packs from character references.",
+        "why": "今日新锐榜入选。",
+        "url": "https://github.com/WoYun520/pixel-gif-sticker-pack",
+        "tags": [
+          "Python"
+        ]
+      },
+      {
+        "rank": 3,
+        "repo": "hermes-voice",
+        "owner": "majorminorlabs",
+        "owner_type": "User",
+        "slogan": "Talk to a Hermes Agent profile through Home Assi…",
+        "gained": null,
+        "stars": 199,
+        "age_h": 18.2,
+        "seen": "首见",
+        "break": null,
+        "lang": "Python",
+        "license": "MIT",
+        "what": "Talk to a Hermes Agent profile through Home Assistant Assist",
+        "why": "今日新锐榜入选。",
+        "url": "https://github.com/majorminorlabs/hermes-voice",
+        "tags": [
+          "Python"
+        ]
+      },
+      {
+        "rank": 4,
+        "repo": "poki",
+        "owner": "JosssphZhou",
+        "owner_type": "User",
+        "slogan": "Let AI agents operate a real iPhone",
+        "gained": null,
+        "stars": 184,
+        "age_h": 8.6,
+        "seen": "首见",
+        "break": null,
+        "lang": "JavaScript",
+        "license": "AGPL-3.0",
+        "what": "Let AI agents operate a real iPhone. Local MCP server and agent, no jailbreak, no extra hardware.",
+        "why": "今日新锐榜入选。",
+        "url": "https://github.com/JosssphZhou/poki",
+        "tags": [
+          "JavaScript"
+        ]
+      },
+      {
+        "rank": 5,
+        "repo": "block-roll",
+        "owner": "zeemscript",
+        "owner_type": "User",
+        "slogan": "Non-custodial, encrypted file storage & sharing …",
+        "gained": null,
+        "stars": 160,
+        "age_h": 23.5,
+        "seen": "首见",
+        "break": null,
+        "lang": "TypeScript",
+        "license": "MIT",
+        "what": "Non-custodial, encrypted file storage & sharing platform with Stellar payments and on-chain file notarization",
+        "why": "今日新锐榜入选。",
+        "url": "https://github.com/zeemscript/block-roll",
+        "tags": [
+          "TypeScript"
+        ]
+      },
+      {
+        "rank": 6,
+        "repo": "MineAgent",
+        "owner": "YT-Proteus-bot",
+        "owner_type": "User",
+        "slogan": "agent定制自由化，agent流程可视化",
+        "gained": null,
+        "stars": 111,
+        "age_h": 17.7,
+        "seen": "首见",
+        "break": null,
+        "lang": "Python",
+        "license": "",
+        "what": "agent定制自由化，agent流程可视化。在浏览器里用画布搭出工业级 Agent 流程，选框架自动生成架构图， 拖节点、连线、写代码、配模型，点「保存」就把整张画布编译成一个可独立运行的 Python Agent 项目， 点「运行」直接在你的机器上真实执行并流式回传每一步。欢迎各位同行二次开发，如有商用请说明出处。",
+        "why": "今日新锐榜入选。",
+        "url": "https://github.com/YT-Proteus-bot/MineAgent",
+        "tags": [
+          "Python"
+        ]
+      },
+      {
+        "rank": 7,
+        "repo": "portfree",
+        "owner": "804384049",
+        "owner_type": "User",
+        "slogan": "开发时端口被占，一行命令释放",
+        "gained": null,
+        "stars": 83,
+        "age_h": 15.1,
+        "seen": "首见",
+        "break": null,
+        "lang": "Python",
+        "license": "MIT",
+        "what": "开发时端口被占，一行命令释放。零依赖",
+        "why": "今日新锐榜入选。",
+        "url": "https://github.com/804384049/portfree",
+        "tags": [
+          "Python"
+        ]
+      },
+      {
+        "rank": 8,
+        "repo": "best-agent-memory-mcp",
+        "owner": "Glen-Web-App",
+        "owner_type": "Organization",
+        "slogan": "Best Agent Memory MCP servers, ranked and compar…",
+        "gained": null,
+        "stars": 78,
+        "age_h": 22.3,
+        "seen": "首见",
+        "break": null,
+        "lang": "",
+        "license": "CC0-1.0",
+        "what": "Best Agent Memory MCP servers, ranked and compared: long-term memory for Claude Code, Codex, Cursor and any MCP client. Glen, Mem0, Supermemory, Zep, Hindsight, Basic Memory, claude-mem, Graphiti, Cognee, the official memory server and more, with storage, capture model, team sharing, license and live stars.",
+        "why": "今日新锐榜入选。",
+        "url": "https://github.com/Glen-Web-App/best-agent-memory-mcp",
+        "tags": []
+      },
+      {
+        "rank": 9,
+        "repo": "boxshelf-beta",
+        "owner": "sassiestrhihno",
+        "owner_type": "User",
+        "slogan": "Boxshelf public beta for Windows: a TV-style lau…",
+        "gained": null,
+        "stars": 78,
+        "age_h": 18.9,
+        "seen": "首见",
+        "break": null,
+        "lang": "",
+        "license": "",
+        "what": "Boxshelf public beta for Windows: a TV-style launcher for your emulators, Steam games and media apps.",
+        "why": "今日新锐榜入选。",
+        "url": "https://github.com/sassiestrhihno/boxshelf-beta",
+        "tags": []
+      },
+      {
+        "rank": 10,
+        "repo": "Qure_Style_SVG",
+        "owner": "aaANDkk",
+        "owner_type": "User",
+        "slogan": "Qure 风格的纯 SVG 矢量策略组图标库 | Qure style SVG policy i…",
+        "gained": null,
+        "stars": 70,
+        "age_h": 16.8,
+        "seen": "首见",
+        "break": null,
+        "lang": "",
+        "license": "",
+        "what": "Qure 风格的纯 SVG 矢量策略组图标库 | Qure style SVG policy icon set for Mihomo / Clash / FlClash / Bettbox / Surge / Quantumult X",
+        "why": "今日新锐榜入选。",
+        "url": "https://github.com/aaANDkk/Qure_Style_SVG",
+        "tags": []
+      }
+    ],
+    "meta": {
+      "archive": "missing",
+      "archive_note": "GH Archive 缺源（无 GCP）；规则双榜重合（热榜∩Archive）=0；涨星∩新锐=0；GitStock 缺源。",
+      "sources_ok": [
+        "trending"
+      ],
+      "sources_missing": [
+        "gh_archive",
+        "gitstock"
+      ],
+      "hot_tag": "热榜"
+    }
+  },
+  "sources": [
+    "X Home (user-X timeline)",
+    "公开 X search_posts_all / search_news",
+    "公开 X @dair_ai get_users_posts",
+    "GitHub Trending（GitStock + GH Archive 缺源）",
+    "站外印证（NYT Ueno 等公开报道）"
+  ]
+}
