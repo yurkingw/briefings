@@ -432,6 +432,18 @@ if (!cssSource.includes(":nth-child(n + 6)") || !cssSource.includes("html.js") |
 if (!html.home.includes('class="lede"') || !html.home.includes("Daily and weekly intelligence, mirrored for the public web.")) {
   fail("home lede is missing");
 }
+assertChrome("home", html.home);
+if (!html.home.includes('id="daily"') || !html.home.includes('id="weekly"') || !html.home.includes(">Daily<") || !html.home.includes(">Weekly<")) {
+  fail("home archive headings must stay");
+}
+const stackStart = cssSource.indexOf("@media (max-width: 640px)");
+const stackEnd = cssSource.indexOf("@media", stackStart + 10);
+const stack = stackStart < 0 ? "" : cssSource.slice(stackStart, stackEnd < 0 ? undefined : stackEnd);
+if (!/th,\s*\ntd\s*\{[^}]*padding-left:\s*var\(--s-4\)/.test(cssSource) || !/th,\s*\ntd\s*\{[^}]*padding-right:\s*var\(--s-4\)/.test(cssSource)) {
+  fail("E5 desktop table cells are missing 16px inline padding");
+}
+if (!stack.includes("padding-inline: var(--inset-row)")) fail("E6 stacked tables are missing inset-row");
+if (/padding:\s*var\(--s-2\)\s+0/.test(stack)) fail("E6 stacked td still has zero inline padding");
 if (html.home) {
   const homeTops = html.home.match(/class="back-to-top"/g) || [];
   if (homeTops.length !== 1 || !html.home.includes(">回顶</button>")) fail("home must have exactly one 回顶 control");
@@ -691,7 +703,7 @@ if (html.daily) {
   if (!html.daily.includes('class="brf-rows"') || !html.daily.includes('class="brf-metrics"') || !html.daily.includes('class="brf-status"')) {
     fail("daily is missing Rows, Metrics, or Status");
   }
-  if (!html.daily.includes('aria-current="page">Daily')) fail("daily page does not mark the Daily nav");
+  assertChrome("daily", html.daily);
 }
 
 if (html.weekly) {
@@ -772,7 +784,19 @@ if (html.weekly) {
   if (!html.weekly.includes('class="brf-rows"') || !html.weekly.includes('class="brf-metrics"') || !html.weekly.includes('class="brf-status"') || !html.weekly.includes('class="brf-steps"')) {
     fail("weekly is missing Rows, Metrics, Status, or Steps");
   }
-  if (!html.weekly.includes('aria-current="page">Weekly')) fail("weekly page does not mark the Weekly nav");
+  assertChrome("weekly", html.weekly);
+}
+
+function assertChrome(name, text) {
+  const headerEnd = text.indexOf("</header>");
+  const header = headerEnd < 0 ? "" : text.slice(0, headerEnd);
+  if (!header) fail(`${name} is missing the chrome header`);
+  if (header.includes('class="nav"') || header.includes(">Daily<") || header.includes(">Weekly<")) {
+    fail(`${name} chrome still has a Daily/Weekly nav`);
+  }
+  if (!header.includes('class="brand-lockup"') || !header.includes('class="seg theme-switch"')) {
+    fail(`${name} chrome dropped the lockup or theme switch`);
+  }
 }
 
 
