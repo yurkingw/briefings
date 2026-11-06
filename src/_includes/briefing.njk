@@ -14,7 +14,6 @@
 {% set windowText = briefing | papersWindow %}
 {% set steps = decisions | saSteps %}
 {% set judgments = decisions | finalJudgments %}
-{% set groups = news | newsGroups %}
 {% set polfin = briefing.polfin if briefing.polfin else [] %}
 {% set polfinMorning = polfin | waveItems("morning") %}
 {% set polfinAfternoon = polfin | waveItems("afternoon") %}
@@ -74,10 +73,25 @@
       {% if briefing.news_digest %}
       {{ ui.callout("本周精选", briefing.news_digest, "info") }}
       {% endif %}
-      {% if groups.length %}
-      {% for group in groups %}
-      <section class="block" id="weekly-news-{{ group.id }}">
-        <h2 lang="zh-Hans">{{ group.label }}（{{ group.items | length }}）</h2>
+      {% if news.length %}
+      {% set newsLead = news | takeFeatured(10) %}
+      {% set newsRest = news | takeRest(10) %}
+      <section class="block hot-picks" id="weekly-news-hot">
+        <h2>本周精选</h2>
+        <ol class="hot hot-list">
+          {% for item in newsLead %}
+          <li><a class="hot-jump hit-row" href="#note-{{ item.id }}"><span class="hot-index">{{ loop.index }}</span><span class="hot-title" lang="zh-Hans">{{ item | displayTitle }}</span></a></li>
+          {% endfor %}
+        </ol>
+      </section>
+      <div class="detail-cards">
+        {% for item in newsLead %}
+        {{ ui.detailCard(item) }}
+        {% endfor %}
+      </div>
+      {% if newsRest.length %}
+      <section class="block" id="weekly-news-rest">
+        <h2>其余要点</h2>
         <div class="table-wrap">
           <table>
             <thead>
@@ -85,25 +99,19 @@
                 <th scope="col">#</th>
                 <th scope="col">领域</th>
                 <th scope="col">标题</th>
-                <th scope="col">为何仍重要</th>
+                <th scope="col">通路</th>
+                <th scope="col">最早源时</th>
                 <th scope="col">链接</th>
               </tr>
             </thead>
             <tbody>
-              {% for item in group.items %}
+              {% for item in newsRest %}
               <tr id="feature-{{ item.id }}">
                 <td data-label="#">{{ loop.index }}</td>
                 <td data-label="领域" lang="zh-Hans">{{ item.domain }}</td>
-                <td class="col-title" data-label="标题" lang="zh-Hans">
-                  <span class="cell-short is-title" title="{{ item | displayTitle }}">{{ item | displayTitle }}</span>
-                  {% if item.finsec === true or item.hard_gate === true %}
-                  <span class="brf-status-row">
-                    {% if item.finsec === true %}<span class="brf-status">finsec</span>{% endif %}
-                    {% if item.hard_gate === true %}<span class="brf-status" data-tone="danger">硬门槛</span>{% endif %}
-                  </span>
-                  {% endif %}
-                </td>
-                <td class="why-cell" data-label="为何仍重要" lang="zh-Hans">{% if item.why %}{{ item.why }}{% else %}—{% endif %}</td>
+                <td class="col-title" data-label="标题" lang="zh-Hans"><span class="cell-short is-title" title="{{ item | displayTitle }}">{{ item | displayTitle }}</span></td>
+                <td data-label="通路" lang="zh-Hans">{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
+                <td data-label="最早源时" lang="zh-Hans">{% if item.first_source_at %}{{ item.first_source_at }}{% else %}—{% endif %}</td>
                 <td data-label="链接">{{ ui.cellLinks(item.links) }}</td>
               </tr>
               {% endfor %}
@@ -111,7 +119,7 @@
           </table>
         </div>
       </section>
-      {% endfor %}
+      {% endif %}
       {% else %}
       {{ ui.callout("状态", "本窗口尚未写入周精选。", "info") }}
       {% endif %}
