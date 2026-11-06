@@ -141,17 +141,17 @@ if (!fs.existsSync(css)) fail("missing _site/css/site.css");
 const todayPage = html["daily-2026-11-06"];
 if (todayPage) {
   assertNoToc("2026-11-06", todayPage);
-  for (const label of ["今日主线", "要闻", "顶尖论文", "GitHub", "附录"]) {
+  for (const label of ["今日主线", "要闻", "政治金融", "顶尖论文", "GitHub", "附录"]) {
     if (!todayPage.includes(label)) fail(`2026-11-06 page missing label ${label}`);
   }
-  if (!todayPage.includes("晨间")) fail("2026-11-06 page dropped the morning wave");
-  if (!todayPage.includes(">午间</span>")) fail("2026-11-06 wave is not 午间");
-  if (!todayPage.includes('datetime="2026-11-06T12:41:19+08:00"')) {
-    fail("2026-11-06 updated_at is not 12:41");
+  if (!todayPage.includes("晨间") || !todayPage.includes(">午间<")) fail("2026-11-06 page dropped a wave tab");
+  if (!todayPage.includes('datetime="2026-11-06T13:58:00+08:00"')) {
+    fail("2026-11-06 updated_at drifted");
   }
-  if (!/要闻条数<\/dt>\s*<dd[^>]*>29<\/dd>/.test(todayPage) || !/全日累计<\/dt>\s*<dd[^>]*>29<\/dd>/.test(todayPage)) {
-    fail("2026-11-06 news count is not 29");
+  if (!/要闻条数<\/dt>\s*<dd[^>]*>27<\/dd>/.test(todayPage) || !/政治金融<\/dt>\s*<dd[^>]*>7<\/dd>/.test(todayPage)) {
+    fail("2026-11-06 news or polfin count drifted");
   }
+  if (!todayPage.includes("pf-20261106-01")) fail("2026-11-06 polfin row is not on the page");
   if ((todayPage.includes("€100") || todayPage.includes("$133")) && !/unconfirmed/i.test(todayPage)) {
     fail("2026-11-06 states an unconfirmed amount without the unconfirmed marker");
   }
@@ -336,8 +336,8 @@ if (builtStage.daily) {
     excerpt(builtStage.daily.summary, 150),
     "Today",
   );
-  if (builtStage.daily.date === "2026-11-06" && (builtStage.daily.wave !== "午间" || !stageHtml.includes("午间"))) {
-    fail("home Now stage must show Today · 午间");
+  if (builtStage.daily.date === "2026-11-06" && !stageHtml.includes(builtStage.daily.wave)) {
+    fail("home Now stage dropped today's wave");
   }
 } else if (!stageHtml.includes(builtStage.weekly ? emptyCopy.daily : emptyCopy.both)) {
   fail("missing daily stage row has no empty state");
@@ -527,7 +527,9 @@ function assertGithubRows(name, panelHtml, rows, idPrefix) {
     const slogan = (item.slogan || "—").replace(/\s+/g, " ").trim();
     if (title !== item.repo) fail(`${name} title ${index + 1} is "${title}"`);
     if (detail !== slogan) fail(`${name} slogan ${index + 1} is "${detail}"`);
-    if (item.slogan && title.includes(item.slogan)) fail(`${name} slogan is glued into the title`);
+    if (item.slogan && item.slogan !== item.repo && title.includes(item.slogan)) {
+      fail(`${name} slogan is glued into the title`);
+    }
     if (item.what && title.includes(item.what)) fail(`${name} what is glued into the title`);
     if (item.why && title.includes(item.why)) fail(`${name} why is glued into the title`);
     if (item.break && (!row.includes('data-tone="danger"') || !row.includes(item.break))) {
@@ -537,7 +539,9 @@ function assertGithubRows(name, panelHtml, rows, idPrefix) {
     if (!row.includes('class="brf-row-meta"')) fail(`${name} row is missing meta`);
     const card = details[index] || "";
     if (!card.includes(`id="${idPrefix}-${item.rank}"`)) fail(`${name} detail id missing for ${item.repo}`);
-    if (!card.includes('class="brf-metrics"')) fail(`${name} detail is missing metrics`);
+    for (const key of ["是什么", "为什么涨", "+N/窗", "总星", "上线", "链接"]) {
+      if (!card.includes(`>${key}<`)) fail(`${name} detail missing ${key}`);
+    }
     const heading = (card.match(/<h3>([^<]*)<\/h3>/) || [])[1] || "";
     if (item.slogan && heading.includes(item.slogan)) fail(`${name} detail heading glues the slogan`);
     if (item.url && !card.includes(item.url)) fail(`${name} detail dropped the repo URL`);
@@ -556,7 +560,7 @@ const weeklyProps = weeklyPropertyRows(weeklyJson);
 if (dailyProps.map((row) => row.label).join("|") !== "日期|最后更新|要闻条数|全日累计|finsec|论文篇数|关注流相关|GitHub") {
   fail("daily property key order drifted");
 }
-if (weeklyProps.map((row) => row.label).join("|") !== "窗口|本周条目|AI 产品 / 科技|AI 安全|其他安全 / 加密|壳") {
+if (weeklyProps.map((row) => row.label).join("|") !== "窗口|本周条目|政治金融|AI 产品 / 科技|AI 安全|其他安全 / 加密|壳") {
   fail("weekly property key order drifted");
 }
 const weeklySteps = saSteps(weeklyJson.decisions);
@@ -622,10 +626,10 @@ if (html.daily) {
     fail("daily mainline is not a warning callout");
   }
   const tabs = tabLabels(firstBlock(html.daily, 'class="page-tabs', "</div>"));
-  if (tabs.join("|") !== "要闻|顶尖论文|GitHub|附录") fail(`S1 tabs ${tabs.join("|")}`);
+  if (tabs.join("|") !== "要闻|政治金融|顶尖论文|GitHub|附录") fail(`S1 tabs ${tabs.join("|")}`);
   const bar = firstBlock(html.daily, 'class="page-tabs', "</div>");
   if (!/aria-controls="panel-news"[^>]*aria-selected="true"/.test(bar)) fail("S1 default tab is not 要闻");
-  for (const id of ["panel-papers", "panel-github", "panel-appendix"]) {
+  for (const id of ["panel-polfin", "panel-papers", "panel-github", "panel-appendix"]) {
     const open = openingTag(html.daily, id);
     if (!open.includes(" hidden")) fail(`S1 ${id} is not hidden`);
     if (!open.includes("inert")) fail(`S1 ${id} is not inert`);
@@ -638,7 +642,7 @@ if (html.daily) {
   const notes = detailCards(dailyJson.news);
   const cards = html.daily.match(/<article class="detail-card"[\s\S]*?<\/article>/g) || [];
   if (cards.length !== notes.length) fail(`S2 card count ${cards.length} != ${notes.length}`);
-  if (cards.length > 8) fail("S2 rendered more than 8 detail cards");
+  if (cards.length > 10) fail("S2 rendered more than 10 detail cards");
   cards.forEach((card, index) => {
     const item = notes[index];
     if (!card.includes(`id="note-${item.id}"`)) fail(`S2 missing note-${item.id}`);
@@ -656,7 +660,7 @@ if (html.daily) {
     if (labels.join("|") !== expected.join("|")) fail(`C-D2 note-${item.id} fields ${labels.join("|")}`);
   });
   const rest = remainderNews(dailyJson.news);
-  const remainderHtml = sliceBetween(html.daily, 'id="remainder"', 'id="panel-papers"');
+  const remainderHtml = sliceBetween(html.daily, 'id="remainder"', 'id="panel-polfin"');
   for (const header of ["#", "领域", "标题", "通路", "最早源时", "链接"]) {
     if (!remainderHtml.includes(`>${header}<`)) fail(`S2 remainder missing ${header}`);
   }
@@ -676,9 +680,10 @@ if (html.daily) {
     if (!hotHtml.includes(`href="${item.href}"`)) fail(`S2 hot list missing ${item.href}`);
   });
   const papers = sliceBetween(html.daily, 'id="panel-papers"', 'id="panel-github"');
-  for (const header of ["短名", "抢了什么", "为何值得看", "链接"]) {
+  for (const header of ["抢了什么", "要点", "为何值得看", "链接"]) {
     if (!papers.includes(`>${header}<`)) fail(`S3 papers missing ${header}`);
   }
+  if (!papers.includes(">本波必读<")) fail("F1 papers lead list missing");
   if (!papers.includes('class="brf-callout"') || !papers.includes(">窗口<")) fail("S3 papers window callout missing");
   for (const paper of dailyJson.papers) {
     if (!papers.includes(`href="${paper.url}"`)) fail(`S3 missing paper url ${paper.url}`);
@@ -686,8 +691,9 @@ if (html.daily) {
   }
   const rising = sliceBetween(html.daily, 'id="gh-rising"', 'id="gh-newcomers"');
   const newcomers = sliceBetween(html.daily, 'id="gh-newcomers"', 'id="gh-summary"');
-  assertGithubRows("S4 rising", rising, dailyJson.github.rising, "gh-rising");
-  assertGithubRows("S4 newcomers", newcomers, dailyJson.github.newcomers, "gh-newcomer");
+  assertGithubRows("S4 rising", rising, dailyJson.github.rising.slice(0, 5), "gh-rising");
+  assertGithubRows("S4 newcomers", newcomers, dailyJson.github.newcomers.slice(0, 5), "gh-newcomer");
+  if (!rising.includes(">其余仓库<") || !newcomers.includes(">其余仓库<")) fail("F2 rest repo table missing");
   if (!/aria-controls="gh-rising"[^>]*aria-selected="true"/.test(html.daily)) fail("S4 涨星榜 is not the default GitHub tab");
   if (!html.daily.includes(">涨星榜<") || !html.daily.includes(">新锐榜<") || !html.daily.includes(">总结<")) {
     fail("S4 GitHub sub-tabs missing");
@@ -697,11 +703,11 @@ if (html.daily) {
   if (!summary.includes(">口径<")) fail("S4 总结 is missing the 口径 callout");
   if (!summary.includes("缺源")) fail("S4 总结 dropped the archive note");
   const appendix = sliceBetween(html.daily, 'id="panel-appendix"', 'class="page-tabs page-tabs-bottom');
-  for (const header of ["#", "领域", "标题", "波次", "通路", "finsec", "链接"]) {
+  for (const header of ["#", "栏", "领域", "标题", "波次", "通路", "finsec", "链接"]) {
     if (!appendix.includes(`>${header}<`)) fail(`S5 appendix missing ${header}`);
   }
-  if (!html.daily.includes('class="brf-rows"') || !html.daily.includes('class="brf-metrics"') || !html.daily.includes('class="brf-status"')) {
-    fail("daily is missing Rows, Metrics, or Status");
+  if (!html.daily.includes('class="brf-rows"') || !html.daily.includes('class="brf-status"')) {
+    fail("daily is missing Rows or Status");
   }
   assertChrome("daily", html.daily);
 }
@@ -735,9 +741,9 @@ if (html.weekly) {
       fail(`weekly property ${row.label} is "${shown.values[index]}"`);
     }
   });
-  if (!shown.values.includes("四栏 Segmented · 无 TOC")) fail("C-W1 shell property missing");
+  if (!shown.values.includes("五栏 Segmented · 无 TOC")) fail("C-W1 shell property missing");
   const tabs = tabLabels(firstBlock(html.weekly, 'class="page-tabs', "</div>"));
-  if (tabs.join("|") !== "要闻|顶尖论文|GitHub|金融决策") fail(`S6 tabs ${tabs.join("|")}`);
+  if (tabs.join("|") !== "要闻|政治金融|顶尖论文|GitHub|金融决策") fail(`S6 tabs ${tabs.join("|")}`);
   if (tabs[tabs.length - 1] !== "金融决策") fail("S6 金融决策 is not the last tab");
   const bar = firstBlock(html.weekly, 'class="page-tabs', "</div>");
   if (!/aria-controls="panel-news"[^>]*aria-selected="true"/.test(bar)) fail("S6 default tab is not 要闻");
@@ -776,13 +782,13 @@ if (html.weekly) {
   const weeklyRising = sliceBetween(html.weekly, 'id="gh-rising"', 'id="gh-newcomers"');
   const weeklyNew = sliceBetween(html.weekly, 'id="gh-newcomers"', 'id="gh-summary"');
   if (weeklyJson.github.rising.length) {
-    assertGithubRows("S6 rising", weeklyRising, weeklyJson.github.rising, "gh-rising");
+    assertGithubRows("S6 rising", weeklyRising, weeklyJson.github.rising.slice(0, 5), "gh-rising");
   }
   if (weeklyJson.github.newcomers.length) {
-    assertGithubRows("S6 newcomers", weeklyNew, weeklyJson.github.newcomers, "gh-newcomer");
+    assertGithubRows("S6 newcomers", weeklyNew, weeklyJson.github.newcomers.slice(0, 5), "gh-newcomer");
   }
-  if (!html.weekly.includes('class="brf-rows"') || !html.weekly.includes('class="brf-metrics"') || !html.weekly.includes('class="brf-status"') || !html.weekly.includes('class="brf-steps"')) {
-    fail("weekly is missing Rows, Metrics, Status, or Steps");
+  if (!html.weekly.includes('class="brf-rows"') || !html.weekly.includes('class="brf-status"') || !html.weekly.includes('class="brf-steps"')) {
+    fail("weekly is missing Rows, Status, or Steps");
   }
   assertChrome("weekly", html.weekly);
 }
@@ -807,7 +813,12 @@ if (!cssSource.includes("content: attr(data-label)") || !cssSource.includes("@me
   fail("mobile tables are missing the card stack");
 }
 if (!cssSource.includes("overflow-x: clip")) fail("page is missing horizontal clip");
-if (/text-overflow\s*:\s*ellipsis/.test(cssSource)) fail("site.css ellipsizes text");
+if (!/\.cell-short\s*\{[^}]*text-overflow:\s*ellipsis/.test(cssSource)) {
+  fail("short columns are missing single-line ellipsis");
+}
+if (!/\.cell-link\s*\{[^}]*text-overflow:\s*ellipsis/.test(cssSource)) {
+  fail("table links are missing single-line ellipsis");
+}
 if (!baseSource.includes('a[href^="#"]') || !baseSource.includes("revealTarget") || !baseSource.includes("selectTab")) {
   fail("smooth scroll does not intercept TOC and hot jumps");
 }
@@ -844,7 +855,7 @@ if (!narrow.includes("--pad-x: var(--s-4)") || !narrow.includes("--inset-card: v
   fail("B1/B3 narrow pad must be 16px");
 }
 if (cssSource.includes("--pad-x: var(--s-3)")) fail("pad-x must not fall to 12px");
-if (!/\.detail-card,\s*\n\.gh-card\s*\{[^}]*padding:\s*var\(--inset-card\)/.test(cssSource)) {
+if (!/\.detail-card,\s*\n\.gh-card,\s*\n\.paper-card\s*\{[^}]*padding:\s*var\(--inset-card\)/.test(cssSource)) {
   fail("B3 detail card is missing inset-card");
 }
 if (!/\.decision\s*\{[^}]*padding-inline:\s*var\(--inset-row\)/.test(cssSource)) {

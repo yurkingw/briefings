@@ -13,8 +13,16 @@ import {
   defaultWave,
   hasWaveSplit,
   hotFromItems,
+  ghSeenValue,
+  ghWindowValue,
+  itemKicker,
   linkLabel,
+  linkViews,
   newsGroups,
+  paperFields,
+  paperLinkList,
+  takeFeatured,
+  takeRest,
   ownerFace,
   ownerType,
   pagePropertyRows,
@@ -71,6 +79,14 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("hasField", (rows, key) => hasField(rows, key));
   eleventyConfig.addFilter("ownerType", (value) => ownerType(value));
   eleventyConfig.addFilter("linkLabel", (value) => linkLabel(value));
+  eleventyConfig.addFilter("linkViews", (links) => linkViews(links));
+  eleventyConfig.addFilter("itemKicker", (item) => itemKicker(item));
+  eleventyConfig.addFilter("paperFields", (paper) => paperFields(paper));
+  eleventyConfig.addFilter("paperLinkList", (paper) => paperLinkList(paper));
+  eleventyConfig.addFilter("takeFeatured", (items, cap) => takeFeatured(items, cap));
+  eleventyConfig.addFilter("takeRest", (items, cap) => takeRest(items, cap));
+  eleventyConfig.addFilter("ghWindowValue", (item, kind) => ghWindowValue(item, kind));
+  eleventyConfig.addFilter("ghSeenValue", (item) => ghSeenValue(item));
   eleventyConfig.addFilter("githubSummary", (meta) => githubSummary(meta));
   eleventyConfig.addFilter("pagePropertyRows", (briefing) => pagePropertyRows(briefing));
   eleventyConfig.addFilter("newsGroups", (items) => newsGroups(items));

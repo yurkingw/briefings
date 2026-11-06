@@ -21,7 +21,7 @@
   <li>
     <a class="brf-row hit-row" href="#gh-{{ kind }}-{{ item.rank }}">
       <span class="brf-row-lead">{{ item.rank | rankLabel }}</span>
-      <span class="brf-row-title">{{ item.repo }}</span>
+      <span class="brf-row-title" title="{{ item.repo }}">{{ item.repo }}</span>
       <span class="brf-row-detail" lang="zh-Hans">{% if item.slogan %}{{ item.slogan }}{% else %}—{% endif %}</span>
       <span class="brf-row-meta">{{ item | githubMetaLine(kind) }}</span>
       <span class="brf-row-status">
@@ -34,7 +34,7 @@
 </ol>
 {% endmacro %}
 
-{% macro repoDetails(items, kind, whyLead) %}
+{% macro repoDetails(items, kind) %}
 <div class="gh-details">
   {% for item in items %}
   {% set status = item | statusParts %}
@@ -43,35 +43,66 @@
       <span class="brf-status">{{ status.who }}</span>
       {% if status.break %}<span class="brf-status" data-tone="danger">{{ status.break }}</span>{% endif %}
     </p>
-    <h3>{{ item.repo }}</h3>
-    {% if item.slogan %}<p class="brf-row-detail" lang="zh-Hans">{{ item.slogan }}</p>{% endif %}
-    <dl class="brf-metrics">
-      {% for metric in item | githubMetrics(kind) %}
-      <div>
-        <dt>{{ metric.label }}</dt>
-        <dd>{{ metric.value }}</dd>
-      </div>
-      {% endfor %}
+    <h3 title="{{ item.repo }}">#{{ item.rank }} · {{ item.repo }}</h3>
+    <dl class="brf-properties">
+      <div class="brf-properties-row"><dt>是什么</dt><dd lang="zh-Hans">{% if item.what %}{{ item.what }}{% else %}—{% endif %}</dd></div>
+      <div class="brf-properties-row"><dt>为什么涨</dt><dd lang="zh-Hans">{% if item.why %}{{ item.why }}{% else %}—{% endif %}</dd></div>
+      <div class="brf-properties-row"><dt>+N/窗</dt><dd>{{ item | ghWindowValue(kind) }}</dd></div>
+      <div class="brf-properties-row"><dt>总星</dt><dd>{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</dd></div>
+      <div class="brf-properties-row"><dt>上线</dt><dd>{{ item | ghSeenValue }}</dd></div>
+      <div class="brf-properties-row"><dt>链接</dt><dd>{% if item.url %}<a href="{{ item.url }}" title="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.url }}</a>{% else %}—{% endif %}</dd></div>
     </dl>
-    {% if item.what %}
-    {{ ui.callout("是什么", item.what, "info") }}
-    {% endif %}
-    {% if item.why %}
-    {{ ui.callout(whyLead, item.why, "info") }}
-    {% endif %}
-    {% if item.url %}
-    <p class="gh-url"><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.url }}</a></p>
-    {% endif %}
   </article>
   {% endfor %}
 </div>
 {% endmacro %}
 
+{% macro repoRest(items, kind) %}
+{% if items.length %}
+<section class="block">
+  <h2>其余仓库</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">短名</th>
+          <th scope="col">slogan</th>
+          <th scope="col">+N</th>
+          <th scope="col">总星</th>
+          <th scope="col">链接</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td data-label="#">{{ item.rank }}</td>
+          <td class="col-short" data-label="短名"><span class="cell-short" title="{{ item.repo }}">{{ item.repo }}</span></td>
+          <td data-label="slogan" lang="zh-Hans">{% if item.slogan %}{{ item.slogan }}{% else %}—{% endif %}</td>
+          <td data-label="+N">{{ item | ghWindowValue(kind) }}</td>
+          <td data-label="总星">{% if item.stars == null %}—{% else %}{{ item.stars }}{% endif %}</td>
+          <td data-label="链接">{% if item.url %}{{ ui.cellLinks([item.url]) }}{% else %}—{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endif %}
+{% endmacro %}
+
+{% set risingLead = rising | takeFeatured(5) %}
+{% set risingRest = rising | takeRest(5) %}
+{% set newLead = newcomers | takeFeatured(5) %}
+{% set newRest = newcomers | takeRest(5) %}
+{% set ghLead = "今日看点" if briefing.date else "本周看点" %}
+
 <div class="sub-panel" id="gh-rising" role="tabpanel" aria-labelledby="tab-gh-rising">
   {% if rising.length %}
-  {% if risingInsight %}{{ ui.callout("今日看点", risingInsight, "info") }}{% endif %}
-  {{ repoRows(rising, "rising") }}
-  {{ repoDetails(rising, "rising", "为什么涨") }}
+  {% if risingInsight %}{{ ui.callout(ghLead, risingInsight, "info") }}{% endif %}
+  {{ repoRows(risingLead, "rising") }}
+  {{ repoDetails(risingLead, "rising") }}
+  {{ repoRest(risingRest, "rising") }}
   {% else %}
   <p class="empty">本榜无条目。</p>
   {% endif %}
@@ -79,9 +110,10 @@
 
 <div class="sub-panel" id="gh-newcomers" role="tabpanel" aria-labelledby="tab-gh-newcomers" hidden inert>
   {% if newcomers.length %}
-  {% if newInsight %}{{ ui.callout("今日看点", newInsight, "info") }}{% endif %}
-  {{ repoRows(newcomers, "newcomer") }}
-  {{ repoDetails(newcomers, "newcomer", "为什么新锐") }}
+  {% if newInsight %}{{ ui.callout(ghLead, newInsight, "info") }}{% endif %}
+  {{ repoRows(newLead, "newcomer") }}
+  {{ repoDetails(newLead, "newcomer") }}
+  {{ repoRest(newRest, "newcomers") }}
   {% else %}
   <p class="empty">本榜无条目。</p>
   {% endif %}

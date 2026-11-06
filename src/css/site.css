@@ -740,7 +740,8 @@ td .badges { margin-top: var(--s-1); }
 .gh-card + .gh-card { margin-top: var(--s-4); }
 
 .detail-card,
-.gh-card {
+.gh-card,
+.paper-card {
   margin: 0;
   padding: var(--inset-card);
   border: 1px solid var(--line);
@@ -820,6 +821,32 @@ td .badges { margin-top: var(--s-1); }
 .cell-links a + a { margin-top: var(--s-1); }
 
 .cell-title { display: block; }
+
+.cell-short {
+  display: inline-block;
+  max-width: 16ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+
+.cell-short.is-title { max-width: 32ch; }
+
+.cell-link {
+  display: inline-block;
+  max-width: 12ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+
+.cell-more {
+  margin-left: var(--s-2);
+  color: var(--muted);
+  font-size: var(--t6-size);
+}
 
 .paper-main,
 .paper-dair { display: block; }
@@ -1422,8 +1449,16 @@ td a {
   }
 
   .table-wrap td.col-title,
-  .table-wrap td.col-repo {
+  .table-wrap td.col-repo,
+  .table-wrap td.col-short {
     min-width: 0;
+  }
+
+  .table-wrap .cell-short,
+  .table-wrap .cell-short.is-title,
+  .table-wrap .cell-link {
+    display: block;
+    max-width: 100%;
   }
 
   .table-wrap td.col-repo,

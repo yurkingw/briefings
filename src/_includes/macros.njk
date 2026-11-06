@@ -1,17 +1,20 @@
 {% macro linkList(links) %}
+{% set views = links | linkViews %}
 <ul class="link-list">
-  {%- for link in links %}
-  <li><a href="{{ link }}" title="{{ link }}" target="_blank" rel="noopener noreferrer">{{ link | linkLabel }}</a></li>
+  {%- for view in views %}
+  <li><a href="{{ view.href }}" title="{{ view.title }}" target="_blank" rel="noopener noreferrer">{{ view.label }}</a></li>
   {%- endfor %}
 </ul>
 {% endmacro %}
 
 {% macro cellLinks(links) %}
-{%- if links and links.length -%}
+{% set views = links | linkViews %}
+{%- if views and views.length -%}
 <div class="cell-links">
-  {%- for link in links -%}
-  <a href="{{ link }}" title="{{ link }}" target="_blank" rel="noopener noreferrer">{{ link | linkLabel }}</a>
-  {%- endfor -%}
+  <a class="cell-link" href="{{ views[0].href }}" title="{{ views[0].title }}" target="_blank" rel="noopener noreferrer">{{ views[0].label }}</a>
+  {%- if views.length > 1 -%}
+  <span class="cell-more" title="{{ views.length - 1 }}">+{{ views.length - 1 }}</span>
+  {%- endif -%}
 </div>
 {%- else -%}—{%- endif -%}
 {% endmacro %}
@@ -36,16 +39,18 @@
 
 {% macro columnTabs(isDaily, suffix) %}
 <div class="page-tabs{% if suffix %} page-tabs-bottom{% endif %} seg" role="tablist" aria-label="栏目" data-tab-group="columns">
-  <button type="button" role="tab" id="tab-news{{ suffix }}" aria-controls="panel-news" aria-selected="true" tabindex="0">要闻</button>
+  <button type="button" role="tab" id="tab-news{{ suffix }}" data-tab="news" title="news" aria-controls="panel-news" aria-selected="true" tabindex="0">要闻</button>
   <span class="seg-gap" aria-hidden="true">·</span>
-  <button type="button" role="tab" id="tab-papers{{ suffix }}" aria-controls="panel-papers" aria-selected="false" tabindex="-1">顶尖论文</button>
+  <button type="button" role="tab" id="tab-polfin{{ suffix }}" data-tab="polfin" title="polfin" aria-controls="panel-polfin" aria-selected="false" tabindex="-1">政治金融</button>
   <span class="seg-gap" aria-hidden="true">·</span>
-  <button type="button" role="tab" id="tab-github{{ suffix }}" aria-controls="panel-github" aria-selected="false" tabindex="-1">GitHub</button>
+  <button type="button" role="tab" id="tab-papers{{ suffix }}" data-tab="papers" title="papers" aria-controls="panel-papers" aria-selected="false" tabindex="-1">顶尖论文</button>
+  <span class="seg-gap" aria-hidden="true">·</span>
+  <button type="button" role="tab" id="tab-github{{ suffix }}" data-tab="github" title="github" aria-controls="panel-github" aria-selected="false" tabindex="-1">GitHub</button>
   <span class="seg-gap" aria-hidden="true">·</span>
   {% if isDaily %}
-  <button type="button" role="tab" id="tab-appendix{{ suffix }}" aria-controls="panel-appendix" aria-selected="false" tabindex="-1">附录</button>
+  <button type="button" role="tab" id="tab-appendix{{ suffix }}" data-tab="appendix" title="appendix" aria-controls="panel-appendix" aria-selected="false" tabindex="-1">附录</button>
   {% else %}
-  <button type="button" role="tab" id="tab-decisions{{ suffix }}" aria-controls="panel-decisions" aria-selected="false" tabindex="-1">金融决策</button>
+  <button type="button" role="tab" id="tab-decisions{{ suffix }}" data-tab="findec" title="findec" aria-controls="panel-decisions" aria-selected="false" tabindex="-1">金融决策</button>
   {% endif %}
 </div>
 {% endmacro %}
@@ -69,7 +74,7 @@
 
 {% macro detailCard(item) %}
 <article class="detail-card" id="note-{{ item.id }}">
-  <h3 class="card-title" lang="zh-Hans">#{{ item.id }} · {{ item.domain }} · {{ item | displayTitle }}</h3>
+  <h3 class="card-title" lang="zh-Hans" title="{{ item | displayTitle }}">#{{ item.id }} · {{ item | itemKicker }} · <span class="cell-short is-title">{{ item | displayTitle }}</span></h3>
   {% if item.finsec === true or item.hard_gate === true %}
   <p class="brf-status-row">
     {% if item.finsec === true %}<span class="brf-status">finsec</span>{% endif %}
@@ -102,7 +107,7 @@
 </article>
 {% endmacro %}
 
-{% macro newsDaily(items, primary, key) %}
+{% macro newsDaily(items, primary, key, lane) %}
 {% set hot = items | hotFromItems %}
 {% set cards = items | detailCards %}
 {% set rest = items | remainderNews %}
@@ -131,7 +136,7 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">领域</th>
+          <th scope="col">{% if lane == "polfin" %}角{% else %}领域{% endif %}</th>
           <th scope="col">标题</th>
           <th scope="col">通路</th>
           <th scope="col">最早源时</th>
@@ -142,9 +147,9 @@
         {% for item in rest %}
         <tr>
           <td data-label="#">{{ item.id }}</td>
-          <td data-label="领域" lang="zh-Hans">{{ item.domain }}</td>
+          <td data-label="{% if lane == "polfin" %}角{% else %}领域{% endif %}" lang="zh-Hans">{{ item | itemKicker }}</td>
           <td class="col-title" data-label="标题" lang="zh-Hans">
-            <span class="cell-title">{{ item | displayTitle }}</span>
+            <span class="cell-short is-title" title="{{ item | displayTitle }}">{{ item | displayTitle }}</span>
             {% if item.finsec === true or item.hard_gate === true %}
             <span class="brf-status-row">
               {% if item.finsec === true %}<span class="brf-status">finsec</span>{% endif %}
@@ -163,6 +168,6 @@
 </section>
 {% endif %}
 {% if not hot.length and not cards.length and not rest.length %}
-<p class="empty">本波无要闻。</p>
+<p class="empty">{% if lane == "polfin" %}本波无入选（政治金融）{% else %}本波无要闻。{% endif %}</p>
 {% endif %}
 {% endmacro %}
