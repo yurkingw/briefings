@@ -10,9 +10,11 @@ export function bindArchiveFolds(root = document) {
   root.querySelectorAll("[data-fold]").forEach((list) => {
     const more = list.parentElement && list.parentElement.querySelector(".more");
     if (!more) return;
-    let shown = 0;
+    const rows = () => [...list.querySelectorAll(".entry")];
+    let shown = Math.min(FOLD_STEP, rows().length);
+    if (shown >= rows().length) more.hidden = true;
     more.addEventListener("click", () => {
-      const items = [...list.querySelectorAll(".entry")];
+      const items = rows();
       const page = nextFoldCount(shown, items.length);
       for (let index = shown; index < page.shown; index += 1) {
         items[index].classList.add("is-open");

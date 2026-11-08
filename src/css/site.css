@@ -81,7 +81,7 @@
   --shadow-soft: 0 4px 16px rgba(0,0,0,.06);
   --shadow: var(--shadow-card);
   --measure: 40rem;
-  --measure-index: 40rem;
+  --measure-index: 960px;
   --pad-x: var(--s-5);
   --inset-row: var(--s-4);
   --inset-card: var(--s-5);
@@ -301,7 +301,7 @@ main,
 .is-briefing .mirror,
 .is-briefing main,
 .is-briefing .site-foot-inner {
-  max-width: var(--measure);
+  max-width: var(--measure-index);
 }
 
 .top-inner {
@@ -515,8 +515,6 @@ main { padding-top: var(--s-5); padding-bottom: var(--s-7); }
 
 .archive .entries .entry:nth-child(n + 6) { display: none; }
 
-html.js .archive .entries .entry { display: none; }
-
 html.js .archive .entries .entry.is-open { display: block; }
 
 .fold-note {
@@ -535,8 +533,9 @@ html.js .fold-note { display: none; }
   align-items: center;
   min-height: 44px;
   margin: var(--s-2) 0 0;
-  padding: 0;
-  border: 0;
+  padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
   background: transparent;
   box-shadow: none;
   color: var(--ink);
@@ -546,8 +545,7 @@ html.js .fold-note { display: none; }
   font-weight: var(--t6-weight);
   letter-spacing: var(--t6-track);
   line-height: var(--t6-lh);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 html.js .more { display: inline-flex; }
@@ -615,6 +613,29 @@ html.js .more[hidden] { display: none; }
   line-height: var(--t5-lh);
 }
 
+.entry .cta {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--radius-pill);
+  background: var(--cta);
+  color: var(--cta-contrast);
+  font-size: var(--t5-size);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.entry:hover .cta,
+.entry:focus-visible .cta {
+  color: var(--cta-contrast);
+  text-decoration: none;
+}
+
 .entry:hover .entry-go,
 .entry:focus-visible .entry-go { color: var(--ink); }
 
@@ -679,6 +700,7 @@ html.js .more[hidden] { display: none; }
 #conclusion > h2 { margin-bottom: 0; }
 
 .conclusion {
+  max-width: var(--measure);
   margin: var(--s-5) 0 0;
   padding-left: var(--s-4);
   border-left: 2px solid var(--ink);

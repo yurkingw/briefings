@@ -3,28 +3,28 @@ layout: base.njk
 permalink: /
 ---
 
-{% macro dailyRow(item, title, metaLabel) %}
+{% macro dailyRow(item, title, metaLabel, primary) %}
 <a class="entry hit-row" href="/daily/{{ item.date }}/">
   <span class="entry-head">
     <span class="entry-title">{{ title }}</span>
-    <span class="entry-go" aria-hidden="true">→</span>
+    {% if primary %}<span class="cta">{{ metaLabel }}</span>{% else %}<span class="entry-go" aria-hidden="true">→</span>{% endif %}
   </span>
   <span class="entry-blurb" lang="zh-Hans">{{ item.summary | excerpt(150) }}</span>
   {% if metaLabel or item.wave or item.sample %}
-  <span class="entry-meta">{%- if metaLabel -%}{{ metaLabel }}{%- endif -%}{% if metaLabel and item.wave %} · {% endif %}{%- if item.wave -%}<span lang="zh-Hans">{{ item.wave }}</span>{%- endif -%}{% if item.sample %}{% if metaLabel or item.wave %} · {% endif %}Sample{% endif %}</span>
+  <span class="entry-meta">{%- if metaLabel and not primary -%}{{ metaLabel }}{%- endif -%}{% if metaLabel and not primary and item.wave %} · {% endif %}{%- if item.wave -%}<span lang="zh-Hans">{{ item.wave }}</span>{%- endif -%}{% if item.sample %}{% if (metaLabel and not primary) or item.wave %} · {% endif %}Sample{% endif %}</span>
   {% endif %}
 </a>
 {% endmacro %}
 
-{% macro weeklyRow(item, title, metaLabel) %}
+{% macro weeklyRow(item, title, metaLabel, primary) %}
 <a class="entry hit-row" href="/weekly/{{ item.week }}/">
   <span class="entry-head">
     <span class="entry-title">{{ title }}</span>
-    <span class="entry-go" aria-hidden="true">→</span>
+    {% if primary %}<span class="cta">{{ metaLabel }}</span>{% else %}<span class="entry-go" aria-hidden="true">→</span>{% endif %}
   </span>
   <span class="entry-blurb" lang="zh-Hans">{{ item.summary | excerpt(150) }}</span>
   {% if metaLabel or item.sample %}
-  <span class="entry-meta">{%- if metaLabel -%}{{ metaLabel }}{%- endif -%}{% if metaLabel and item.sample %} · {% endif %}{% if item.sample %}Sample{% endif %}</span>
+  <span class="entry-meta">{%- if metaLabel and not primary -%}{{ metaLabel }}{%- endif -%}{% if metaLabel and not primary and item.sample %} · {% endif %}{% if item.sample %}Sample{% endif %}</span>
   {% endif %}
 </a>
 {% endmacro %}
@@ -38,10 +38,10 @@ permalink: /
   {% if stage.daily or stage.weekly %}
   <div class="entries">
     {% if stage.daily %}
-    {{ dailyRow(stage.daily, stage.daily.date, "Today") | safe }}
+    {{ dailyRow(stage.daily, stage.daily.date, "Today", true) | safe }}
     {% endif %}
     {% if stage.weekly %}
-    {{ weeklyRow(stage.weekly, stage.weekly.week, "This week") | safe }}
+    {{ weeklyRow(stage.weekly, stage.weekly.week, "This week", not stage.daily) | safe }}
     {% endif %}
   </div>
   {% endif %}

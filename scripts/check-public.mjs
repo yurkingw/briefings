@@ -1,13 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import { excerpt } from "../lib/excerpt.js";
-import { FOLD_STEP, nextFoldCount } from "../src/js/fold.js";
+import { FOLD_STEP, bindArchiveFolds, nextFoldCount } from "../src/js/fold.js";
 import { loadBriefings } from "../lib/load-briefings.js";
 import { isoWeekId, selectStage, shanghaiDate } from "../lib/stage.js";
 import {
   compactStars,
   dailyPropertyRows,
   detailCards,
+  defaultWave,
   displayTitle,
   finalJudgments,
   ghWindowValue,
@@ -205,9 +206,8 @@ const baseSource = read("src/_includes/base.njk");
 for (const token of ["--s-1: 4px", "--s-2: 8px", "--s-3: 12px", "--s-4: 16px", "--s-5: 24px", "--s-6: 32px", "--s-7: 48px", "--s-8: 64px"]) {
   if (!cssSource.includes(token)) fail(`site.css missing spacing token ${token}`);
 }
-if (!cssSource.includes("--measure: 40rem") || !cssSource.includes("--measure-index: 40rem")) {
-  fail("measure must be 40rem");
-}
+if (!cssSource.includes("--measure: 40rem")) fail("briefing text measure must stay 40rem");
+if (!cssSource.includes("--measure-index: 960px")) fail("desktop shell must use the 960px index width");
 if (cssSource.includes("68rem") || cssSource.includes("#0b3d91") || /gradient\s*\(/i.test(cssSource)) {
   fail("site.css still has the old wide measure, blue links, or a gradient");
 }
@@ -262,6 +262,41 @@ for (const [date, week] of [
   if (isoWeekId(date) !== week) fail(`iso week of ${date} was ${isoWeekId(date)}, expected ${week}`);
 }
 if (FOLD_STEP !== 5) fail("archive More step must be 5");
+function foldHarness(count) {
+  const rows = Array.from({ length: count }, (_value, index) => ({
+    index,
+    classList: {
+      names: new Set(),
+      add(name) { this.names.add(name); },
+      contains(name) { return this.names.has(name); },
+    },
+  }));
+  const more = { hidden: false, listener: null, addEventListener(_type, fn) { this.listener = fn; } };
+  const list = {
+    parentElement: { querySelector(sel) { return sel === ".more" ? more : null; } },
+    querySelectorAll(sel) { return sel === ".entry" ? rows : []; },
+  };
+  const root = { querySelectorAll(sel) { return sel === "[data-fold]" ? [list] : []; } };
+  return { rows, more, root };
+}
+const foldedFew = foldHarness(2);
+bindArchiveFolds(foldedFew.root);
+if (!foldedFew.more.hidden) fail("an archive of 2 must hide More because the first page is already visible");
+if (foldedFew.rows.some((row) => row.classList.contains("is-open"))) {
+  fail("the first archive page must not depend on is-open");
+}
+const foldedMany = foldHarness(12);
+bindArchiveFolds(foldedMany.root);
+if (foldedMany.more.hidden) fail("an archive of 12 must keep More for the rows after five");
+foldedMany.more.listener();
+const secondPage = foldedMany.rows.filter((row) => row.classList.contains("is-open")).map((row) => row.index);
+if (secondPage.join(",") !== "5,6,7,8,9") fail(`More must open the next five rows, opened ${secondPage.join(",")}`);
+foldedMany.more.listener();
+if (foldedMany.more.hidden !== true) fail("More must hide after the last archive page");
+if (!/\.entry \.cta\s*\{[^}]*background:\s*var\(--cta\)/.test(cssSource)) {
+  fail("the current reading task needs a solid --cta control");
+}
+if (/\.more\s*\{[^}]*background:\s*var\(--cta\)/.test(cssSource)) fail("More must stay a secondary control");
 for (const [shown, total, expectedShown, more] of [
   [0, 12, 5, true],
   [5, 12, 10, true],
@@ -741,7 +776,17 @@ if (html.daily) {
   if (!html.daily.includes(">晨间<") || !html.daily.includes(">午间<")) fail("S2 wave tabs missing");
   const morning = openingTag(html.daily, "wave-morning");
   const afternoon = openingTag(html.daily, "wave-afternoon");
-  if (!morning.includes(" hidden") || afternoon.includes(" hidden")) fail("S2 default wave is not 午间");
+  if (!morning.includes(" hidden") || afternoon.includes(" hidden")) fail("2026-11-05 default wave is not 午间");
+const bothWaves = JSON.parse(read("content/daily/2026-11-06.json"));
+if (defaultWave(bothWaves) !== "morning") {
+  fail("2026-11-06 has both waves, so defaultWave stays morning");
+}
+if (html["daily-2026-11-06"]) {
+  const morningTab = html["daily-2026-11-06"].match(/<button[^>]*aria-controls="wave-morning"[^>]*>/)?.[0] || "";
+  const afternoonPanel = openingTag(html["daily-2026-11-06"], "wave-afternoon");
+  if (!morningTab.includes('aria-selected="true"')) fail("2026-11-06 initial wave tab is not 晨间");
+  if (!afternoonPanel.includes(" hidden")) fail("2026-11-06 午间 panel is not hidden on first paint");
+}
   const notes = detailCards(dailyJson.news);
   const cards = html.daily.match(/<article class="detail-card"[\s\S]*?<\/article>/g) || [];
   if (cards.length !== notes.length) fail(`S2 card count ${cards.length} != ${notes.length}`);
