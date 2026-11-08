@@ -426,6 +426,59 @@ if (/overflow\s*:\s*hidden/.test(narrow)) fail("390 layout must not clip Night w
 if (!cssSource.includes("--accent: #2f5f9e") || !cssSource.includes("--accent: #b54a4a")) {
   fail("day-blue / night-red accent tokens changed");
 }
+if (!cssSource.includes("--bg: #ebe9e6") || !cssSource.includes("--bg: #0a0b0c")) {
+  fail("H page ground --bg missing");
+}
+if (!cssSource.includes("--surface: #ffffff") || !cssSource.includes("--surface: #141516")) {
+  fail("H --surface missing");
+}
+if (!cssSource.includes("--surface-raised: #ffffff") || !cssSource.includes("--surface-raised: #1a1b1d")) {
+  fail("H --surface-raised missing");
+}
+if (!cssSource.includes("--surface-soft: #f0f0f1") || !cssSource.includes("--surface-soft: #1c1c1e")) {
+  fail("H callout --surface-soft missing");
+}
+if (!cssSource.includes("--ink: #0a0a0a") || !cssSource.includes("--ink: #f2f2f2")) {
+  fail("H --ink missing");
+}
+if (!cssSource.includes("--muted: #6b6b6b") || !cssSource.includes("--muted: #9a9a9a")) {
+  fail("H --muted missing");
+}
+if (!cssSource.includes("--line: #e2e0dc") || !cssSource.includes("--line: #2a2c2e")) {
+  fail("H --line missing");
+}
+if (!cssSource.includes("--line-strong: #c4c2be") || !cssSource.includes("--line-strong: #3a3c40")) {
+  fail("H --line-strong missing");
+}
+if (!cssSource.includes("--cta: #0a0a0a") || !cssSource.includes("--cta-contrast: #ffffff")) {
+  fail("H day --cta missing");
+}
+if (!cssSource.includes("--cta: #f2f2f2") || !cssSource.includes("--cta-contrast: #0a0a0a")) {
+  fail("H night --cta missing");
+}
+if (!cssSource.includes("--radius-sm: 10px") || !cssSource.includes("--radius-md: 16px") || !cssSource.includes("--radius-lg: 22px") || !cssSource.includes("--radius-pill: 999px")) {
+  fail("H radii missing");
+}
+if (!cssSource.includes("--shadow-card: 0 1px 2px rgba(0,0,0,.04), 0 12px 32px rgba(0,0,0,.08)")) {
+  fail("day --shadow-card missing");
+}
+if (!cssSource.includes("--shadow-card: 0 0 0 1px rgba(255,255,255,.08), 0 16px 40px rgba(0,0,0,.45)")) {
+  fail("night --shadow-card missing");
+}
+if (/--shadow-card\s*:\s*none\b/.test(cssSource)) fail("--shadow-card must not be none");
+if (!cssSource.includes("--shadow-soft: 0 4px 16px rgba(0,0,0,.06)")) fail("day --shadow-soft missing");
+if (!cssSource.includes("--shadow-soft: 0 0 0 1px rgba(255,255,255,.06)")) fail("night --shadow-soft missing");
+if (!/\.sheet\s*\{[^}]*background:\s*var\(--surface\)/.test(cssSource)) fail("sheet is missing --surface");
+if (!/\.sheet\s*\{[^}]*border-radius:\s*var\(--radius-lg\)/.test(cssSource)) fail("sheet is missing radius-lg");
+if (!/\.sheet\s*\{[^}]*box-shadow:\s*var\(--shadow-card\)/.test(cssSource)) fail("sheet is missing --shadow-card");
+if (!/\.sheet\s*\{[^}]*padding:\s*var\(--inset-card\)/.test(cssSource)) fail("sheet is missing inset-card");
+if (!cssSource.includes("translateY(6px)") || !cssSource.includes("prefers-reduced-motion: reduce")) {
+  fail("sheet entrance motion is missing or not reduced-motion gated");
+}
+if (/brf-callout[^{]*\{[^}]*background:\s*(var\(--accent\)|var\(--cta\))/.test(cssSource)) {
+  fail("callout background is an accent wash");
+}
+if (!cssSource.includes("background: var(--surface-soft)")) fail("callout must stay on neutral --surface-soft");
 if (!cssSource.includes("height: 44px")) fail("theme hit target must stay 44px");
 if (!cssSource.includes("border-bottom: 1px solid var(--line)")) fail("header hairline must stay 1px --line");
 if (cssSource.includes("#111")) fail("header must not bring back a thick #111 bar");
@@ -435,6 +488,11 @@ if (!cssSource.includes(":nth-child(n + 6)") || !cssSource.includes("html.js") |
 
 if (!html.home.includes('class="lede"') || !html.home.includes("Daily and weekly intelligence, mirrored for the public web.")) {
   fail("home lede is missing");
+}
+for (const name of ["home", "daily", "daily-2026-11-06", "weekly"]) {
+  const text = html[name];
+  if (!text) continue;
+  if (!/class="[^"]*\bsheet\b/.test(text)) fail(`${name} main column is missing a float sheet`);
 }
 assertChrome("home", html.home);
 if (!html.home.includes('id="daily"') || !html.home.includes('id="weekly"') || !html.home.includes(">Daily<") || !html.home.includes(">Weekly<")) {

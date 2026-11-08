@@ -29,6 +29,7 @@ permalink: /
 </a>
 {% endmacro %}
 
+<div class="sheet">
 <h1>Briefings</h1>
 <p class="lede">Daily and weekly intelligence, mirrored for the public web.</p>
 
@@ -52,8 +53,9 @@ permalink: /
   <p class="empty">No weekly briefing for this week yet.</p>
   {% endif %}
 </section>
+</div>
 
-<section class="archive" aria-labelledby="daily">
+<section class="archive sheet" aria-labelledby="daily">
   <h2 id="daily">Daily</h2>
   {% if briefings.daily.length %}
   <div class="entries" id="daily-archive" data-fold="daily">
@@ -70,7 +72,7 @@ permalink: /
   {% endif %}
 </section>
 
-<section class="archive" aria-labelledby="weekly">
+<section class="archive sheet" aria-labelledby="weekly">
   <h2 id="weekly">Weekly</h2>
   {% if briefings.weekly.length %}
   <div class="entries" id="weekly-archive" data-fold="weekly">

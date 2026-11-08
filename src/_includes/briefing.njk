@@ -22,6 +22,7 @@
 {% set paperLead = briefing.papers | takeFeatured(paperCap) if briefing.papers else [] %}
 {% set paperRest = briefing.papers | takeRest(paperCap) if briefing.papers else [] %}
 
+<div class="sheet">
 <div class="page-head">
   <p class="kicker">
     {% if isDaily %}Daily · {{ briefing.date }}{% else %}Weekly · {{ briefing.week }}{% endif %}
@@ -48,8 +49,9 @@
   <h2>{% if isDaily %}今日主线{% else %}本周主线{% endif %}</h2>
   {{ ui.callout("结论", briefing.summary, "warning") }}
 </section>
+</div>
 
-<section class="columns" id="page-top">
+<section class="columns sheet" id="page-top">
   <h2>栏目</h2>
   {{ ui.columnTabs(isDaily, "") }}
 
