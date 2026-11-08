@@ -1578,7 +1578,7 @@ td a {
 }
 
 #page-top {
-  padding-top: var(--s-4);
+  padding-top: var(--inset-card);
   border-top: 1px solid var(--line);
   scroll-margin-top: calc(var(--s-7) + var(--s-3));
 }

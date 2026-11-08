@@ -472,6 +472,13 @@ if (!/\.sheet\s*\{[^}]*background:\s*var\(--surface\)/.test(cssSource)) fail("sh
 if (!/\.sheet\s*\{[^}]*border-radius:\s*var\(--radius-lg\)/.test(cssSource)) fail("sheet is missing radius-lg");
 if (!/\.sheet\s*\{[^}]*box-shadow:\s*var\(--shadow-card\)/.test(cssSource)) fail("sheet is missing --shadow-card");
 if (!/\.sheet\s*\{[^}]*padding:\s*var\(--inset-card\)/.test(cssSource)) fail("sheet is missing inset-card");
+const pageTopRule = cssSource.match(/#page-top\s*\{[^}]*\}/);
+if (!pageTopRule || !/padding-top:\s*var\(--inset-card\)/.test(pageTopRule[0])) {
+  fail("#page-top padding-top must use --inset-card so the id rule does not undercut .sheet");
+}
+if (/#page-top\s*\{[^}]*padding-top:\s*var\(--s-[1-4]\)/.test(cssSource)) {
+  fail("#page-top padding-top undercuts the sheet inset");
+}
 if (!cssSource.includes("translateY(6px)") || !cssSource.includes("prefers-reduced-motion: reduce")) {
   fail("sheet entrance motion is missing or not reduced-motion gated");
 }
