@@ -6,6 +6,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { main } from "../../scripts/briefings-publish.mjs";
 import { stageReady } from "../../lib/publish/ready.js";
+import { asTestTransport } from "../../lib/publish/transport/injected.js";
 import { dailyRaw, tempRoot } from "./fixtures.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -61,7 +62,7 @@ test("in-process injection can exercise the command without an argv transport", 
   const exit = await main(["--ready", ready.readyPath, "--receipt-dir", receiptDir], {
     stdout: { write(chunk) { chunks.push(String(chunk)); } },
     stderr: { write() {} },
-    transport: {
+    transport: asTestTransport({
       enabled: true,
       async fetchState() {
         return { commitSha: commit, treeSha: "tree", file: stored };
@@ -72,7 +73,7 @@ test("in-process injection can exercise the command without an argv transport", 
         commit = "next";
         return { commitSha: commit };
       },
-    },
+    }),
   });
   assert.equal(exit, 0);
   assert.equal(published, 1);

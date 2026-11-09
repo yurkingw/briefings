@@ -2,7 +2,11 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import test from "node:test";
 import { publishReadyFile } from "../../lib/publish/cas.js";
-import { createGithubGitDataTransport } from "../../lib/publish/transport/github-git-data.js";
+import {
+  createGithubGitDataTransport,
+  createInjectedGitDataTransport,
+} from "../../lib/publish/transport/github-git-data.js";
+import { isInjectedTestTransport } from "../../lib/publish/transport/injected.js";
 import { stageReady } from "../../lib/publish/ready.js";
 import { dailyRaw, tempRoot } from "./fixtures.mjs";
 
@@ -142,7 +146,7 @@ test("disabled github transport never uses global fetch", async () => {
   };
   try {
     const transport = createGithubGitDataTransport();
-    assert.equal(transport.enabled, false);
+    assert.equal(isInjectedTestTransport(transport), false);
     const outcome = await publishReadyFile({
       readyPath: stageReady(tempRoot(), dailyRaw()).readyPath,
       transport,
@@ -157,8 +161,9 @@ test("disabled github transport never uses global fetch", async () => {
 
 test("git data adapter fast-forwards one path from the latest base", async () => {
   const origin = createOrigin();
-  const transport = createGithubGitDataTransport({ fetchImpl: origin.fetchImpl });
-  assert.equal(transport.enabled, true);
+  const transport = createInjectedGitDataTransport(origin.fetchImpl);
+  assert.equal(isInjectedTestTransport(transport), true);
+  assert.equal(transport.production, false);
   const staged = stageReady(tempRoot(), dailyRaw());
   const outcome = await publishReadyFile({
     readyPath: staged.readyPath,
@@ -197,7 +202,7 @@ test("git data adapter fast-forwards one path from the latest base", async () =>
 test("a dropped update response is deduped by rereading the same path", async () => {
   const origin = createOrigin();
   origin.dropPatch = true;
-  const transport = createGithubGitDataTransport({ fetchImpl: origin.fetchImpl });
+  const transport = createInjectedGitDataTransport(origin.fetchImpl);
   const outcome = await publishReadyFile({
     readyPath: stageReady(tempRoot(), dailyRaw()).readyPath,
     transport,

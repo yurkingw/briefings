@@ -4,6 +4,7 @@ import { pathToFileURL } from "node:url";
 import { publishReadyFile } from "../lib/publish/cas.js";
 import { machineResult } from "../lib/publish/result.js";
 import { createGithubGitDataTransport } from "../lib/publish/transport/github-git-data.js";
+import { isInjectedTestTransport } from "../lib/publish/transport/injected.js";
 
 function parseArgs(argv) {
   let ready = null;
@@ -30,13 +31,13 @@ export async function main(argv, io = {}) {
   const stderr = io.stderr ?? process.stderr;
   const parsed = parseArgs(argv);
   if (parsed.error) {
-    emit(stdout, stderr, { result: "bad_args", exit: 10 });
+    emit(stdout, stderr, { result: "bad_args", reason: "bad_args", exit: 10, attempts: 0 });
     return 10;
   }
   const outcome = await publishReadyFile({
     readyPath: parsed.ready,
     receiptDir: parsed.receiptDir,
-    transport: io.transport ?? createGithubGitDataTransport(),
+    transport: isInjectedTestTransport(io.transport) ? io.transport : createGithubGitDataTransport(),
   });
   emit(stdout, stderr, outcome.body);
   return outcome.exit;

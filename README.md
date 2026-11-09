@@ -52,7 +52,7 @@ Same-day update: `node scripts/ingest-daily.mjs path/to/YYYY-MM-DD.json` overwri
 
 ## Offline publish contract
 
-`node scripts/briefings-publish.mjs --ready <ready.json> --receipt-dir <dir>` validates an explicit ready file and then exits 50. The GitHub Git Data adapter is disabled: this command does not send HTTP, does not clone or check out a repository, and does not deploy. The ready contract, exit codes, and the unwired low-frequency catch-up proposal are in `docs/briefings-publish.md`. `npm run test:publish` is the offline check. It is not an export → GitHub → Actions → public-web run.
+`node scripts/briefings-publish.mjs --ready <ready.json> --receipt-dir <dir>` validates an explicit ready file and then exits 50 (`adapter_disabled`). That result means the transport did not run. The GitHub Git Data helper used by tests does not send an Authorization header and is not a production publisher. The command does not clone or check out a repository and does not deploy. The ready contract, lock recovery, exit codes, and the unwired low-frequency catch-up proposal are in `docs/briefings-publish.md`. `npm run test:publish` is the offline check. It is not an authenticated export → GitHub → Actions → public-web run.
 
 ## GitHub Pages
 

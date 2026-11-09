@@ -40,7 +40,10 @@ test("the offline simulator source is not wired into production files", () => {
   assert.equal(source.includes("git clone"), false);
   assert.equal(source.includes("git checkout"), false);
   assert.equal(source.includes("--force"), false);
-  for (const relative of ["lib", "scripts"]) {
+    const cli = fs.readFileSync(path.join(root, "scripts/briefings-publish.mjs"), "utf8");
+    assert.equal(cli.includes("createInjectedGitDataTransport"), false);
+    assert.equal(cli.includes("process.env"), false);
+    for (const relative of ["lib", "scripts"]) {
     const dir = path.join(root, relative);
     for (const file of fs.readdirSync(dir, { recursive: true })) {
       const full = path.join(dir, file.toString());

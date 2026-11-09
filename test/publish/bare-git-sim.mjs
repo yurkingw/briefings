@@ -4,6 +4,7 @@ import { execFileSync } from "node:child_process";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { asTestTransport } from "../../lib/publish/transport/injected.js";
 
 const env = {
   ...process.env,
@@ -70,7 +71,7 @@ export function createBareGitSim() {
   const tree = writeTree(dir, [{ path: "content/other/keep.json", mode: "100644", type: "blob", sha: keep }]);
   const seed = commitTree(dir, tree, null, "seed");
   git(dir, ["update-ref", "refs/heads/main", seed]);
-  return {
+  return asTestTransport({
     enabled: true,
     dir,
     async fetchState({ path: filePath }) {
@@ -98,5 +99,5 @@ export function createBareGitSim() {
       }
       return { commitSha: next };
     },
-  };
+  });
 }

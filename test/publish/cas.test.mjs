@@ -6,13 +6,14 @@ import { publishReadyFile } from "../../lib/publish/cas.js";
 import { normalizeBriefing } from "../../lib/publish/normalize.js";
 import { stageReady } from "../../lib/publish/ready.js";
 import { withLock } from "../../lib/publish/lock.js";
+import { asTestTransport } from "../../lib/publish/transport/injected.js";
 import { dailyObject, dailyRaw, tempRoot } from "./fixtures.mjs";
 
 function memoryTransport(files = new Map()) {
   let commit = files.size ? "base-commit" : "base-commit";
   let tree = "base-tree";
   const calls = [];
-  return {
+  return asTestTransport({
     enabled: true,
     calls,
     files,
@@ -49,7 +50,7 @@ function memoryTransport(files = new Map()) {
       }
       return { commitSha: commit };
     },
-  };
+  });
 }
 
 async function publishRaw(raw, transport, receiptDir = tempRoot()) {

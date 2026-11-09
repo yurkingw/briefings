@@ -12,11 +12,13 @@
 node scripts/briefings-publish.mjs --ready <ready.json> --receipt-dir <dir>
 ```
 
-只接受这两个参数。没有传输开关，没有 token 参数，不读环境变量。进程内测试可以注入 transport；shell 不能。
+只接受这两个参数。没有传输开关，没有 token 参数，不读环境变量。shell 不能打开 HTTP。
 
 命令只打开 `--ready` 指向的那一个文件。它不扫描目录，也不接受裸的 briefing JSON。补漏将来也只能把同一个命令指到一个已经写好的 ready 文件。
 
-当前默认行为：ready 绑定校验通过后退出 **50**（`adapter_disabled`），不发 HTTP，不写 success/pending。
+当前默认行为：ready 绑定校验通过后退出 **50**（`result` 与 `reason` 都是 `adapter_disabled`），不发 HTTP，不写 success/pending。机器结果里没有 `enabled`。`adapter_disabled` 表示传输没有执行，不是「生产通道已经可用」。
+
+测试代码可以调用 `asTestTransport` 或 `createInjectedGitDataTransport(fetchImpl)`，把一个 `production: false` 的对象注入 `publishReadyFile` 或 `main` 的第二个参数。CLI 不引用后者。这种注入不读取密钥，请求里不放 `Authorization`，也不能从命令行参数打开。未带测试标记的对象即使写了 `enabled: true` 也会得到 50，且不会被调用。
 
 ## 2. Ready 契约
 
@@ -82,22 +84,34 @@ ready rename 之前的崩溃不会留下可消费的 ready。命令不把「连�
 
 同一时刻以绝对时刻为准，所以上表的「相同」包含不同偏移写法。
 
-## 6. 退出码与回执
+## 6. 退出码、机器字段与回执
 
-stdout 与 stderr 各一行机器 JSON，字段只可能是 `result`、`exit`、`schema`、`period`、`updated_at`、`content_hash`、`attempts`。没有正文，没有路径，没有凭据。
+stdout 与 stderr 各一行机器 JSON。每行都有 `result`、`reason`、`exit`、`attempts`。ready 已经通过校验时还有 `schema`、`period`、`updated_at`、`content_hash`。没有正文，没有路径，没有凭据，也没有 `enabled`。
 
-| exit | result | 含义 |
+`result` 是这一次的结局。`reason` 是更具体的原因；拒绝和传输失败时它与 `result` 相同，发布和空操作时它区分原因。
+
+| exit | result | reason |
 |---|---|---|
-| 0 | `published` 或 `noop` | 已确认写入，或远程已是同一版本 |
-| 10 | `bad_args`、`bad_json`、`bad_timestamp`、`invalid`、`forbidden`、`sample_refused` | 输入或结构拒绝 |
-| 11 | `ready_mismatch` | ready 与快照绑定失败 |
-| 20 | `conflict` | 同一版本、不同正文 |
-| 21 | `stale` | 更旧且正文不同 |
-| 30 | `lock_timeout` | 没拿到 receipt 目录锁 |
-| 40 | `transport_exhausted`、`ref_missing`、`remote_unreadable`、`tree_truncated` | 传输或远程读取失败 |
-| 50 | `adapter_disabled` | 生产 adapter 关闭 |
+| 0 | `published` | `missing_remote`、`stamp_bump` 或 `replace` |
+| 0 | `noop` | `identical` 或 `older_stamp_same_content` |
+| 10 | `bad_args` | `bad_args`。规范化函数另有 `bad_json`、`bad_timestamp`、`invalid`、`forbidden`、`sample_refused`，它们发生在写入 ready 之前，不会成为发布命令的传输结果 |
+| 11 | `ready_mismatch` | `ready_mismatch` |
+| 20 | `conflict` | `conflict` |
+| 21 | `stale` | `stale` |
+| 30 | `lock_timeout` 或 `lock_lost` | 与 `result` 相同。超时表示锁仍被活进程持有；`lock_lost` 表示持锁辅助进程在临界区中途退出 |
+| 40 | `transport_exhausted` | 可重试的网络失败、5xx、408、429、非 JSON 正文或响应丢失，用满 3 次 |
+| 40 | `transport_forbidden` | 401 或 403。不重试 |
+| 40 | `transport_rejected` | 其他不应盲重试的 4xx |
+| 40 | `ref_missing`、`remote_unreadable`、`tree_truncated` | 与 `result` 相同。不重试 |
+| 50 | `adapter_disabled` | `adapter_disabled`。生产 CLI 的固定结果，不是已认证发布 |
 
-`success.json` 只在确认发布，或确认远程已有同一哈希且同一时刻时写入。退出 20、21、40 只写 `pending.json`。退出 30 和 50 不写回执。这三类都不改已有的 success。同一时刻同一哈希的重复成功也不重写 success 字节。更新的时间戳一旦确认发布，会换成新的 success。pending 失败可以再用同一 ready 重试。
+`success.json` 只在确认发布，或确认远程已有同一哈希且同一时刻时写入。退出 20、21、40 只写 `pending.json`。退出 30 和 50 不写回执。这些失败都不改已有的 success。同一时刻同一哈希的重复成功也不重写 success 字节。更新的时间戳一旦确认发布，会换成新的 success。pending 失败可以再用同一 ready 重试。
+
+### 锁
+
+receipt 目录里的 `publish.lock` 是同一台机器上的内核 `flock`，不是用目录存在与否当锁。持锁的是一个辅助进程：它把父进程死亡信号设为 SIGKILL，所以 Node 进程无论正常退出还是被 SIGKILL，锁都会由内核释放。下次获取不会因为上次崩溃留下的文件而永远退出 30。
+
+等待超时只返回 30，不会把仍被活进程持有的锁抢走。不提供手动删除锁文件来恢复：删掉文件会换成新的 inode，可能绕过仍活着的持有者。崩溃后的恢复是自动的，不需要人去清锁。这只在本地文件系统的进程之间有效，不是跨主机锁。同一进程里的并发调用各自启动辅助进程，因此也会被同一把锁串行化。
 
 ## 7. 生产传输（未执行）
 
@@ -116,11 +130,11 @@ stdout 与 stderr 各一行机器 JSON，字段只可能是 `result`、`exit`、
 
 base 变化后重新执行 1–4，只重读同一路径，按第 5 节重判，再用新的 base 重建 tree 和 commit。最多 3 次。树更新始终带当前 `base_tree` 且只列一个路径，因此不会用旧 base 覆盖其他文件。ref 不存在、tree `truncated: true`，或远程 JSON 无法规范化，都失败关闭，不创建 ref。
 
-响应丢失时，下一次从第 1 步重读。远程若已是同一版本，退出 0，不再建第二个 commit。
+响应丢失、连接失败、408、429、5xx，以及 HTTP 正文不是 JSON，都归一化成可重试错误，不会变成未分类异常。下一次从第 1 步重读并重判。若远程已经是同一版本，退出 0，不再建第二个 commit。否则最多 3 次，然后退出 40，`result` 为 `transport_exhausted`。401 和 403 立刻退出 40，`transport_forbidden`，不盲重试。其他不应重试的 4xx 是 `transport_rejected`。
 
 `lib/` 与 `scripts/` 没有 checkout、clone 或 git init。box 上禁止任何 checkout/clone，包括改名的 bare remote。`test/publish/bare-git-sim.mjs` 只被 CA 里的离线测试导入，用临时 bare 仓库和 `update-ref <new> <old>` 模拟非快进；它不是生产载体，不能放到 box 上跑。
 
-CLI 构造 adapter 时不传入 fetch，因此生产 HTTP 不会发出。本变更不读取、不配置 token。
+`createGithubGitDataTransport()` 不接受 fetch，永远是关闭的。会发请求的 `createInjectedGitDataTransport(fetchImpl)` 只供测试代码调用，CLI 不引用它。请求头只有 `accept`、`content-type` 和 `x-github-api-version`，没有认证头。本变更不读取、不配置 token。注入传输的 `production` 固定为 false；它通过测试不等于生产发布已经可用。离线首版不承担认证后的生产 E2E，该链路仍然 blocked。
 
 ## 8. 认证边界
 
