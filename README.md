@@ -50,6 +50,10 @@ Same-day update: `node scripts/ingest-daily.mjs path/to/YYYY-MM-DD.json` overwri
 
 `workflow_dispatch` does not fetch a private archive.
 
+## Offline publish contract
+
+`node scripts/briefings-publish.mjs --ready <ready.json> --receipt-dir <dir>` validates a local ready file and does not upload it. Production upload is `node scripts/briefings-upload.mjs --ready <ready.json> --receipt-dir <dir>`, which sends a public envelope only when `BRIEFINGS_PUBLISH_TOKEN` is set. Without that variable it exits 50 and does not call GitHub. The token is not an Actions secret. `.github/workflows/pages.yml` processes `_inbox/` in the same run. See `docs/briefings-publish.md` and `docs/briefings-publish-e2e.md`. The export → inbox → Actions → public page path has not been executed.
+
 ## GitHub Pages
 
 Pages is deployed with GitHub Actions, not “Deploy from a branch”.
