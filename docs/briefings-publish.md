@@ -1,24 +1,42 @@
 # briefings 离线发布契约
 
-状态：离线判定、ready 旁车和 Git Data adapter 接口已在本仓。生产 HTTP **默认关闭且本变更不执行**。例行未改。没有配置凭据，没有调度安装，没有部署。
+状态：离线判定和 ready 旁车已在本仓。上传 CLI 在没有 `BRIEFINGS_PUBLISH_TOKEN` 时不发 HTTP。例行未改。token 未写入仓库或 Actions secret。真实链路尚未跑通。
 
-真实链路 `export → GitHub → Actions → 公网` **未验证**。
+真实链路 `export → GitHub → Actions → 公网` **未验证**。失败告警是否盖住 Pages，以及部署前核验到 `deploy-pages` 返回之间的 TOCTOU，也 **未验证**。
+
+生产路径不是把本地 ready 或 raw 直推进 `content/`。box 上 `stageReady` 之后，`scripts/briefings-upload.mjs` 只把公开 envelope 写到 `_inbox/daily/YYYY-MM-DD.json` 或 `_inbox/weekly/YYYY-Www.json`。没有 `BRIEFINGS_PUBLISH_TOKEN`，或值不是一段不含空白的 token 字符，命令退出 50，不发 HTTP。token 只从该环境变量读入，不进参数、日志、结果行或 Actions secret。
+
+现有 `.github/workflows/pages.yml` 在同一次 run 里处理队列、快进提交 `content/`、构建并部署，然后按已消费的 `content_hash` 和 blob sha 做 CAS 删除。`schedule` 为每天 22:17 上海（`17 14 * * *`）和周一 09:17（`17 1 * * 1`），只处理已经在仓里的白名单文件。`cancel-in-progress: false` 不是 FIFO。部署前要求 `origin/main` 仍等于处理后的 `content_sha`；核验之后仍有未证明为零的窗口。
+
+处理 job 只有 `contents: write`。deploy 是 `contents: read`、`pages: write`、`id-token: write`。ack 只有 `contents: write`。没有 `actions: write`。step summary 和 `_site/publish-manifest.json` 并列写出 `trigger_sha`、`content_sha`、`payload_sha256`，不合成一个版本号。
+
+`scripts/briefings-publish.mjs` 仍是本地 ready 校验。不带测试注入时它不读 token，也不发 HTTP。
 
 公开页只渲染已在 git 里的 JSON。Markdown 不参与哈希。Page 仍是阅读权威。本文件不改页面。
 
 ## 1. 命令
 
+本地 ready 校验：
+
 ```bash
 node scripts/briefings-publish.mjs --ready <ready.json> --receipt-dir <dir>
 ```
 
-只接受这两个参数。没有传输开关，没有 token 参数，不读环境变量。shell 不能打开 HTTP。
+这个命令不读 `BRIEFINGS_PUBLISH_TOKEN`，也不上传。
 
-命令只打开 `--ready` 指向的那一个文件。它不扫描目录，也不接受裸的 briefing JSON。补漏将来也只能把同一个命令指到一个已经写好的 ready 文件。
+生产上传：
 
-当前默认行为：ready 绑定校验通过后退出 **50**（`result` 与 `reason` 都是 `adapter_disabled`），不发 HTTP，不写 success/pending。机器结果里没有 `enabled`。`adapter_disabled` 表示传输没有执行，不是「生产通道已经可用」。
+```bash
+node scripts/briefings-upload.mjs --ready <ready.json> --receipt-dir <dir>
+```
 
-测试代码可以调用 `asTestTransport` 或 `createInjectedGitDataTransport(fetchImpl)`，把一个 `production: false` 的对象注入 `publishReadyFile` 或 `main` 的第二个参数。CLI 不引用后者。这种注入不读取密钥，请求里不放 `Authorization`，也不能从命令行参数打开。未带测试标记的对象即使写了 `enabled: true` 也会得到 50，且不会被调用。
+它只根据 ready 生成公开 envelope，并只 PUT 白名单路径。无可用 token 时退出 50。两个命令都拒绝目录扫描和裸 JSON。
+
+命令只打开 `--ready` 指向的那一个文件。它不扫描目录，也不接受裸的 briefing JSON。补漏是 `pages.yml` 的 schedule，只看已经上传的白名单文件。
+
+`briefings-publish.mjs` 在没有测试注入时仍退出 **50**（`adapter_disabled`），不发 HTTP。`briefings-upload.mjs` 只有在 `BRIEFINGS_PUBLISH_TOKEN` 可用时才向白名单路径发 Contents API；否则同样是 50。两种 50 都表示这次没有完成上传，不是「通道已经可用」。
+
+测试代码可以调用 `asTestTransport` 或 `createInjectedGitDataTransport(fetchImpl)` 注入 `briefings-publish.mjs`。那条注入不读上传 token。上传命令的测试用假 token 和假 fetch，不把真实 token 写进夹具。未带测试标记的对象即使写了 `enabled: true` 也不能打开发布命令。
 
 ## 2. Ready 契约
 
@@ -103,7 +121,8 @@ stdout 与 stderr 各一行机器 JSON。每行都有 `result`、`reason`、`exi
 | 40 | `transport_forbidden` | 401 或 403。不重试 |
 | 40 | `transport_rejected` | 其他不应盲重试的 4xx |
 | 40 | `ref_missing`、`remote_unreadable`、`tree_truncated` | 与 `result` 相同。不重试 |
-| 50 | `adapter_disabled` | `adapter_disabled`。生产 CLI 的固定结果，不是已认证发布 |
+| 40 | `unknown` | 上传响应丢失或重试耗尽后未能读回同一路径。不是成功，本地 ready 保留 |
+| 50 | `adapter_disabled` | 本地发布命令的固定结果；上传命令在没有可用 token 时也是这个结果 |
 
 `success.json` 只在确认发布，或确认远程已有同一哈希且同一时刻时写入。退出 20、21、40 只写 `pending.json`。退出 30 和 50 不写回执。这些失败都不改已有的 success。同一时刻同一哈希的重复成功也不重写 success 字节。更新的时间戳一旦确认发布，会换成新的 success。pending 失败可以再用同一 ready 重试。
 
