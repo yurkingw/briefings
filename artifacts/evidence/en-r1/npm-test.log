@@ -1,0 +1,423 @@
+
+> test
+> npm run test:publish && npm run build
+
+
+> test:publish
+> node --test test/publish/*.test.mjs
+
+TAP version 13
+# Subtest: bare git simulation publishes one path without moving the other file
+ok 1 - bare git simulation publishes one path without moving the other file
+  ---
+  duration_ms: 91.88689
+  type: 'test'
+  ...
+# Subtest: the offline simulator source is not wired into production files
+ok 2 - the offline simulator source is not wired into production files
+  ---
+  duration_ms: 1.447125
+  type: 'test'
+  ...
+# Subtest: adapter disabled does not fetch or publish
+ok 3 - adapter disabled does not fetch or publish
+  ---
+  duration_ms: 9.954395
+  type: 'test'
+  ...
+# Subtest: publishes a missing path and dedupes the same ready
+ok 4 - publishes a missing path and dedupes the same ready
+  ---
+  duration_ms: 31.539245
+  type: 'test'
+  ...
+# Subtest: same instant different offset is the same version
+ok 5 - same instant different offset is the same version
+  ---
+  duration_ms: 17.636232
+  type: 'test'
+  ...
+# Subtest: same version with different content conflicts and keeps the success receipt
+ok 6 - same version with different content conflicts and keeps the success receipt
+  ---
+  duration_ms: 30.691146
+  type: 'test'
+  ...
+# Subtest: older different content is stale and newer same content publishes the stamp
+ok 7 - older different content is stale and newer same content publishes the stamp
+  ---
+  duration_ms: 62.704
+  type: 'test'
+  ...
+# Subtest: a moved base is reread at most three times and other files stay
+ok 8 - a moved base is reread at most three times and other files stay
+  ---
+  duration_ms: 35.073978
+  type: 'test'
+  ...
+# Subtest: a lost response retries once and does not write a second copy
+ok 9 - a lost response retries once and does not write a second copy
+  ---
+  duration_ms: 15.208566
+  type: 'test'
+  ...
+# Subtest: lock timeout leaves an existing success receipt untouched
+ok 10 - lock timeout leaves an existing success receipt untouched
+  ---
+  duration_ms: 79.52586
+  type: 'test'
+  ...
+# Subtest: concurrent same and different readies serialize
+ok 11 - concurrent same and different readies serialize
+  ---
+  duration_ms: 32.577522
+  type: 'test'
+  ...
+# Subtest: pending failure can be retried into success without dropping the old receipt early
+ok 12 - pending failure can be retried into success without dropping the old receipt early
+  ---
+  duration_ms: 27.822771
+  type: 'test'
+  ...
+# Subtest: concurrent identical readies publish once
+ok 13 - concurrent identical readies publish once
+  ---
+  duration_ms: 27.726125
+  type: 'test'
+  ...
+# Subtest: machine results do not carry the briefing body
+ok 14 - machine results do not carry the briefing body
+  ---
+  duration_ms: 15.864778
+  type: 'test'
+  ...
+# Subtest: the command requires an explicit ready file
+ok 15 - the command requires an explicit ready file
+  ---
+  duration_ms: 31.735438
+  type: 'test'
+  ...
+# Subtest: a bare briefing and unknown transport flags are refused
+ok 16 - a bare briefing and unknown transport flags are refused
+  ---
+  duration_ms: 58.421372
+  type: 'test'
+  ...
+# Subtest: the default command validates ready and does not publish
+ok 17 - the default command validates ready and does not publish
+  ---
+  duration_ms: 39.063764
+  type: 'test'
+  ...
+# Subtest: in-process injection can exercise the command without an argv transport
+ok 18 - in-process injection can exercise the command without an argv transport
+  ---
+  duration_ms: 18.548854
+  type: 'test'
+  ...
+# Subtest: missing remote publishes
+ok 19 - missing remote publishes
+  ---
+  duration_ms: 0.837426
+  type: 'test'
+  ...
+# Subtest: same hash and same instant is a noop
+ok 20 - same hash and same instant is a noop
+  ---
+  duration_ms: 0.141576
+  type: 'test'
+  ...
+# Subtest: same hash and newer stamp publishes the stamp
+ok 21 - same hash and newer stamp publishes the stamp
+  ---
+  duration_ms: 0.079
+  type: 'test'
+  ...
+# Subtest: same hash and older stamp does not roll back
+ok 22 - same hash and older stamp does not roll back
+  ---
+  duration_ms: 0.826565
+  type: 'test'
+  ...
+# Subtest: same instant and different hash conflicts
+ok 23 - same instant and different hash conflicts
+  ---
+  duration_ms: 0.178105
+  type: 'test'
+  ...
+# Subtest: newer stamp and different hash publishes
+ok 24 - newer stamp and different hash publishes
+  ---
+  duration_ms: 0.081102
+  type: 'test'
+  ...
+# Subtest: older stamp and different hash is stale
+ok 25 - older stamp and different hash is stale
+  ---
+  duration_ms: 0.106384
+  type: 'test'
+  ...
+# Subtest: disabled github transport never uses global fetch
+ok 26 - disabled github transport never uses global fetch
+  ---
+  duration_ms: 8.474869
+  type: 'test'
+  ...
+# Subtest: git data adapter fast-forwards one path from the latest base
+ok 27 - git data adapter fast-forwards one path from the latest base
+  ---
+  duration_ms: 23.962106
+  type: 'test'
+  ...
+# Subtest: a dropped update response is deduped by rereading the same path
+ok 28 - a dropped update response is deduped by rereading the same path
+  ---
+  duration_ms: 16.812862
+  type: 'test'
+  ...
+# Subtest: the production factory ignores fetch and stays disabled
+ok 29 - the production factory ignores fetch and stays disabled
+  ---
+  duration_ms: 7.30645
+  type: 'test'
+  ...
+# Subtest: an unfenced transport cannot be turned on through the command
+ok 30 - an unfenced transport cannot be turned on through the command
+  ---
+  duration_ms: 4.905565
+  type: 'test'
+  ...
+# Subtest: a non-JSON success body retries and exits 40
+ok 31 - a non-JSON success body retries and exits 40
+  ---
+  duration_ms: 16.588449
+  type: 'test'
+  ...
+# Subtest: permission failures are not retried
+ok 32 - permission failures are not retried
+  ---
+  duration_ms: 16.108683
+  type: 'test'
+  ...
+# Subtest: server errors retry then stop
+ok 33 - server errors retry then stop
+  ---
+  duration_ms: 16.852716
+  type: 'test'
+  ...
+# To /tmp/briefings-inbox-lRciHK/origin.git
+#  * [new branch]      HEAD -> main
+# To /tmp/briefings-inbox-lRciHK/origin.git
+#    7368749..13da101  HEAD -> main
+# From /tmp/briefings-inbox-lRciHK/origin
+#  * branch            main       -> FETCH_HEAD
+# Reset branch 'main'
+# To /tmp/briefings-inbox-lRciHK/origin.git
+#    13da101..4255fa0  HEAD -> main
+# From /tmp/briefings-inbox-lRciHK/origin
+#  * branch            main       -> FETCH_HEAD
+# Subtest: public envelope drops the local raw ready
+ok 34 - public envelope drops the local raw ready
+  ---
+  duration_ms: 7.254299
+  type: 'test'
+  ...
+# Subtest: a stale run does not deploy and a current run does
+ok 35 - a stale run does not deploy and a current run does
+  ---
+  duration_ms: 0.15304
+  type: 'test'
+  ...
+# Subtest: ack does not delete a concurrently replaced envelope
+ok 36 - ack does not delete a concurrently replaced envelope
+  ---
+  duration_ms: 0.207497
+  type: 'test'
+  ...
+# Subtest: a lost upload response is confirmed with GET and does not write twice
+ok 37 - a lost upload response is confirmed with GET and does not write twice
+  ---
+  duration_ms: 5.18421
+  type: 'test'
+  ...
+# Subtest: an unreadable upload confirmation is unknown and keeps the local bytes
+ok 38 - an unreadable upload confirmation is unknown and keeps the local bytes
+  ---
+  duration_ms: 3.565111
+  type: 'test'
+  ...
+# Subtest: permission failures do not retry the upload
+ok 39 - permission failures do not retry the upload
+  ---
+  duration_ms: 5.189003
+  type: 'test'
+  ...
+# Subtest: a missing token does not send HTTP
+ok 40 - a missing token does not send HTTP
+  ---
+  duration_ms: 5.372544
+  type: 'test'
+  ...
+# Subtest: schedule does not deploy when nothing was uploaded
+ok 41 - schedule does not deploy when nothing was uploaded
+  ---
+  duration_ms: 0.211423
+  type: 'test'
+  ...
+# Subtest: pages workflow keeps the approved permission split
+ok 42 - pages workflow keeps the approved permission split
+  ---
+  duration_ms: 0.352501
+  type: 'test'
+  ...
+# Subtest: push arguments are a fast-forward ref update
+ok 43 - push arguments are a fast-forward ref update
+  ---
+  duration_ms: 0.631342
+  type: 'test'
+  ...
+# Subtest: process script publishes inbox JSON onto a local main
+ok 44 - process script publishes inbox JSON onto a local main
+  ---
+  duration_ms: 157.926505
+  type: 'test'
+  ...
+# Subtest: a killed holder releases the lock for the next process
+ok 45 - a killed holder releases the lock for the next process
+  ---
+  duration_ms: 44.603229
+  type: 'test'
+  ...
+# Subtest: timeout does not steal a lock still held by a live process
+ok 46 - timeout does not steal a lock still held by a live process
+  ---
+  duration_ms: 189.837169
+  type: 'test'
+  ...
+# Subtest: daily normalization keeps extensions and does not invent github fields
+ok 47 - daily normalization keeps extensions and does not invent github fields
+  ---
+  duration_ms: 4.908304
+  type: 'test'
+  ...
+# Subtest: content hash ignores updated_at and markdown
+ok 48 - content hash ignores updated_at and markdown
+  ---
+  duration_ms: 0.933083
+  type: 'test'
+  ...
+# Subtest: weekly shape keeps live extensions and omits absent newcomer fields
+ok 49 - weekly shape keeps live extensions and omits absent newcomer fields
+  ---
+  duration_ms: 1.286483
+  type: 'test'
+  ...
+# Subtest: synthetic exact-impression text is stripped and then stable
+ok 50 - synthetic exact-impression text is stripped and then stable
+  ---
+  duration_ms: 1.123248
+  type: 'test'
+  ...
+# Subtest: forbidden text that survives stripping rejects the export
+ok 51 - forbidden text that survives stripping rejects the export
+  ---
+  duration_ms: 0.66502
+  type: 'test'
+  ...
+# Subtest: sample exports and bad metrics are rejected
+ok 52 - sample exports and bad metrics are rejected
+  ---
+  duration_ms: 0.547055
+  type: 'test'
+  ...
+# Subtest: weekly newcomer without what is rejected and missing age_h is not
+ok 53 - weekly newcomer without what is rejected and missing age_h is not
+  ---
+  duration_ms: 0.569973
+  type: 'test'
+  ...
+# Subtest: a workspace-like token is removed and not required as a fixture path
+ok 54 - a workspace-like token is removed and not required as a fixture path
+  ---
+  duration_ms: 0.474693
+  type: 'test'
+  ...
+# Subtest: ready is renamed last and binds both hashes
+ok 55 - ready is renamed last and binds both hashes
+  ---
+  duration_ms: 9.607647
+  type: 'test'
+  ...
+# Subtest: crashes before the ready rename leave no consumable ready
+ok 56 - crashes before the ready rename leave no consumable ready
+  ---
+  duration_ms: 7.208408
+  type: 'test'
+  ...
+# Subtest: a bare briefing is not a ready snapshot
+ok 57 - a bare briefing is not a ready snapshot
+  ---
+  duration_ms: 0.288948
+  type: 'test'
+  ...
+# Subtest: snapshot tamper and hash disagreement fail closed
+ok 58 - snapshot tamper and hash disagreement fail closed
+  ---
+  duration_ms: 7.665077
+  type: 'test'
+  ...
+# Subtest: ready paths cannot escape the export root
+ok 59 - ready paths cannot escape the export root
+  ---
+  duration_ms: 2.854226
+  type: 'test'
+  ...
+# Subtest: sibling markdown does not change the ready binding
+ok 60 - sibling markdown does not change the ready binding
+  ---
+  duration_ms: 1.656456
+  type: 'test'
+  ...
+# Subtest: accepts an offset timestamp and compares instants
+ok 61 - accepts an offset timestamp and compares instants
+  ---
+  duration_ms: 0.647397
+  type: 'test'
+  ...
+# Subtest: rejects illegal timestamp forms and values
+ok 62 - rejects illegal timestamp forms and values
+  ---
+  duration_ms: 0.443106
+  type: 'test'
+  ...
+# Subtest: accepts a real leap day and the offset bounds
+ok 63 - accepts a real leap day and the offset bounds
+  ---
+  duration_ms: 0.119419
+  type: 'test'
+  ...
+1..63
+# tests 63
+# suites 0
+# pass 63
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 574.579881
+
+> build
+> eleventy && node scripts/check-public.mjs
+
+[11ty] Writing ./_site/index.html from ./src/index.njk
+[11ty] Writing ./_site/daily/2026-11-09/index.html from ./src/daily.njk
+[11ty] Writing ./_site/weekly/2026-W45/index.html from ./src/weekly.njk
+[11ty] Writing ./_site/daily/2026-11-06/index.html from ./src/daily.njk
+[11ty] Writing ./_site/daily/2026-11-05/index.html from ./src/daily.njk
+[11ty] Copied 4 Wrote 5 files in 0.19 seconds (v3.1.8)
+public check ok
+_site/index.html
+_site/daily/2026-11-05/index.html
+_site/daily/2026-11-06/index.html
+_site/weekly/2026-W45/index.html
+EXIT:0

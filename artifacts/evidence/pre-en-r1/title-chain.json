@@ -1,0 +1,641 @@
+{
+  "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0",
+  "base": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0",
+  "chains": [
+    {
+      "content": "content/daily/2026-11-09.json",
+      "html": "_site/daily/2026-11-09/index.html",
+      "rows": [
+        {
+          "id": "1",
+          "lane": "news",
+          "detail": true,
+          "source": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+          "intermediate": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+          "html": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "2",
+          "lane": "news",
+          "detail": true,
+          "source": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+          "intermediate": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+          "html": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "3",
+          "lane": "news",
+          "detail": true,
+          "source": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+          "intermediate": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+          "html": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "4",
+          "lane": "news",
+          "detail": true,
+          "source": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+          "intermediate": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+          "html": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "5",
+          "lane": "news",
+          "detail": true,
+          "source": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+          "intermediate": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+          "html": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "6",
+          "lane": "news",
+          "detail": true,
+          "source": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+          "intermediate": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+          "html": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "7",
+          "lane": "news",
+          "detail": true,
+          "source": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+          "intermediate": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+          "html": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "8",
+          "lane": "news",
+          "detail": true,
+          "source": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+          "intermediate": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+          "html": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261109-01",
+          "lane": "polfin",
+          "detail": true,
+          "source": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+          "intermediate": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+          "html": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261109-02",
+          "lane": "polfin",
+          "detail": true,
+          "source": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+          "intermediate": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+          "html": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261109-03",
+          "lane": "polfin",
+          "detail": true,
+          "source": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+          "intermediate": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+          "html": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261109-04",
+          "lane": "polfin",
+          "detail": true,
+          "source": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+          "intermediate": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+          "html": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        }
+      ]
+    },
+    {
+      "content": "content/weekly/2026-W45.json",
+      "html": "_site/weekly/2026-W45/index.html",
+      "rows": [
+        {
+          "id": "W45-N1",
+          "lane": "news",
+          "detail": true,
+          "source": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+          "intermediate": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+          "html": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "W45-N2",
+          "lane": "news",
+          "detail": true,
+          "source": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+          "intermediate": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+          "html": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "W45-N3",
+          "lane": "news",
+          "detail": true,
+          "source": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+          "intermediate": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+          "html": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "W45-N4",
+          "lane": "news",
+          "detail": true,
+          "source": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+          "intermediate": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+          "html": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "W45-N5",
+          "lane": "news",
+          "detail": true,
+          "source": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+          "intermediate": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+          "html": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "W45-N6",
+          "lane": "news",
+          "detail": true,
+          "source": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+          "intermediate": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+          "html": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "W45-N7",
+          "lane": "news",
+          "detail": true,
+          "source": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+          "intermediate": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+          "html": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "W45-N8",
+          "lane": "news",
+          "detail": true,
+          "source": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+          "intermediate": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+          "html": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-01",
+          "lane": "polfin",
+          "detail": true,
+          "source": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+          "intermediate": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+          "html": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-02",
+          "lane": "polfin",
+          "detail": true,
+          "source": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+          "intermediate": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+          "html": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-03",
+          "lane": "polfin",
+          "detail": true,
+          "source": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+          "intermediate": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+          "html": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-04",
+          "lane": "polfin",
+          "detail": true,
+          "source": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+          "intermediate": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+          "html": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-05",
+          "lane": "polfin",
+          "detail": true,
+          "source": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+          "intermediate": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+          "html": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-06",
+          "lane": "polfin",
+          "detail": true,
+          "source": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+          "intermediate": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+          "html": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-07",
+          "lane": "polfin",
+          "detail": true,
+          "source": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+          "intermediate": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+          "html": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        }
+      ]
+    },
+    {
+      "content": "content/daily/2026-11-06.json",
+      "html": "_site/daily/2026-11-06/index.html",
+      "rows": [
+        {
+          "id": "1",
+          "lane": "news",
+          "detail": true,
+          "source": "OpenAI 发布 GPT‑6 Cyber：安全研究专用模型，经 Daybreak Red 向受控客户开放",
+          "intermediate": "OpenAI 发布 GPT‑6 Cyber：安全研究专用模型，经 Daybreak Red 向受控客户开放",
+          "html": "OpenAI 发布 GPT‑6 Cyber：安全研究专用模型，经 Daybreak Red 向受控客户开放",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "2",
+          "lane": "news",
+          "detail": true,
+          "source": "Cursor：一键生成可分享 live apps（含库、确定性+Agent 安检与部署）",
+          "intermediate": "Cursor：一键生成可分享 live apps（含库、确定性+Agent 安检与部署）",
+          "html": "Cursor：一键生成可分享 live apps（含库、确定性+Agent 安检与部署）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "3",
+          "lane": "news",
+          "detail": true,
+          "source": "Google：Gemini Omni 1.2 Flash 向全部 Google AI 订阅者开推；Ultra 可剪至约 15 秒视频",
+          "intermediate": "Google：Gemini Omni 1.2 Flash 向全部 Google AI 订阅者开推；Ultra 可剪至约 15 秒视频",
+          "html": "Google：Gemini Omni 1.2 Flash 向全部 Google AI 订阅者开推；Ultra 可剪至约 15 秒视频",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "6",
+          "lane": "news",
+          "detail": true,
+          "source": "METR 口径：Anthropic 内部 Model 4（上月训完）为分析集最高分，首次各基准均过 50%",
+          "intermediate": "METR 口径：Anthropic 内部 Model 4（上月训完）为分析集最高分，首次各基准均过 50%",
+          "html": "METR 口径：Anthropic 内部 Model 4（上月训完）为分析集最高分，首次各基准均过 50%",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "7",
+          "lane": "news",
+          "detail": true,
+          "source": "METR：Anthropic 或已触及 RSP「2× 加速」阈值，估当前加速可达约 3×（约 80% 来自 AI）",
+          "intermediate": "METR：Anthropic 或已触及 RSP「2× 加速」阈值，估当前加速可达约 3×（约 80% 来自 AI）",
+          "html": "METR：Anthropic 或已触及 RSP「2× 加速」阈值，估当前加速可达约 3×（约 80% 来自 AI）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "12",
+          "lane": "news",
+          "detail": true,
+          "source": "CISA：工业制冷与冷链监控系统遭恶意网络活动瞄准，联合发布 Fact Sheet",
+          "intermediate": "CISA：工业制冷与冷链监控系统遭恶意网络活动瞄准，联合发布 Fact Sheet",
+          "html": "CISA：工业制冷与冷链监控系统遭恶意网络活动瞄准，联合发布 Fact Sheet",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "14",
+          "lane": "news",
+          "detail": true,
+          "source": "OpenSSH/Alpine（musl）认证绕过热议：vx-underground 等传播「连按 4 键 257 次即 root」叙事",
+          "intermediate": "OpenSSH/Alpine（musl）认证绕过热议：vx-underground 等传播「连按 4 键 257 次即 root」叙事",
+          "html": "OpenSSH/Alpine（musl）认证绕过热议：vx-underground 等传播「连按 4 键 257 次即 root」叙事",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "21",
+          "lane": "news",
+          "detail": true,
+          "source": "Anthropic 推出 Claude Personal Finance（美国 Pro/Max/Ultra beta，Plaid 只读连银行）",
+          "intermediate": "Anthropic 推出 Claude Personal Finance（美国 Pro/Max/Ultra beta，Plaid 只读连银行）",
+          "html": "Anthropic 推出 Claude Personal Finance（美国 Pro/Max/Ultra beta，Plaid 只读连银行）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "22",
+          "lane": "news",
+          "detail": true,
+          "source": "Claude Enterprise：Inference Hooks 正式 GA（提示词/工具调用可过企业 DLP）",
+          "intermediate": "Claude Enterprise：Inference Hooks 正式 GA（提示词/工具调用可过企业 DLP）",
+          "html": "Claude Enterprise：Inference Hooks 正式 GA（提示词/工具调用可过企业 DLP）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "23",
+          "lane": "news",
+          "detail": true,
+          "source": "Glasshand：Agent 可租用数据中心真机 iPhone/Mac（Product Hunt）",
+          "intermediate": "Glasshand：Agent 可租用数据中心真机 iPhone/Mac（Product Hunt）",
+          "html": "Glasshand：Agent 可租用数据中心真机 iPhone/Mac（Product Hunt）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "24",
+          "lane": "news",
+          "detail": true,
+          "source": "微软：威胁方用 agentic 框架 ARTEX 扫 GitHub 密钥，最快约 5 分钟打到 Key Vault",
+          "intermediate": "微软：威胁方用 agentic 框架 ARTEX 扫 GitHub 密钥，最快约 5 分钟打到 Key Vault",
+          "html": "微软：威胁方用 agentic 框架 ARTEX 扫 GitHub 密钥，最快约 5 分钟打到 Key Vault",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "28",
+          "lane": "news",
+          "detail": true,
+          "source": "Windows Paint 高危：CVE-2026-83844 未认证远程代码执行（CVSS 8.1）",
+          "intermediate": "Windows Paint 高危：CVE-2026-83844 未认证远程代码执行（CVSS 8.1）",
+          "html": "Windows Paint 高危：CVE-2026-83844 未认证远程代码执行（CVSS 8.1）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "29",
+          "lane": "news",
+          "detail": true,
+          "source": "【金融硬门槛】DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级系统",
+          "intermediate": "【金融硬门槛】DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级系统",
+          "html": "【金融硬门槛】DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级系统",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-01",
+          "lane": "polfin",
+          "detail": true,
+          "source": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+          "intermediate": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+          "html": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-02",
+          "lane": "polfin",
+          "detail": true,
+          "source": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+          "intermediate": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+          "html": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-06",
+          "lane": "polfin",
+          "detail": true,
+          "source": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+          "intermediate": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+          "html": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-03",
+          "lane": "polfin",
+          "detail": true,
+          "source": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+          "intermediate": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+          "html": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-04",
+          "lane": "polfin",
+          "detail": true,
+          "source": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+          "intermediate": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+          "html": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-05",
+          "lane": "polfin",
+          "detail": true,
+          "source": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+          "intermediate": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+          "html": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "pf-20261106-07",
+          "lane": "polfin",
+          "detail": true,
+          "source": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+          "intermediate": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+          "html": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        }
+      ]
+    },
+    {
+      "content": "content/daily/2026-11-05.json",
+      "html": "_site/daily/2026-11-05/index.html",
+      "rows": [
+        {
+          "id": "1",
+          "lane": "news",
+          "detail": true,
+          "source": "OpenAI 发布 ChatGPT Images 2.6：原生 GIF、参考图；API 上 Flare/Sunburst（生成约快 50%）",
+          "intermediate": "OpenAI 发布 ChatGPT Images 2.6：原生 GIF、参考图；API 上 Flare/Sunburst（生成约快 50%）",
+          "html": "OpenAI 发布 ChatGPT Images 2.6：原生 GIF、参考图；API 上 Flare/Sunburst（生成约快 50%）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "2",
+          "lane": "news",
+          "detail": true,
+          "source": "Cat Wu 官宣加入 OpenAI 领导 Core Products 产品管理（昨 Claude Code 负责人离职续报）",
+          "intermediate": "Cat Wu 官宣加入 OpenAI 领导 Core Products 产品管理（昨 Claude Code 负责人离职续报）",
+          "html": "Cat Wu 官宣加入 OpenAI 领导 Core Products 产品管理（昨 Claude Code 负责人离职续报）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "3",
+          "lane": "news",
+          "detail": true,
+          "source": "Anthropic 首位增长员工 Austin Lau 官宣加入 OpenAI（与 Cat Wu 同日）",
+          "intermediate": "Anthropic 首位增长员工 Austin Lau 官宣加入 OpenAI（与 Cat Wu 同日）",
+          "html": "Anthropic 首位增长员工 Austin Lau 官宣加入 OpenAI（与 Cat Wu 同日）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "4",
+          "lane": "news",
+          "detail": true,
+          "source": "Meta 收购 Conductor：多 Agent 并行编排层；Cloud 将于 11/20 关停",
+          "intermediate": "Meta 收购 Conductor：多 Agent 并行编排层；Cloud 将于 11/20 关停",
+          "html": "Meta 收购 Conductor：多 Agent 并行编排层；Cloud 将于 11/20 关停",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "7",
+          "lane": "news",
+          "detail": true,
+          "source": "OpenAI：自主漏洞发现/利用/补丁管线单次产出 948 个 Linux 本地提权利用（约 $1.21M）",
+          "intermediate": "OpenAI：自主漏洞发现/利用/补丁管线单次产出 948 个 Linux 本地提权利用（约 $1.21M）",
+          "html": "OpenAI：自主漏洞发现/利用/补丁管线单次产出 948 个 Linux 本地提权利用（约 $1.21M）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "8",
+          "lane": "news",
+          "detail": true,
+          "source": "Vercel Security Reviews：约 24h 识别 6817 漏洞（580 高危；1411 已由 Agent 修补）",
+          "intermediate": "Vercel Security Reviews：约 24h 识别 6817 漏洞（580 高危；1411 已由 Agent 修补）",
+          "html": "Vercel Security Reviews：约 24h 识别 6817 漏洞（580 高危；1411 已由 Agent 修补）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "14",
+          "lane": "news",
+          "detail": true,
+          "source": "【金融硬门槛】Crédit Mutuel Arkéa 官方确认遭网络攻击；量级可「验证」约 $133M 叙事（昨不确定→官方落地）（unconfirmed）",
+          "intermediate": "【金融硬门槛】Crédit Mutuel Arkéa 官方确认遭网络攻击；量级可「验证」约 $133M 叙事（昨不确定→官方落地）（unconfirmed）",
+          "html": "【金融硬门槛】Crédit Mutuel Arkéa 官方确认遭网络攻击；量级可「验证」约 $133M 叙事（昨不确定→官方落地）（unconfirmed）",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        },
+        {
+          "id": "15",
+          "lane": "news",
+          "detail": true,
+          "source": "【金融硬门槛2】印度 CERT-In 警告 AI 辅助团伙 CRAFTY FALCON 加码攻击加密交易所/BFSI",
+          "intermediate": "【金融硬门槛2】印度 CERT-In 警告 AI 辅助团伙 CRAFTY FALCON 加码攻击加密交易所/BFSI",
+          "html": "【金融硬门槛2】印度 CERT-In 警告 AI 辅助团伙 CRAFTY FALCON 加码攻击加密交易所/BFSI",
+          "sourceEqualsIntermediate": true,
+          "intermediateEqualsHtml": true,
+          "className": "detail-title"
+        }
+      ]
+    }
+  ],
+  "synthetic": {
+    "title": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+    "cjkCount": 65,
+    "latinRun": 120,
+    "hasPunctuation": true
+  }
+}

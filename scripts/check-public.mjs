@@ -24,6 +24,7 @@ import {
   findForbidden,
   stripText,
 } from "../lib/strip-public.js";
+import { SYNTHETIC_LONG_TITLE, syntheticTitleStats } from "../test/fixtures/long-title.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const failures = [];
@@ -146,14 +147,15 @@ if (!fs.existsSync(css)) fail("missing _site/css/site.css");
 const todayPage = html["daily-2026-11-06"];
 if (todayPage) {
   assertNoToc("2026-11-06", todayPage);
-  for (const label of ["今日主线", "要闻", "政治金融", "顶尖论文", "GitHub", "附录"]) {
-    if (!todayPage.includes(label)) fail(`2026-11-06 page missing label ${label}`);
+  for (const label of ["Today", "News", "Politics & Finance", "Papers", "GitHub", "Appendix"]) {
+    if (!decodeEntities(todayPage).includes(label)) fail(`2026-11-06 page missing label ${label}`);
   }
-  if (!todayPage.includes("晨间") || !todayPage.includes(">午间<")) fail("2026-11-06 page dropped a wave tab");
+  if (!todayPage.includes(">Morning<") || !todayPage.includes(">Afternoon<")) fail("2026-11-06 page dropped a wave tab");
+  if (!todayPage.includes("晨间")) fail("2026-11-06 page dropped original-language wave text");
   if (!todayPage.includes('datetime="2026-11-06T13:58:00+08:00"')) {
     fail("2026-11-06 updated_at drifted");
   }
-  if (!/要闻条数<\/dt>\s*<dd[^>]*>27<\/dd>/.test(todayPage) || !/政治金融<\/dt>\s*<dd[^>]*>7<\/dd>/.test(todayPage)) {
+  if (!/News<\/dt>\s*<dd[^>]*>27<\/dd>/.test(todayPage) || !/Politics &amp; Finance<\/dt>\s*<dd[^>]*>7<\/dd>/.test(todayPage)) {
     fail("2026-11-06 news or polfin count drifted");
   }
   if (!todayPage.includes("pf-20261106-01")) fail("2026-11-06 polfin row is not on the page");
@@ -162,7 +164,7 @@ if (todayPage) {
   }
 }
 if (html.daily) {
-  for (const label of ["今日主线", "要闻", "顶尖论文", "附录", "本波最热"]) {
+  for (const label of ["Today", "News", "Papers", "Appendix", "Hot this wave"]) {
     if (!html.daily.includes(label)) fail(`daily page missing label ${label}`);
   }
   if (!html.daily.includes("午间")) fail("daily page dropped original-language body text");
@@ -171,7 +173,7 @@ if (html.daily) {
   }
 }
 if (html.weekly) {
-  for (const label of ["本周主线", "要闻", "金融决策", "最终判断"]) {
+  for (const label of ["This week", "News", "Financial Decisions", "Final judgment"]) {
     if (!html.weekly.includes(label)) fail(`weekly page missing label ${label}`);
   }
   if (!/unconfirmed/i.test(html.weekly)) fail("weekly page missing unconfirmed amount marker");
@@ -232,6 +234,12 @@ if (baseSource.includes("xgr-theme") || baseSource.includes("ygh-theme")) {
 }
 if (!baseSource.includes('class="seg theme-switch"') || !baseSource.includes('aria-label="Color theme"')) {
   fail("theme control must be the shared .seg");
+}
+if (/<button\b[^>]*data-theme-set="(?:system|day|night)"[^>]*\baria-label=/.test(baseSource)) {
+  fail("theme buttons must keep the visible Auto/Day/Night text as the accessible name");
+}
+if (!baseSource.includes('aria-pressed="true"') || !baseSource.includes('aria-pressed="false"')) {
+  fail("theme buttons must keep aria-pressed");
 }
 
 for (const [name, text] of Object.entries(html)) {
@@ -551,7 +559,7 @@ if (/padding:\s*var\(--s-2\)\s+0/.test(stack)) fail("E6 stacked td still has zer
 const deskTableStart = cssSource.indexOf("@media (min-width: 641px)");
 const deskTable = deskTableStart < 0 ? "" : cssSource.slice(deskTableStart, cssSource.indexOf("@media", deskTableStart + 10) < 0 ? undefined : cssSource.indexOf("@media", deskTableStart + 10));
 if (!deskTable.includes("white-space: nowrap")) fail("desktop compact columns must stay on one line");
-for (const label of ["最早源时", "总星", "+N", "栏", "通路", "finsec"]) {
+for (const label of ["First seen", "Stars", "+N", "Section", "Channel", "finsec"]) {
   if (!deskTable.includes(`data-label="${label}"`)) fail(`desktop nowrap missing ${label}`);
 }
 if (deskTable.includes("padding-inline: 0") || deskTable.includes("padding: 0")) {
@@ -559,9 +567,12 @@ if (deskTable.includes("padding-inline: 0") || deskTable.includes("padding: 0"))
 }
 if (html.home) {
   const homeTops = html.home.match(/class="back-to-top"/g) || [];
-  if (homeTops.length !== 1 || !html.home.includes(">回顶</button>")) fail("home must have exactly one 回顶 control");
-  if (html.home.includes("back-page") || html.home.includes("回到顶部") || html.home.includes(">Top</button>")) {
-    fail("home still has a second back control");
+  if (homeTops.length !== 1 || !html.home.includes(">Top</button>")) fail("home must have exactly one Top control");
+  if (!html.home.includes('aria-label="Back to top"') || !html.home.includes('title="Back to top"')) {
+    fail("home Top accessible name must be Back to top");
+  }
+  if (html.home.includes("回顶") || html.home.includes("回到顶部") || html.home.includes(">TOP</button>")) {
+    fail("home Top label drifted");
   }
 }
 
@@ -588,17 +599,26 @@ function firstBlock(text, startMarker, endMarker) {
   return text.slice(start, end < 0 ? text.length : end);
 }
 
+function decodeEntities(value) {
+  return String(value)
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+}
+
 function propertyPairs(text) {
   const block = firstBlock(text, 'id="metrics"', "</dl>");
-  const labels = [...block.matchAll(/<dt>([^<]*)<\/dt>/g)].map((match) => match[1]);
+  const labels = [...block.matchAll(/<dt>([^<]*)<\/dt>/g)].map((match) => decodeEntities(match[1]));
   const values = [...block.matchAll(/<dd[^>]*>([\s\S]*?)<\/dd>/g)].map((match) =>
-    match[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim(),
+    decodeEntities(match[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim()),
   );
   return { labels, values };
 }
 
 function tabLabels(bar) {
-  return [...bar.matchAll(/<button[^>]*>([^<]+)<\/button>/g)].map((match) => match[1].trim());
+  return [...bar.matchAll(/<button[^>]*>([^<]+)<\/button>/g)].map((match) => decodeEntities(match[1].trim()));
 }
 
 function openingTag(text, id) {
@@ -668,7 +688,7 @@ function assertGithubRows(name, panelHtml, rows, idPrefix) {
     if (!row.includes('class="brf-row-meta"')) fail(`${name} row is missing meta`);
     const card = details[index] || "";
     if (!card.includes(`id="${idPrefix}-${item.rank}"`)) fail(`${name} detail id missing for ${item.repo}`);
-    for (const key of ["是什么", "为什么涨", "+N/窗", "总星", "上线", "链接"]) {
+    for (const key of ["What", "Why it rose", "+N/window", "Stars", "Launched", "Links"]) {
       if (!card.includes(`>${key}<`)) fail(`${name} detail missing ${key}`);
     }
     const heading = (card.match(/<h3>([^<]*)<\/h3>/) || [])[1] || "";
@@ -689,16 +709,16 @@ if (ghWindowValue({ age_h: 40 }, "newcomer") !== "40h") {
 if (compactStars(15008) !== "15k" || compactStars(4892) !== "4.9k" || compactStars(96483) !== "96.5k" || compactStars(6563) !== "6.6k") {
   fail(`compactStars mismatch ${[compactStars(15008), compactStars(4892), compactStars(96483), compactStars(6563)].join(" ")}`);
 }
-if (isoWeekRangeLabel("2026-W45", "Asia/Shanghai") !== "2026-11-02 周一 → 2026-11-08 周日（Asia/Shanghai）") {
+if (isoWeekRangeLabel("2026-W45", "Asia/Shanghai") !== "2026-11-02 Mon → 2026-11-08 Sun (Asia/Shanghai)") {
   fail(`week window was ${isoWeekRangeLabel("2026-W45", "Asia/Shanghai")}`);
 }
 
 const dailyProps = dailyPropertyRows(dailyJson);
 const weeklyProps = weeklyPropertyRows(weeklyJson);
-if (dailyProps.map((row) => row.label).join("|") !== "日期|最后更新|要闻条数|全日累计|finsec|论文篇数|关注流相关|GitHub") {
+if (dailyProps.map((row) => row.label).join("|") !== "Date|Updated|News|Day total|finsec|Papers|Home-related|GitHub") {
   fail("daily property key order drifted");
 }
-if (weeklyProps.map((row) => row.label).join("|") !== "窗口|本周条目|政治金融|AI 产品 / 科技|AI 安全|其他安全 / 加密|壳") {
+if (weeklyProps.map((row) => row.label).join("|") !== "Window|This week|Politics & Finance|AI products & tech|AI security|Other security|Shell") {
   fail("weekly property key order drifted");
 }
 const weeklySteps = saSteps(weeklyJson.decisions);
@@ -716,9 +736,12 @@ function assertPageChrome(name, text) {
   if (!text.includes('id="page-top"')) fail(`${name} is missing #page-top`);
   const tops = text.match(/class="back-to-top"/g) || [];
   if (tops.length !== 1) fail(`${name} back-to-top count ${tops.length}`);
-  if (!text.includes(">回顶</button>")) fail(`${name} floating label is not 回顶`);
-  if (text.includes("back-page") || text.includes("回到顶部") || text.includes(">Top</button>")) {
-    fail(`${name} still has a second back control`);
+  if (!text.includes(">Top</button>")) fail(`${name} floating label is not Top`);
+  if (!text.includes('aria-label="Back to top"') || !text.includes('title="Back to top"')) {
+    fail(`${name} Top accessible name must be Back to top`);
+  }
+  if (text.includes("回顶") || text.includes("回到顶部") || text.includes(">TOP</button>")) {
+    fail(`${name} Top label drifted`);
   }
   const bars = [...text.matchAll(/<div class="page-tabs[\s\S]*?<\/div>/g)].map((match) => match[0]);
   if (bars.length < 2) fail(`${name} is missing the bottom segmented control`);
@@ -736,19 +759,19 @@ if (html.daily) {
     'class="page-head"',
     'id="metrics"',
     'id="conclusion"',
-    ">今日主线<",
+    ">Today<",
     'id="page-top"',
-    ">要闻<",
+    ">News<",
     'id="panel-news"',
     'id="hot"',
-    ">本波最热<",
+    ">Hot this wave<",
     'class="detail-cards"',
     'id="remainder"',
-    ">其余要点<",
+    ">Other points<",
     'id="panel-papers"',
     'id="panel-github"',
     'id="panel-appendix"',
-    ">全日累计（去重）<",
+    ">Day total<",
     'class="brf-link-cards"',
   ]);
   const shown = propertyPairs(html.daily);
@@ -760,11 +783,11 @@ if (html.daily) {
       fail(`daily property ${row.label} is "${shown.values[index]}"`);
     }
   });
-  if (!html.daily.includes('data-tone="warning"') || !html.daily.includes('class="brf-callout-lead">结论<')) {
+  if (!html.daily.includes('data-tone="warning"') || !html.daily.includes('class="brf-callout-lead">Summary<')) {
     fail("daily mainline is not a warning callout");
   }
   const tabs = tabLabels(firstBlock(html.daily, 'class="page-tabs', "</div>"));
-  if (tabs.join("|") !== "要闻|政治金融|顶尖论文|GitHub|附录") fail(`S1 tabs ${tabs.join("|")}`);
+  if (tabs.join("|") !== "News|Politics & Finance|Papers|GitHub|Appendix") fail(`S1 tabs ${tabs.join("|")}`);
   const bar = firstBlock(html.daily, 'class="page-tabs', "</div>");
   if (!/aria-controls="panel-news"[^>]*aria-selected="true"/.test(bar)) fail("S1 default tab is not 要闻");
   for (const id of ["panel-polfin", "panel-papers", "panel-github", "panel-appendix"]) {
@@ -773,7 +796,7 @@ if (html.daily) {
     if (!open.includes("inert")) fail(`S1 ${id} is not inert`);
   }
   if (openingTag(html.daily, "panel-news").includes(" hidden")) fail("S1 要闻 panel is hidden");
-  if (!html.daily.includes(">晨间<") || !html.daily.includes(">午间<")) fail("S2 wave tabs missing");
+  if (!html.daily.includes(">Morning<") || !html.daily.includes(">Afternoon<")) fail("S2 wave tabs missing");
   const morning = openingTag(html.daily, "wave-morning");
   const afternoon = openingTag(html.daily, "wave-afternoon");
   if (!morning.includes(" hidden") || afternoon.includes(" hidden")) fail("2026-11-05 default wave is not 午间");
@@ -794,22 +817,27 @@ if (html["daily-2026-11-06"]) {
   cards.forEach((card, index) => {
     const item = notes[index];
     if (!card.includes(`id="note-${item.id}"`)) fail(`S2 missing note-${item.id}`);
-    if (!card.includes(`>#${item.id} · ${item.domain} ·`)) fail(`S2 heading for note-${item.id}`);
-    const labels = [...card.matchAll(/<dt>([^<]+)<\/dt>/g)].map((match) => match[1]);
-    const expected = ["背景", "事实", "为何重要", "架构冲击", "通路", "最早来源·时间", "链接"].filter((label) => {
-      if (label === "背景") return item.background;
-      if (label === "事实") return item.facts;
-      if (label === "为何重要") return item.why;
-      if (label === "架构冲击") return item.arch_impact;
-      if (label === "通路") return item.channel;
-      if (label === "最早来源·时间") return item.first_source_at;
+    const plainHeading = card.replace(/<[^>]+>/g, "");
+    if (!plainHeading.includes(`#${item.id} · ${item.domain} ·`)) fail(`S2 heading for note-${item.id}`);
+    const titleSpan = card.match(/<span class="detail-title"[^>]*>([\s\S]*?)<\/span>/);
+    const visibleTitle = titleSpan ? decodeEntities(titleSpan[1].replace(/<[^>]+>/g, "").trim()) : "";
+    if (visibleTitle !== displayTitle(item)) fail(`S2 title for note-${item.id} is not the full display title`);
+    if (/class="[^"]*\bcell-short\b/.test(card)) fail(`S2 note-${item.id} still clips the detail title`);
+    const labels = [...card.matchAll(/<dt>([^<]+)<\/dt>/g)].map((match) => decodeEntities(match[1]));
+    const expected = ["Background", "Facts", "Why it matters", "Architecture impact", "Channel", "First seen", "Links"].filter((label) => {
+      if (label === "Background") return item.background;
+      if (label === "Facts") return item.facts;
+      if (label === "Why it matters") return item.why;
+      if (label === "Architecture impact") return item.arch_impact;
+      if (label === "Channel") return item.channel;
+      if (label === "First seen") return item.first_source_at;
       return item.links && item.links.length;
     });
     if (labels.join("|") !== expected.join("|")) fail(`C-D2 note-${item.id} fields ${labels.join("|")}`);
   });
   const rest = remainderNews(dailyJson.news);
   const remainderHtml = sliceBetween(html.daily, 'id="remainder"', 'id="panel-polfin"');
-  for (const header of ["#", "领域", "标题", "通路", "最早源时", "链接"]) {
+  for (const header of ["#", "Domain", "Title", "Channel", "First seen", "Links"]) {
     if (!remainderHtml.includes(`>${header}<`)) fail(`S2 remainder missing ${header}`);
   }
   const cardsHtml = cards.join("\n");
@@ -823,19 +851,19 @@ if (html["daily-2026-11-06"]) {
   }
   const hot = selectHot(dailyJson);
   const hotHtml = sliceBetween(html.daily, 'id="hot"', 'class="detail-cards"');
-  if (!hotHtml.includes("本波最热") || !hotHtml.includes("hot-jump")) fail("S2 hot list missing");
+  if (!hotHtml.includes("Hot this wave") || !hotHtml.includes("hot-jump")) fail("S2 hot list missing");
   hot.forEach((item) => {
     if (!hotHtml.includes(`href="${item.href}"`)) fail(`S2 hot list missing ${item.href}`);
   });
   const papers = sliceBetween(html.daily, 'id="panel-papers"', 'id="panel-github"');
-  for (const header of ["抢了什么", "要点", "为何值得看", "链接"]) {
+  for (const header of ["What", "Points", "Why read", "Links"]) {
     if (!papers.includes(`>${header}<`)) fail(`S3 papers missing ${header}`);
   }
-  if (!papers.includes(">本波必读<")) fail("F1 papers lead list missing");
-  if (!papers.includes('class="brf-callout"') || !calloutLeads(papers).includes("今日看点")) {
+  if (!papers.includes(">Read<")) fail("F1 papers lead list missing");
+  if (!papers.includes('class="brf-callout"') || !calloutLeads(papers).includes("Today")) {
     fail("S3 papers lead is not 今日看点");
   }
-  assertLeadAbsent("S3 papers", papers, ["窗口", "本周看点", "本周精选", "今日精选"]);
+  assertLeadAbsent("S3 papers", papers, ["Window", "This week"]);
   for (const paper of dailyJson.papers) {
     if (!papers.includes(`href="${paper.url}"`)) fail(`S3 missing paper url ${paper.url}`);
     if (paper.dair_url && !papers.includes(`href="${paper.dair_url}"`)) fail("S3 missing dair url");
@@ -845,20 +873,20 @@ if (html["daily-2026-11-06"]) {
   assertGithubRows("S4 rising", rising, dailyJson.github.rising.slice(0, 5), "gh-rising");
   assertGithubRows("S4 newcomers", newcomers, dailyJson.github.newcomers.slice(0, 5), "gh-newcomer");
   for (const [name, panel] of [["S4 rising", rising], ["S4 newcomers", newcomers]]) {
-    if (!calloutLeads(panel).includes("今日看点")) fail(`${name} lead is not 今日看点`);
-    assertLeadAbsent(name, panel, ["窗口", "本周看点", "本周精选", "今日精选"]);
+    if (!calloutLeads(panel).includes("Today")) fail(`${name} lead is not Today`);
+    assertLeadAbsent(name, panel, ["Window", "This week"]);
   }
-  if (!rising.includes(">其余仓库<") || !newcomers.includes(">其余仓库<")) fail("F2 rest repo table missing");
-  if (!/aria-controls="gh-rising"[^>]*aria-selected="true"/.test(html.daily)) fail("S4 涨星榜 is not the default GitHub tab");
-  if (!html.daily.includes(">涨星榜<") || !html.daily.includes(">新锐榜<") || !html.daily.includes(">总结<")) {
+  if (!rising.includes(">Other repositories<") || !newcomers.includes(">Other repositories<")) fail("F2 rest repo table missing");
+  if (!/aria-controls="gh-rising"[^>]*aria-selected="true"/.test(html.daily)) fail("S4 Trending is not the default GitHub tab");
+  if (!html.daily.includes(">Trending<") || !html.daily.includes(">Newcomers<") || !html.daily.includes(">Summary<")) {
     fail("S4 GitHub sub-tabs missing");
   }
   const summary = sliceBetween(html.daily, 'id="gh-summary"', 'id="panel-appendix"');
   if (summary.includes("<table")) fail("S4 总结 is a wide table");
-  if (!summary.includes(">口径<")) fail("S4 总结 is missing the 口径 callout");
+  if (!summary.includes(">Basis<")) fail("S4 Summary is missing the Basis callout");
   if (!summary.includes("缺源")) fail("S4 总结 dropped the archive note");
   const appendix = sliceBetween(html.daily, 'id="panel-appendix"', 'class="page-tabs page-tabs-bottom');
-  for (const header of ["#", "栏", "领域", "标题", "波次", "通路", "finsec", "链接"]) {
+  for (const header of ["#", "Section", "Domain", "Title", "Wave", "Channel", "finsec", "Links"]) {
     if (!appendix.includes(`>${header}<`)) fail(`S5 appendix missing ${header}`);
   }
   if (!html.daily.includes('class="brf-rows"') || !html.daily.includes('class="brf-status"')) {
@@ -873,19 +901,19 @@ if (html.weekly) {
     'class="page-head"',
     'id="metrics"',
     'id="conclusion"',
-    ">本周主线<",
+    ">This week<",
     'id="page-top"',
-    ">要闻<",
+    ">News<",
     'id="panel-news"',
     'id="weekly-news"',
-    ">代表来源<",
+    ">Sources<",
     'class="brf-link-cards"',
     'id="panel-papers"',
     'id="panel-github"',
     'id="panel-decisions"',
     'data-tone="danger"',
     'class="brf-steps"',
-    ">最终判断<",
+    ">Final judgment<",
   ]);
   const shown = propertyPairs(html.weekly);
   if (shown.labels.join("|") !== weeklyProps.map((row) => row.label).join("|")) {
@@ -896,10 +924,10 @@ if (html.weekly) {
       fail(`weekly property ${row.label} is "${shown.values[index]}"`);
     }
   });
-  if (!shown.values.includes("五栏 Segmented · 无 TOC")) fail("C-W1 shell property missing");
+  if (!shown.values.includes("Five columns · no TOC")) fail("C-W1 shell property missing");
   const tabs = tabLabels(firstBlock(html.weekly, 'class="page-tabs', "</div>"));
-  if (tabs.join("|") !== "要闻|政治金融|顶尖论文|GitHub|金融决策") fail(`S6 tabs ${tabs.join("|")}`);
-  if (tabs[tabs.length - 1] !== "金融决策") fail("S6 金融决策 is not the last tab");
+  if (tabs.join("|") !== "News|Politics & Finance|Papers|GitHub|Financial Decisions") fail(`S6 tabs ${tabs.join("|")}`);
+  if (tabs[tabs.length - 1] !== "Financial Decisions") fail("S6 Financial Decisions is not the last tab");
   const bar = firstBlock(html.weekly, 'class="page-tabs', "</div>");
   if (!/aria-controls="panel-news"[^>]*aria-selected="true"/.test(bar)) fail("S6 default tab is not 要闻");
   if (!/aria-controls="panel-decisions"[^>]*aria-selected="false"/.test(bar)) fail("S6 金融决策 is selected by default");
@@ -920,7 +948,7 @@ if (html.weekly) {
   }
   const decisionHtml = html.weekly.match(/<article class="decision"[\s\S]*?<\/article>/g) || [];
   if (decisionHtml.length !== weeklyJson.decisions.length) fail(`C-W2 decision count ${decisionHtml.length}`);
-  const decisionKeys = ["事实", "判断", "为何重要", "架构·风险影响", "控制域", "成本权衡"];
+  const decisionKeys = ["Facts", "Judgment", "Why it matters", "Architecture impact", "Control domains", "Cost tradeoff"];
   decisionHtml.forEach((card, index) => {
     const labels = [...card.matchAll(/<dt>([^<]+)<\/dt>/g)].map((match) => match[1]);
     if (labels.join("|") !== decisionKeys.join("|")) fail(`C-W2 decision ${index + 1} keys ${labels.join("|")}`);
@@ -945,8 +973,8 @@ if (html.weekly) {
   if (weeklyJson.github.newcomers.length) {
     assertGithubRows("S6 newcomers", weeklyNew, weeklyJson.github.newcomers.slice(0, 5), "gh-newcomer");
   }
-  if (!newsPanel.includes(">背景<") || !newsPanel.includes(">事实<")) {
-    fail("W45 news detail cards are missing 背景 or 事实");
+  if (!newsPanel.includes(">Background<") || !newsPanel.includes(">Facts<")) {
+    fail("W45 news detail cards are missing Background or Facts");
   }
   const risingCards = weeklyRising.match(/<article class="gh-detail"[\s\S]*?<\/article>/g) || [];
   weeklyJson.github.rising.slice(0, 5).forEach((item, index) => {
@@ -957,20 +985,20 @@ if (html.weekly) {
       const dd = card.slice(at).match(/<dd[^>]*>([\s\S]*?)<\/dd>/);
       return dd ? dd[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim() : "";
     };
-    if (!valueOf("是什么") || valueOf("是什么") === "—") fail(`W45 rising ${item.repo} 是什么 is blank`);
-    if (!valueOf("+N/窗") || valueOf("+N/窗") === "—") fail(`W45 rising ${item.repo} +N/窗 is blank`);
-    if (item.why && (!valueOf("为什么涨") || valueOf("为什么涨") === "—")) {
-      fail(`W45 rising ${item.repo} 为什么涨 is blank`);
+    if (!valueOf("What") || valueOf("What") === "—") fail(`W45 rising ${item.repo} What is blank`);
+    if (!valueOf("+N/window") || valueOf("+N/window") === "—") fail(`W45 rising ${item.repo} +N/window is blank`);
+    if (item.why && (!valueOf("Why it rose") || valueOf("Why it rose") === "—")) {
+      fail(`W45 rising ${item.repo} Why it rose is blank`);
     }
   });
   if (!html.weekly.includes('class="brf-rows"') || !html.weekly.includes('class="brf-status"') || !html.weekly.includes('class="brf-steps"')) {
     fail("weekly is missing Rows, Status, or Steps");
   }
   const weeklyHead = sliceBetween(html.weekly, 'id="conclusion"', 'id="page-top"');
-  if (!weeklyHead.includes(">本周主线<") || !weeklyHead.includes('class="brf-callout-lead">结论<')) {
-    fail("W45 page top 本周主线 or 结论 lead changed");
+  if (!weeklyHead.includes(">This week<") || !weeklyHead.includes('class="brf-callout-lead">Summary<')) {
+    fail("W45 page top This week or Summary lead changed");
   }
-  const digestAt = newsPanel.indexOf('<p class="brf-callout-lead">本周精选</p>');
+  const digestAt = newsPanel.indexOf('<p class="brf-callout-lead">This week</p>');
   const hotAt = newsPanel.indexOf('class="hot hot-list"');
   if (digestAt < 0 || hotAt < 0 || digestAt > hotAt) {
     fail("W45 panel-news 本周精选 callout is missing or not above the featured list");
@@ -981,15 +1009,15 @@ if (html.weekly) {
     fail("W45 panel-news digest is missing key fragments");
   }
   const weeklyPapers = sliceBetween(html.weekly, 'id="panel-papers"', 'id="panel-github"');
-  if (!calloutLeads(weeklyPapers).includes("本周精选")) fail("W45 papers lead is not 本周精选");
-  assertLeadAbsent("W45 papers", weeklyPapers, ["窗口", "本周看点"]);
+  if (!calloutLeads(weeklyPapers).includes("This week")) fail("W45 papers lead is not This week");
+  assertLeadAbsent("W45 papers", weeklyPapers, ["Window", "Today"]);
   for (const [name, panel] of [["W45 rising", weeklyRising], ["W45 newcomers", weeklyNew]]) {
-    if (!calloutLeads(panel).includes("本周精选")) fail(`${name} lead is not 本周精选`);
-    assertLeadAbsent(name, panel, ["窗口", "本周看点"]);
+    if (!calloutLeads(panel).includes("This week")) fail(`${name} lead is not This week`);
+    assertLeadAbsent(name, panel, ["Window", "Today"]);
   }
   const weeklyGhSummary = sliceBetween(html.weekly, 'id="gh-summary"', 'id="panel-decisions"');
-  if (!weeklyGhSummary.includes('class="brf-callout-lead">口径<')) fail("W45 GH 口径 lead changed");
-  if (!finance.includes('class="brf-callout-lead">硬门槛<')) fail("W45 finance lead is no longer 硬门槛");
+  if (!weeklyGhSummary.includes('class="brf-callout-lead">Basis<')) fail("W45 GH Basis lead changed");
+  if (!finance.includes('class="brf-callout-lead">Hard gate<')) fail("W45 finance lead is no longer Hard gate");
   assertChrome("weekly", html.weekly);
 }
 
@@ -1095,6 +1123,90 @@ for (const name of ["home", "daily", "weekly"]) {
 if (!fs.existsSync(path.join(root, "_site/fonts/inter-latin-wght-normal.woff2"))) {
   fail("missing self-hosted Inter latin font");
 }
+
+const synthetic = syntheticTitleStats();
+if (synthetic.cjkCount < 60 || synthetic.latinRun < 120 || !synthetic.hasPunctuation) {
+  fail(`synthetic long title is incomplete: ${JSON.stringify(synthetic)}`);
+}
+if (displayTitle({ title: SYNTHETIC_LONG_TITLE }) !== SYNTHETIC_LONG_TITLE) {
+  fail("displayTitle truncated the synthetic long title");
+}
+for (const file of walk(path.join(root, "content"))) {
+  if (fs.readFileSync(file, "utf8").includes(SYNTHETIC_LONG_TITLE.slice(0, 40))) {
+    fail(`synthetic fixture leaked into ${path.relative(root, file)}`);
+  }
+}
+if (!/\.detail-title\s*\{[^}]*white-space:\s*normal/.test(cssSource)) fail("detail titles are not allowed to wrap");
+if (!/\.detail-title\s*\{[^}]*overflow-wrap:\s*anywhere/.test(cssSource)) fail("detail titles are missing overflow-wrap: anywhere");
+if (/\.detail-title\s*\{[^}]*text-overflow:\s*ellipsis/.test(cssSource)) fail("detail titles still use ellipsis");
+if (/\.detail-title\s*\{[^}]*line-clamp/.test(cssSource) || /-webkit-line-clamp/.test(cssSource)) {
+  fail("a line clamp is still in site.css");
+}
+
+function assertFullTitles(name, pageHtml, briefing) {
+  const pool = [...(briefing?.news || []), ...(briefing?.polfin || [])];
+  const byId = new Map(pool.map((item) => [String(item.id), item]));
+  const cards = pageHtml.match(/<article class="detail-card"[\s\S]*?<\/article>/g) || [];
+  if (!cards.length) fail(`${name} has no detail cards`);
+  for (const card of cards) {
+    const id = (card.match(/id="note-([^"]+)"/) || [])[1];
+    const item = byId.get(String(id));
+    if (!item) {
+      fail(`${name} detail ${id} has no source item`);
+      continue;
+    }
+    const span = card.match(/<span class="detail-title"[^>]*>([\s\S]*?)<\/span>/);
+    const visible = span ? decodeEntities(span[1].replace(/\s+/g, " ").trim()) : "";
+    const expected = displayTitle(item).replace(/\s+/g, " ").trim();
+    const source = String(item.title || "").replace(/\s+/g, " ").trim();
+    if (visible !== expected) fail(`${name} ${id} visible title differs from displayTitle`);
+    if (source !== expected && !/^#\s*\d+\s*[·•]/.test(source)) {
+      fail(`${name} ${id} displayTitle dropped characters from a title with no baked prefix`);
+    }
+    if (/class="[^"]*\bcell-short\b/.test(card)) fail(`${name} ${id} detail card still uses cell-short`);
+    const heading = (card.match(/<h3[^>]*>/) || [""])[0];
+    if (/\stitle=/.test(heading)) fail(`${name} ${id} detail heading uses a title tooltip`);
+  }
+}
+
+function assertEnglishChrome(name, pageHtml) {
+  const cjk = /[\u3400-\u9fff]/;
+  const bits = [
+    ...[...pageHtml.matchAll(/<button\b[^>]*>([^<]*)<\/button>/g)].map((match) => decodeEntities(match[1].trim())),
+    ...[...pageHtml.matchAll(/<th\b[^>]*>([^<]*)<\/th>/g)].map((match) => decodeEntities(match[1].trim())),
+    ...[...pageHtml.matchAll(/<dt>([^<]*)<\/dt>/g)].map((match) => decodeEntities(match[1].trim())),
+    ...[...pageHtml.matchAll(/<h1\b[^>]*>([^<]*)<\/h1>/g)].map((match) => decodeEntities(match[1].trim())),
+    ...[...pageHtml.matchAll(/<h2\b[^>]*>([^<]*)<\/h2>/g)].map((match) => decodeEntities(match[1].trim())),
+    ...[...pageHtml.matchAll(/<p class="empty">([^<]*)<\/p>/g)].map((match) => decodeEntities(match[1].trim())),
+    ...[...pageHtml.matchAll(/<p class="brf-callout-lead">([^<]*)<\/p>/g)].map((match) => decodeEntities(match[1].trim())),
+    ...[...pageHtml.matchAll(/\b(?:aria-label|data-label)="([^"]*)"/g)].map((match) => decodeEntities(match[1].trim())),
+    ...[...pageHtml.matchAll(/<button\b[^>]*\btitle="([^"]*)"/g)].map((match) => decodeEntities(match[1].trim())),
+  ];
+  for (const bit of bits) {
+    if (bit && cjk.test(bit)) fail(`${name} UI chrome still has Chinese: ${bit}`);
+  }
+  const tops = pageHtml.match(/<button type="button" class="back-to-top"[^>]*>[\s\S]*?<\/button>/g) || [];
+  if (tops.length !== 1) fail(`${name} Top count ${tops.length}`);
+  if (!/>Top<\/button>/.test(tops[0] || "")) fail(`${name} visible Top label drifted`);
+}
+
+if (html.daily) assertFullTitles("daily", html.daily, dailyJson);
+if (html["daily-2026-11-06"]) {
+  assertFullTitles("2026-11-06", html["daily-2026-11-06"], JSON.parse(read("content/daily/2026-11-06.json")));
+}
+if (html.weekly) assertFullTitles("weekly", html.weekly, weeklyJson);
+const latestDailyPath = "_site/daily/2026-11-09/index.html";
+const latestDailyHtml = fs.existsSync(path.join(root, latestDailyPath)) ? read(latestDailyPath) : "";
+if (latestDailyHtml) {
+  assertFullTitles("2026-11-09", latestDailyHtml, JSON.parse(read("content/daily/2026-11-09.json")));
+  assertEnglishChrome("2026-11-09", latestDailyHtml);
+  assertNoToc("2026-11-09", latestDailyHtml);
+}
+for (const [name, pageHtml] of Object.entries(html)) {
+  if (pageHtml) assertEnglishChrome(name, pageHtml);
+}
+if (!indexSource.includes(">Show more<")) fail("archive control must say Show more");
+if (!read("src/js/fold.js").includes("Show more (")) fail("archive control must include the remaining count");
 
 if (failures.length) {
   console.error(failures.map((item) => `- ${item}`).join("\n"));

@@ -6,7 +6,7 @@ https://yurkingw.github.io/briefings/
 
 The in-chat Canvas (“今日情报” / “本周情报”) remains the authoritative reading surface. This site only mirrors briefing JSON that has been added to the repository.
 
-The shell (Home, Daily, Weekly, theme, empty states) is English. Daily and weekly column labels follow the Pages segmented names in Chinese (要闻 / 顶尖论文 / GitHub / 附录, and 金融决策 on weekly). Briefing body text stays in its original language, usually zh-Hans.
+The shell is English, including navigation, column labels, table headers, empty states, theme controls, and the back-to-top label Top. Briefing titles, summaries, and body text stay in their original language, usually zh-Hans.
 
 ## Build
 

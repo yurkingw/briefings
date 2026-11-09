@@ -1,0 +1,9 @@
+{
+  "note": "Follow-up probe on the EN-R1 file mirror of daily 2026-11-09, viewport 375x812, after scroll settles. Not part of pre-en-r1.",
+  "brief": {
+    "original": "6a95006c3cdc69965d0c7e001f729d1e6707721fa6535ca0ba91ef4ffdc65555",
+    "enR1": "ba58c55062256ae603ac150779adeb55442b399a4d9c8460d5223d8540514f96"
+  },
+  "captureBase": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0",
+  "result": { "y": 13504, "hidden": false, "w": 46, "h": 44 }
+}
