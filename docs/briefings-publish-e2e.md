@@ -17,9 +17,9 @@
 3. 把这次 Contents API 产生的 `main` commit 记为 `trigger_sha`（SHA_A）。它只应改动 `_inbox/daily/<period>.json` 或 `_inbox/weekly/<period>.json`。
 4. 打开该 push 触发的 Deploy GitHub Pages run。处理 job 的 step summary 里，`trigger_sha` 与 `content_sha`（SHA_B）必须分开。SHA_B 是处理 job 快进提交 `content/<type>/<period>.json` 之后的 `main`。
 5. deploy job 只有在再次读到的 `origin/main` 仍等于 SHA_B 时才部署。失败则不 ack。
-6. 部署成功后，公网 `https://yurkingw.github.io/briefings/publish-manifest.json` 必须同时有 `trigger_sha`、`content_sha`、`payload_sha256`，且没有一个合并的 `version`。
+6. 部署成功后，公网 `https://yurkingw.github.io/briefings/publish-manifest.json` 必须同时有 `trigger_sha`、`content_sha`。每个 item 的 `deployed_payload_sha256` 必须等于 SHA_B 上 `content/<type>/<period>.json` 的文件 SHA-256。`submitted_payload_sha256` 只表示这次 inbox envelope，不能把它当成已部署正文。没有合并的 `version` 字段。
 7. 对照 SHA_B 上的 `content/<type>/<period>.json` 与第 1 步的 `content_hash`。再打开 `https://yurkingw.github.io/briefings/daily/<period>/`（周报则是 `/weekly/<period>/`），核对页面中的结论与更新时间。deployment 记录上的 SHA 可以仍是 SHA_A，这不单独判失败。
-8. ack 之后，只有 blob sha 与 `content_hash` 仍等于本次消费值时，白名单文件才应消失。若期间被新稿替换，新文件必须还在。
+8. ack 之后，只有 blob sha 与 envelope 的 `submitted_content_hash` 仍等于本次消费值时，白名单文件才应消失。若期间被新稿替换，新文件必须还在。
 
 ## 仍未验证
 

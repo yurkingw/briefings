@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
@@ -6,7 +7,7 @@ import path from "node:path";
 import test from "node:test";
 import { ackOnce } from "../../lib/publish/contents-api.js";
 import { toPublicEnvelope } from "../../lib/publish/envelope.js";
-import { ackDecision, deployAllowed, planInbox } from "../../lib/publish/inbox.js";
+import { ackDecision, buildDeployManifest, deployAllowed, planInbox } from "../../lib/publish/inbox.js";
 import { stageReady, verifyReady } from "../../lib/publish/ready.js";
 import { uploadPublicEnvelope } from "../../lib/publish/upload.js";
 import { main as uploadMain } from "../../scripts/briefings-upload.mjs";
@@ -138,6 +139,94 @@ test("a missing token does not send HTTP", async () => {
   assert.equal(JSON.parse(chunks.join("")).result, "adapter_disabled");
 });
 
+test("an older timestamp is not recorded as the deployed payload", () => {
+  const root = tempRoot();
+  const current = toPublicEnvelope(verifyReady(stageReady(root, dailyRaw({ updated_at: "2026-11-09T07:58:04+08:00" })).readyPath));
+  const older = toPublicEnvelope(verifyReady(stageReady(tempRoot(), dailyRaw({ updated_at: "2026-11-09T06:00:00+08:00" })).readyPath));
+  assert.equal(current.envelope.content_hash, older.envelope.content_hash);
+  assert.notEqual(current.envelope.payload_sha256, older.envelope.payload_sha256);
+  const item = {
+    path: older.path,
+    blobSha: "sold",
+    contentHash: older.envelope.content_hash,
+    payloadSha256: older.envelope.payload_sha256,
+    updatedAtMs: older.updatedAtMs,
+    payloadBytes: older.payloadBytes,
+    contentPath: "content/daily/2026-11-09.json",
+    period: "2026-11-09",
+    schema: older.envelope.schema,
+    remote: {
+      contentHash: current.envelope.content_hash,
+      updatedAtMs: current.updatedAtMs,
+      payloadSha256: current.envelope.payload_sha256,
+    },
+  };
+  const plan = planInbox({ event: "push", triggerSha: "96bdda2", originMain: "d27b56d", inbox: [item] });
+  assert.equal(plan.exit, 0);
+  assert.equal(plan.writes.length, 0);
+  const manifest = buildDeployManifest({ triggerSha: "96bdda2", contentSha: "d27b56d", items: plan.ack });
+  const recorded = manifest.items[0];
+  assert.equal(recorded.submitted_payload_sha256, older.envelope.payload_sha256);
+  assert.equal(recorded.deployed_payload_sha256, current.envelope.payload_sha256);
+  assert.notEqual(recorded.submitted_payload_sha256, recorded.deployed_payload_sha256);
+  assert.equal(recorded.disposition, "unchanged");
+  assert.equal(Object.hasOwn(recorded, "payload_sha256"), false);
+  assert.equal(recorded.deployed_payload_sha256, createHash("sha256").update(current.payloadBytes).digest("hex"));
+});
+
+test("first publish and identical repeat record the bytes actually written", () => {
+  const body = packed();
+  const first = planInbox({
+    event: "push",
+    triggerSha: "A",
+    originMain: "M",
+    inbox: [{
+      path: body.path,
+      blobSha: "s1",
+      contentHash: body.envelope.content_hash,
+      payloadSha256: body.envelope.payload_sha256,
+      updatedAtMs: body.updatedAtMs,
+      payloadBytes: body.payloadBytes,
+      contentPath: "content/daily/2026-11-10.json",
+      period: "2026-11-10",
+      schema: body.envelope.schema,
+      remote: null,
+    }],
+  });
+  assert.equal(first.writes.length, 1);
+  const written = createHash("sha256").update(first.writes[0].bytes).digest("hex");
+  const firstItem = buildDeployManifest({ triggerSha: "A", contentSha: "B", items: first.ack }).items[0];
+  assert.equal(firstItem.disposition, "published");
+  assert.equal(firstItem.submitted_payload_sha256, written);
+  assert.equal(firstItem.deployed_payload_sha256, written);
+  const again = planInbox({
+    event: "push",
+    triggerSha: "A2",
+    originMain: "B",
+    inbox: [{
+      path: body.path,
+      blobSha: "s1",
+      contentHash: body.envelope.content_hash,
+      payloadSha256: body.envelope.payload_sha256,
+      updatedAtMs: body.updatedAtMs,
+      payloadBytes: body.payloadBytes,
+      contentPath: "content/daily/2026-11-10.json",
+      period: "2026-11-10",
+      schema: body.envelope.schema,
+      remote: {
+        contentHash: body.envelope.content_hash,
+        updatedAtMs: body.updatedAtMs,
+        payloadSha256: written,
+      },
+    }],
+  });
+  assert.equal(again.writes.length, 0);
+  const repeatItem = buildDeployManifest({ triggerSha: "A2", contentSha: "B", items: again.ack }).items[0];
+  assert.equal(repeatItem.disposition, "unchanged");
+  assert.equal(repeatItem.deployed_payload_sha256, written);
+  assert.equal(repeatItem.submitted_payload_sha256, written);
+});
+
 test("schedule does not deploy when nothing was uploaded", () => {
   const plan = planInbox({ event: "schedule", triggerSha: "A", originMain: "M", inbox: [] });
   assert.equal(plan.deploy, false);
@@ -197,4 +286,56 @@ test("process script publishes inbox JSON onto a local main", () => {
   const published = git(origin, ["show", `main:content/daily/${envelope.envelope.period}.json`]);
   assert.equal(published.includes("qianji.briefing.daily.v1"), true);
   assert.notEqual(plan.contentSha, plan.triggerSha);
+  const contentPath = path.join(repo, `content/daily/${envelope.envelope.period}.json`);
+  const contentHash = createHash("sha256").update(fs.readFileSync(contentPath)).digest("hex");
+  const firstManifest = buildDeployManifest({ triggerSha: plan.triggerSha, contentSha: plan.contentSha, items: plan.ack });
+  assert.equal(firstManifest.items[0].disposition, "published");
+  assert.equal(firstManifest.items[0].deployed_payload_sha256, contentHash);
+  assert.equal(firstManifest.items[0].submitted_payload_sha256, contentHash);
+  assert.notEqual(firstManifest.trigger_sha, firstManifest.content_sha);
+
+  const repeat = processRepo(repo, { event: "push", triggerSha: git(repo, ["rev-parse", "HEAD"]).trim() });
+  assert.equal(repeat.exit, 0);
+  assert.equal(repeat.writes.length, 0);
+  assert.equal(createHash("sha256").update(fs.readFileSync(contentPath)).digest("hex"), contentHash);
+  const repeatItem = buildDeployManifest({ triggerSha: repeat.triggerSha, contentSha: repeat.contentSha, items: repeat.ack }).items[0];
+  assert.equal(repeatItem.disposition, "unchanged");
+  assert.equal(repeatItem.deployed_payload_sha256, contentHash);
+
+  const older = toPublicEnvelope(verifyReady(stageReady(tempRoot(), dailyRaw({ updated_at: "2026-11-10T06:00:00+08:00" })).readyPath));
+  assert.equal(older.envelope.content_hash, envelope.envelope.content_hash);
+  assert.notEqual(older.envelope.payload_sha256, contentHash);
+  fs.writeFileSync(path.join(repo, older.path), older.bytes);
+  git(repo, ["add", "--", older.path]);
+  git(repo, ["commit", "-m", "older stamp"]);
+  git(repo, ["push", "origin", "HEAD:main"]);
+  const variable = processRepo(repo, { event: "push", triggerSha: git(repo, ["rev-parse", "HEAD"]).trim() });
+  assert.equal(variable.exit, 0);
+  assert.equal(variable.writes.length, 0);
+  assert.equal(createHash("sha256").update(fs.readFileSync(contentPath)).digest("hex"), contentHash);
+  const variableManifest = buildDeployManifest({
+    triggerSha: variable.triggerSha,
+    contentSha: variable.contentSha,
+    items: variable.ack,
+  });
+  assert.equal(variableManifest.items[0].disposition, "unchanged");
+  assert.equal(variableManifest.items[0].submitted_payload_sha256, older.envelope.payload_sha256);
+  assert.equal(variableManifest.items[0].deployed_payload_sha256, contentHash);
+  fs.mkdirSync(path.join(repo, "_site"));
+  execFileSync(process.execPath, [path.resolve("scripts/briefings-deploy-manifest.mjs")], {
+    cwd: repo,
+    env: {
+      ...process.env,
+      MANIFEST: JSON.stringify(variableManifest),
+      TRIGGER_SHA: variable.triggerSha,
+      CONTENT_SHA: variable.contentSha,
+    },
+    encoding: "utf8",
+  });
+  const artifact = JSON.parse(fs.readFileSync(path.join(repo, "_site/publish-manifest.json"), "utf8"));
+  assert.equal(artifact.items[0].deployed_payload_sha256, contentHash);
+  assert.notEqual(artifact.items[0].submitted_payload_sha256, artifact.items[0].deployed_payload_sha256);
+  assert.equal(Object.hasOwn(artifact.items[0], "payload_sha256"), false);
+  assert.equal(artifact.trigger_sha, variable.triggerSha);
+  assert.equal(artifact.content_sha, variable.contentSha);
 });
