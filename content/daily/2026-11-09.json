@@ -403,20 +403,22 @@
     ]
   },
   "metrics": {
-    "finsec": 2,
+    "finsec": 3,
     "gh_newcomers": 10,
     "gh_rising": 9,
-    "home_related": "10/11",
-    "news": 11,
+    "hard_gate": 4,
+    "home_related": "11/12",
+    "news": 12,
+    "news_detail": 9,
     "news_detail_morning": 8,
-    "news_detail_noon": 0,
+    "news_detail_noon": 1,
     "news_morning": 11,
-    "news_noon": 0,
+    "news_noon": 1,
     "papers": 6,
-    "polfin": 4,
-    "polfin_detail": 4,
+    "polfin": 6,
+    "polfin_detail": 6,
     "polfin_morning": 4,
-    "polfin_noon": 0
+    "polfin_noon": 2
   },
   "news": [
     {
@@ -709,6 +711,27 @@
       "title": "勒索团伙声称窃取马士基 LF Logistics 超 1.6 万司机明文密码并索要 500 万美元比特币（未经官方确认）",
       "wave": "晨间",
       "why": "若属实，这是全球航运核心企业的身份与物流数据事件；即便仅为声称，也值得在开盘前做供应商监测。"
+    },
+    {
+      "arch_impact": "盘点机构与高净值客户在 Binance 欧盟实体余额；11-29 前完成提现；评估 MiCA 授权替代所与稳定币结算备份。",
+      "background": "欧盟 MiCA 过渡期结束后，未获授权的交易所须收缩本地实体用户服务；Binance 仍未出现在 ESMA 授权名录。",
+      "channel": "公开",
+      "detail": true,
+      "domain": "其他网络安全",
+      "facts": "CoinDesk（2026-11-07）援引 Binance 发言人：受影响账户将于 2026-12-31 关闭，称属「carefully managed process」。用户邮件显示存款已停、仍可提现；自 11-29 起对剩余加密余额按月收取 0.025% 或最低 10 USDC（先扣 USDC）。法/意/西/波等曾有本地注册实体的用户报告收到通知；法国 AMF 显示 Binance France 注册已于 7-02 自动失效。发言人重申正推进欧盟授权路径。",
+      "finsec": true,
+      "first_source_at": "2026-11-07 14:13",
+      "hard_gate": false,
+      "id": 12,
+      "links": [
+        {
+          "label": "CoinDesk MiCA 关户",
+          "url": "https://www.coindesk.com/business/2026/11/07/binance-users-in-some-european-countries-told-to-pull-crypto-before-fees-kick-in-with-accounts-closing-by-year-end"
+        }
+      ],
+      "title": "Binance 法/意/西/波等欧盟账户将于 12-31 关闭；11-29 起对剩余余额收费（MiCA）",
+      "wave": "午间",
+      "why": "全球头部交易所在欧盟核心市场进入关户与休眠费阶段，直接冲击跨境清算、合规通道与用户资产迁移窗口；与美国侧对 Binance/Tether 的国会调查形成跨大西洋监管夹击。"
     }
   ],
   "papers": [
@@ -887,6 +910,72 @@
       "title": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
       "wave": "晨间",
       "why": "国防开支上限与 AI 高估值资产的风险溢价在同一政治冲击里重新定价；对依赖美国财政扩张与科技龙头估值的机构，这是选后第一个可执行的宏观信号。"
+    },
+    {
+      "arch_impact": "监测 NVDA 与 AI 基建链开盘定价；将关键供应商高管外国情报风险与继任 contingency 写入第三方治理；勿把未证实的芯片转运金额写成已裁决事实。",
+      "background": "晨间已报董事会独立调查与 Rubio 预警。盘中主线从「是否启动调查」转为人事/情报细节与市场定价。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "地缘金融",
+      "facts": "多方援引《纽约时报》等：美方认定与黄仁勋关系密切的商业人士为 Alice Huang（亦作 Huang Le），与新加坡数据中心公司 Megaspeed 相关，并涉嫌为中国情报机构搜集信息、影响先进芯片对华销售叙事。AP/POLITICO 取得黄仁勋致员工信：承认对妻子不忠并致歉，承诺配合调查。@business 释出不足一月前拍摄的 The Circuit 访谈：黄仁勋为接触中国辩护并批评美对华芯片限制；同日另稿称 NVDA 盘前承压。@WSJ：黄仁勋已提升子女在公司能见度，董事会同时调查其是否遭间谍活动针对（https://www.wsj.com/tech/ai/jensen-huang-apologized-to-nvidia-for-his-infidelity-his-kids-are-on-staff-190f3176）。董事会公开声明仍称目前无理由相信国家安全或公司机密已遭损害。",
+      "finsec": false,
+      "first_source_at": "2026-11-09 09:36",
+      "hard_gate": true,
+      "id": "pf-20261109-05",
+      "links": [
+        {
+          "label": "Bloomberg Circuit/调查",
+          "url": "https://www.bloomberg.com/news/articles/2026-11-08/nvidia-board-to-probe-spying-case-after-ceo-jensen-huang-admits-infidelity"
+        },
+        {
+          "label": "Bloomberg 股价",
+          "url": "https://www.bloomberg.com/news/articles/2026-11-09/nvidia-shares-dip-on-robinhood-as-huang-affair-spurs-board-probe"
+        },
+        {
+          "label": "WSJ 子女/调查",
+          "url": "https://www.wsj.com/tech/ai/jensen-huang-apologized-to-nvidia-for-his-infidelity-his-kids-are-on-staff-190f3176"
+        },
+        {
+          "label": "NVIDIA 董事会声明",
+          "url": "https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors"
+        },
+        {
+          "label": "NYT 调查",
+          "url": "https://www.nytimes.com/2026/11/08/technology/nvidia-investigation-jensen-huang-china.html"
+        }
+      ],
+      "title": "【续报】英伟达调查发酵：Alice Huang 被点名、员工致歉信、Bloomberg 挺接触中国访谈与 WSJ 子女线同日扩散",
+      "wave": "午间",
+      "why": "点名、致歉信、对华政策访谈与子女继任叙事叠合，把「关键人风险」从周末爆料推进到开盘定价与治理议程；CUDA/GPU 单点供应的金融 AI 基建暴露面未变。"
+    },
+    {
+      "arch_impact": "美国持牌机构与代理行预演对 Binance/Tether/WLFI 相关暴露的文件保全与关系复审；关注 PSI 主席更替后的传票节奏。",
+      "background": "民主党中期胜选后，参院常设调查小组委员会（PSI）权力将易手；对加密通道与特朗普家族加密业务的调查从「少数党催交」转向「多数党可强制」窗口。信件约 11-05 发出，晨报未收，午间关注流与 X News 显著发酵。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "监管",
+      "facts": "康州参议员 Richard Blumenthal（PSI 少数党首席、预期下届主席）向 Binance、Tether、World Liberty Financial、Fight Fight Fight LLC（$TRUMP memecoin 相关）发函，要求最迟 2027-01-04 提交所索记录，否则将考虑「alternative measures」（普遍解读含传票）。报道称 World Liberty / Fight Fight Fight 另被要求 11-30 起开始提交；Binance 侧另有 11-09 确认收函、11-30 首批生产等节点。调查轴：Binance/Tether 涉伊朗等制裁规避与非法加密使用；特朗普家族加密业务潜在利益冲突。@WuBlockchain 今日转发官方口径摘要（https://x.com/WuBlockchain/status/2119594728371151301）。",
+      "finsec": false,
+      "first_source_at": "2026-11-09 08:55",
+      "hard_gate": true,
+      "id": "pf-20261109-06",
+      "links": [
+        {
+          "label": "WuBlockchain 摘要",
+          "url": "https://x.com/WuBlockchain/status/2119594728371151301"
+        },
+        {
+          "label": "Greenwich Free Press（转述官方函）",
+          "url": "https://greenwichfreepress.com/news/government/us-senator-blumenthal-sends-warning-to-targets-of-investigations-into-crypto-corruption-immigration-abuses-big-tech-more-256685/"
+        },
+        {
+          "label": "X News 专题",
+          "url": "https://x.com/i/trending/2119598374324425037"
+        }
+      ],
+      "title": "【硬门槛】Blumenthal（即将出任 PSI 主席）致信 Binance、Tether、World Liberty Financial 与 Fight Fight Fight，要求 2027-01-04 前提交材料",
+      "wave": "午间",
+      "why": "把交易所合规、稳定币伊朗影子银行叙事与特朗普家族加密业务绑在同一 PSI 时间表上；1/4 截止日紧贴新国会召集，威慑从「自愿配合」升格为可强制取证。"
     }
   ],
   "schema": "qianji.briefing.daily.v1",
@@ -899,8 +988,8 @@
     "GitStock daily API（日键 2026-11-08 UTC）",
     "GH Archive 缺源"
   ],
-  "summary": "英伟达董事会就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查（纽约时报；Rubio 曾预警；官方董事会声明），并与 FinCEN 切断 MEXC、财政部制裁八家加拿大汇兑商叠合。科技侧：OpenAIDevs「Tomorrow」预告、科学发现/测试时计算叙事、DeepSeek Harness 约 154 万日活、Anthropic 约 34 亿美元燃气发电设备采购；安全侧见 Claude Code 本地设置文件泄密与 WordPress 升级窗口 RCE。",
+  "summary": "午间主线仍是英伟达调查发酵（Alice Huang 点名、员工致歉、Bloomberg 对华接触访谈、WSJ 子女线）；新硬门槛为 Blumenthal PSI 致信 Binance/Tether 与特朗普家族加密公司（2027-01-04 截止）。科技/合规侧补收 Binance 欧盟 MiCA 关户。OpenAIDevs「Tomorrow」尚未兑现产品发布。",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-09T07:58:04+08:00",
-  "wave": "晨间"
+  "updated_at": "2026-11-09T12:43:27+08:00",
+  "wave": "午间"
 }
