@@ -8,7 +8,8 @@
   "scripts": {
     "build": "eleventy && node scripts/check-public.mjs",
     "serve": "eleventy --serve",
-    "test": "npm run build"
+    "test:publish": "node --test test/publish/*.test.mjs",
+    "test": "npm run test:publish && npm run build"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.1.8",
