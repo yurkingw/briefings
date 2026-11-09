@@ -21,7 +21,7 @@
   <li>
     <a class="brf-row hit-row" href="#gh-{{ kind }}-{{ item.rank }}">
       <span class="brf-row-lead">{{ item.rank | rankLabel }}</span>
-      <span class="brf-row-title" title="{{ item.repo }}">{{ item.repo }}</span>
+      <span class="brf-row-title">{{ item.repo }}</span>
       <span class="brf-row-detail" lang="zh-Hans">{% if item.slogan %}{{ item.slogan }}{% else %}—{% endif %}</span>
       <span class="brf-row-meta"{% if item | githubMetaLine(kind) | textLang %} lang="zh-Hans"{% endif %}>{{ item | githubMetaLine(kind) }}</span>
       <span class="brf-row-status">
@@ -43,7 +43,7 @@
       <span class="brf-status">{{ status.who }}</span>
       {% if status.break %}<span class="brf-status" data-tone="danger"{% if status.break | textLang %} lang="zh-Hans"{% endif %}>{{ status.break }}</span>{% endif %}
     </p>
-    <h3 title="{{ item.repo }}">#{{ item.rank }} · {{ item.repo }}</h3>
+    <h3>#{{ item.rank }} · <span class="detail-title">{{ item.repo }}</span></h3>
     <dl class="brf-properties">
       <div class="brf-properties-row"><dt>{{ labels.what }}</dt><dd{% if (item.what or item.slogan) | textLang %} lang="zh-Hans"{% endif %}>{% if item.what %}{{ item.what }}{% elif item.slogan %}{{ item.slogan }}{% else %}—{% endif %}</dd></div>
       <div class="brf-properties-row"><dt>{{ labels.whyItRose }}</dt><dd{% if item.why | textLang %} lang="zh-Hans"{% endif %}>{% if item.why %}{{ item.why }}{% else %}—{% endif %}</dd></div>

@@ -211,7 +211,7 @@
       <h2>{{ labels.read }}</h2>
       <ol class="hot hot-list">
         {% for paper in paperLead %}
-        <li><a class="hot-jump hit-row" href="#paper-{{ loop.index }}"><span class="hot-index">{{ loop.index }}</span><span class="hot-title cell-short" title="{{ paper.short }}">{{ paper.short }}</span></a></li>
+        <li><a class="hot-jump hit-row" href="#paper-{{ loop.index }}"><span class="hot-index">{{ loop.index }}</span><span class="hot-title detail-title">{{ paper.short }}</span></a></li>
         {% endfor %}
       </ol>
     </section>
@@ -219,7 +219,7 @@
       {% for paper in paperLead %}
       {% set fields = paper | paperFields %}
       <article class="paper-card" id="paper-{{ loop.index }}">
-        <h3 class="card-title" title="{{ paper.short }}">#{{ loop.index }} · <span class="cell-short">{{ paper.short }}</span></h3>
+        <h3 class="card-title">#{{ loop.index }} · <span class="detail-title">{{ paper.short }}</span></h3>
         <dl class="brf-properties">
           <div class="brf-properties-row"><dt>{{ labels.what }}</dt><dd{% if fields.grabbed | textLang %} lang="zh-Hans"{% endif %}>{{ fields.grabbed }}</dd></div>
           <div class="brf-properties-row"><dt>{{ labels.points }}</dt><dd{% if fields.points | textLang %} lang="zh-Hans"{% endif %}>{{ fields.points }}</dd></div>
