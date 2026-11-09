@@ -11,9 +11,12 @@ const manifest = buildDeployManifest({
     path: item.path,
     period: item.period,
     schema: item.schema,
-    contentHash: item.content_hash,
-    payloadSha256: item.payload_sha256,
-    blobSha: item.blob_sha,
+    disposition: item.disposition,
+    submittedContentHash: item.submitted_content_hash,
+    submittedPayloadSha256: item.submitted_payload_sha256,
+    submittedBlobSha: item.submitted_blob_sha,
+    deployedContentHash: item.deployed_content_hash,
+    deployedPayloadSha256: item.deployed_payload_sha256,
   })),
 });
 const text = `${JSON.stringify(manifest, null, 2)}\n`;

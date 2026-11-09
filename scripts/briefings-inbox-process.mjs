@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -29,8 +30,13 @@ function readInbox(repo) {
       let remote = null;
       const contentFile = path.join(repo, `content/${type}/${parsed.envelope.period}.json`);
       if (fs.existsSync(contentFile)) {
-        const normalized = normalizeBriefing(fs.readFileSync(contentFile));
-        remote = { contentHash: normalized.contentHash, updatedAtMs: normalized.updatedAtMs };
+        const fileBytes = fs.readFileSync(contentFile);
+        const normalized = normalizeBriefing(fileBytes);
+        remote = {
+          contentHash: normalized.contentHash,
+          updatedAtMs: normalized.updatedAtMs,
+          payloadSha256: createHash("sha256").update(fileBytes).digest("hex"),
+        };
       }
       items.push({
         path: rel,
@@ -71,7 +77,7 @@ export function processRepo(repo, { event, triggerSha } = {}) {
       fs.writeFileSync(full, file.bytes);
       git(repo, ["add", "--", file.path]);
     }
-    const lines = plan.ack.map((item) => `${item.period} ${item.contentHash} ${item.payloadSha256}`).join("\n");
+    const lines = plan.ack.map((item) => `${item.period} ${item.disposition} ${item.deployedPayloadSha256}`).join("\n");
     git(repo, ["commit", "-m", `inbox: publish\n\n${lines}\n`]);
     git(repo, gitPushArgs());
     contentSha = git(repo, ["rev-parse", "HEAD"]).trim();

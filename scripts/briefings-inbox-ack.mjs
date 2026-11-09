@@ -17,8 +17,8 @@ export async function ackManifest({ manifest, transport }) {
       ...(await ackOnce({
         item: {
           path: item.path,
-          blobSha: item.blob_sha,
-          contentHash: item.content_hash,
+          blobSha: item.submitted_blob_sha,
+          contentHash: item.submitted_content_hash,
           period: item.period,
         },
         transport,

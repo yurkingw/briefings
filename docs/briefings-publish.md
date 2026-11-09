@@ -8,7 +8,7 @@
 
 现有 `.github/workflows/pages.yml` 在同一次 run 里处理队列、快进提交 `content/`、构建并部署，然后按已消费的 `content_hash` 和 blob sha 做 CAS 删除。`schedule` 为每天 22:17 上海（`17 14 * * *`）和周一 09:17（`17 1 * * 1`），只处理已经在仓里的白名单文件。`cancel-in-progress: false` 不是 FIFO。部署前要求 `origin/main` 仍等于处理后的 `content_sha`；核验之后仍有未证明为零的窗口。
 
-处理 job 只有 `contents: write`。deploy 是 `contents: read`、`pages: write`、`id-token: write`。ack 只有 `contents: write`。没有 `actions: write`。step summary 和 `_site/publish-manifest.json` 并列写出 `trigger_sha`、`content_sha`、`payload_sha256`，不合成一个版本号。
+处理 job 只有 `contents: write`。deploy 是 `contents: read`、`pages: write`、`id-token: write`。ack 只有 `contents: write`。没有 `actions: write`。step summary 和 `_site/publish-manifest.json` 并列写出 `trigger_sha` 与 `content_sha`。每个 item 分开写 `submitted_payload_sha256` 与 `deployed_payload_sha256`，不把提交的 envelope 哈希记成已部署正文，也不合成一个版本号。
 
 `scripts/briefings-publish.mjs` 仍是本地 ready 校验。不带测试注入时它不读 token，也不发 HTTP。
 
