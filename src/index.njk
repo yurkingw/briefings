@@ -11,7 +11,7 @@ permalink: /
   </span>
   <span class="entry-blurb" lang="zh-Hans">{{ item.summary | excerpt(150) }}</span>
   {% if metaLabel or item.wave or item.sample %}
-  <span class="entry-meta">{%- if metaLabel and not primary -%}{{ metaLabel }}{%- endif -%}{% if metaLabel and not primary and item.wave %} · {% endif %}{%- if item.wave -%}<span lang="zh-Hans">{{ item.wave }}</span>{%- endif -%}{% if item.sample %}{% if (metaLabel and not primary) or item.wave %} · {% endif %}Sample{% endif %}</span>
+  <span class="entry-meta">{%- if metaLabel and not primary -%}{{ metaLabel }}{%- endif -%}{% if metaLabel and not primary and item.wave %} · {% endif %}{%- if item.wave -%}{% set waveLabel = item.wave | displayWave %}<span{% if waveLabel | textLang %} lang="zh-Hans"{% endif %}>{{ waveLabel }}</span>{%- endif -%}{% if item.sample %}{% if (metaLabel and not primary) or item.wave %} · {% endif %}Sample{% endif %}</span>
   {% endif %}
 </a>
 {% endmacro %}

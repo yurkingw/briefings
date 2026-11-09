@@ -9,6 +9,7 @@ import {
   dailyPropertyRows,
   detailCards,
   defaultWave,
+  displayWave,
   displayTitle,
   finalJudgments,
   ghWindowValue,
@@ -25,6 +26,7 @@ import {
   stripText,
 } from "../lib/strip-public.js";
 import { SYNTHETIC_LONG_TITLE, syntheticTitleStats } from "../test/fixtures/long-title.mjs";
+import { renderStressPages } from "./render-stress-pages.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const failures = [];
@@ -151,7 +153,9 @@ if (todayPage) {
     if (!decodeEntities(todayPage).includes(label)) fail(`2026-11-06 page missing label ${label}`);
   }
   if (!todayPage.includes(">Morning<") || !todayPage.includes(">Afternoon<")) fail("2026-11-06 page dropped a wave tab");
-  if (!todayPage.includes("晨间")) fail("2026-11-06 page dropped original-language wave text");
+  if (!JSON.parse(read("content/daily/2026-11-06.json")).news.some((item) => item.wave === "晨间")) {
+    fail("2026-11-06 JSON lost the stored morning wave");
+  }
   if (!todayPage.includes('datetime="2026-11-06T13:58:00+08:00"')) {
     fail("2026-11-06 updated_at drifted");
   }
@@ -1125,11 +1129,57 @@ if (!fs.existsSync(path.join(root, "_site/fonts/inter-latin-wght-normal.woff2"))
 }
 
 const synthetic = syntheticTitleStats();
-if (synthetic.cjkCount < 60 || synthetic.latinRun < 120 || !synthetic.hasPunctuation) {
+if (synthetic.cjkCount < 60 || synthetic.latinRun < 120 || !synthetic.hasPunctuation || synthetic.hasPlaceholder) {
   fail(`synthetic long title is incomplete: ${JSON.stringify(synthetic)}`);
 }
 if (displayTitle({ title: SYNTHETIC_LONG_TITLE }) !== SYNTHETIC_LONG_TITLE) {
   fail("displayTitle truncated the synthetic long title");
+}
+if (displayWave("晨间") !== "Morning" || displayWave("午间") !== "Afternoon" || displayWave("午间+晨报补栏") !== "Afternoon + Morning supplement") {
+  fail("displayWave did not map the known UI wave labels");
+}
+if (displayWave("§11改帽检阅重出·晨午同页") !== "§11改帽检阅重出·晨午同页") {
+  fail("displayWave rewrote an unmapped wave string");
+}
+for (const file of walk(path.join(root, "_site"))) {
+  if (!file.endsWith(".html")) continue;
+  const text = fs.readFileSync(file, "utf8");
+  if (text.includes("${chinese}") || text.includes("${latin}") || text.includes(SYNTHETIC_LONG_TITLE)) {
+    fail(`${path.relative(root, file)} contains a stress placeholder or the synthetic title`);
+  }
+}
+function uiWaveSlots(pageHtml) {
+  const slots = [];
+  for (const match of pageHtml.matchAll(/<span class="entry-meta">([\s\S]*?)<\/span>/g)) slots.push(match[1]);
+  for (const match of pageHtml.matchAll(/<p class="updated">([\s\S]*?)<\/p>/g)) slots.push(match[1]);
+  for (const match of pageHtml.matchAll(/<td\b[^>]*data-label="Wave"[^>]*>([\s\S]*?)<\/td>/g)) slots.push(match[1]);
+  for (const match of pageHtml.matchAll(/<dt>Updated<\/dt>\s*<dd\b[^>]*>([\s\S]*?)<\/dd>/g)) slots.push(match[1]);
+  return slots.map((slot) => slot.replace(/<[^>]+>/g, " "));
+}
+for (const [name, pageHtml] of Object.entries(html)) {
+  if (!pageHtml) continue;
+  for (const slot of uiWaveSlots(pageHtml)) {
+    if (/晨间|午间/.test(slot)) fail(`${name} UI wave/meta still shows stored wave text: ${slot.trim()}`);
+  }
+}
+try {
+  const stressDir = path.join(root, ".cache", "stress-pages");
+  const stress = renderStressPages(stressDir, root);
+  for (const file of Object.values(stress.pages)) {
+    const text = fs.readFileSync(file, "utf8");
+    const visible = [...text.matchAll(/<span class="detail-title"[^>]*>([\s\S]*?)<\/span>/g)].map((match) =>
+      match[1].replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">"),
+    );
+    if (visible.length < 2) fail(`${file} did not render both stress lanes through the template`);
+    for (const title of visible) {
+      const got = syntheticTitleStats(title);
+      if (got.cjkCount < 60 || got.latinRun < 120 || got.hasPlaceholder) {
+        fail(`${file} stress title was not expanded: ${JSON.stringify(got)}`);
+      }
+    }
+  }
+} catch (error) {
+  fail(`stress template render failed: ${error.message}`);
 }
 for (const file of walk(path.join(root, "content"))) {
   if (fs.readFileSync(file, "utf8").includes(SYNTHETIC_LONG_TITLE.slice(0, 40))) {
@@ -1201,6 +1251,9 @@ if (latestDailyHtml) {
   assertFullTitles("2026-11-09", latestDailyHtml, JSON.parse(read("content/daily/2026-11-09.json")));
   assertEnglishChrome("2026-11-09", latestDailyHtml);
   assertNoToc("2026-11-09", latestDailyHtml);
+  for (const slot of uiWaveSlots(latestDailyHtml)) {
+    if (/晨间|午间/.test(slot)) fail(`2026-11-09 UI wave/meta still shows stored wave text: ${slot.trim()}`);
+  }
 }
 for (const [name, pageHtml] of Object.entries(html)) {
   if (pageHtml) assertEnglishChrome(name, pageHtml);

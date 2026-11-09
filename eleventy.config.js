@@ -11,6 +11,7 @@ import {
   githubSummary,
   hasField,
   defaultWave,
+  displayWave,
   hasWaveSplit,
   hotFromItems,
   ghSeenValue,
@@ -103,6 +104,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("githubMetrics", (item, kind) => githubMetrics(item, kind));
   eleventyConfig.addFilter("ownerFace", (value) => ownerFace(value));
   eleventyConfig.addFilter("textLang", (value) => textLang(value));
+  eleventyConfig.addFilter("displayWave", (value) => displayWave(value));
 
   return {
     pathPrefix: site.pathPrefix,

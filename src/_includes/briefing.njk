@@ -30,7 +30,7 @@
     {% if briefing.sample %} · <span class="sample">Sample</span>{% endif %}
   </p>
   <h1>{% if isDaily %}{{ labels.dailyBriefing }} · {{ briefing.date }}{% else %}{{ labels.weeklyBriefing }} · {{ briefing.week }}{% endif %}</h1>
-  <p class="updated">Updated <time datetime="{{ briefing.updated_at }}">{{ briefing.updated_at }}</time>{% if briefing.wave %} · Wave <span lang="zh-Hans">{{ briefing.wave }}</span>{% endif %}</p>
+  <p class="updated">Updated <time datetime="{{ briefing.updated_at }}">{{ briefing.updated_at }}</time>{% if briefing.wave %} · Wave {% set waveLabel = briefing.wave | displayWave %}<span{% if waveLabel | textLang %} lang="zh-Hans"{% endif %}>{{ waveLabel }}</span>{% endif %}</p>
   {% if briefing.sample_note %}
   <p class="scope" lang="zh-Hans">{{ briefing.sample_note }}</p>
   {% endif %}
@@ -304,7 +304,7 @@
               <span class="cell-short is-title">{{ item | displayTitle }}</span>
               {% if item.hard_gate === true %}<span class="brf-status-row"><span class="brf-status" data-tone="danger">{{ labels.hardGate }}</span></span>{% endif %}
             </td>
-            <td data-label="{{ labels.wave }}"{% if item.wave | textLang %} lang="zh-Hans"{% endif %}>{% if item.wave %}{{ item.wave }}{% else %}—{% endif %}</td>
+            <td data-label="{{ labels.wave }}"{% set waveLabel = item.wave | displayWave %}{% if waveLabel | textLang %} lang="zh-Hans"{% endif %}>{% if waveLabel %}{{ waveLabel }}{% else %}—{% endif %}</td>
             <td data-label="{{ labels.channel }}"{% if item.channel | textLang %} lang="zh-Hans"{% endif %}>{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
             <td data-label="finsec">{% if item.finsec === true %}<span class="brf-status">finsec</span>{% else %}—{% endif %}</td>
             <td data-label="{{ labels.links }}">{{ ui.cellLinks(item.links) }}</td>
@@ -316,7 +316,7 @@
             <td data-label="{{ labels.section }}">{{ labels.polfin }}</td>
             <td data-label="{{ labels.domain }}"{% if item | itemKicker | textLang %} lang="zh-Hans"{% endif %}>{{ item | itemKicker }}</td>
             <td class="col-title" data-label="{{ labels.title }}"{% if item | displayTitle | textLang %} lang="zh-Hans"{% endif %}><span class="cell-short is-title">{{ item | displayTitle }}</span></td>
-            <td data-label="{{ labels.wave }}"{% if item.wave | textLang %} lang="zh-Hans"{% endif %}>{% if item.wave %}{{ item.wave }}{% else %}—{% endif %}</td>
+            <td data-label="{{ labels.wave }}"{% set waveLabel = item.wave | displayWave %}{% if waveLabel | textLang %} lang="zh-Hans"{% endif %}>{% if waveLabel %}{{ waveLabel }}{% else %}—{% endif %}</td>
             <td data-label="{{ labels.channel }}"{% if item.channel | textLang %} lang="zh-Hans"{% endif %}>{% if item.channel %}{{ item.channel }}{% else %}—{% endif %}</td>
             <td data-label="finsec">{% if item.finsec === true or item.hard_gate === true %}<span class="brf-status">finsec</span>{% else %}—{% endif %}</td>
             <td data-label="{{ labels.links }}">{{ ui.cellLinks(item.links) }}</td>
