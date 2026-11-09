@@ -1158,6 +1158,15 @@ tr[id] { scroll-margin-top: calc(var(--s-7) + var(--s-3)); }
   color: var(--ink);
 }
 
+.hot-title.detail-title {
+  max-width: none;
+  overflow: visible;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-overflow: clip;
+}
+
 .toc-sections ol a {
   color: var(--muted);
   font-size: var(--t6-size);
@@ -1629,6 +1638,7 @@ td a {
 }
 
 .detail-card .card-title,
+.paper-card .card-title,
 .gh-card .card-title,
 .gh-detail > h3 {
   margin: 0 0 var(--s-3);
@@ -1802,11 +1812,17 @@ td a {
 }
 
 .brf-row-title {
+  min-width: 0;
   color: var(--ink);
   font-size: var(--t5-size);
   font-weight: 600;
   line-height: var(--t5-lh);
   letter-spacing: var(--t5-track);
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-overflow: clip;
 }
 
 .brf-row-detail {

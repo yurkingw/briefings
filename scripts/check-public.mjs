@@ -27,6 +27,7 @@ import {
   stripText,
 } from "../lib/strip-public.js";
 import { SYNTHETIC_LONG_TITLE, syntheticTitleStats } from "../test/fixtures/long-title.mjs";
+import { auditDetailTitles } from "./report-en-r2-titles.mjs";
 import { renderStressPages } from "./render-stress-pages.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -1189,10 +1190,10 @@ try {
   const stress = renderStressPages(stressDir, root);
   for (const file of Object.values(stress.pages)) {
     const text = fs.readFileSync(file, "utf8");
-    const visible = [...text.matchAll(/<span class="detail-title"[^>]*>([\s\S]*?)<\/span>/g)].map((match) =>
+    const visible = [...text.matchAll(/<span class="[^"]*\b(?:detail-title|brf-row-title)\b[^"]*"[^>]*>([\s\S]*?)<\/span>/g)].map((match) =>
       match[1].replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">"),
     );
-    if (visible.length < 2) fail(`${file} did not render both stress lanes through the template`);
+    if (visible.length < 6) fail(`${file} did not render news, polfin, paper, and GitHub detail titles`);
     for (const title of visible) {
       const got = syntheticTitleStats(title);
       if (got.cjkCount < 60 || got.latinRun < 120 || got.hasPlaceholder) {
@@ -1282,6 +1283,13 @@ for (const [name, pageHtml] of Object.entries(html)) {
 }
 if (!indexSource.includes(">Show more<")) fail("archive control must say Show more");
 if (!read("src/js/fold.js").includes("Show more (")) fail("archive control must include the remaining count");
+
+const titleAudit = auditDetailTitles(root);
+if (titleAudit.failures.length) {
+  fail(`EN-R2 detail-title audit failed (${titleAudit.failures.length}): ${titleAudit.failures.slice(0, 8).map((entry) => `${entry.route} ${entry.variant} ${entry.itemId}: ${entry.note}`).join(" | ")}`);
+}
+if (!titleAudit.counts["无样本"]) fail("EN-R2 audit did not record an empty panel as 无样本");
+if (!titleAudit.counts["N/A"]) fail("EN-R2 audit did not record a table-only variant as N/A");
 
 if (failures.length) {
   console.error(failures.map((item) => `- ${item}`).join("\n"));
