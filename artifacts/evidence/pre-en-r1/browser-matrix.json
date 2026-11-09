@@ -1,0 +1,5704 @@
+{
+  "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0",
+  "browserNote": "Chrome/156.0.8078.47",
+  "rows": [
+    {
+      "file": "daily-latest.html",
+      "viewport": "1280x800",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 8,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-news-1280x800-day.png"
+    },
+    {
+      "file": "daily-latest.html",
+      "viewport": "1280x800",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 8,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-news-1280x800-night.png"
+    },
+    {
+      "file": "daily-latest.html",
+      "viewport": "375x812",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 8,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-news-375x812-day.png"
+    },
+    {
+      "file": "daily-latest.html",
+      "viewport": "375x812",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 8,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-news-375x812-night.png"
+    },
+    {
+      "file": "daily-latest.html",
+      "viewport": "1280x800",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-polfin-1280x800-day.png"
+    },
+    {
+      "file": "daily-latest.html",
+      "viewport": "1280x800",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-polfin-1280x800-night.png"
+    },
+    {
+      "file": "daily-latest.html",
+      "viewport": "375x812",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-polfin-375x812-day.png"
+    },
+    {
+      "file": "daily-latest.html",
+      "viewport": "375x812",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-polfin-375x812-night.png"
+    },
+    {
+      "file": "weekly.html",
+      "viewport": "1280x800",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 8,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/weekly-news-1280x800-day.png"
+    },
+    {
+      "file": "weekly.html",
+      "viewport": "1280x800",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 8,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/weekly-news-1280x800-night.png"
+    },
+    {
+      "file": "weekly.html",
+      "viewport": "375x812",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 8,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/weekly-news-375x812-day.png"
+    },
+    {
+      "file": "weekly.html",
+      "viewport": "375x812",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 8,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/weekly-news-375x812-night.png"
+    },
+    {
+      "file": "weekly.html",
+      "viewport": "1280x800",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 7,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/weekly-polfin-1280x800-day.png"
+    },
+    {
+      "file": "weekly.html",
+      "viewport": "1280x800",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 7,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/weekly-polfin-1280x800-night.png"
+    },
+    {
+      "file": "weekly.html",
+      "viewport": "375x812",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 7,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/weekly-polfin-375x812-day.png"
+    },
+    {
+      "file": "weekly.html",
+      "viewport": "375x812",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 7,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/weekly-polfin-375x812-night.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "1280x800",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-news-1280x800-day.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "1280x800",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-polfin-1280x800-day.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "1280x800",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-news-1280x800-day.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "1280x800",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-polfin-1280x800-day.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "1280x800",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-news-1280x800-night.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "1280x800",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-polfin-1280x800-night.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "1280x800",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-news-1280x800-night.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "1280x800",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-polfin-1280x800-night.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "375x812",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-news-375x812-day.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "375x812",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-polfin-375x812-day.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "375x812",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-news-375x812-day.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "375x812",
+      "theme": "day",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-polfin-375x812-day.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "375x812",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-news-375x812-night.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "375x812",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-polfin-375x812-night.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "375x812",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-news-375x812-night.png"
+    },
+    {
+      "file": "fixture.html",
+      "viewport": "375x812",
+      "theme": "night",
+      "result": "PASS",
+      "overflow": 0,
+      "titles": 4,
+      "cropped": [],
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-polfin-375x812-night.png"
+    }
+  ],
+  "records": [
+    {
+      "file": "daily-latest.html",
+      "lane": "news",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-news-1280x800-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/daily-latest.html",
+        "theme": "day",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-1",
+            "text": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+            "source": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-2",
+            "text": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+            "source": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-3",
+            "text": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+            "source": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-4",
+            "text": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+            "source": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-5",
+            "text": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+            "source": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-6",
+            "text": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+            "source": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-7",
+            "text": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+            "source": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-8",
+            "text": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+            "source": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 1280,
+          "bottom": 800,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "daily-latest.html",
+      "lane": "news",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-news-1280x800-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/daily-latest.html",
+        "theme": "night",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-1",
+            "text": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+            "source": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-2",
+            "text": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+            "source": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-3",
+            "text": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+            "source": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-4",
+            "text": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+            "source": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-5",
+            "text": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+            "source": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-6",
+            "text": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+            "source": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-7",
+            "text": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+            "source": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-8",
+            "text": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+            "source": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 1280,
+          "bottom": 800,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "daily-latest.html",
+      "lane": "news",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-news-375x812-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/daily-latest.html",
+        "theme": "day",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-1",
+            "text": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+            "source": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-2",
+            "text": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+            "source": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-3",
+            "text": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+            "source": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-4",
+            "text": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+            "source": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-5",
+            "text": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+            "source": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-6",
+            "text": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+            "source": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-7",
+            "text": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+            "source": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-8",
+            "text": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+            "source": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 375,
+          "bottom": 812,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "daily-latest.html",
+      "lane": "news",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-news-375x812-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/daily-latest.html",
+        "theme": "night",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-1",
+            "text": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+            "source": "OpenAIDevs 发布「Tomorrow.」预告视频，周日晚高互动",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-2",
+            "text": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+            "source": "科学发现成周末叙事：Brockman 谈测试时计算，评论员称三大实验室已具备自主研究方向",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-3",
+            "text": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+            "source": "DeepSeek Harness 称日活约 154 万；Bloomberg 称其以开源 agent 基础设施挑战美实验室",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-4",
+            "text": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+            "source": "Bloomberg 援引 FT：Anthropic 同意斥约 34 亿美元采购数据中心用燃气发电设备",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-5",
+            "text": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+            "source": "Apiiro：Claude Code「Yes, and don't ask again」把口令原样写入 settings.local.json，公开 GitHub 见 1,122 份含密钥副本",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-6",
+            "text": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+            "source": "Wordfence：WordPress 升级窗口未授权 RCE（CVE-2026-119977）遭超 24 万次探测，修复版 7.1.4",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-7",
+            "text": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+            "source": "两家未具名车企登录系统遗留出厂口令管理后台；研究员可接管车主账户并远程解锁/启动",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-8",
+            "text": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+            "source": "CZ 提醒：曾用「社交登录」的加密钱包需复核；指向 Web3Auth 相关事件",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 375,
+          "bottom": 812,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "daily-latest.html",
+      "lane": "polfin",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-polfin-1280x800-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/daily-latest.html",
+        "theme": "day",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-pf-20261109-01",
+            "text": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+            "source": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-02",
+            "text": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+            "source": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-03",
+            "text": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+            "source": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-04",
+            "text": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+            "source": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 1280,
+          "bottom": 800,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "daily-latest.html",
+      "lane": "polfin",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-polfin-1280x800-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/daily-latest.html",
+        "theme": "night",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-pf-20261109-01",
+            "text": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+            "source": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-02",
+            "text": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+            "source": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-03",
+            "text": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+            "source": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-04",
+            "text": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+            "source": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 1280,
+          "bottom": 800,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "daily-latest.html",
+      "lane": "polfin",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-polfin-375x812-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/daily-latest.html",
+        "theme": "day",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-pf-20261109-01",
+            "text": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+            "source": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-02",
+            "text": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+            "source": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-03",
+            "text": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+            "source": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-04",
+            "text": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+            "source": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 375,
+          "bottom": 812,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "daily-latest.html",
+      "lane": "polfin",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/daily-latest-polfin-375x812-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/daily-latest.html",
+        "theme": "night",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-pf-20261109-01",
+            "text": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+            "source": "【硬门槛】英伟达就黄仁勋与美方认定为中国间谍的商业人士关系启动独立调查；Rubio 曾预警白宫",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-02",
+            "text": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+            "source": "【硬门槛】Operation Economic Outcast：FinCEN 切断 MEXC 进入美国金融体系；财政部同日制裁八家加拿大汇兑商",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-03",
+            "text": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+            "source": "胡塞武装再袭：沙特首都金融区 Aramco Tower 遇袭",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261109-04",
+            "text": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+            "source": "选后财政政治：Bloomberg 称民主党挡住特朗普约 1.5 万亿美元国防预算请求；国债被看成 AI 交易承压下的赢家",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Morning",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Afternoon",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Appendix",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 375,
+          "bottom": 812,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "weekly.html",
+      "lane": "news",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/weekly-news-1280x800-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/weekly.html",
+        "theme": "day",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-W45-N1",
+            "text": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+            "source": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N2",
+            "text": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+            "source": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N3",
+            "text": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+            "source": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N4",
+            "text": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+            "source": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N5",
+            "text": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+            "source": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N6",
+            "text": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+            "source": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N7",
+            "text": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+            "source": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N8",
+            "text": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+            "source": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 1280,
+          "bottom": 800,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "weekly.html",
+      "lane": "news",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/weekly-news-1280x800-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/weekly.html",
+        "theme": "night",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-W45-N1",
+            "text": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+            "source": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N2",
+            "text": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+            "source": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N3",
+            "text": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+            "source": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N4",
+            "text": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+            "source": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N5",
+            "text": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+            "source": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N6",
+            "text": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+            "source": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N7",
+            "text": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+            "source": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N8",
+            "text": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+            "source": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 1280,
+          "bottom": 800,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "weekly.html",
+      "lane": "news",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/weekly-news-375x812-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/weekly.html",
+        "theme": "day",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-W45-N1",
+            "text": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+            "source": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N2",
+            "text": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+            "source": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N3",
+            "text": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+            "source": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N4",
+            "text": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+            "source": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N5",
+            "text": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+            "source": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N6",
+            "text": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+            "source": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N7",
+            "text": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+            "source": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N8",
+            "text": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+            "source": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 375,
+          "bottom": 812,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "weekly.html",
+      "lane": "news",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/weekly-news-375x812-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/weekly.html",
+        "theme": "night",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-W45-N1",
+            "text": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+            "source": "Crédit Mutuel Arkéa 官方确认遭网络攻击（约 $133M/€100M 叙事；精确金额 unconfirmed）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N2",
+            "text": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+            "source": "印度 CERT-In 警告 CRAFTY FALCON 加码攻击加密交易所/BFSI（出金 API）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N3",
+            "text": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+            "source": "DarkSword：iOS Safari 链路可窃自托管钱包；CZ 呼吁升级",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N4",
+            "text": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+            "source": "OpenAI Images 2.6 + 自主漏洞管线约 948 Linux LPE",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N5",
+            "text": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+            "source": "OpenAI GPT-6 Cyber（Daybreak Red）安全研究专用模型",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N6",
+            "text": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+            "source": "Claude Personal Finance（Plaid 只读）+ Inference Hooks GA",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N7",
+            "text": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+            "source": "微软：威胁方用 ARTEX agentic 框架扫 GitHub 密钥（约 5 分钟至 Key Vault）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-W45-N8",
+            "text": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+            "source": "币安：提现分阶段恢复 + 资产负债表自担拨付（周初簇）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 38,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 375,
+          "bottom": 812,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "weekly.html",
+      "lane": "polfin",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/weekly-polfin-1280x800-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/weekly.html",
+        "theme": "day",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-pf-20261106-01",
+            "text": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+            "source": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-02",
+            "text": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+            "source": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-03",
+            "text": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+            "source": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-04",
+            "text": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+            "source": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-05",
+            "text": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+            "source": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-06",
+            "text": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+            "source": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-07",
+            "text": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+            "source": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 1280,
+          "bottom": 800,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "weekly.html",
+      "lane": "polfin",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/weekly-polfin-1280x800-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/weekly.html",
+        "theme": "night",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-pf-20261106-01",
+            "text": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+            "source": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-02",
+            "text": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+            "source": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-03",
+            "text": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+            "source": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-04",
+            "text": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+            "source": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-05",
+            "text": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+            "source": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-06",
+            "text": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+            "source": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-07",
+            "text": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+            "source": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 17,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 1280,
+          "bottom": 800,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "weekly.html",
+      "lane": "polfin",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/weekly-polfin-375x812-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/weekly.html",
+        "theme": "day",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-pf-20261106-01",
+            "text": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+            "source": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-02",
+            "text": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+            "source": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-03",
+            "text": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+            "source": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-04",
+            "text": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+            "source": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-05",
+            "text": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+            "source": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-06",
+            "text": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+            "source": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-07",
+            "text": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+            "source": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 375,
+          "bottom": 812,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "weekly.html",
+      "lane": "polfin",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/weekly-polfin-375x812-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/weekly.html",
+        "theme": "night",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-pf-20261106-01",
+            "text": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+            "source": "【硬门槛】巴拉圭总统辞职：关联数字银行 Ueno 倒闭，约半数国民无法取用存款（NYT）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-02",
+            "text": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+            "source": "得州州长当选人被指主张对已许可数据中心设限（AI 基建政治化）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-03",
+            "text": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+            "source": "财政部 Operation Economic Outcast：制裁印度籍假船旗网络，助伊朗影子船队运油",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-04",
+            "text": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+            "source": "国务院追加制裁古巴政权：点名中国籍电子/军需供应商与离岸航运网",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-05",
+            "text": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+            "source": "SEC 加密券商财务责任/记录规则修订案进入白宫 OIRA 审议（RIN 3235-AN48）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-06",
+            "text": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+            "source": "受制裁的莫斯科交易所（MOEX）拟 2026-12-01 开 BTC/ETH/USDT 现货试点",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          },
+          {
+            "id": "note-pf-20261106-07",
+            "text": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+            "source": "众院民主党酝酿更广加密监管法案（中期选举后；尚无终稿）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 59,
+            "clipped": false
+          }
+        ],
+        "pills": [
+          {
+            "text": "Auto",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Day",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Night",
+            "fontSize": "11px",
+            "whiteSpace": "nowrap",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Trending",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Newcomers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Summary",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "News",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Politics & Finance",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Papers",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "GitHub",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          },
+          {
+            "text": "Financial Decisions",
+            "fontSize": "11px",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "cropped": false
+          }
+        ],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": true,
+          "width": 0,
+          "height": 0,
+          "right": 375,
+          "bottom": 812,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "daily-news",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-news-1280x800-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "day",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 31,
+          "bottom": 16,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "daily-polfin",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-polfin-1280x800-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "day",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 31,
+          "bottom": 16,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "weekly-news",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-news-1280x800-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "day",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 31,
+          "bottom": 16,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "weekly-polfin",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-polfin-1280x800-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "day",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 31,
+          "bottom": 16,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "daily-news",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-news-1280x800-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "night",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 31,
+          "bottom": 16,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "daily-polfin",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-polfin-1280x800-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "night",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 31,
+          "bottom": 16,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "weekly-news",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-news-1280x800-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "night",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 31,
+          "bottom": 16,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "weekly-polfin",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-polfin-1280x800-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "night",
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 80,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 31,
+          "bottom": 16,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "daily-news",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-news-375x812-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "day",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 16,
+          "bottom": 16,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "daily-polfin",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-polfin-375x812-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "day",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 16,
+          "bottom": 16,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "weekly-news",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-news-375x812-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "day",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 16,
+          "bottom": 16,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "weekly-polfin",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "day",
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-polfin-375x812-day.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "day",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 16,
+          "bottom": 16,
+          "background": "rgb(47, 95, 158)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "daily-news",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-news-375x812-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "night",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 16,
+          "bottom": 16,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "daily-polfin",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/fixture-daily-polfin-375x812-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "night",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 16,
+          "bottom": 16,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "weekly-news",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-news-375x812-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "night",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 16,
+          "bottom": 16,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    },
+    {
+      "file": "fixture.html",
+      "lane": "weekly-polfin",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "theme": "night",
+      "screenshot": "artifacts/evidence/screenshots/fixture-weekly-polfin-375x812-night.png",
+      "measurement": {
+        "href": "file:///agent/repos/briefings/artifacts/evidence/www/fixture.html",
+        "theme": "night",
+        "viewport": {
+          "width": 375,
+          "height": 812
+        },
+        "overflow": {
+          "document": 0,
+          "body": 0,
+          "sheet": 0
+        },
+        "titles": [
+          {
+            "id": "note-daily-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-daily-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-news",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          },
+          {
+            "id": "note-weekly-polfin",
+            "text": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "source": "合成测例，。《》;:!?—-_/()甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸甲乙丙丁戊己庚辛壬癸AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA（完）",
+            "whiteSpace": "normal",
+            "textOverflow": "clip",
+            "lineClamp": "none",
+            "overflow": "visible",
+            "fontSize": "14px",
+            "height": 206,
+            "clipped": false
+          }
+        ],
+        "pills": [],
+        "top": {
+          "text": "Top",
+          "aria": "Back to top",
+          "title": "Back to top",
+          "hidden": false,
+          "width": 46,
+          "height": 44,
+          "right": 16,
+          "bottom": 16,
+          "background": "rgb(181, 74, 74)",
+          "color": "rgb(255, 255, 255)"
+        },
+        "topCount": 1
+      },
+      "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0"
+    }
+  ]
+}

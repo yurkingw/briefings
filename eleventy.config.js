@@ -11,6 +11,7 @@ import {
   githubSummary,
   hasField,
   defaultWave,
+  displayWave,
   hasWaveSplit,
   hotFromItems,
   ghSeenValue,
@@ -39,6 +40,7 @@ import {
   withNotes,
 } from "./lib/pages-parity.js";
 import { absoluteUrl, site } from "./lib/site.js";
+import { textLang } from "./lib/ui-labels.js";
 
 const METRIC_LABELS = {
   news: "News",
@@ -101,6 +103,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("statusParts", (item) => statusParts(item));
   eleventyConfig.addFilter("githubMetrics", (item, kind) => githubMetrics(item, kind));
   eleventyConfig.addFilter("ownerFace", (value) => ownerFace(value));
+  eleventyConfig.addFilter("textLang", (value) => textLang(value));
+  eleventyConfig.addFilter("displayWave", (value) => displayWave(value));
 
   return {
     pathPrefix: site.pathPrefix,

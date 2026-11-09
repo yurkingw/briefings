@@ -1,0 +1,51 @@
+{
+  "head": "9e2c9fdeaca013f32a59ea58e34ce3d8f132cdd0",
+  "keyboard": {
+    "scrolled": {
+      "y": 7340,
+      "hidden": false
+    },
+    "focused": {
+      "active": "back-to-top",
+      "outline": "none",
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(255, 255, 255)"
+    },
+    "afterEnter": {
+      "y": 0,
+      "keys": [
+        "Enter@back-to-top"
+      ],
+      "clicks": 1
+    },
+    "focusVisible": {
+      "outline": "solid",
+      "width": "2px",
+      "color": "rgb(10, 10, 10)",
+      "offset": "4px"
+    },
+    "reduced": {
+      "matches": true,
+      "calls": [
+        {
+          "behavior": "auto",
+          "block": "start"
+        }
+      ]
+    },
+    "homeTop": {
+      "atRest": {
+        "hidden": true,
+        "y": 0,
+        "scrollHeight": 1380,
+        "innerHeight": 800,
+        "text": "Top",
+        "count": 1
+      },
+      "after": {
+        "hidden": true,
+        "y": 580
+      }
+    }
+  }
+}
