@@ -10,6 +10,7 @@ import {
   detailCards,
   defaultWave,
   displayWave,
+  unmappedCjkWaves,
   displayTitle,
   finalJudgments,
   ghWindowValue,
@@ -1138,9 +1139,30 @@ if (displayTitle({ title: SYNTHETIC_LONG_TITLE }) !== SYNTHETIC_LONG_TITLE) {
 if (displayWave("晨间") !== "Morning" || displayWave("午间") !== "Afternoon" || displayWave("午间+晨报补栏") !== "Afternoon + Morning supplement") {
   fail("displayWave did not map the known UI wave labels");
 }
-if (displayWave("§11改帽检阅重出·晨午同页") !== "§11改帽检阅重出·晨午同页") {
-  fail("displayWave rewrote an unmapped wave string");
+if (displayWave("§11改帽检阅重出·晨午同页") !== "Revised Morning/Afternoon edition") {
+  fail("displayWave did not map the revised Morning/Afternoon edition label");
 }
+if (displayWave("未知波次甲") !== "Recorded wave" || /[\u3400-\u9fff]/.test(displayWave("未知波次甲"))) {
+  fail("an unknown CJK wave leaked into the display label");
+}
+function collectWaves(value, out = []) {
+  if (Array.isArray(value)) {
+    for (const item of value) collectWaves(item, out);
+    return out;
+  }
+  if (value && typeof value === "object") {
+    if (typeof value.wave === "string") out.push(value.wave);
+    for (const inner of Object.values(value)) collectWaves(inner, out);
+  }
+  return out;
+}
+const storedWaves = [];
+for (const file of walk(path.join(root, "content"))) {
+  if (!file.endsWith(".json")) continue;
+  collectWaves(JSON.parse(fs.readFileSync(file, "utf8")), storedWaves);
+}
+const unknownWaves = unmappedCjkWaves(storedWaves);
+if (unknownWaves.length) fail(`unmapped CJK wave metadata: ${unknownWaves.join(" | ")}`);
 for (const file of walk(path.join(root, "_site"))) {
   if (!file.endsWith(".html")) continue;
   const text = fs.readFileSync(file, "utf8");
@@ -1159,7 +1181,7 @@ function uiWaveSlots(pageHtml) {
 for (const [name, pageHtml] of Object.entries(html)) {
   if (!pageHtml) continue;
   for (const slot of uiWaveSlots(pageHtml)) {
-    if (/晨间|午间/.test(slot)) fail(`${name} UI wave/meta still shows stored wave text: ${slot.trim()}`);
+    if (/[\u3400-\u9fff]/.test(slot)) fail(`${name} generated wave/meta still has Chinese: ${slot.trim()}`);
   }
 }
 try {
@@ -1252,7 +1274,7 @@ if (latestDailyHtml) {
   assertEnglishChrome("2026-11-09", latestDailyHtml);
   assertNoToc("2026-11-09", latestDailyHtml);
   for (const slot of uiWaveSlots(latestDailyHtml)) {
-    if (/晨间|午间/.test(slot)) fail(`2026-11-09 UI wave/meta still shows stored wave text: ${slot.trim()}`);
+    if (/[\u3400-\u9fff]/.test(slot)) fail(`2026-11-09 generated wave/meta still has Chinese: ${slot.trim()}`);
   }
 }
 for (const [name, pageHtml] of Object.entries(html)) {
