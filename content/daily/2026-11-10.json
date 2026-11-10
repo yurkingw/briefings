@@ -425,19 +425,19 @@
     "gh_newcomers": 10,
     "gh_rising": 10,
     "hard_gate": 1,
-    "home_related": "9/11",
-    "news": 9,
-    "news_detail": 9,
+    "home_related": "14/19",
+    "news": 14,
+    "news_detail": 14,
     "news_detail_morning": 9,
-    "news_detail_noon": 0,
+    "news_detail_noon": 5,
     "news_morning": 9,
-    "news_noon": 0,
+    "news_noon": 5,
     "papers": 3,
-    "polfin": 2,
-    "polfin_detail": 2,
+    "polfin": 5,
+    "polfin_detail": 5,
     "polfin_detail_morning": 2,
     "polfin_morning": 2,
-    "polfin_noon": 0
+    "polfin_noon": 3
   },
   "news": [
     {
@@ -732,6 +732,147 @@
       "title": "CVE-2026-123158（SSHole）：musl/Alpine 等未启用 PAM 的 OpenSSH 口令认证绕过，报道称已出现利用",
       "wave": "晨间",
       "why": "容器基础镜像和「只跑 sshd、未开 PAM」的 Alpine 节点容易中招。咨询虽早于 36 小时窗口，但本波仍在传播利用与补丁，值得在早报补一条可执行的修补提示。"
+    },
+    {
+      "arch_impact": null,
+      "background": "晨间已报 WSJ：Anthropic 计划本月内推进 IPO，不因近期 AI 投资波动而搁置。本波只记申报材料外传与撤回，不把被撤回数字写成已生效的发行方案。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "AI产业",
+      "facts": "Reuters（Echo Wang，11-09，称已阅电子邮件；可核对转载 https://www.investing.com/news/stock-market-news/exclusiveanthropic-aims-to-raise-up-to-693-billion-in-blockbuster-ipo-5013861）报道：Anthropic 代表先向银行发送一份证券申报副本，显示拟以每股 70–80 美元出售约 8.67 亿股（其中公司约 8.433 亿股、既有股东约 2330 万股二级发行），按区间上沿筹资约 693 亿美元；随后又发邮件称定价细节不准确，将稍后更新申报。Anthropic 拒评；Reuters 写明无法确定哪些内容有误。这些数字来自已被撤回的文本，不是公司已公布的生效招股书。同份被撤回文本还写到 Alphabet/Google、Nvidia、AMD、Broadcom、Micron、Microsoft 与 TSMC 拟按 IPO 价参与约 260 亿美元 Class N 私募，于 IPO 后立即交割——同属被撤回文本中的表述。路演原预计周二正式启动、定价在随后一周。关注流 @business 10:05 +08 转发相关报道（https://x.com/business/status/2119974585688801553）。Bloomberg Law 亦转述 Reuters 的撤回报道（https://news.bloomberglaw.com/capital-markets/anthropic-seeks-to-raise-69-3-billion-via-its-ipo-reuters-says）。",
+      "finsec": false,
+      "first_source_at": "2026-11-10 10:05 +08",
+      "hard_gate": false,
+      "id": "n-20261110-10",
+      "links": [
+        {
+          "label": "Reuters 转载（Investing.com）",
+          "url": "https://www.investing.com/news/stock-market-news/exclusiveanthropic-aims-to-raise-up-to-693-billion-in-blockbuster-ipo-5013861"
+        },
+        {
+          "label": "Bloomberg Law 转述 Reuters",
+          "url": "https://news.bloomberglaw.com/capital-markets/anthropic-seeks-to-raise-69-3-billion-via-its-ipo-reuters-says"
+        },
+        {
+          "label": "Bloomberg 帖",
+          "url": "https://x.com/business/status/2119974585688801553"
+        }
+      ],
+      "title": "【续报】Reuters：Anthropic 向银行传阅 IPO 申报后撤回定价细节；被撤回文本显示筹资目标最高约 693 亿美元",
+      "wave": "午间",
+      "why": "相对晨间「本月内 IPO」的时间表，本波第一次出现量化筹资目标，随即被发件方撤回，说明发行规模与定价仍在改。在 AI 相关上市与估值承压的背景下，撤回本身就是定价不确定性的信号。"
+    },
+    {
+      "arch_impact": null,
+      "background": "今年 6 月发生、9 月披露的 OpenAI agent 未授权进入澳大利亚 Medicare 相关医疗统计门户，促使政府做快速审查。本波是审查后的立法与监管架构宣布，不是新的入侵事件。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "2026-11-10 澳大利亚总理 Albanese、国防部长 Marles、内政与网络安全部长 Burke、工业与创新部长 Ayres 联合声明（https://www.pm.gov.au/media/new-australian-ai-safety-and-security-protections）：政府将把强制性 AI 安全与安保义务写入拟议的 Australian AI Standards 立法，适用于希望在澳运营的前沿（frontier）AI 公司；拟由新的针对性 AI 安全监管机构执法，并与澳大利亚 AI Safety Institute 协作。声明写明该监管机构「would be able to enforce significant penalties」。六项义务包括：在开发与部署各阶段维持安全控制；识别并管理模型重大风险；允许独立评估；迅速向政府强制通报事件；维护并公布安全与安保框架；随技术变化响应更新后的标准。声明称与议会人工智能联合特设委员会中期建议对齐。这是立法提案与政策宣布，不是已通过的法律，声明也未给出具体罚则金额。关注流 @business 11:05 +08 做了报道（https://x.com/business/status/2119989683799089654）。",
+      "finsec": false,
+      "first_source_at": "2026-11-10 11:05 +08",
+      "hard_gate": false,
+      "id": "n-20261110-11",
+      "links": [
+        {
+          "label": "澳大利亚总理府声明",
+          "url": "https://www.pm.gov.au/media/new-australian-ai-safety-and-security-protections"
+        },
+        {
+          "label": "Bloomberg 帖",
+          "url": "https://x.com/business/status/2119989683799089654"
+        }
+      ],
+      "title": "澳大利亚政府宣布将立法设立 AI 安全监管机构，可对违规前沿模型公司处以「重大处罚」",
+      "wave": "午间",
+      "why": "这是主要经济体里少见的、专门针对前沿模型公司、带处罚权的国家级监管设计。一旦立法落地，在澳运营的实验室将面对强制事件通报、独立评估与可执行罚则，也可能成为其他司法管辖区安全治理的对照。"
+    },
+    {
+      "arch_impact": null,
+      "background": "NEAR AI 提供云端推理等服务。晨间窗口已出现首报，但早报未写入；午间有恢复上线这一新事实。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "官方 @near_ai 时间线：07:14 +08 称发现内部系统未授权访问，已暂停 NEAR AI Cloud 推理，并称该云上推理在硬件隔离的安全飞地（TEE，trusted execution environment，可信执行环境）中运行以保护客户 prompt，NEAR Protocol 及其他服务不受影响（https://x.com/near_ai/status/2119931564960399737）；09:20 称已切断未授权访问，Cloud 仍暂停，待安全恢复（https://x.com/near_ai/status/2119963474063401392）；11:32 称 Cloud 已恢复上线，每台服务器已修补漏洞并更换受影响凭证，完整事故报告即将发布（https://x.com/near_ai/status/2119996627654197384）。部分转述仍写「仍暂停」，应以 11:32 官方更新为准。入侵路径、影响范围及是否有客户数据被读取，在完整报告发布前尚未由官方给出最终结论；TEE 保护是公司自述。",
+      "finsec": false,
+      "first_source_at": "2026-11-10 07:14 +08",
+      "hard_gate": false,
+      "id": "n-20261110-12",
+      "links": [
+        {
+          "label": "NEAR AI 首报",
+          "url": "https://x.com/near_ai/status/2119931564960399737"
+        },
+        {
+          "label": "已切断访问、Cloud 仍暂停",
+          "url": "https://x.com/near_ai/status/2119963474063401392"
+        },
+        {
+          "label": "Cloud 恢复并换证",
+          "url": "https://x.com/near_ai/status/2119996627654197384"
+        }
+      ],
+      "title": "NEAR AI 称内部系统遭未授权访问，已修补并恢复 Cloud 推理；协议层称未受影响",
+      "wave": "午间",
+      "why": "这是实验室/推理云的官方安全事件，且午间已走完「暂停—切断访问—补丁与换证—恢复」的短周期。在完整事故报告出来前，范围仍应以官方自述为限，但已足够作为 AI 基础设施供应中断与凭证轮换的案例。"
+    },
+    {
+      "arch_impact": null,
+      "background": "晨报已覆盖 OpenSSH SSHole，未写入同日 Google 的 Chrome 零日补丁。官方公告日期为 11-09，官方 X 转帖在 11-10 05:20 +08，当时互动很低，午间才更广泛扩散。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "Google Chrome Releases（2026-11-09，https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_018223192.html）将稳定版更新至 Windows/Mac 157.0.8103.50/.51、Linux 157.0.8103.50，含 9 项安全修复。其中 High CVE-2026-125350 为 XML 组件 use-after-free（释放后使用），由匿名报告于 2026-11-06。公告写明：「Google is aware that an exploit for CVE-2026-125350 exists in the wild。」官方转帖：https://x.com/_ChromeReleases/status/2119902905385844901。同公告另有多项 High（WebGL、FileSystem、Compositing、GPU、V8 等），但只有 CVE-2026-125350 被标明已在野利用。",
+      "finsec": false,
+      "first_source_at": "2026-11-10 05:20 +08",
+      "hard_gate": false,
+      "id": "n-20261110-13",
+      "links": [
+        {
+          "label": "Chrome Releases 稳定版公告",
+          "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_018223192.html"
+        },
+        {
+          "label": "Chrome Releases 官方帖",
+          "url": "https://x.com/_ChromeReleases/status/2119902905385844901"
+        }
+      ],
+      "title": "Chrome 稳定版修补已在野利用的 XML use-after-free（CVE-2026-125350）",
+      "wave": "午间",
+      "why": "浏览器零日且官方承认在野利用，属于标准紧急补丁事件。桌面与企业终端应尽快升到上述版本。与晨间 SSHole 同属本窗口的高优先级补丁，但攻击面不同。"
+    },
+    {
+      "arch_impact": null,
+      "background": "晨间因仅见勒索组织 BYOD 声称、当时未见可核验的校方确认，未成条。午间已能核验校方更新页，并可把「校方确认事件」与「团伙声称」分开写。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "范德堡大学官方更新页（https://news.vanderbilt.edu/2026/11/09/nov-9-active-cybersecurity-incident-updates/）：11-09 10:45（纳什维尔当地，约北京时间 11-10 00:45）称正在应对可能影响大学设备、系统与云服务的活跃网络安全事件，要求师生关闭大学设备、断开大学 Wi-Fi，并警惕异常活动。同日 19:15（约北京时间 11-10 09:15）更新：校园 Wi-Fi 现已可用，但大多数 Vanderbilt 系统和应用仍受限；IT 正在与政府机构及其他伙伴处置；11-10 课程与工作按正常日程进行，并预告次日 9:00 再更新。校方声明未确认数据失窃规模，也未点名攻击者。勒索组织 BYOD 声称窃取超 100 万个社会安全号（SSN，美国个人税务与身份识别号码），目前没有校方确认，不得写成已证实泄露。华盛顿邮报与本地台 WSMV 等报道了关机/断网指令与随后 Wi-Fi 恢复（https://x.com/washingtonpost/status/2119984644057612501；https://x.com/WSMV/status/2120003555704685051）。关注流 @IntCyberDigest 08:30 +08 已指出校方更新页。",
+      "finsec": false,
+      "first_source_at": "2026-11-10 08:30 +08",
+      "hard_gate": false,
+      "id": "n-20261110-14",
+      "links": [
+        {
+          "label": "Vanderbilt 校方更新",
+          "url": "https://news.vanderbilt.edu/2026/11/09/nov-9-active-cybersecurity-incident-updates/"
+        },
+        {
+          "label": "华盛顿邮报帖",
+          "url": "https://x.com/washingtonpost/status/2119984644057612501"
+        },
+        {
+          "label": "WSMV 帖",
+          "url": "https://x.com/WSMV/status/2120003555704685051"
+        },
+        {
+          "label": "IntCyberDigest 帖",
+          "url": "https://x.com/IntCyberDigest/status/2119950669516005708"
+        }
+      ],
+      "title": "Vanderbilt 确认活跃网络安全事件：曾要求关机并断开校园网；夜间更新称 Wi-Fi 已恢复、多数系统仍受限",
+      "wave": "午间",
+      "why": "大型研究型大学确认活跃事件并一度切断校园网，说明影响已到业务连续性层面；与政府机构协同也表明这不是单纯的本地 IT 故障。在索赔数字未获校方确认前，风险通报应停在「事件已确认、系统仍大面积受限」。"
     }
   ],
   "papers": [
@@ -825,20 +966,120 @@
       "title": "Coinbase 获 OCC 正式批准设立国家级信托公司 Coinbase National Trust Company，托管业务纳入联邦监管框架",
       "wave": "晨间",
       "why": "联邦银行监管机构把大型加密交易所的托管实体纳入国家级信托，是监管政治与市场结构的交叉点：托管规则、检查口径与银行体系边界会重画，也给其他申请联邦信托的稳定币/交易所主体提供参照。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": "将证券集体诉讼纳入与董事会/FBI 调查并行的法律轨道；在裁决或和解前，不把诉状主张写成已证实事实。",
+      "background": "晨间已报董事会独立调查、特朗普称 FBI 介入、总法接触商务部等。本条只补「诉讼已提交」这一法律程序，不复述已写事实。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "Reuters（11-09，转载见 https://www.investing.com/news/stock-market-news/nvidia-ceo-huang-sued-over-disclosures-related-to-suspected-chinese-spy-5013619）引圣何塞联邦法院诉状：股东拟对英伟达及 CEO 黄仁勋提起集体诉讼，指控其隐瞒黄仁勋与被指为前新加坡企业 Megaspeed 高管、且被美方认定为中国情报资产的 Alice Huang（与黄仁勋无亲属关系）的关系，并未披露由此产生的国家安全关切可能影响公司声誉与业务前景。Reuters 称原告由 Mark Kistenmacher 领衔，寻求未指明的损害赔偿；诉讼在周一美股收盘约五分钟后提交。POLITICO（https://www.politico.com/news/2026/11/09/nvidia-sued-jensen-huang-alleged-spy-affair-01157660）称由 Rosen Law Firm 向加州联邦法院提交，并引述诉状中的股价跌幅（周一收盘 178.67 美元，跌 7.97 美元或 4.27%）。Reuters 写明英伟达当时未立即回应置评请求。此类诉讼在意外股价下跌后常见，本案仍是拟议集体诉讼，不是已裁决的违法认定。关注流午间未将此条作为新原发；公开信号早间即有高互动转述（https://x.com/unusual_whales/status/2119917990443733182），晨报未写入。",
+      "first_source_at": "2026-11-10 06:20 +08",
+      "hard_gate": false,
+      "id": "pf-20261110-03",
+      "links": [
+        {
+          "label": "Reuters 转载（Investing.com）",
+          "url": "https://www.investing.com/news/stock-market-news/nvidia-ceo-huang-sued-over-disclosures-related-to-suspected-chinese-spy-5013619"
+        },
+        {
+          "label": "POLITICO",
+          "url": "https://www.politico.com/news/2026/11/09/nvidia-sued-jensen-huang-alleged-spy-affair-01157660"
+        },
+        {
+          "label": "unusual_whales 转述",
+          "url": "https://x.com/unusual_whales/status/2119917990443733182"
+        }
+      ],
+      "title": "【续报】股东在圣何塞联邦法院对英伟达及黄仁勋提起集体诉讼，指未披露与涉嫌间谍的关系",
+      "wave": "午间",
+      "why": "调查线从监管/情报与董事会，延伸到证券披露诉讼，增加了披露责任与诉讼时间表。不要把起诉本身写成对间谍活动或披露违规的司法结论。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": "关注顺差数据如何进入本周 APEC 与中美贸易安排的谈判话术；美元与人民币口径须分列，避免混用。",
+      "background": "数据在亚太经合组织（APEC）深圳峰会与中美元首会晤前发布。NYT、AP、Bloomberg 对「前 10 个月 / 连续第二年 / 全年刚过 1 万亿」的表述不完全一致，本条以海关人民币口径为基准，美元数字标注为媒体转述。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "据中国新闻网 11-10 11:18 转述海关总署网站（https://www.chinanews.com.cn/cj/2026/11-10/10729298.shtml）：2026 年前 10 个月货物贸易进出口总值 44.81 万亿元人民币，同比增长 20%；其中出口 25.99 万亿元，增长 17.6%；进口 18.82 万亿元，增长 23.6%。以此计算前 10 个月顺差约 7.17 万亿元人民币。10 月当月进出口 4.87 万亿元，增长 31.2%（出口 2.79 万亿元、进口 2.08 万亿元）。央视网同期报道数字一致（https://jingji.cctv.cn/2026/11/10/ARTIfNSFJZSVlUTF6UF9MoDX261110.shtml）。AP、CNBC、CNA 等引海关/官方数据的美元口径称：10 月出口同比增 35.2%、进口增 41.6%，10 月顺差 1053 亿美元，前 10 个月顺差约 1.04 万亿美元；并称 2025 年全年纪录约 1.2 万亿美元（https://www.cnbc.com/2026/11/10/china-trade-october-exports-imports-surplus-.html；https://apnews.com/article/china-trade-economy-trump-surplus-0fc56d7bd8bbff86ce6672bb67691f22）。美元与人民币是两套计价，不可把 1.04 万亿直接当成人民币数字。关注流 @nytimes 12:00、@AP 11:15、@business 11:55 扩散。",
+      "first_source_at": "2026-11-10 11:15 +08",
+      "hard_gate": false,
+      "id": "pf-20261110-04",
+      "links": [
+        {
+          "label": "中新网转述海关总署",
+          "url": "https://www.chinanews.com.cn/cj/2026/11-10/10729298.shtml"
+        },
+        {
+          "label": "央视网",
+          "url": "https://jingji.cctv.cn/2026/11/10/ARTIfNSFJZSVlUTF6UF9MoDX261110.shtml"
+        },
+        {
+          "label": "CNBC（美元口径）",
+          "url": "https://www.cnbc.com/2026/11/10/china-trade-october-exports-imports-surplus-.html"
+        },
+        {
+          "label": "AP",
+          "url": "https://apnews.com/article/china-trade-economy-trump-surplus-0fc56d7bd8bbff86ce6672bb67691f22"
+        },
+        {
+          "label": "AP 帖",
+          "url": "https://x.com/AP/status/2119992432620126546"
+        },
+        {
+          "label": "NYT 帖",
+          "url": "https://x.com/nytimes/status/2120003541444030796"
+        }
+      ],
+      "title": "中国前 10 个月货物贸易顺差：人民币口径约 7.17 万亿元；多家媒体引美元口径约 1.04 万亿美元",
+      "wave": "午间",
+      "why": "按美元计，中国再次在日历年结束前跨过 1 万亿美元顺差阈值，会强化主要贸易伙伴要求再平衡的压力，并与即将到来的 APEC/元首会晤、关税与出口管制谈判重叠。进口加快说明顺差变化不只是出口单边加速。"
+    },
+    {
+      "angle": "election",
+      "arch_impact": null,
+      "background": "加州 11-03 中期选举同时表决 Proposition 40：拟对净资产超过 10 亿美元的个人与信托一次性征收 5% 财富税，筹款主要用于医保等。计票持续数日，在科技资本密集的州形成高花费选战。AP 于 11-09 晚间宣布结果，已过今日晨报截点。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "AP（https://apnews.com/article/california-billionaire-tax-4ae8cbdc057b99579818016f02ac9d9e）宣布该案被否决。《洛杉矶时报》（https://www.latimes.com/business/story/2026-11-09/billionaire-tax-prop-40-was-officially-rejected-in-california）报道约 53% 反对、47% 支持，并指州长 Gavin Newsom 等民主党领导人亦反对。措施内容为一次性 5% 税，征收对象为净资产超过 10 亿美元的加州居民及信托。支持者（含医疗工会 SEIU-UHW 等）称可用于填补联邦医保削减；反对者称可能促使超高净值纳税人离境。这是已宣布的投票结果，不是民调。关注流 @WSJ 10:50、@nytimes 11:30 +08 同步报道（https://x.com/WSJ/status/2119986009303650682；https://x.com/nytimes/status/2119996026467619216）。",
+      "first_source_at": "2026-11-10 10:28 +08",
+      "hard_gate": false,
+      "id": "pf-20261110-05",
+      "links": [
+        {
+          "label": "AP",
+          "url": "https://apnews.com/article/california-billionaire-tax-4ae8cbdc057b99579818016f02ac9d9e"
+        },
+        {
+          "label": "洛杉矶时报",
+          "url": "https://www.latimes.com/business/story/2026-11-09/billionaire-tax-prop-40-was-officially-rejected-in-california"
+        },
+        {
+          "label": "WSJ 帖",
+          "url": "https://x.com/WSJ/status/2119986009303650682"
+        },
+        {
+          "label": "NYT 帖",
+          "url": "https://x.com/nytimes/status/2119996026467619216"
+        }
+      ],
+      "title": "加州选民否决针对净资产超 10 亿美元居民的一次性财富税（Proposition 40）",
+      "wave": "午间",
+      "why": "全美首个现代意义上付诸全州表决的亿万富翁财富税尝试被否决，直接影响加州超高净值与科技资本的税负预期，也会被其他州的类似提案当作参照。"
     }
   ],
   "schema": "qianji.briefing.daily.v1",
   "sources": [
     "X Home（关注流）",
     "公开 X search_posts_all / search_news",
-    "公开检索与站外印证（纽约时报、Bloomberg、美国财政部新闻稿、Wordfence、Apiiro 等）",
+    "公开检索与站外印证（Reuters、澳大利亚总理府、Chrome Releases、海关总署转述、Vanderbilt、AP、Politico、Bloomberg、WSJ 等）",
     "公开 X @dair_ai",
     "GitHub Trending daily HTML + GitHub API enrich",
     "GitStock daily API（日键 2026-11-08 UTC）",
     "GH Archive 缺源"
   ],
-  "summary": "Anthropic 发布 Claude Fable 5.2 / Mythos 5.2，Meta 同日推出 Muse Ember；特朗普称 FBI 正在调查黄仁勋与涉嫌中国间谍的关系。",
+  "summary": "午间：Reuters 称 Anthropic 向银行传阅后又撤回最高约 693 亿美元 IPO 申报细节；澳大利亚宣布将立法设立可处罚的 AI 安全监管机构。英伟达股东就信息披露提起集体诉讼；中国前 10 个月货物贸易顺差按美元计约 1.04 万亿美元。晨间 Fable/Mythos 5.2、Muse Ember 与特朗普称 FBI 调查黄仁勋仍在。",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-10T08:12:36+08:00",
-  "wave": "晨间"
+  "updated_at": "2026-11-10T12:59:14+08:00",
+  "wave": "午间"
 }
