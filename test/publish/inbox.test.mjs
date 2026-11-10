@@ -84,22 +84,36 @@ test("a lost upload response is confirmed with GET and does not write twice", as
 
 test("an unreadable upload confirmation is unknown and keeps the local bytes", async () => {
   const body = packed();
-  let puts = 0;
-  const outcome = await uploadPublicEnvelope({
-    bytes: body.bytes,
-    transport: {
-      async get() {
-        throw Object.assign(new Error("down"), { code: "network" });
+  const kept = Buffer.from(body.bytes);
+  const root = tempRoot();
+  const inboxFile = path.resolve(root, body.path);
+  assert.equal(inboxFile.startsWith(`${path.resolve(root)}${path.sep}`), true);
+  fs.mkdirSync(path.dirname(inboxFile), { recursive: true });
+  fs.writeFileSync(inboxFile, kept);
+  const previous = process.cwd();
+  process.chdir(root);
+  try {
+    let puts = 0;
+    const outcome = await uploadPublicEnvelope({
+      bytes: body.bytes,
+      transport: {
+        async get() {
+          throw Object.assign(new Error("down"), { code: "network" });
+        },
+        async put() {
+          puts += 1;
+        },
       },
-      async put() {
-        puts += 1;
-      },
-    },
-  });
-  assert.equal(outcome.result, "unknown");
-  assert.equal(outcome.exit, 40);
-  assert.equal(puts, 0);
-  assert.equal(fs.existsSync(body.path), false);
+    });
+    assert.equal(path.resolve(body.path), inboxFile);
+    assert.equal(outcome.result, "unknown");
+    assert.equal(outcome.exit, 40);
+    assert.equal(puts, 0);
+    assert.equal(body.bytes.equals(kept), true);
+    assert.equal(fs.readFileSync(inboxFile).equals(kept), true);
+  } finally {
+    process.chdir(previous);
+  }
 });
 
 test("permission failures do not retry the upload", async () => {
