@@ -428,20 +428,21 @@
     "finsec": 0,
     "gh_newcomers": 10,
     "gh_rising": 10,
-    "hard_gate": 1,
-    "home_related": "8/10",
-    "news": 9,
-    "news_detail": 9,
+    "hard_gate": 2,
+    "home_related": "10/12",
+    "news": 10,
+    "news_detail": 10,
     "news_detail_morning": 9,
-    "news_detail_noon": 0,
+    "news_detail_noon": 1,
     "news_morning": 9,
-    "news_noon": 0,
+    "news_noon": 1,
     "papers": 5,
-    "polfin": 1,
-    "polfin_detail": 1,
+    "polfin": 2,
+    "polfin_detail": 2,
     "polfin_detail_morning": 1,
+    "polfin_detail_noon": 1,
     "polfin_morning": 1,
-    "polfin_noon": 0
+    "polfin_noon": 1
   },
   "news": [
     {
@@ -740,6 +741,39 @@
       "title": "CISA 再向已知被利用漏洞目录加入 6 条，含 Outlook、两款 Barracuda 产品，以及昨日已报的 Chrome 在野漏洞",
       "wave": "晨间",
       "why": "KEV 新增意味着联邦机构有明确修补时限，也是企业排期的强信号。Outlook 与两款 Barracuda 网关/安全产品进入清单，影响面覆盖常见邮件与边界设备；Chrome 一条则把昨日的在野利用升级成目录级必补项。"
+    },
+    {
+      "arch_impact": null,
+      "background": "新加坡近日已有多起数据泄露公开，含新航约 4.6 万条订票记录因 Amadeus 软件供应商事件被访问，以及 M1、Doctor Anywhere 等案件。本条只记 SPH Media 官方确认的本次事件，不把各案认成同一攻击链。公司 11 月 10 日已发声明，晨报未写入；Bloomberg 11 月 11 日把该事推向国际线并出现在关注流。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "SPH Media 11 月 10 日发表声明（https://www.sph.com.sg/media-centre/media-releases/media-statement-sph-cybersecurity-incident/）：已识别出五个系统遭受网络攻击，相信是同一威胁行为体发起的协同行动。攻击分两组：一组存有部分个人数据，暴露的主要是电子邮件地址，以及部分姓名、邮寄地址和电话，合计约占其数据库的 9%；另一组被未授权访问的系统不存储个人数据。声明称：无支付卡信息、金融或银行信息、也无客户账户访问权限被改。公司表示已立即固化受影响系统并聘请外部网安专家调查、遏制；已向个人数据保护委员会（PDPC）、新加坡网络安全管理局（CSA）、资讯通讯媒体发展管理局（IMDA）报告并向警方立案，并已通知受影响方。CNA（https://www.channelnewsasia.com/singapore/sph-media-cyberattack-data-breach-6538681）引述：首次事件于 11 月 4 日被发现、最近一次为 11 月 8 日；公司表示尚不能确认攻击是否由 AI 赋能，调查仍在进行。CNA 还引 IMDA、PDPC 与 CSA 联合声明：三家已知悉事件，IMDA 与 PDPC 正在调查，CSA 密切关注，并要求 SPH 遏制影响、查清根因。Bloomberg 11 月 11 日 11:40 +08 在关注流转述本地报道（https://x.com/business/status/2120360890033742179；https://www.bloomberg.com/news/articles/2026-11-11/sph-media-is-latest-singapore-firm-impacted-by-data-breach-cna）。部分本地报道曾写初步调查怀疑 AI 辅助，以公司对 CNA 的口径为准，本条不把「AI 赋能」写成已确认事实。",
+      "finsec": false,
+      "first_source_at": "2026-11-10 18:06 +08",
+      "hard_gate": false,
+      "id": "n-20261111-10",
+      "links": [
+        {
+          "label": "SPH Media 官方声明",
+          "url": "https://www.sph.com.sg/media-centre/media-releases/media-statement-sph-cybersecurity-incident/"
+        },
+        {
+          "label": "CNA",
+          "url": "https://www.channelnewsasia.com/singapore/sph-media-cyberattack-data-breach-6538681"
+        },
+        {
+          "label": "Bloomberg 帖",
+          "url": "https://x.com/business/status/2120360890033742179"
+        },
+        {
+          "label": "Bloomberg 报道",
+          "url": "https://www.bloomberg.com/news/articles/2026-11-11/sph-media-is-latest-singapore-firm-impacted-by-data-breach-cna"
+        }
+      ],
+      "title": "SPH Media 官方确认：五个系统遭协同网络攻击，约 9% 数据库记录暴露；无支付卡或金融数据被改",
+      "wave": "午间",
+      "why": "这是新加坡主要报业集团对外确认的直接系统入侵，并已进入 PDPC/IMDA 调查与警方立案。暴露面以联系方式为主、尚无支付数据被改的公开证据，但跟进同时段其他本地泄露一起，会拉高对钓鱼、社工与供应链配置的关注。"
     }
   ],
   "papers": [
@@ -803,20 +837,64 @@
       "title": "【续报/仍热】【硬门槛】纽约时报：特朗普访华途中已在空军一号听取黄仁勋相关情报简报，与其周一否认不符",
       "wave": "晨间",
       "why": "新事实把时间线从「总统事后说不知情」推到「行程当中已被国家安全顾问当面提醒」。这直接影响对白宫知情范围、接待安排与对华芯片政策决策过程的评估，也使关键供应商高管的外国情报风险继续停留在政治与资本市场的硬门槛上。白宫已对该报道表示异议，仍应以调查与官方记录为准，不把媒体转述写成已裁决事实。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": "将「共和党议员要求辞职」与「NDAA 出口管制条款」记为与董事会/联邦调查并行的政治与规制轨道；持续关注这三项法案能否进入最终军费包、黄仁勋下周会见议员以及商务部对出口许可时序的说明。在调查结束前，不把未裁决的间谍或出口违规写成已证实损害。",
+      "background": "晨间已报：《纽约时报》称特朗普 5 月访华途中已在空军一号听取黄仁勋相关情报简报，与其周一否认不符；董事会独立调查、FBI 线与 Alice Huang / Megaspeed 等前序不再复述。本条只记午间新出现的议员辞职呼吁、出口管制立法推动，以及 Axios 对商务部长收到机密备忘录的补充。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "Politico（Gabby Miller，11 月 10 日 18:39 PST，即北京时间 11-11 10:39；https://www.politico.com/news/2026/11/10/senate-banking-republican-nvidia-ceo-resign-01160543）报道：参议院银行委员会资深共和党议员、北达科他州的凯文·克拉默（Kevin Cramer）周二晚对该媒体表示，黄仁勋作为全球最大 AI 芯片公司首席执行官的行为「构成明确的国家安全风险」，并呼吁其辞职。克拉默说：「勒索的可能性太大了，英伟达芯片这么敏感，我就觉得他必须离开。」Reuters 同日也转述了这一表态（https://x.com/ReutersChina/status/2120373549181362594）。关注流 @AndrewCurran_ 11:15 +08 转述辞职呼吁（https://x.com/AndrewCurran_/status/2120354650071453885）。同波《华尔街日报》11:50 +08 发帖（https://x.com/WSJ/status/2120348369134453054；https://www.wsj.com/politics/policy/jensen-huang-affair-revives-push-for-chip-restrictions-on-capitol-hill-b0500089）：议员正要求加紧芯片出口限制，并试图将更严出口管制纳入一份被视为必通的国防支出法案；这一推动可能使英伟达及其他半导体公司损失数十亿美元收入。Reuters（https://www.streetinsider.com/Reuters/US+lawmakers+push+China+chip+rules+after+Nvidia+CEO+allegations/27322702.html）写：参院民主党领袖舒默周二呼吁通过 AI Overwatch Act（赋予国会对先进芯片出口的权力）、Chip Security Act（要求企业追踪芯片以打击走私）与 Match Act（推动盟友限制向中国出口更多制造设备）；众院中国问题委员会主席约翰·穆莱纳（John Moolenaar）声明应将芯片出口限制纳入年度军费法案。Axios（Maria Curi、Marc Caputo；https://www.axios.com/2026/11/10/lutnick-nvidia-jensen-huang-china-memo）引多名知情人士称：商务部长霍华德·卢特尼克（Howard Lutnick）曾收到一份高度机密备忘录，警告黄仁勋与被美方视为中国间谍的 Alice Huang 的关系；备忘录在特朗普 5 月 13–15 日访华前传阅，并据该报道由国务卿鲁比奥主持起草。Axios 还写：部分出口批准早于该警告；商务部未置评。该稿约在晨报截止点前后落地，晨间页未写入。上述均为议员表态与媒体引述，不是已裁决的谍报、泄密或出口违规结论；法案能否进入最终国防授权法案仍取决于国会审议。",
+      "first_source_at": "2026-11-11 10:39 +08",
+      "hard_gate": true,
+      "id": "pf-20261111-02",
+      "links": [
+        {
+          "label": "Politico：克拉默要求辞职",
+          "url": "https://www.politico.com/news/2026/11/10/senate-banking-republican-nvidia-ceo-resign-01160543"
+        },
+        {
+          "label": "WSJ 帖",
+          "url": "https://x.com/WSJ/status/2120348369134453054"
+        },
+        {
+          "label": "WSJ 报道",
+          "url": "https://www.wsj.com/politics/policy/jensen-huang-affair-revives-push-for-chip-restrictions-on-capitol-hill-b0500089"
+        },
+        {
+          "label": "Reuters 转载（StreetInsider）",
+          "url": "https://www.streetinsider.com/Reuters/US+lawmakers+push+China+chip+rules+after+Nvidia+CEO+allegations/27322702.html"
+        },
+        {
+          "label": "Axios：卢特尼克备忘录",
+          "url": "https://www.axios.com/2026/11/10/lutnick-nvidia-jensen-huang-china-memo"
+        },
+        {
+          "label": "AndrewCurran_ 帖",
+          "url": "https://x.com/AndrewCurran_/status/2120354650071453885"
+        },
+        {
+          "label": "ReutersChina 帖",
+          "url": "https://x.com/ReutersChina/status/2120373549181362594"
+        }
+      ],
+      "title": "【续报/仍热】【硬门槛】参院银行委共和党议员克拉默要求黄仁勋辞职；两党推动将更严芯片出口限制写入国防授权法案",
+      "wave": "午间",
+      "why": "辞职呼吁来自特朗普所属党的参院银行委议员，说明压力已不止民主党一侧。若出口限制被塞进必通军费法案，影响面会从英伟达扩到 AMD 及海外数据中心与设备链。Axios 对卢特尼克收件的补充，则把「谁在访华前已被提醒」从总统扩到主管出口许可的商务部。"
     }
   ],
   "schema": "qianji.briefing.daily.v1",
   "sources": [
     "X Home（关注流）",
     "公开 X search_posts_all / search_news",
-    "公开检索与站外印证（Google、Anthropic、OpenAI、Cursor、CISA、TechCrunch、CNBC、Bloomberg、The Information、纽约时报/Inquirer 转载等）",
+    "公开检索与站外印证（Google、Anthropic、OpenAI、Cursor、CISA、TechCrunch、CNBC、Bloomberg、The Information、纽约时报/Inquirer 转载、Politico、WSJ、Axios、Reuters、SPH Media 官网、CNA 等）",
     "公开 X @dair_ai",
     "GitHub Trending daily HTML + GitHub API enrich",
     "GitStock daily API（日键 2026-11-10 UTC）",
     "GH Archive 缺源"
   ],
-  "summary": "Google 全面开放 Gemini 4 Carbon，Anthropic 更新 IPO 申报给出 70–78 美元定价区间、上限约合 1.404 万亿美元估值并启动路演；《纽约时报》报道特朗普 5 月访华途中已在空军一号听取黄仁勋相关情报简报，与其周一否认不符。",
+  "summary": "午间：参议院银行委员会共和党议员凯文·克拉默公开要求黄仁勋辞职，国会两党推动将更严芯片出口限制写入国防授权法案；SPH Media 官方确认五个系统遭协同网络攻击。晨间：Google 全面开放 Gemini 4 Carbon，Anthropic 给出 IPO 定价区间 70–78 美元、上限约合 1.404 万亿美元并启动路演；《纽约时报》称特朗普访华途中已在空军一号听取黄仁勋相关情报简报。",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-11T07:51:26+08:00",
-  "wave": "晨间"
+  "updated_at": "2026-11-11T12:37:43+08:00",
+  "wave": "午间"
 }
