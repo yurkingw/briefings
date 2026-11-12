@@ -13,7 +13,7 @@
    node scripts/briefings-upload.mjs --ready <ready.json> --receipt-dir <dir>
    ```
 
-   退出 0 且 `result` 为 `uploaded` 才算上传确认。响应丢失后必须靠 GET 同一路径确认同一 `content_hash` 与 `updated_at`。读不回则是 `unknown`，保留本地 ready，不当成成功。
+   退出 0 且 `result` 为 `uploaded` 才算上传确认。退出 50 且 `attempts` 为 0 表示这次进程在 HTTP 之前没有可用的 `BRIEFINGS_PUBLISH_TOKEN`（机器行带 `config_phase=pre_http`）。GitHub 401/403 是退出 40、`transport_forbidden`。响应丢失后必须靠 GET 同一路径确认同一 `content_hash` 与 `updated_at`。读不回则是 `unknown`，保留本地 ready，不当成成功。本清单不提供另一种凭据来源。
 3. 把这次 Contents API 产生的 `main` commit 记为 `trigger_sha`（SHA_A）。它只应改动 `_inbox/daily/<period>.json` 或 `_inbox/weekly/<period>.json`。
 4. 打开该 push 触发的 Deploy GitHub Pages run。处理 job 的 step summary 里，`trigger_sha` 与 `content_sha`（SHA_B）必须分开。SHA_B 是处理 job 快进提交 `content/<type>/<period>.json` 之后的 `main`。
 5. deploy job 只有在再次读到的 `origin/main` 仍等于 SHA_B 时才部署。失败则不 ack。

@@ -4,7 +4,7 @@
 
 真实链路 `export → GitHub → Actions → 公网` **未验证**。失败告警是否盖住 Pages，以及部署前核验到 `deploy-pages` 返回之间的 TOCTOU，也 **未验证**。
 
-生产路径不是把本地 ready 或 raw 直推进 `content/`。box 上 `stageReady` 之后，`scripts/briefings-upload.mjs` 只把公开 envelope 写到 `_inbox/daily/YYYY-MM-DD.json` 或 `_inbox/weekly/YYYY-Www.json`。没有 `BRIEFINGS_PUBLISH_TOKEN`，或值不是一段不含空白的 token 字符，命令退出 50，不发 HTTP。token 只从该环境变量读入，不进参数、日志、结果行或 Actions secret。
+生产路径不是把本地 ready 或 raw 直推进 `content/`。box 上 `stageReady` 之后，`scripts/briefings-upload.mjs` 只把公开 envelope 写到 `_inbox/daily/YYYY-MM-DD.json` 或 `_inbox/weekly/YYYY-Www.json`。`BRIEFINGS_PUBLISH_TOKEN` 只从本次调用的环境对象读入。进程里没有这个自有属性，或值不是一段非空且只含 `A-Za-z0-9._-` 的字符串时，命令退出 50，`attempts` 为 0，不发 HTTP。token 不进参数、日志、结果行或 Actions secret。退出 50 只说明这次进程在请求之前没有通过本地字符类检查。GitHub 返回 401 或 403 时走退出 40、`transport_forbidden`，并且 `attempts` 至少为 1。
 
 现有 `.github/workflows/pages.yml` 在同一次 run 里处理队列、快进提交 `content/`、构建并部署，然后按已消费的 `content_hash` 和 blob sha 做 CAS 删除。`schedule` 为每天 22:17 上海（`17 14 * * *`）和周一 09:17（`17 1 * * 1`），只处理已经在仓里的白名单文件。`cancel-in-progress: false` 不是 FIFO。部署前要求 `origin/main` 仍等于处理后的 `content_sha`；核验之后仍有未证明为零的窗口。
 
@@ -34,7 +34,7 @@ node scripts/briefings-upload.mjs --ready <ready.json> --receipt-dir <dir>
 
 命令只打开 `--ready` 指向的那一个文件。它不扫描目录，也不接受裸的 briefing JSON。补漏是 `pages.yml` 的 schedule，只看已经上传的白名单文件。
 
-`briefings-publish.mjs` 在没有测试注入时仍退出 **50**（`adapter_disabled`），不发 HTTP。`briefings-upload.mjs` 只有在 `BRIEFINGS_PUBLISH_TOKEN` 可用时才向白名单路径发 Contents API；否则同样是 50。两种 50 都表示这次没有完成上传，不是「通道已经可用」。
+`briefings-publish.mjs` 在没有测试注入时仍退出 **50**（`adapter_disabled`），不读 `BRIEFINGS_PUBLISH_TOKEN`，也不发 HTTP。`briefings-upload.mjs` 只有在该变量通过本地字符类检查时才向白名单路径发 Contents API；否则同样是 50，并在机器行上写 `config_phase=pre_http` 与令牌存在性/类别。两种 50 都表示这次没有完成上传。本地发布命令的 50 不带 `config_phase`。上传命令的 50 带 `config_phase`，并且 `attempts` 为 0。
 
 测试代码可以调用 `asTestTransport` 或 `createInjectedGitDataTransport(fetchImpl)` 注入 `briefings-publish.mjs`。那条注入不读上传 token。上传命令的测试用假 token 和假 fetch，不把真实 token 写进夹具。未带测试标记的对象即使写了 `enabled: true` 也不能打开发布命令。
 
@@ -104,7 +104,7 @@ ready rename 之前的崩溃不会留下可消费的 ready。命令不把「连�
 
 ## 6. 退出码、机器字段与回执
 
-stdout 与 stderr 各一行机器 JSON。每行都有 `result`、`reason`、`exit`、`attempts`。ready 已经通过校验时还有 `schema`、`period`、`updated_at`、`content_hash`。没有正文，没有路径，没有凭据，也没有 `enabled`。
+stdout 与 stderr 各一行机器 JSON。每行都有 `result`、`reason`、`exit`、`attempts`。ready 已经通过校验时，本地发布命令还有 `schema`、`period`、`updated_at`、`content_hash`；上传命令还有 `schema`、`period`、`content_hash`。机器行没有正文，没有路径，没有凭据，也没有 `enabled`。上传命令在预 HTTP 配置失败时额外有 `config_phase`、`token_present`、`token_category`。这三个字段只允许固定枚举或布尔，序列化时丢掉值、长度、哈希和其它原文。`result` 与 `reason` 仍是 `adapter_disabled`，既有调用方按这两个字符串判断时不用改。上传命令仍不写 `success.json` 或 `pending.json`，这两个回执文件的字段不变。
 
 `result` 是这一次的结局。`reason` 是更具体的原因；拒绝和传输失败时它与 `result` 相同，发布和空操作时它区分原因。
 
@@ -122,7 +122,7 @@ stdout 与 stderr 各一行机器 JSON。每行都有 `result`、`reason`、`exi
 | 40 | `transport_rejected` | 其他不应盲重试的 4xx |
 | 40 | `ref_missing`、`remote_unreadable`、`tree_truncated` | 与 `result` 相同。不重试 |
 | 40 | `unknown` | 上传响应丢失或重试耗尽后未能读回同一路径。不是成功，本地 ready 保留 |
-| 50 | `adapter_disabled` | 本地发布命令的固定结果；上传命令在没有可用 token 时也是这个结果 |
+| 50 | `adapter_disabled` | 本地发布命令的固定结果，不带令牌诊断。上传命令在预 HTTP 配置失败时也是这个结果，并带 `config_phase=pre_http`、`token_present`、`token_category`（`absent`、`empty`、`invalid_type` 或 `invalid_charset`）。`attempts` 为 0 |
 
 `success.json` 只在确认发布，或确认远程已有同一哈希且同一时刻时写入。退出 20、21、40 只写 `pending.json`。退出 30 和 50 不写回执。这些失败都不改已有的 success。同一时刻同一哈希的重复成功也不重写 success 字节。更新的时间戳一旦确认发布，会换成新的 success。pending 失败可以再用同一 ready 重试。
 
@@ -156,6 +156,14 @@ base 变化后重新执行 1–4，只重读同一路径，按第 5 节重判，
 `createGithubGitDataTransport()` 不接受 fetch，永远是关闭的。会发请求的 `createInjectedGitDataTransport(fetchImpl)` 只供测试代码调用，CLI 不引用它。请求头只有 `accept`、`content-type` 和 `x-github-api-version`，没有认证头。本变更不读取、不配置 token。注入传输的 `production` 固定为 false；它通过测试不等于生产发布已经可用。离线首版不承担认证后的生产 E2E，该链路仍然 blocked。
 
 ## 8. 认证边界
+
+### 上传令牌的注入边界
+
+`scripts/briefings-upload.mjs` 只读取本次调用环境对象上的自有属性 `BRIEFINGS_PUBLISH_TOKEN`。命令行入口使用该进程的 `process.env`。测试里的 `io.env` 只存在于同一次进程内调用，不是生产凭据来源，命令行也不会去读它。脚本不打开文件，不加载 dotenv，不接受命令行里的令牌，也不把 `GITHUB_TOKEN`、`GH_TOKEN` 或其它名字当作这个变量。
+
+`token_present` 表示这个环境对象自己有没有该属性。`token_category` 是本地检查的类别：`absent`（没有该自有属性）、`empty`（空字符串）、`invalid_type`（不是字符串）、`invalid_charset`（非空字符串里有允许集合以外的字符，含未修剪的空白）。字符类合格时类别在内部是 `usable`，机器行不写出这个类别，也不写出值。通过字符类只说明可以进入传输；GitHub 是否接受它，要看随后的 HTTP 结果。
+
+这三个字段只描述这一次调用读到的环境对象。它们不能重建另一次已经结束的进程，也不能说明上一次成功运行为什么当时有可用值。调用方负责把变量放进实际执行上传的那个进程。本仓不注入该变量，不增加第二来源，也不因此恢复例行执行环境。退出 50 之后的补发仍要等该执行环境里的变量可用，再走原来的上传命令。
 
 分类只使用下面三档。本变更不申请凭据，也不搜索钥匙。
 

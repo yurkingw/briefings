@@ -5,7 +5,7 @@ import { createContentsTransport } from "../lib/publish/contents-api.js";
 import { toPublicEnvelope } from "../lib/publish/envelope.js";
 import { machineResult } from "../lib/publish/result.js";
 import { verifyReady } from "../lib/publish/ready.js";
-import { readPublishToken, redact } from "../lib/publish/token.js";
+import { classifyPublishToken, readPublishToken, redact } from "../lib/publish/token.js";
 import { uploadPublicEnvelope } from "../lib/publish/upload.js";
 
 function parseArgs(argv) {
@@ -47,8 +47,10 @@ export async function main(argv, io = {}) {
     });
     return error.exit || 11;
   }
-  const token = readPublishToken(io.env ?? process.env);
+  const env = io.env ?? process.env;
+  const token = readPublishToken(env);
   if (!token) {
+    const gate = classifyPublishToken(env);
     emit(stdout, stderr, {
       result: "adapter_disabled",
       reason: "adapter_disabled",
@@ -57,6 +59,9 @@ export async function main(argv, io = {}) {
       schema: packed.envelope.schema,
       period: packed.envelope.period,
       content_hash: packed.envelope.content_hash,
+      config_phase: "pre_http",
+      token_present: gate.present,
+      token_category: gate.category,
     });
     return 50;
   }
