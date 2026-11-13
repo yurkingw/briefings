@@ -1,0 +1,931 @@
+{
+  "date": "2026-11-13",
+  "github": {
+    "meta": {
+      "archive": "missing",
+      "archive_note": "GH Archive 缺源（无 GCP/BigQuery）；规则双榜重合（热榜∩Archive）=0；涨星∩新锐=0；涨星实际 10 条。GitStock OK，日键 2026-11-12（UTC），GitStock∩Trending=11/13。新锐过滤星刷/破解后 7 条，不凑满 10。",
+      "gitstock_date_key": "2026-11-12",
+      "gitstock_date_key_tz": "UTC",
+      "gitstock_trending_overlap": "11/13",
+      "hot_tag": "热榜",
+      "newcomers_count": 7,
+      "overlap_hot_archive": 0,
+      "overlap_rising_newcomers": 0,
+      "rising_count": 10,
+      "sources_missing": [
+        "gh_archive"
+      ],
+      "sources_ok": [
+        "gitstock",
+        "trending"
+      ]
+    },
+    "newcomers": [
+      {
+        "age_h": 23,
+        "break": "破百星",
+        "gained": null,
+        "lang": "TypeScript",
+        "license": "Apache-2.0",
+        "owner": "rivet-dev",
+        "owner_type": "Organization",
+        "rank": 1,
+        "repo": "open-orange",
+        "seen": "首见",
+        "slogan": "把 Cloudflare Workers 原样跑到别的云上",
+        "stars": 209,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/rivet-dev/open-orange",
+        "what": "让 Cloudflare Workers 和 Durable Objects 不改代码，跑在 AWS、GCP、Azure 或自建服务器上。",
+        "why": "创建约一天即获 209 星，是今日新锐里星数最高、也最像基础设施的一条。"
+      },
+      {
+        "age_h": 21.9,
+        "break": "破百星",
+        "gained": null,
+        "lang": "C",
+        "license": "NOASSERTION",
+        "owner": "Simon3Sarkis",
+        "owner_type": "User",
+        "rank": 2,
+        "repo": "super-odyssey-pc-recomp",
+        "seen": "首见",
+        "slogan": "用静态重编译把奥德赛搬到 Windows",
+        "stars": 166,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/Simon3Sarkis/super-odyssey-pc-recomp",
+        "what": "用静态重编译做的《超级马里奥 奥德赛》Windows 原生移植；不附带游戏文件，需自备正版。",
+        "why": "创建约一天获 166 星，延续近期主机游戏重编译移植的关注。"
+      },
+      {
+        "age_h": 2.9,
+        "break": "破百星",
+        "gained": null,
+        "lang": "Visual Basic .NET",
+        "license": "MIT",
+        "owner": "DevedevT",
+        "owner_type": "User",
+        "rank": 3,
+        "repo": "FFmpeg-GUI-Editor-Windows",
+        "seen": "首见",
+        "slogan": "便携的 FFmpeg 图形界面和无损剪辑",
+        "stars": 143,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/DevedevT/FFmpeg-GUI-Editor-Windows",
+        "what": "Windows 上的便携 FFmpeg 图形界面，声称带现成可执行文件，支持无损裁剪和多语言界面。",
+        "why": "创建仅约 3 小时即获 143 星，涨速很快；这类即下即用的 exe 分发需自行核验来源。"
+      },
+      {
+        "age_h": 9.7,
+        "break": "破百星",
+        "gained": null,
+        "lang": "Python",
+        "license": "MIT",
+        "owner": "lawandrorder",
+        "owner_type": "User",
+        "rank": 4,
+        "repo": "mate",
+        "seen": "首见",
+        "slogan": "购物用的文本 agent：返现、折扣和物流",
+        "stars": 138,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/lawandrorder/mate",
+        "what": "面向购物的文本优先 agent，覆盖返现、个人折扣码、包裹追踪和降价提醒，带起步 agent 和网页对话。",
+        "why": "创建约 10 小时获 138 星，是新锐里偏消费 agent 的一条。"
+      },
+      {
+        "age_h": 14.9,
+        "break": null,
+        "gained": null,
+        "lang": "TypeScript",
+        "license": null,
+        "owner": "simonklee",
+        "owner_type": "User",
+        "rank": 5,
+        "repo": "opencode-native-preview",
+        "seen": "首见",
+        "slogan": "OpenCode 原生命令行的预览构建",
+        "stars": 68,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/simonklee/opencode-native-preview",
+        "what": "OpenCode 原生 CLI 的预览构建仓库。",
+        "why": "创建约 15 小时获 68 星，属于工具链预览分发，需对照上游正式项目理解成熟度。"
+      },
+      {
+        "age_h": 17.4,
+        "break": null,
+        "gained": null,
+        "lang": "Python",
+        "license": "MIT",
+        "owner": "siwen-121",
+        "owner_type": "User",
+        "rank": 6,
+        "repo": "agent-shared-facts",
+        "seen": "首见",
+        "slogan": "用 Git 和只读 MCP 在设备间共享已审事实",
+        "stars": 55,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/siwen-121/agent-shared-facts",
+        "what": "面向 agent 的参考实现：把经过审阅的事实用 Git 在设备间共享，并提供只读 MCP。",
+        "why": "创建约 17 小时获 55 星，题目贴近多设备 agent 记忆，和今日论文栏的自组织记忆可对照看。"
+      },
+      {
+        "age_h": 10.8,
+        "break": null,
+        "gained": null,
+        "lang": "Kotlin",
+        "license": "MIT",
+        "owner": "DarkAspect1",
+        "owner_type": "User",
+        "rank": 7,
+        "repo": "Nudge",
+        "seen": "首见",
+        "slogan": "按音量或电源键时弹出的边缘动画",
+        "stars": 51,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/DarkAspect1/Nudge",
+        "what": "Kotlin 应用：按下音量或电源键时显示边缘弹出动画，并带一套自定义音量条。",
+        "why": "创建约 11 小时获 51 星，是新锐里偏系统交互/美学的一条。"
+      }
+    ],
+    "rising": [
+      {
+        "age_h": 6939.4,
+        "break": "破千星",
+        "gained": 799,
+        "lang": "TypeScript",
+        "license": "Apache-2.0",
+        "owner": "GoogleChrome",
+        "owner_type": "Organization",
+        "rank": 1,
+        "repo": "modern-web-guidance-src",
+        "seen": "续见",
+        "slogan": "给编程 agent 同步最新 Web 实践",
+        "stars": 2852,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+        "what": "Chrome 团队维护的现代 Web 最佳实践源码库，用来给编程 agent 补上过时文档里没有的当前做法。",
+        "why": "昨日已上榜，今日热榜再涨 799 星，总星约 2852。是本榜里和 agent 写前端最贴近的官方指南。"
+      },
+      {
+        "age_h": 2929.8,
+        "break": "破1万星",
+        "gained": 663,
+        "lang": "TypeScript",
+        "license": "Apache-2.0",
+        "owner": "openai",
+        "owner_type": "Organization",
+        "rank": 2,
+        "repo": "codex-security",
+        "seen": "续见",
+        "slogan": "OpenAI 的代码安全扫描命令行",
+        "stars": 12388,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/openai/codex-security",
+        "what": "OpenAI 的 Codex Security 命令行和 TypeScript SDK，用来发现、验证和修补代码漏洞。",
+        "why": "连续上榜，今日再涨 663 星，总星约 1.24 万，刚过万星门槛后仍在快速累积。"
+      },
+      {
+        "age_h": 145326,
+        "break": "破5万星",
+        "gained": 107,
+        "lang": "Shell",
+        "license": "MIT",
+        "owner": "nvm-sh",
+        "owner_type": "Organization",
+        "rank": 3,
+        "repo": "nvm",
+        "seen": "首见",
+        "slogan": "管 Node 版本的老牌脚本，又回到日榜",
+        "stars": 96001,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/nvm-sh/nvm",
+        "what": "POSIX shell 写的 Node Version Manager，用来在同一台机器上切换多个 Node.js 版本。",
+        "why": "今日热榜新上，涨 107 星，总星约 9.6 万。未见单一发布事件，更像生态工具的周期性回榜。"
+      },
+      {
+        "age_h": 16764.2,
+        "break": "破千星",
+        "gained": 300,
+        "lang": "Objective-C",
+        "license": "MIT",
+        "owner": "pookjw",
+        "owner_type": "User",
+        "rank": 4,
+        "repo": "HermesEnabler",
+        "seen": "首见",
+        "slogan": "给任意 Apple Watch 打开爱马仕表盘",
+        "stars": 1518,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/pookjw/HermesEnabler",
+        "what": "个人开发者项目，用来在非对应型号的 Apple Watch 上启用 Hermès 表盘。",
+        "why": "今日热榜新上，涨 300 星，总星约 1518。属于消费设备美化/解锁类，需注意系统和保修风险。"
+      },
+      {
+        "age_h": 11467.5,
+        "break": "破1万星",
+        "gained": 974,
+        "lang": "Ruby",
+        "license": "AGPL-3.0",
+        "owner": "we-promise",
+        "owner_type": "Organization",
+        "rank": 5,
+        "repo": "sure",
+        "seen": "续见",
+        "slogan": "人人能改的开源个人记账应用",
+        "stars": 13883,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/we-promise/sure",
+        "what": "开源个人理财应用，定位是「写给所有人、也可由所有人改」。",
+        "why": "连续上榜，今日再涨 974 星，是本榜涨幅第二，总星约 1.39 万。"
+      },
+      {
+        "age_h": 12118.1,
+        "break": "破2万星",
+        "gained": 151,
+        "lang": "TypeScript",
+        "license": "Apache-2.0",
+        "owner": "QwenLM",
+        "owner_type": "Organization",
+        "rank": 6,
+        "repo": "qwen-code",
+        "seen": "首见",
+        "slogan": "通义的终端编程 agent",
+        "stars": 29783,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/QwenLM/qwen-code",
+        "what": "通义开源的终端里编程 agent，用来在本地仓库里写代码、改代码。",
+        "why": "今日热榜新上，涨 151 星，总星约 2.98 万，已在 2 万星之上。"
+      },
+      {
+        "age_h": 3507.3,
+        "break": "破千星",
+        "gained": 94,
+        "lang": "Zig",
+        "license": "Apache-2.0",
+        "owner": "ashhart",
+        "owner_type": "User",
+        "rank": 7,
+        "repo": "TensorFold",
+        "seen": "首见",
+        "slogan": "用 Zig 写的跨 GPU 推理引擎",
+        "stars": 1926,
+        "tags": [
+          "热榜"
+        ],
+        "url": "https://github.com/ashhart/TensorFold",
+        "what": "个人开发者用 Zig 写的大模型推理引擎，支持 Metal、CUDA 和 Vulkan。",
+        "why": "今日热榜新上，涨 94 星，总星约 1926。是本榜里偏推理运行时的一条。"
+      },
+      {
+        "age_h": 104859.8,
+        "break": "破10万星",
+        "gained": 133,
+        "lang": "JavaScript",
+        "license": "NOASSERTION",
+        "owner": "nodejs",
+        "owner_type": "Organization",
+        "rank": 8,
+        "repo": "node",
+        "seen": "首见",
+        "slogan": "Node.js 运行时本身再上日榜",
+        "stars": 123589,
+        "tags": [
+          "热榜"
+        ],
+        "url": "https://github.com/nodejs/node",
+        "what": "Node.js JavaScript 运行时的官方仓库。",
+        "why": "今日热榜新上，涨 133 星，总星约 12.4 万。与同榜的 nvm 一起出现，更像运行时生态的连带回榜，未见单一爆款事件。"
+      },
+      {
+        "age_h": 6483.4,
+        "break": "破10万星",
+        "gained": 812,
+        "lang": "JavaScript",
+        "license": "MIT",
+        "owner": "addyosmani",
+        "owner_type": "User",
+        "rank": 9,
+        "repo": "agent-skills",
+        "seen": "续见",
+        "slogan": "给编程 agent 用的工程技能包",
+        "stars": 116649,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/addyosmani/agent-skills",
+        "what": "面向 AI 编程 agent 的生产级工程技能集合。",
+        "why": "连续上榜，今日再涨 812 星，总星约 11.7 万，是本榜总星第二。"
+      },
+      {
+        "age_h": 7375.4,
+        "break": "破2万星",
+        "gained": 1789,
+        "lang": "TypeScript",
+        "license": "MIT",
+        "owner": "meta",
+        "owner_type": "Organization",
+        "rank": 10,
+        "repo": "astryx",
+        "seen": "续见",
+        "slogan": "Meta 开的、给 Agent 用的设计系统",
+        "stars": 26477,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/meta/astryx",
+        "what": "Meta 的开源设计系统，可深度定制，并针对 AI Agent 使用做了适配。",
+        "why": "连续多日霸榜，今日仍涨 1789 星，为本榜最高单日增量，总星约 2.65 万。"
+      }
+    ]
+  },
+  "metrics": {
+    "finsec": 1,
+    "gh_newcomers": 7,
+    "gh_rising": 10,
+    "hard_gate": 5,
+    "home_related": "15/18",
+    "news": 9,
+    "news_detail": 9,
+    "news_detail_morning": 3,
+    "news_detail_noon": 6,
+    "news_morning": 3,
+    "news_noon": 6,
+    "papers": 2,
+    "polfin": 9,
+    "polfin_detail": 9,
+    "polfin_detail_morning": 3,
+    "polfin_detail_noon": 6,
+    "polfin_morning": 3,
+    "polfin_noon": 6
+  },
+  "news": [
+    {
+      "arch_impact": null,
+      "background": "Gemini 4 家族此前已有偏深度推理的 Carbon 与 Argon。许多团队仍缺一个更快、更便宜、能在多 agent 流程里当执行层的型号。Google 把这一档命名为 Hydrogen，并同时改搜索和 Antigravity 的调度。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "2026-11-12 18:00 UTC 前后（北京时间 11-13 约 02:00–02:09），Google 与 DeepMind 发布 Gemini 4 Hydrogen，官方博文由 Google DeepMind 兼 Google 首席 AI 架构师 Koray Kavukcuoglu 署名。官方定位是把「前沿智能」铺到日常编码和 agent 工作流：默认 high 思维档在 Artificial Analysis Intelligence Index 上为 51、高于 Argon 的 50，最高 xhigh 档称可达 54；1M token 上下文统一定价，每百万输入 1.50 美元、输出 7.50 美元（含思维 token）。官方称相对 Gemini 3.8 Flash，在 high 默认档完成任务快约 2.5 倍，Terminal-Bench 4.1 分数从 18.2% 升至 57%，并称编造主张减少 5 倍以上。思维档为 low / medium / high（默认）和新增 xhigh。产品面上，Hydrogen 进入 Gemini API / AI Studio、Gemini 应用、Google Search（官方称是 Search 迄今最大模型升级，面向全球所有用户）、Gemini for business，以及付费 Google AI Pro / Ultra 的 Antigravity 与 Gemini in Sheets；免费 Gemini 应用用户经自动选模使用。同期推出 Antigravity Orchestrator：同一会话里在 Carbon 与 Hydrogen 等型号间切换，Terminal-Bench 4.0 上称接近 Carbon 的任务成功率，同时平均少用约 24% 配额、快约 19%。模型卡写明 Hydrogen 由 Gemini 4 Carbon 适配而来。DeepMind 官方帖 https://x.com/GoogleDeepMind/status/2120940338869055788 ；Google 主帖 https://x.com/Google/status/2120941982004523367 。关注流可见 @googledevs、@demishassabis 等转述。",
+      "finsec": false,
+      "first_source_at": "2026-11-13 02:02 +08",
+      "hard_gate": false,
+      "id": "n-20261113-01",
+      "links": [
+        {
+          "label": "官方博文",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+        },
+        {
+          "label": "开发者博文",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/"
+        },
+        {
+          "label": "Search 博文",
+          "url": "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/"
+        },
+        {
+          "label": "模型卡",
+          "url": "https://deepmind.google/models/model-cards/gemini-4-hydrogen/"
+        },
+        {
+          "label": "DeepMind 帖",
+          "url": "https://x.com/GoogleDeepMind/status/2120940338869055788"
+        },
+        {
+          "label": "Google 帖",
+          "url": "https://x.com/Google/status/2120941982004523367"
+        }
+      ],
+      "title": "Google 发布 Gemini 4 Hydrogen：面向日常编码与 agent 工作流，并同步升级 Search 与 Antigravity Orchestrator",
+      "wave": "晨间",
+      "why": "这是 Gemini 4 首次把中间执行档铺到 Search 和免费应用，并把「规划模型 + 执行模型」写成 Antigravity 的正式调度。对做 agent 编排的人，定价、思维档和 Orchestrator 会直接改默认分工；对普通搜索用户，则是一次无开关的模型换代。"
+    },
+    {
+      "arch_impact": null,
+      "background": "Google 已多次展示搭载 Gemini 的智能眼镜原型，并与镜框品牌、三星合作。今天是面向美国和韩国用户的预购与到店时间表落地。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "2026-11-12（公开追踪约 14:00 UTC，北京时间 22:00），Google XR 副总裁 Shahram Izadi 发文宣布 Intelligent Eyewear 系列开始预购，与 Warby Parker、Gentle Monster 和三星合作。Warby Parker 三款（Alden、Reid、Wren）光学或太阳镜起步 395 美元；Gentle Monster 六个高配配色起步 449 美元，美韩有售，多数镜框可配处方镜片。官方称镜框约 41 克，电池续航最多约 9 小时，充电盒最多可再充约 7 次。功能包括「Hey Gemini」、Google Maps 导航、70 多种语言实时翻译、12MP 超广角拍照，以及面向低视力用户的 Guided Vision（官方声明不是医疗或助行设备）；也可呼叫 Aira 人工视觉助理。支持 Pixel 7 及以上（需 Android 17 的 2026 年 9 月更新）、部分 Galaxy 机型，以及 iPhone 13 Pro 及以上。仅限美国和韩国的 18 岁以上 Google 账号。门店开售日为 12 月 10 日，信息页 glasses.google。官方还列了隐私设计：Gemini 处理的摄像头画面不进 Gemini History、不用于训练或广告，并称会在处理前自动遮盖旁人面部；拍照有指示灯，可完全关机当普通眼镜用。",
+      "finsec": false,
+      "first_source_at": "2026-11-12 22:00 +08",
+      "hard_gate": false,
+      "id": "n-20261113-02",
+      "links": [
+        {
+          "label": "官方博文",
+          "url": "https://blog.google/innovation-and-ai/technology/xr-ar/google-intelligent-eyewear-collections-pre-order/"
+        }
+      ],
+      "title": "Google 智能眼镜 Intelligent Eyewear 开放预购：Warby Parker 起 395 美元，Gentle Monster 起 449 美元，12 月 10 日美韩开售",
+      "wave": "晨间",
+      "why": "这是 Google 把 Gemini 做成日用硬件的一次正式零售动作，时间点紧挨 Hydrogen 消费面铺开。预购价和隐私承诺都可以核对，但实际续航、指示灯可靠性和各国法规限制仍待开售验证。"
+    },
+    {
+      "arch_impact": null,
+      "background": "本周早些时候，研究者公开了 N-central 三十余个漏洞的利用代码（Able2Shell）。N-able 于 11 月 10 日发布 2026.4 Hotfix 2，称已补上所有可未认证利用的漏洞，托管环境当时已升级并恢复在线。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "Huntback 研究报告写明：2026-11-12 03:58 UTC（北京时间 11:58）公开库新增 4EverAble2Shell 与 Agent2Shell。该链在 Legacy API 开启时，先打 Apache Axis 接口 CVE-2026-90436（POST /dms/services/ServerUI 的 SOAP fault），以 nable 身份执行命令，再经 nable_wrapper.pl 把权限升到 root。Huntback 诱饵在 08:30 UTC（16:30 +08）接到同一来源 157.20.241.16 的探测，09:16 UTC 起看到完整武器化请求，root 命令安装 XMRig 门罗币挖矿（矿机名 nc_）。12:50 UTC（20:50 +08）公共矿池上有 21 台 nc_ 矿机在五分钟内提交份额；Huntback 核对这 21 个地址均提供 N-central 登录页，其中 19 台构建号为 2026.4.1.26，即 11 月 10 日的 Hotfix 2。地理分布包括美国 9、南非 4、加拿大 4，以及英德法瑞各 1。N-able 11 月 11 日博文仍称托管环境未见失陷迹象，并预告后续热修；对这波 HF2 仍中招的新链，Huntback 建议在补丁到位前关闭 Legacy API，并把中招视为对下游客户终端的完整沦陷，而不是只清矿机。本报昨日午间未纳入该新链的实网利用结果。",
+      "finsec": false,
+      "first_source_at": "2026-11-12 20:50 +08",
+      "hard_gate": false,
+      "id": "n-20261113-03",
+      "links": [
+        {
+          "label": "Huntback 调查",
+          "url": "https://huntback.io/blog/ncentral-4everable2shell-miners-on-live-servers"
+        },
+        {
+          "label": "N-able HF2 说明",
+          "url": "https://www.n-able.com/blog/update-on-n-central-2026-4-hf2-and-ongoing-security-response"
+        }
+      ],
+      "title": "Huntback：N-able N-central 新利用链 4EverAble2Shell 在 PoC 公开数小时后已打进生产环境，至少 21 台中招，其中 19 台已打过 11 月 10 日的 Hotfix 2",
+      "wave": "晨间",
+      "why": "N-central 是托管服务商用来远控客户机器的控制面。控制面在「已打紧急补丁」后仍被未认证打到 root，说明本周那批披露还没有收口，MSP 和其客户的暴露面比 HF2 公告所暗示的更大。"
+    },
+    {
+      "arch_impact": null,
+      "background": "OpenAI 上周已发布面向漏洞研究的 GPT-6 Cyber。防御团队面临的问题是：模型找到漏洞的速度，快过大多数工程组织打补丁的速度。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "2026-11-12（主题演讲时段约 19:00 UTC，北京时间 11-13 03:00；晨报未覆盖），OpenAI 在 Cyber at the Frontier 发布两套防御产品。Daybreak Red Team 是一组安全 agent：有的协调评估，有的查看源码与应用上下文，再由审阅 agent 核对结果，用于判断漏洞是否可被利用、并核验修复。官方称该产品对选定客户开放 early access，并即日起开放等候名单。Daybreak Defense Factory 用于把已发现的问题闭环：调查告警、按代码归属路由给负责人、起草补丁并开出供人审阅的草稿拉取请求；官方文档写明它不会自动把补丁合入生产。Defense Factory 可通过 Codex 中的 Daybreak 插件使用。OpenAI 安全研究负责人 Clint Gibler 对媒体表示，目标不是取代传统红队，而是补上「AI 生成代码量」与防御能力之间的缺口。关注流可见 OpenAI 安全方向负责人 @thsottiaux 在 08:24 +08 转发主题演讲录像，链到官方活动页。The Register、The Deep View 作了同期报道。",
+      "finsec": false,
+      "first_source_at": "2026-11-13 03:00 +08",
+      "hard_gate": false,
+      "id": "n-20261113-04",
+      "links": [
+        {
+          "label": "官方活动页",
+          "url": "https://openai.com/cyber-at-the-frontier/"
+        },
+        {
+          "label": "Defense Factory",
+          "url": "https://openai.com/daybreak/defense-factory/"
+        },
+        {
+          "label": "OpenAI 安全方向负责人帖",
+          "url": "https://x.com/thsottiaux/status/2121036562058400200"
+        },
+        {
+          "label": "The Register",
+          "url": "https://www.theregister.com/security/2026/11/12/openai-launches-security-products-tells-orgs-theyre-doomed-if-they-dont-use-them/5309500"
+        },
+        {
+          "label": "The Deep View",
+          "url": "https://www.thedeepview.com/articles/openai-sees-a-new-enterprise-frontier-in-cyber"
+        }
+      ],
+      "title": "OpenAI 在 Cyber at the Frontier 发布 Daybreak Red Team 与 Defense Factory：自动验证漏洞并起草补丁，供人审阅后合并",
+      "wave": "午间",
+      "why": "这是把「找洞」和「给工程师一份可审的补丁」做成可订阅产品，而不是只发一篇模型研究。对已在用 Codex 的团队，补丁草稿会直接进现有工作流；对还没把自动攻防交给模型的组织，这会把「要不要让 agent 碰生产漏洞」变成一个具体的采购和治理决定。补丁仍须人审，不等于风险已经自动消失。"
+    },
+    {
+      "arch_impact": null,
+      "background": "台积电是先进制程的主要代工厂，员工身份与联系方式若流失，可能被用来做定向钓鱼或供应链社工。地下论坛近日出现叫卖员工记录的帖子，需与公司官方口径分开看。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "台积电 11 月 12 日发表声明，并写入向美国证交会上报的 6-K：公司发现部分现职及离职员工个人数据未经授权被放在外部网站；目前没有证据显示台积电自身系统遭到入侵；这些信息经核对与某云服务提供商系统中的数据相符，且与公司营运或客户相关数据无关。公司称已通知受影响人员并提供协助，正与该云服务商、调查机关和第三方网络安全机构一同查清事实。中央社 11-12 12:59 +08 引述了同一声明。台湾及英文媒体报道称，地下论坛卖家声称掌握约 6.9GB、约 4.6 万笔员工记录、开价 3 枚比特币，并威胁一周内找不到买家就公开；样本据报含姓名、身份证号、银行账户和紧急联系人等。这些数量、字段和勒索要价来自论坛与转述，不是台积电声明中的数字，本报不作已核证处理。关注流今日仍有「台积电被黑」的高互动转述；官方口径是供应商侧数据外流，不是已证实的厂内系统沦陷。晨报未覆盖此声明。",
+      "finsec": false,
+      "first_source_at": "2026-11-12 12:59 +08",
+      "hard_gate": false,
+      "id": "n-20261113-05",
+      "links": [
+        {
+          "label": "中央社",
+          "url": "https://www.cna.com.tw/news/afe/202611120132.aspx"
+        },
+        {
+          "label": "Taiwan News",
+          "url": "https://www.taiwannews.com.tw/news/6475582"
+        },
+        {
+          "label": "Seeking Alpha 引述 6-K",
+          "url": "https://seekingalpha.com/news/4671436-tsmc-discovers-data-on-thousands-of-current-former-employees-leaked-to-external-website"
+        }
+      ],
+      "title": "台积电确认部分现职及离职员工个人数据出现在外部网站，称目前无证据显示自有系统遭入侵，数据与云服务商所存记录相符",
+      "wave": "午间",
+      "why": "对芯片供应链来说，需要分开两件事：员工个人数据确已外流，这会抬高针对台积电人员的钓鱼和冒充风险；但公司同时明确否定了自有生产或客户系统已被打穿。在没有新的取证结论前，把这件事写成「台积电本厂被黑」并不准确。"
+    },
+    {
+      "arch_impact": null,
+      "background": "微软 365 是全球大量企业和部分政府的邮件与协作底层。一次跨区域中断会同时打断办公、客服和依赖同一登录体系的 AI 辅助。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "11 月 12 日约下午 1 点美东时间（北京时间 11-13 02:00）起，Downdetector 等监测显示微软 365 出现大规模故障，Outlook 一度有约 13 万条报障，影响报道覆盖数十个国家。受影响服务包括 Exchange Online / Outlook、Teams、SharePoint、OneDrive、Microsoft 365 Copilot，以及 Defender、Intune、Purview、Power BI 等企业服务；BBC 中文还称部分 OpenAI、Anthropic 服务的连线受到牵连。微软对 CNBC 确认正在调查，主要问题在 Exchange Online。公司后续说明：部分服务器意外不可用，把负载压到其余节点；受影响服务器上处理健康检查的核心进程过载，造成容量损失。最初的配置绕过只让部分服务器恢复，且有的在重新接到流量后又失去响应。修复包括限制部分地点的流量类型、把流量改到备用路径，以及用先前配置重建部分服务器。卫报引述微软发言人：目前没有网络攻击迹象。故障持续数小时，美东晚间仍有余波；关注流与 ABC、CNN 在北京时间午前仍在报道。晨报未覆盖此次中断。",
+      "finsec": false,
+      "first_source_at": "2026-11-13 02:00 +08",
+      "hard_gate": false,
+      "id": "n-20261113-06",
+      "links": [
+        {
+          "label": "CNBC",
+          "url": "https://www.cnbc.com/2026/11/12/microsoft-outage-outlook-aws-google.html"
+        },
+        {
+          "label": "AP",
+          "url": "https://apnews.com/article/microsoft-outlook-outage-email-teams-6376045281feb430c0b923e3a4b251c2"
+        },
+        {
+          "label": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2026/nov/13/microsoft-outage-outlook-teams-word-excel-reports"
+        },
+        {
+          "label": "BBC 中文",
+          "url": "https://www.bbc.com/zhongwen/articles/crvg2d7v05yno/simp"
+        }
+      ],
+      "title": "微软 365 全球性长时间中断，Outlook、Teams、Copilot 等受影响；公司称没有网络攻击迹象，根因指向健康检查组件过载",
+      "wave": "午间",
+      "why": "这是一次跨产品的云协作底座故障，不是单一邮箱客户端问题。公司否认攻击，意味着当前更应作为容量与健康检查级联的可用性事件来看；但对依赖微软登录和 Copilot 的生产流程，几小时中断本身已经构成业务连续性压力。"
+    },
+    {
+      "arch_impact": null,
+      "background": "10 月 29 日币安发生有记录以来规模最大的加密资产盗窃，美国联邦调查局将其归给朝鲜国家黑客组织 TraderTraitor。交易所此前已多次上调垫付比例，但一直未宣布全部补齐。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "彭博 11 月 12 日 17:42 UTC（北京时间 11-13 01:42）报道，币安称已补齐客户被盗的全部约 63 亿美元加密资产，包括前期较难在市场上买到的冷门代币，资金来自利润和应急储备。后续报道写明：公司动用了用户安全资产基金（SAFU）、期货保险基金和公司金库，经市场和场外交易购回受影响代币，并承诺把 SAFU 补回到约 10 亿美元；11 月 12 日 00:00 UTC 做了覆盖 198 种代币的准备金快照，完整的零知识证明还需约 40 至 50 小时才能生成，因此「1:1 储备」在证明完成前仍是公司单方陈述。提现仍在分阶段恢复。补齐不等于追回被盗币。美联社同一天报道，联邦调查局称已扣押超过 12 亿美元据报从币安被盗的加密货币。联邦调查局在 10 月 31 日已把 10 月 29 日盗窃归给 TraderTraitor。晨报未覆盖此项收口。关注流可见 @IntCyberDigest 等转述。",
+      "finsec": true,
+      "first_source_at": "2026-11-13 01:42 +08",
+      "hard_gate": false,
+      "id": "n-20261113-07",
+      "links": [
+        {
+          "label": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2026-11-12/binance-finishes-covering-6-3-billion-of-stolen-customer-tokens"
+        },
+        {
+          "label": "AP（联邦调查局扣押）",
+          "url": "https://apnews.com/article/fbi-binance-cryptocurrency-theft-north-korea-41be4834083e596a8facfd719f851cae"
+        }
+      ],
+      "title": "币安称已用自有资金补齐 10 月 29 日被盗的约 63 亿美元客户资产；美国联邦调查局称已扣押其中约 12 亿美元被盗加密货币",
+      "wave": "午间",
+      "why": "垫付完成是这场最大规模交易所失窃的财务收口，不是安全根因已经查清。客户能否独立核验储备，还要等零知识证明跑完；美国已扣押约 12 亿美元，说明追赃与垫付是两条线，攻击者仍可能用剩余资金洗出。"
+    },
+    {
+      "arch_impact": null,
+      "background": "Caixa Vida e Previdência 是巴西联邦储蓄银行（Caixa）保险集团下属的寿险与养老金公司，掌握大量退休和保险客户的身份数据。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "巴西媒体 11 月 12 日报道，Caixa Vida e Previdência 的客户数据库被复制。G1、CNN Brasil、Estadão 等报道的口径一致：约 760 万名在籍客户的姓名和 CPF（巴西税号）暴露；部分前客户的住址、电话、电子邮箱和出生日期也被带走。入侵约在 11 月 6 日被发现并被遏制；报道称财务数据、养老金余额、银行密码等未被取得。公司正在做取证，并监测数据是否在外流。关注流可见 @IntCyberDigest 在 09:45 +08 的转述。本报未见该公司英文官方页，数字以巴西主流媒体交叉报道为准。晨报未覆盖。",
+      "finsec": false,
+      "first_source_at": "2026-11-13 09:45 +08",
+      "hard_gate": false,
+      "id": "n-20261113-08",
+      "links": [
+        {
+          "label": "G1",
+          "url": "https://g1.globo.com/tecnologia/noticia/2026/11/12/caixa-ataque-dados-pix.ghtml"
+        },
+        {
+          "label": "CNN Brasil",
+          "url": "https://www.cnnbrasil.com.br/economia/money/negocios/caixa-sofre-ataque-hacker-que-afeta-76-milhoes-de-clientes/"
+        },
+        {
+          "label": "关注流转述",
+          "url": "https://x.com/IntCyberDigest/status/2121056704033116585"
+        }
+      ],
+      "title": "巴西联邦储蓄银行保险与养老金子公司遭入侵：约 760 万名在籍客户的姓名和税号被复制，部分人还丢掉住址与联系方式",
+      "wave": "午间",
+      "why": "这是对一家国有银行体系保险子公司的大规模身份数据失窃。即使资金账户未必被直接划走，税号加姓名和联系方式已足够用于精准诈骗和身份冒用，影响面以百万计。"
+    },
+    {
+      "arch_impact": null,
+      "background": "董事会已接受黄仁勋辞去总裁、CEO 和董事，CFO 克雷斯任临时 CEO。交接刚宣布，公司内部的情绪会直接影响过渡期的执行力，也会被董事会和国会看见。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "《连线》11 月 13 日报道，英伟达内部出现一篇要求董事会考虑员工对前任 CEO 态度的帖子，跟帖超过 1600 条，其中多数明确支持请黄仁勋回来，标题被写作 “Bring Back THE Boss”。这是对内部讨论的报道，不是董事会已改变决定，也不是正式的股东提案。关注流可见 @WIRED 在 09:21 +08 发出的官方帖。",
+      "finsec": false,
+      "first_source_at": "2026-11-13 09:21 +08",
+      "hard_gate": false,
+      "id": "n-20261113-09",
+      "links": [
+        {
+          "label": "《连线》",
+          "url": "https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/"
+        },
+        {
+          "label": "WIRED 帖",
+          "url": "https://x.com/WIRED/status/2121050894607274211"
+        }
+      ],
+      "title": "【续报/仍热】《连线》：英伟达内部帖要求董事会考虑员工对迎回黄仁勋的态度，跟帖逾 1600 条，多数支持请他回来",
+      "wave": "午间",
+      "why": "临时 CEO 才上任，内部多数公开表态希望创始人回来，会给董事会的常任 CEO 搜寻和过渡期管理增加压力。它不能推翻已生效的辞职，但说明这次交接在组织内部并未迅速收口。"
+    }
+  ],
+  "papers": [
+    {
+      "dair_url": "https://x.com/dair_ai/status/2120898418801525191",
+      "short": "No Second Run（前沿预训练上的递归自我改进）",
+      "url": "https://arxiv.org/abs/2611.10719",
+      "what": "上海创智学院与新絮把递归自我改进（RSI，让 AI 改进创造 AI 的过程本身）用到一次从头开始的完整前沿预训练，而不是只做已有基座模型之后的后训练。因为整次预训练无法原样重跑，他们把链路拆成可闭环的小环，训练出 801-30B-A3B-Base：30B（A3B） MoE，三个月、11.8 万亿 token。作者称该基座超过 Qwen3-30B-A3B 与 Nemotron-3.5-Lightning-30B-A3B，仅落后更大的 Qwen3.5-35B-A3B；轻量 SFT 后在四个 agent 基准上平均分称高于一些完整后训练模型。代码与模型计划开源在 GitHub GAIR-NLP/801-30B。",
+      "why": "公开的 RSI 工作几乎都停在后训练。若预训练阶段也能被 agent 循环改基础设施、数据和评估，基金会模型的生产组织方式会跟现在的「人盯着一次不可重复的大训练」不一样。数字和开源落地仍需对照仓库与复现。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2120890979985019017",
+      "short": "SoMem（agent 能否自己整理记忆）",
+      "url": "https://arxiv.org/abs/2611.11929",
+      "what": "香港城市大学与腾讯 Jarvis Lab 提出 self-organized memory（SoMem）：不靠预置记录格式，而让 agent 用互相链接的普通文档决定摘要什么、如何归题、何时改写，且每条摘要都链回原始交互作证据；运行时再派生时间、关系和近时视图。在 LoCoMo、BEAM-100K 和 LongMemEval-S 上，称比最强基线分别高 2.66、3.10 和 2.00 个百分点，记忆还可跨模型复用。代码 https://github.com/Qi202/SoMem。",
+      "why": "记忆系统常常是固定规则。这篇直接问「模型能不能自己组织长期记忆」，和昨日栏里 KAIST 指出记忆也可能拖后腿的观察是互补的：一边是记忆造成退化，一边是自组织记忆的收益。"
+    }
+  ],
+  "polfin": [
+    {
+      "angle": "geo_finance",
+      "arch_impact": "架构冲击：全球最重要的加速计算供应商进入创始人缺位的过渡期，对华出口合规、客户交付和路线图的对外口径改由临时 CEO 与新主席共同承担；国会若借此收紧许可，会直接改变芯片与云的跨境供给结构。",
+      "background": "昨日晨报与午间已报华尔街日报称董事会准备罢免黄仁勋，以及董事会定于周三晚开会、部分董事倾向由 CFO 克雷斯任临时 CEO。当时官方尚未宣布结果。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "英伟达 11 月 12 日新闻稿和同日向美国证交会上报的 8-K 写明：董事会于 11 月 11 日接受 Jen-Hsun Huang（黄仁勋）辞去总裁、首席执行官及董事职务，即时生效；任命自 2013 年起担任执行副总裁兼 CFO 的 Colette M. Kress（59 岁）为临时 CEO，她在过渡期继续兼任 CFO；董事会同步任命 1993 年起担任董事、前新思科技 CEO Harvey C. Jones（73 岁）为公司史上首位董事会主席，并启动常任 CEO 搜寻，会考虑内部和外部人选。新闻稿称 2027 财年第三季财报仍定于 11 月 17 日下午约 1:20 太平洋时间发布。彭博今晨简报称，黄仁勋还将失去约 1.08 亿美元未归属股票，下一步是在国会作证；路透今晨独家称，据两名知情人士，他还与另一名员工有过亲密关系。参议员沃伦表态称，辞职并不免除他本人、其他高管和公司就对华出口管制向国会作出说明的责任。公开追踪显示官方新闻稿约在 11 月 12 日 13:48 UTC（21:48 +08）露出，晚于昨日午间截稿。关注流今晨可见相关转述与讨论。",
+      "first_source_at": "2026-11-12 21:48 +08",
+      "hard_gate": true,
+      "id": "pf-20261113-01",
+      "links": [
+        {
+          "label": "英伟达新闻稿",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition"
+        },
+        {
+          "label": "SEC 8-K",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm"
+        }
+      ],
+      "title": "【续报/仍热】【硬门槛】英伟达官方：董事会已接受黄仁勋辞去总裁、CEO 及董事，CFO 克雷斯任临时 CEO，琼斯任史上首位董事会主席",
+      "wave": "晨间",
+      "why": "这是黄仁勋去留从「董事会准备罢免」变成公司正式交接。临时 CEO 与首任董事会主席同时落地，说明治理结构被重写；出口管制听证和常任 CEO 人选会继续牵动芯片政策与供应链预期。财报日程未改，不等于业务与合规风险已经收口。"
+    },
+    {
+      "angle": "industrial_policy",
+      "arch_impact": "架构冲击：对华先进芯片与制造设备的出口，可能从行政许可为主转向国会可审查的法定约束，并与国防授权捆绑；这会改变云厂商、模型公司和设备商的跨境供给路径。",
+      "background": "黄仁勋辞职后，国会把英伟达对华销售、新加坡公司 Megaspeed 被指转运以及商务部许可权重新放到必须通过的国防授权法案（NDAA，每年一度的国防政策法）谈判桌上。昨日已报参议员要求保全相关记录，以及实体清单争议。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "Semafor 11 月 12 日 16:04 EST（北京时间 11-13 05:04）报道，众院议长约翰逊与少数党领袖杰弗里都倾向加强对华芯片出口限制；参院多数党领袖图恩对 Semafor 称，国会进一步收紧限制有「很大概率」（high probability）。参院版 NDAA 已写入三项法案，但图恩与军委会主席威克承认两院最终文本尚未谈妥：Chip Security Act 意在核对已出口先进 AI 芯片的位置、防止走私；MATCH Act 意在收紧芯片制造设备及盟国转口漏洞；AI Overwatch Act 则把对「关切国家」的芯片许可更多按武器出口来监督，并给国会审查权。参院民主党领袖舒默要求三项都通过。Semafor 写道，Anthropic 已公开支持这三项；OpenAI 此前犹豫，近来态度转暖。彭博 11 月 12 日 21:35 UTC（05:35 +08）进一步称，据要求匿名的知情人士，OpenAI 本周已向议员确认将支持该一揽子——彭博同时写明这一立场当时尚未由 OpenAI 公开发布，故此处按知情人士转述，不以官方声明视之。关注流可见彭博官方帖。Semafor 并写 Megaspeed 购入约 40 亿美元芯片、被指转运中国、正受司法部调查；去年类似条款曾因英伟达、半导体行业和白宫压力在众院文本中被拿掉。两项报道都强调，最终能否进入今年 NDAA 仍取决于两院谈判及其他附加条款。",
+      "first_source_at": "2026-11-13 05:04 +08",
+      "hard_gate": true,
+      "id": "pf-20261113-02",
+      "links": [
+        {
+          "label": "Semafor",
+          "url": "https://www.semafor.com/article/11/12/2026/a-high-probability-congress-pushes-tighter-export-controls-following-nvidia-scandal"
+        },
+        {
+          "label": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2026-11-12/openai-joins-groundswell-of-support-for-ai-chip-control-measures"
+        },
+        {
+          "label": "彭博帖",
+          "url": "https://x.com/business/status/2121020243170496636"
+        }
+      ],
+      "title": "【硬门槛】Semafor：两党领袖推动将更严对华芯片出口限制写入国防授权法案；彭博称 OpenAI 已向议员确认支持该一揽子",
+      "wave": "晨间",
+      "why": "这是把「黄仁勋事件」立刻翻译成立法窗口。若三项或其中部分进入必须通过的国防授权法案，商务部对先进芯片和设备许可的裁量权会被改写，云和模型公司的对华与转口安排都要跟着改。OpenAI 若确实转而支持，行业游说阵线不再是铁板一块。"
+    },
+    {
+      "angle": "regulation",
+      "arch_impact": null,
+      "background": "围绕前沿模型灾难风险的公共争议已持续多时，但以加州不正当竞争法（Unfair Competition Law，禁止不公平竞争和损害公众的商业行为）要求法院直接冻结多家实验室继续开发更强模型，仍少见。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "Public Citizen 11 月 12 日声明，Irreplaceable Education Fund、Public Citizen、Heat Initiative 与 Alliance for Secure AI 已在加州旧金山县高等法院起诉 Anthropic、Google、Meta、OpenAI 和 SpaceXSI（SpaceX Super Intelligence）。诉状由前新泽西州检察长 Matthew Platkin 提交，主张这些公司在高管自己警告过灾难性风险的情况下仍加速开发更先进、可能脱离人类控制的系统，可能助长生物武器与大规模网络攻击，构成对公共安全的威胁和公共妨害；原告要求法院依加州不正当竞争法干预，冻结最危险系统的继续开发与部署。Politico 11 月 12 日 17:24 EST（北京时间 11-13 06:24）报道了同一诉讼，并指出此类案件也在检验：并未主张自己已被特定系统直接伤害的组织，能否就公共安全风险起诉。这是起诉，不是裁决。",
+      "first_source_at": "2026-11-13 06:24 +08",
+      "hard_gate": false,
+      "id": "pf-20261113-03",
+      "links": [
+        {
+          "label": "Public Citizen 声明",
+          "url": "https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/"
+        },
+        {
+          "label": "Politico",
+          "url": "https://www.politico.com/news/2026/11/12/nonprofits-sue-ai-companies-over-existential-risk-01161965"
+        }
+      ],
+      "title": "四家公益组织在旧金山县高等法院起诉 Anthropic、Google、Meta、OpenAI 与 SpaceXSI，要求冻结更先进 AI 系统的开发",
+      "wave": "晨间",
+      "why": "即便禁令很难立刻获得，这场诉讼把「公司自述的灾难风险」直接送进州法院，可能迫使被告在公开诉讼里解释安全承诺与继续训练更强模型之间的关系，并给国会和州监管提供新的政治抓手。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": "架构冲击：英伟达治理过渡与美国对华出口许可，将被绑到具体的国会听证日程上；许可裁量和供应链安排可能在听证前后被加速收紧。",
+      "background": "晨报已写黄仁勋正式辞职，以及两党推动把更严对华芯片出口限制写入国防授权法案。当时「国会作证」还只是后续可能，没有委员会正式发函和日程。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "路透报道，参议院银行委员会主席蒂姆·斯科特（Tim Scott，共和党，南卡罗来纳州）于 11 月 12 日（周四）发函，要求商务部长霍华德·卢特尼克（Howard Lutnick）和英伟达前 CEO 黄仁勋就公司近况、对华出口监管和国家安全问题作证。政治新闻网 Politico 和 NBC 写明：斯科特要求黄仁勋 12 月 3 日出庭、卢特尼克 12 月 10 日出庭；给黄仁勋的信写明，若他不自愿出席，委员会准备使用传票。NBC 引述卢特尼克发言人 Kristen Eichamer：部长已主动同意自愿出席。路透还称，众院外交事务委员会主席布赖恩·马斯特（Brian Mast）、众院中国问题特设委员会主席约翰·穆勒纳尔（John Moolenaar）和众院情报委员会主席里克·克劳福德（Rick Crawford）要求黄仁勋和英伟达总法律顾问蒂姆·特特（Tim Teter）分别在 12 月 1 日、2 日接受闭门问询，否则同样可能被传票，并请商务部副部长杰弗里·凯斯勒（Jeffrey Kessler）12 月 3 日作证。路透另引众院议长迈克·约翰逊称，在这起间谍风波后，国会对限制对华芯片出口正形成更多共识。关注流可见路透、Politico 官方帖。",
+      "first_source_at": "2026-11-13 08:36 +08",
+      "hard_gate": true,
+      "id": "pf-20261113-04",
+      "links": [
+        {
+          "label": "路透",
+          "url": "https://www.reuters.com/business/us-senate-banking-committee-chair-calls-jensen-huang-lutnick-testify-2026-11-13/"
+        },
+        {
+          "label": "Politico",
+          "url": "https://www.politico.com/live-updates/2026/11/12/congress/tim-scott-summons-jensen-huang-howard-lutnick-to-testify-over-nvidia-saga-01164124"
+        },
+        {
+          "label": "NBC（卢特尼克同意出庭）",
+          "url": "https://www.nbcnews.com/politics/congress/commerce-secretary-howard-lutnick-testify-pressure-nvidia-scandal-rcna609093"
+        },
+        {
+          "label": "路透：议长约翰逊",
+          "url": "https://www.reuters.com/world/china/speaker-johnson-says-congress-developing-consensus-limiting-chip-exports-china-2026-11-12/"
+        }
+      ],
+      "title": "【硬门槛】参院银行委主席斯科特发函要求黄仁勋、卢特尼克作证；卢特尼克已同意，黄仁勋若拒绝可能被传票",
+      "wave": "午间",
+      "why": "作证从传闻变成有日期的委员会程序，而且商务部长已答应出席。这意味着对华芯片许可、实体清单和黄仁勋个人关系，会在 12 月初进入公开和闭门两线质询，临时 CEO 与商务部都要在听证前准备对外口径。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": "架构冲击：负责出口管制的内阁官员若在风波中去职，许可裁量和实体清单节奏可能在过渡期被政治化，跨境芯片供给的政策不确定性会上升。",
+      "background": "昨日已有议员批评商务部未将相关中国公司列入实体清单。今日的新事实是：压力从国会延伸到白宫内部，并直接指向部长去留。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "《华尔街日报》11 月 13 日报道，随着黄仁勋与涉嫌为中国情报人员的关系持续冲击白宫，特朗普部分高级助手开始把这场政治麻烦的责任，转向商务部长霍华德·卢特尼克一人；报道标题写他正在为自己的职位辩护。路透在关于斯科特发函的报道中还引述两名知情人士称，白宫高级官员在另行讨论是否应把卢特尼克推出去。这些都是匿名官员和报纸报道，不是已经宣布的撤职。关注流可见《华尔街日报》在 12:12 +08 发出的官方帖。",
+      "first_source_at": "2026-11-13 12:12 +08",
+      "hard_gate": true,
+      "id": "pf-20261113-05",
+      "links": [
+        {
+          "label": "华尔街日报",
+          "url": "https://www.wsj.com/politics/policy/lutnick-fights-for-his-job-as-trump-aides-blame-him-for-nvidia-fallout-f179e424"
+        },
+        {
+          "label": "WSJ 帖",
+          "url": "https://x.com/WSJ/status/2121093813192065124"
+        }
+      ],
+      "title": "【硬门槛】《华尔街日报》：白宫助手把英伟达风波责任推给商务部长卢特尼克，称其正在为自己的职位辩护",
+      "wave": "午间",
+      "why": "若商务部长因这起出口与间谍风波而动摇，对华芯片许可的最终决策人可能在听证前就换人。这比多一篇批评报道更接近人事结果，也会改变实体清单和许可审查的短期预期。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": null,
+      "background": "新加坡近年多次处理与服务器和芯片转运有关的欺诈与洗钱案件。彭博和《海峡时报》把本案与可能含英伟达芯片、运往马来西亚的服务器出口联系在一起；官方新闻稿本身没有写芯片型号或目的地。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "新加坡警察部队 11 月 13 日 10:43（新加坡时间，与北京时间相同）发布新闻稿：第五名个人 Shi Bingzhe 及其任关键职务的两家公司，就与服务器采购欺诈相关的洗钱罪名被起诉。事发时他是 Superphi Pte Ltd 董事、NJ Global Financial Pte Ltd 首席运营官。检方认为，经他同意，两家公司在 2024 年 5 月至 2025 年 2 月间，通过 41 笔交易从 Aperia International Pte Ltd 购入共 917 台服务器，且有合理理由相信这些服务器是 Aperia 虚假陈述欺诈所得。他面临 41 项罪名；Superphi 和 NJ Global 分别面临 6 项和 35 项罪名。若定罪，他每项最高可处 10 年监禁或 50 万新元罚金，或并处；公司每项最高可处 100 万新元或犯罪所得两倍（以较高者为准）。新闻稿称，至此本案已有五名个人、六家公司被起诉。Aperia International 已于 2026 年 7 月 6 日按刑法第 424B 条被起诉。彭博引述《海峡时报》称，此案与可能含英伟达芯片、运往马来西亚的人工智能服务器出口有关；这一芯片与目的地表述来自媒体，不是警方新闻稿原文。",
+      "first_source_at": "2026-11-13 10:43 +08",
+      "hard_gate": true,
+      "id": "pf-20261113-06",
+      "links": [
+        {
+          "label": "新加坡警察部队新闻稿",
+          "url": "https://www.police.gov.sg/Media-Hub/News/2026/11/20261113_fifth_individual_and_two_additional_companies_charged_in_relation_to_the_case"
+        },
+        {
+          "label": "Bloomberg 转述",
+          "url": "https://www.bloomberg.com/news/articles/2026-11-13/singapore-charges-5th-person-linked-to-nvidia-chip-case-st-says"
+        }
+      ],
+      "title": "【硬门槛】新加坡警方：第五名个人 Shi Bingzhe 及两家其任职公司就服务器采购相关洗钱罪名被起诉，共涉 917 台服务器",
+      "wave": "午间",
+      "why": "这是执法层面对「服务器采购欺诈/洗钱」的又一次起诉扩围，说明这条供应链案件还在加人和加公司。媒体将其与英伟达芯片转口联系起来，但官方文本目前停在服务器与洗钱，阅读时需要把两者分开。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": null,
+      "background": "黄仁勋辞职的核心政治冲击，来自他与爱丽丝·黄（Alice Huang）的关系，以及美方怀疑她为中国从事情报活动。此前报道多用「涉嫌」或「怀疑」，缺少司法部负责人的当场定性。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "路透 11 月 12 日报道，美国司法部长托德·布兰奇（Todd Blanche）表示，司法部尚未就爱丽丝·黄——与英伟达前 CEO 黄仁勋有过婚外关系的中国女商人——是否为中国间谍作出结论。这是司法部负责人的公开表态，不是结案，也不是排除嫌疑。路透同时写明，中国否认她是间谍。关注流可见路透官方帖。",
+      "first_source_at": "2026-11-13 09:33 +08",
+      "hard_gate": false,
+      "id": "pf-20261113-07",
+      "links": [
+        {
+          "label": "路透",
+          "url": "https://www.reuters.com/world/china/us-justice-department-has-not-concluded-alice-huang-was-chinese-spy-blanche-says-2026-11-12/"
+        },
+        {
+          "label": "路透帖",
+          "url": "https://x.com/Reuters/status/2121093224018198903"
+        }
+      ],
+      "title": "【续报】美国司法部长布兰奇：司法部尚未就爱丽丝·黄是否为中国间谍作出结论",
+      "wave": "午间",
+      "why": "国会听证和出口立法都建立在「间谍疑云」之上，但司法部现在明确说还没有结论。这不会自动降低政治压力，却给后续报道和作证划了一条线：在侦查结束前，不宜把「已认定为间谍」写成既成事实。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": null,
+      "background": "黄仁勋辞职后，白宫和总统本人的表态会直接影响过渡期的政治温度，也会被市场当成对继任安排的杂音。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "彭博报道，总统唐纳德·特朗普说，黄仁勋打电话向他表达悔意，称这起导致他辞职的风波伤害了自己的家人；特朗普形容黄仁勋「如在地狱中」，并说他最担心的是妻子和家人。政治新闻网 Politico、Axios 和 TechCrunch 还报道，特朗普公开提议由苹果董事长蒂姆·库克（Tim Cook）接任英伟达 CEO，并写下类似「一个传奇接替一个传奇」的表述。这是总统的口头建议，不是英伟达董事会的任命，也没有库克本人接受的官方确认。关注流可见彭博官方帖。",
+      "first_source_at": "2026-11-13 09:20 +08",
+      "hard_gate": false,
+      "id": "pf-20261113-08",
+      "links": [
+        {
+          "label": "Politico（提议库克）",
+          "url": "https://www.politico.com/news/2026/11/12/trump-apple-tim-cook-nvidia-01162128"
+        },
+        {
+          "label": "Axios",
+          "url": "https://www.axios.com/2026/11/12/trump-jensen-huang-resign-tim-cook-apple"
+        },
+        {
+          "label": "彭博法务（悔意）",
+          "url": "https://news.bloomberglaw.com/ip-law/trump-says-huang-told-him-he-regrets-scandals-toll-on-family"
+        },
+        {
+          "label": "彭博帖",
+          "url": "https://x.com/business/status/2121054199303536750"
+        }
+      ],
+      "title": "【续报】特朗普称黄仁勋打电话向他表达对家人受到伤害的悔意，并公开提议由苹果的蒂姆·库克接任英伟达 CEO",
+      "wave": "午间",
+      "why": "总统一边转述黄仁勋的悔意，一边点名另一家科技巨头的董事长做继任，会把一场公司董事会的交接进一步政治化。对克雷斯的临时任期和董事会的正式搜寻来说，这是来自白宫的额外变量，而不是可执行的任命。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": null,
+      "background": "英伟达是本轮人工智能资本开支的核心供应商，许多云厂商、基金和养老金对它都有直接或间接敞口。创始人突然离职后，有议员开始从金融稳定而不是只从出口管制的角度提问。",
+      "channel": "双通路",
+      "detail": true,
+      "facts": "路透报道，参议院军事委员会资深民主党议员杰克·里德（Jack Reed）要求国会评估英伟达是否「大到不能倒」（too big to fail，通常用来形容一家机构倒闭可能牵动整个金融系统），以及其失败会否扰乱美国银行和信贷市场。报道称，他提到英伟达为人工智能生态提供融资安排的复杂性，并指出许多美国人通过退休和养老账户间接持有相关风险。这是要求做评估，不是已经启动的正式系统重要性认定。关注流可见路透官方帖。",
+      "first_source_at": "2026-11-13 08:35 +08",
+      "hard_gate": false,
+      "id": "pf-20261113-09",
+      "links": [
+        {
+          "label": "路透帖",
+          "url": "https://x.com/Reuters/status/2121039107040108550"
+        },
+        {
+          "label": "路透稿转载",
+          "url": "https://www.investing.com/news/world-news/us-democratic-senator-wants-assessment-of-whether-nvidia-is-too-big-to-fail-5023163"
+        }
+      ],
+      "title": "参议员里德要求评估英伟达是否「大到不能倒」，以及其失败会否冲击银行和信贷市场",
+      "wave": "午间",
+      "why": "一旦「系统重要性」被认真拿来讨论，英伟达就不再只是一家芯片公司的治理危机，而可能触发对集中度、融资链和养老金敞口的监管提问。评估本身不会立刻改变资本规则，但会把金融稳定视角带进这场风波。"
+    }
+  ],
+  "schema": "qianji.briefing.daily.v1",
+  "sources": [
+    "X Home（关注流；晨间 6 页约 05:29–07:45 +08；午间续扫 6 页约 07:49–12:31 +08）",
+    "公开 X search_posts_all / search_news",
+    "公开检索与站外印证（晨间：Google / DeepMind 官方博文与模型卡、英伟达新闻稿与 SEC 8-K、Semafor、Bloomberg、Politico、Public Citizen、Huntback、N-able、arxiv；午间：OpenAI Cyber at the Frontier、台积电 6-K/中央社、CNBC/AP/卫报、Bloomberg/AP 币安与联邦调查局、G1/CNN Brasil、路透/Politico/NBC/WSJ 听证与卢特尼克去留、新加坡警察部队新闻稿、司法部长布兰奇路透、Politico/Axios 库克提议、里德路透）",
+    "公开 X @dair_ai",
+    "GitHub Trending daily HTML + GitHub API enrich",
+    "GitStock daily API（日键 2026-11-12 UTC）",
+    "GH Archive 缺源"
+  ],
+  "summary": "参院银行委主席蒂姆·斯科特发函要求黄仁勋、商务部长卢特尼克出席听证，卢特尼克已同意；《华尔街日报》称白宫助手把英伟达风波责任推给卢特尼克。安全与产品侧，OpenAI 推出 Daybreak 自动攻防工具，台积电确认部分员工个人数据在外部网站曝光但称自有系统未见入侵，微软 365 出现全球性长时间中断。",
+  "timezone": "Asia/Shanghai",
+  "updated_at": "2026-11-13T12:47:32+08:00",
+  "wave": "午间"
+}
