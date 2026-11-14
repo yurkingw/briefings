@@ -1,0 +1,331 @@
+{
+  "date": "2026-11-14",
+  "github": {
+    "meta": {
+      "archive": "not_scanned",
+      "newcomers_count": 0,
+      "note": "周六盘中例行不重扫论文与 GitHub，待次日晨报。本波未写入涨星或新锐。",
+      "rising_count": 0
+    },
+    "newcomers": [],
+    "rising": []
+  },
+  "metrics": {
+    "finsec": 1,
+    "gh_newcomers": 0,
+    "gh_rising": 0,
+    "hard_gate": 3,
+    "home_related": "1/10",
+    "news": 7,
+    "news_detail": 7,
+    "news_detail_morning": 0,
+    "news_detail_noon": 7,
+    "news_morning": 0,
+    "news_noon": 7,
+    "papers": 0,
+    "polfin": 3,
+    "polfin_detail": 3,
+    "polfin_detail_morning": 0,
+    "polfin_detail_noon": 3,
+    "polfin_morning": 0,
+    "polfin_noon": 3
+  },
+  "news": [
+    {
+      "arch_impact": null,
+      "background": "OpenAI 已推出 dots agent 平台。用户常用 ChatGPT 做商品比较，但 agent 代付一直缺一套与卡组织、银行现有体系兼容的安全付款方式。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "OpenAI 于 2026-11-13 发布官方博文《Introducing ChatGPT Wallet》。产品先通过 dots 向美国 ChatGPT Pro 订阅用户开放，与美国运通、Mastercard、Visa 合作。用户绑定卡片后，agent 可代为购物，但每笔须先展示商品、总额和所用卡，并用 Face ID 或指纹等安全校验批准。批准后，卡组织提供支付代币（替代真实卡号、安全码和有效期），真实卡信息不会分享给商户或 agent；官方称符合条件的争议仍可保留原卡奖励和保障。开放初期有意控制范围，以便与商户、银行一起改进兼容性。CNBC 时间戳为美东 11-13 10:00（北京时间 23:00），周五午间与周报均未覆盖。官方 X 账号检索未见到同步主帖，以官网为准。",
+      "finsec": false,
+      "first_source_at": "2026-11-13 23:00 +08",
+      "hard_gate": false,
+      "id": "n-20261114-01",
+      "links": [
+        {
+          "label": "官方博文",
+          "url": "https://openai.com/index/introducing-chatgpt-wallet"
+        },
+        {
+          "label": "隐私声明",
+          "url": "https://openai.com/policies/chatgpt-wallet-privacy-notice/"
+        },
+        {
+          "label": "CNBC",
+          "url": "https://www.cnbc.com/2026/11/13/openai-chatgpt-wallet-dot-purchases.html"
+        }
+      ],
+      "title": "OpenAI 推出 ChatGPT Wallet：dots agent 可在用户逐笔生物识别批准后，用支付代币代付，不向商户或 agent 暴露真实卡号",
+      "wave": "午间",
+      "why": "这是把「agent 代购」做成可接入现有卡组织清算的产品，而不只是演示。对企业收款和风控来说，要识别「由 agent 发起、但经用户生物识别授权」的交易；对用户则是第一次把支付凭证交给对话式 agent 的明确开关。每笔仍须人批，不等于代理权限已经被锁死，只是把责任边界写进了支付流程。"
+    },
+    {
+      "arch_impact": null,
+      "background": "Gemini 的 Personal Intelligence 已能连接 Gmail、Photos、YouTube 和 Search，按用户已有应用数据做个性化回答。支付与账单是下一层更敏感的个人数据。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "Google 官方博文日期为 2026-11-13，称美国所有 Gemini 应用用户可把 Google Wallet 接入 Personal Intelligence，用于基于消费习惯的回答，并可选通过 Plaid 把信用卡和银行账户链到 Wallet 以获得更深洞察。用户可在对话里用 @Google Wallet 问支出、订阅和预算，官方举例包括生成现金流图表、找出仍在扣费的订阅、按去年礼品和旅行支出建议节日预算。官方写明：Gemini 只能读取账户信息，不能划转、管理或投资资金；可随时在 Connected Apps 开关。同期提供 Memory Summary，方便查看和编辑 Gemini 记住的偏好。@Google 主帖时间为 2026-11-14 01:27 +08（https://x.com/Google/status/2121293823837921433），回复帖补充了只读限制并链到博文。",
+      "finsec": false,
+      "first_source_at": "2026-11-14 01:27 +08",
+      "hard_gate": false,
+      "id": "n-20261114-02",
+      "links": [
+        {
+          "label": "官方博文",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/"
+        },
+        {
+          "label": "Google 主帖",
+          "url": "https://x.com/Google/status/2121293823837921433"
+        },
+        {
+          "label": "安全说明回复",
+          "url": "https://x.com/Google/status/2121293826908197347"
+        }
+      ],
+      "title": "Google：美国 Gemini 应用用户可把 Google Wallet 接入 Personal Intelligence，只读账单与消费，不能划转资金",
+      "wave": "午间",
+      "why": "这是把支付和银行数据送进通用助手的一次正式消费级开关，覆盖面是美国全部 Gemini 应用用户，而不是单一实验群。官方强调只读，但连接 Plaid 后模型可见的账单粒度会明显上升，隐私与提示注入之外，还要看用户能否真正审阅 Memory Summary、以及误答会不会被当成财务建议。"
+    },
+    {
+      "arch_impact": null,
+      "background": "PostgreSQL 定期为所有受支持大版本发布安全更新。本报本周晨报、盘中和周报均未写入此次修复。官方发布于 11 月 12 日，本波公开检索与安全媒体报道将其重新推上桌面。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "PostgreSQL 全球开发组于 2026-11-12 发布 18.7、17.12、16.16、15.20、14.25 及 19 RC 2。官方发行说明列出关闭 52 项安全缺陷。其中 CVE-2026-6460（CVSS 8.8）是 ALTER ... SET DATA TYPE 等路径上的类型混淆：拥有对象创建或 DDL 权限的已认证用户，可能以运行数据库的操作系统用户身份执行代码；受影响为上述修复版本之前的发行。官方安全页还列出多条同等 8.8 分的代码执行类缺陷（如输出参数类型混淆、并行 RECORD typmod 释放后使用、pg_restore 校验不足等）。利用需要先通过认证并具备对象创建等权限，不是未认证远程一击。The Hacker News 于 11-14 01:00 +08 报道了此次补丁批次。",
+      "finsec": false,
+      "first_source_at": "2026-11-12（官方发布日）",
+      "hard_gate": false,
+      "id": "n-20261114-03",
+      "links": [
+        {
+          "label": "发行说明",
+          "url": "https://www.postgresql.org/about/news/postgresql-187-1712-1616-1520-1425-and-19-rc-2-released-3442/"
+        },
+        {
+          "label": "CVE-2026-6460",
+          "url": "https://www.postgresql.org/support/security/CVE-2026-6460/"
+        }
+      ],
+      "title": "PostgreSQL 发布 18.7 等修复版本，关闭 CVE-2026-6460 等 52 项安全缺陷；其中多项可让已认证对象创建者在数据库主机上执行代码",
+      "wave": "午间",
+      "why": "这是一次覆盖所有受支持大版本的集中修复，里面有多条可在数据库主机上执行代码的高分缺陷。对把 PostgreSQL 暴露给多租户或不可信角色的团队，补丁窗口已经打开两天；只靠「必须先登录」并不能当成足够的缓解，因为许多业务库本身就给应用角色开了建表或 DDL 权限。"
+    },
+    {
+      "arch_impact": null,
+      "background": "AMD SEV-SNP 的设计目标是：即使不信任云厂商的虚拟机监控程序，租户也能在机密虚拟机里跑敏感负载。过去已有多轮针对该隔离边界的研究。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "研究者本周公开两项攻击。Mior（CVE-2026-0462，CVSS 4.0 评分 5.9）需恶意虚拟机监控程序，并还要控制 BIOS；通过把平台路由改到攻击者控制的设备内存，可使 SEV-SNP 的内存保护未正确初始化，进而读写客户虚拟机内存并伪造证明报告。研究者站点写明 2026-02-12 报告、11-10 解禁，并在 Zen 5 EPYC 上演示。AMD 公告 amd-sb-3059 计划在 12 月向 OEM 提供平台初始化固件。Skyfall（CVE-2026-40671，评分 4.9）由 ETH Zurich 与 Google 等团队提出，利用 VMRUN 出错路径把客户寄存器状态带进缓存再采样，实验室中可恢复寄存器甚至演示磁盘加密密钥提取；AMD 公告 amd-sb-3061 称 8 月 12 日已有微码，平台固件目标为 11 月。The Hacker News 于 11-13 23:29 +08 报道。云租户无法自行给宿主机打这些补丁，须等云厂商部署固件。",
+      "finsec": false,
+      "first_source_at": "2026-11-10（研究者解禁日）；本波见 2026-11-13 23:29 +08",
+      "hard_gate": false,
+      "id": "n-20261114-04",
+      "links": [
+        {
+          "label": "AMD Mior 公告",
+          "url": "https://www.amd.com/en/resources/product-security/bulletin/amd-sb-3059.html"
+        },
+        {
+          "label": "AMD Skyfall 公告",
+          "url": "https://www.amd.com/en/resources/product-security/bulletin/amd-sb-3061.html"
+        },
+        {
+          "label": "Mior 研究页",
+          "url": "https://xca-attacks.github.io/mior/"
+        },
+        {
+          "label": "Skyfall 研究页",
+          "url": "https://skyfall-attack.github.io/"
+        },
+        {
+          "label": "The Hacker News",
+          "url": "https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html"
+        }
+      ],
+      "title": "研究者公开 Mior、Skyfall：恶意宿主机可突破 AMD SEV-SNP 机密虚拟机；官方跟踪为 CVE-2026-0462、CVE-2026-40671，云客户须等厂商固件",
+      "wave": "午间",
+      "why": "机密计算把「不信任云厂商」写成产品承诺。这两项攻击都需要已经控制宿主机，不是普通租户互打，但它们说明：在固件到位前，这份承诺对恶意或被攻破的云控制面并不成立。用 SEV-SNP 承载密钥、模型权重或监管数据的机构，现在要把「供应商固件是否已装」当成可核查的控制，而不是默认已隔离。"
+    },
+    {
+      "arch_impact": null,
+      "background": "PHP2Shell（CVE-2026-109618、CVE-2026-109619）是影响 Check Point 安全网关网关门户等组件的未认证远程代码执行，官方 10 月 23 日已提供热修。本报此前未写入其实网利用结果。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "Check Point 于 2026-11-12 发布安全公告：已观察到 PHP2Shell 与本地提权 CVE-2026-123039（Gaia OS Dynamic CLI，CVSS 7.8）被串联利用，先获初始访问再升到 root 并做持久化。官方称 10 月 23 日已有针对网关和管理端的修复，后来纳入 11 月 Jumbo 热修；观察到的失陷「只有单一地区、数十套未打补丁系统」，受影响客户已被实时通知。利用活动约从 10 月 30 日持续到 11 月 4 日；「有限数量」的案件还出现破坏性活动，官方称带意识形态动机。The Hacker News（11-13 16:08 +08）和 BleepingComputer 进一步写：攻击者部署 TSGA 后门，并经 SSH 跳到 VMware ESXi，使用 destroy_v6 等擦除工具。关注流可见 @SecurityWeek 于 11-14 11:40 +08 转述。",
+      "finsec": false,
+      "first_source_at": "2026-11-12（官方公告日）；关注流 2026-11-14 11:40 +08",
+      "hard_gate": false,
+      "id": "n-20261114-05",
+      "links": [
+        {
+          "label": "Check Point 公告",
+          "url": "https://blog.checkpoint.com/security/security-advisory-active-exploitation-of-php2shell-and-local-privilege-escalation/"
+        },
+        {
+          "label": "技术分析",
+          "url": "https://research.checkpoint.com/2026/php2shell-exploitation-on-check-point-gateway/"
+        },
+        {
+          "label": "The Hacker News",
+          "url": "https://thehackernews.com/2026/11/hackers-exploit-php2shell-flaws-in.html"
+        },
+        {
+          "label": "SecurityWeek 帖",
+          "url": "https://x.com/SecurityWeek/status/2121448032415744463"
+        }
+      ],
+      "title": "Check Point 确认 PHP2Shell 加本地提权已在实网利用，影响单一地区数十套未打补丁网关；媒体称部分攻击打到 ESXi 擦除",
+      "wave": "午间",
+      "why": "漏洞补丁在攻击开始前一周就已放出，但未打补丁的网关仍被打到 root，说明边界设备的补丁纪律一旦滞后，就会直接变成内网和虚拟化层的入口。官方把规模说成「数十套、单一地区」，不等于可以当成局部事件忽略：同类设备若还裸奔 Mobile Access 门户，暴露面是一样的。"
+    },
+    {
+      "arch_impact": null,
+      "background": "硬件钱包供应链里，二次销售和第三方卖场一直是植入风险最高的环节。Trezor 10 月已就 CryptoBilis 售出设备发出提醒，本报此前未写入其调查结论。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "Trezor 于 2026-11-12 更新调查博文：在已检查设备中，确认三台 Trezor Safe 5 含硬件植入，均购自转售商 CryptoBilis（Tokopedia、Shopee 及直接购买），购买窗口为 2026-08-20 至 09-23；其他转售商和其他型号尚未发现植入。植入是加在主板和屏幕之间的额外电路板，只旁路复制屏幕显示和输入，不改设备固件或安全元件；识别到恢复词或通行口令后加密，经移动网络发到攻击者服务器，连不上就缓存重试。官方称目前没有客户报失资金。11 月 11 日发布的固件 2.13.1 可阻止已发现的植入继续采集，但若备份词在升级前已被采走，更新无法补救，CryptoBilis 买家仍须把资金迁到新钱包和新助记词。Trezor 称已将转售网络砍掉约 80%，并从 2026 年 3 月起为 CryptoBilis 买家提供更换设备。The Hacker News 于 11-13 21:57 +08 报道。",
+      "finsec": true,
+      "first_source_at": "2026-11-12（官方调查更新）",
+      "hard_gate": false,
+      "id": "n-20261114-06",
+      "links": [
+        {
+          "label": "Trezor 调查更新",
+          "url": "https://trezor.io/blog/news/our-cryptobilis-investigation-what-we-found-and-what-weve-changed"
+        },
+        {
+          "label": "此前告警",
+          "url": "https://trezor.io/blog/news/implant-reported-in-a-trezor-sold-by-cryptobilis"
+        }
+      ],
+      "title": "Trezor 确认三台经转售商 CryptoBilis 售出的 Safe 5 遭硬件植入，可窃取助记词并经移动网络外传",
+      "wave": "午间",
+      "why": "这是厂商自己确认的实物供应链植入，而不是软件漏洞。对自托管用户，风险发生在「第一次在屏幕上看到助记词」时；对渠道管理，它说明官方经销名单本身就是安全边界。固件可以让这一批植入失效，但不能挽回已经泄露的备份。"
+    },
+    {
+      "arch_impact": null,
+      "background": "英伟达董事会已接受黄仁勋辞去总裁、CEO 及董事，CFO 科莱特·克雷斯（Colette Kress）任临时 CEO。继任人选此前只有猜测，没有被多家主流媒体同时点名的接触对象。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "产业",
+      "facts": "英国《金融时报》报道，英伟达董事会已接触 Arm 首席执行官勒内·哈斯（Rene Haas），将其作为黄仁勋继任人选之一；哈斯是若干候选人中的一位，不意味着已被正式要约或会接受。路透 11-14 02:40 +08 转述该报道。克雷斯仍为临时 CEO。彭博随后报道，英伟达淡化公司已在接触潜在 CEO 人选的猜测，称仍在选择猎头机构的过程中。本报未独立证实接触细节，两说并陈。",
+      "finsec": false,
+      "first_source_at": "2026-11-14 02:40 +08",
+      "hard_gate": false,
+      "id": "n-20261114-07",
+      "links": [
+        {
+          "label": "FT",
+          "url": "https://www.ft.com/content/2a64f698-46dd-4178-a3f4-4c5f4c0a0926"
+        },
+        {
+          "label": "路透转述",
+          "url": "https://www.reuters.com/business/media-telecom/arms-haas-approached-by-nvidia-board-part-ceo-search-ft-reports-2026-11-13/"
+        },
+        {
+          "label": "彭博（物色传闻为时过早）",
+          "url": "https://www.bloomberg.com/news/articles/2026-11-13/nvidia-says-speculation-on-new-ceo-candidates-is-premature"
+        }
+      ],
+      "title": "FT：英伟达董事会已接触 Arm CEO 勒内·哈斯作为黄仁勋继任人选之一；彭博称公司表示物色传闻为时过早",
+      "wave": "午间",
+      "why": "点名哈斯会把英伟达的治理过渡，从「临时 CEO 顶上」推进到具体的外部候选人；同时也立刻遇到公司「现在谈人选还太早」的对外口径。对依赖英伟达路线图的云和车厂来说，真正要看的是董事会有没有启动正式搜寻，以及临时管理层能不能在听证和出口管制压力下把供应计划说清楚。"
+    }
+  ],
+  "papers": [],
+  "polfin": [
+    {
+      "angle": "geo_finance",
+      "arch_impact": "架构冲击：英伟达内部调查、国会向总法取证，以及任何与 Megaspeed 有关的出口合规审查，都会被这条内部通信记录牵引；对外口径不能再只停在辞职声明。",
+      "background": "黄仁勋已于本周辞职并承认对妻子不忠。此前报道多聚焦董事会调查与国会问询，尚未写出他如何向公司律师和高管解释这段关系。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "路透 2026-11-14 独家报道（页面时间 12:25 UTC，约 08:25 +08；官方帖 12:30 +08），引述两名知情人士及路透审阅的内部通信：前 CEO 黄仁勋曾向包括总法律顾问蒂姆·特特（Tim Teter）和首席营销官艾莉森·瓦贡费尔德（Alison Wagonfeld）在内的多名高管，隐瞒他与中国商人 Alice Huang 关系的性质。路透称只审阅了 2026 年 10 月的部分往来、未引用原文：当时面对媒体问询，黄仁勋在两条信息里把往来说成与客户的常规商务互动，并在其他信息里强调与 Megaspeed 的往来属例行性质。知情人士称，2025 年秋《纽约时报》报道他与 Alice Huang 公开会面后，他也曾向部分高管说明往来，但未将其描述为婚外情，并讨论过对时报采取法律行动；路透称英伟达和黄仁勋最终未起诉，时报发言人说未收到法律要求。路透写明尚未独立核实 Alice Huang 是否为中国政府工作，北京否认她是间谍。",
+      "first_source_at": "2026-11-14 08:25 +08",
+      "hard_gate": true,
+      "id": "pf-20261114-01",
+      "links": [
+        {
+          "label": "路透",
+          "url": "https://www.reuters.com/world/china/ex-nvidia-ceo-misled-top-lawyer-affair-with-chinese-businesswoman-sources-say-2026-11-14/"
+        },
+        {
+          "label": "路透帖",
+          "url": "https://x.com/Reuters/status/2121460711599517786"
+        }
+      ],
+      "title": "【硬门槛】路透独家：黄仁勋曾向总法律顾问特特、首席营销官瓦贡费尔德等隐瞒与 Alice Huang 关系性质",
+      "wave": "午间",
+      "why": "这把问题从「CEO 私生活」推进到「公司律师和高管当时得到了什么陈述」。总法特特正是众院要求闭门问询的对象之一；如果当时内部口径把关系写成常规客户往来，董事会独立调查和后续作证都要重新核对这一段记录。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": "架构冲击：对华芯片出口管制短期内更可能在国会和商务部程序里收紧，而不是在峰会联合声明里被交换；企业不能把「领导人会晤」理解成许可政策会自动放松或自动摊牌。",
+      "background": "特朗普即将赴深圳参加亚太经合组织峰会，并与习近平举行会晤。黄仁勋辞职与所谓间谍风波是否会被带到峰会桌上，此前只有猜测。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "CNBC 报道（发布于美东 11-13 19:11，北京时间 11-14 08:11），多名美国高官在周五背景说明会上说，特朗普不打算在即将与习近平的会晤中提起前英伟达 CEO 黄仁勋与疑似中国情报人员 Alice Huang 的问题。一名官员说「英伟达这事不应当对行程有实质影响」，并称与中方谈判时「不会拿美国出口管制做交易，也不预期此行任何会谈会涉及这一点」。被问到会否向习近平提起对 Alice Huang 的指控时，该官员说经济议题将聚焦贸易协议的执行；「正在进行的国家安全调查，此刻大概不会向中方通报」。另一名官员说：「我不预期总统会提起 Alice Huang 的问题。」CNBC 还写明：官员称埃隆·马斯克（Elon Musk）将陪同特朗普前往 11 月 18–19 日在深圳举行的亚太经合组织峰会；白宫稍早表示，特朗普计划在那里与习近平、俄罗斯总统普京举行三边会晤。中国方面已称对 Alice Huang 的指控没有根据。《金融时报》亦作了「不会在峰会上提起」的报道。",
+      "first_source_at": "2026-11-14 08:11 +08",
+      "hard_gate": true,
+      "id": "pf-20261114-02",
+      "links": [
+        {
+          "label": "CNBC",
+          "url": "https://www.cnbc.com/2026/11/13/trump-nvidia-huang-china.html"
+        },
+        {
+          "label": "FT",
+          "url": "https://www.ft.com/content/6034dd16-8c7d-4b3e-bc4e-942a6c8529dd"
+        },
+        {
+          "label": "Politico",
+          "url": "https://www.politico.com/news/2026/11/13/trump-jensen-huang-xi-apec-01166331"
+        }
+      ],
+      "title": "【硬门槛】美官员：特朗普不打算在访华峰会上向习近平提起英伟达与 Alice Huang 问题；马斯克将同行",
+      "wave": "午间",
+      "why": "这是行政部门首次给出相对明确的峰会议程边界：出口管制和这起调查不会被当成与习近平交易的筹码，至少在公开口径上如此。国会听证仍在推进，白宫选择把问题留在国内程序里，等于把外交接触和出口执法暂时拆开。马斯克同行和三边会晤安排，会让这次行程的商业与安全含义进一步放大，但官员未说明他此行的具体任务。"
+    },
+    {
+      "angle": "geo_finance",
+      "arch_impact": "架构冲击：Megaspeed 及类似中间商是否补登实体清单，已成为内阁公开争论事项；依赖转口或第三方集成的供应链，要按「清单可能补登」做预案，而不能只看峰会日程。",
+      "background": "周五盘中已写白宫助手把英伟达风波责任推向商务部长卢特尼克，以及卢特尼克已同意出席参院听证。当时还没有内阁成员就「要不要把 Megaspeed 列入管制清单」给出具体对账。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "路透报道，美国财政部长斯科特·贝森特（Scott Bessent）指责商务部未能对英伟达合作伙伴 Megaspeed 实施出口管制，并称财政部赞成对 Megaspeed 加以限制。路透官方帖最早可见于 11-14 02:30 +08。CNBC 同期视频用「商务部未将 Megaspeed 列入出口管制清单」做标题，点名商务部这一侧的决定权。本报未直接听到贝森特讲话原文，以上按路透和 CNBC 的转述核对，不另加未核到的部委名单。这与周五《华尔街日报》所写的「助手归咎卢特尼克」是同一条问责线的增量：从匿名归咎，变成财政部长点名政策结果。",
+      "first_source_at": "2026-11-14 02:30 +08",
+      "hard_gate": true,
+      "id": "pf-20261114-03",
+      "links": [
+        {
+          "label": "路透",
+          "url": "https://www.reuters.com/business/retail-consumer/bessent-says-treasury-favored-limits-megaspeed-2026-11-13/"
+        },
+        {
+          "label": "路透帖",
+          "url": "https://x.com/Reuters/status/2121407855156765072"
+        }
+      ],
+      "title": "【硬门槛】财长贝森特指责商务部未对英伟达合作伙伴 Megaspeed 实施出口管制，并称财政部赞成限制",
+      "wave": "午间",
+      "why": "实体清单和出口许可掌握在商务部工业与安全局。财政部长公开说「我们赞成限制、商务部没做」，等于把跨部门分歧摆到台面上，也会成为卢特尼克 12 月听证的先行题目。对还在走 Megaspeed 或类似中间商渠道的云与芯片交易，这提高了清单被补登、许可被复查的可能。"
+    }
+  ],
+  "schema": "qianji.briefing.daily.v1",
+  "sources": [
+    "X Home（关注流，2 页，约 10:11–12:32 +08；更早官方信号由公开检索补）",
+    "公开 X search_posts_all / search_news",
+    "公开检索与站外印证（OpenAI 官方博文、Google 官方博文、PostgreSQL 安全公告与发行说明、AMD 安全公告与研究者站点、Check Point 安全公告、Trezor 官方博客、FT/路透、CNBC、路透独家）"
+  ],
+  "summary": "今日无晨报（周六）。午间主线：OpenAI 推出 ChatGPT Wallet，供 dots agent 在用户逐笔生物识别批准后代付；Google 把 Google Wallet 接入 Gemini Personal Intelligence。安全侧，PostgreSQL 发布含 CVE-2026-6460 等 52 项修复，AMD 机密虚拟机防护被 Mior / Skyfall 打穿（云客户须等宿主机固件），Check Point 网关 PHP2Shell 已出现实网利用，Trezor 确认三台经 CryptoBilis 售出的 Safe 5 遭硬件植入。英伟达董事会据报已接触 Arm CEO Haas 作为继任人选。政治金融上，路透独家称黄仁勋曾向总法律顾问特特等隐瞒与 Alice Huang 关系性质；美官员称特朗普不打算在峰会上向习近平提起此事；财长贝森特指责商务部未对 Megaspeed 实施出口管制，并称财政部赞成限制。",
+  "timezone": "Asia/Shanghai",
+  "updated_at": "2026-11-14T12:46:11+08:00",
+  "wave": "午间"
+}
