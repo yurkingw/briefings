@@ -364,7 +364,7 @@
     "finsec": 2,
     "gh_newcomers": 7,
     "gh_rising": 10,
-    "hard_gate": 4,
+    "hard_gate": 5,
     "home_related": "6/16",
     "news": 9,
     "news_detail": 9,
@@ -373,12 +373,12 @@
     "news_morning": 6,
     "news_noon": 3,
     "papers": 2,
-    "polfin": 7,
-    "polfin_detail": 7,
+    "polfin": 8,
+    "polfin_detail": 8,
     "polfin_detail_morning": 4,
-    "polfin_detail_noon": 3,
+    "polfin_detail_noon": 4,
     "polfin_morning": 4,
-    "polfin_noon": 3
+    "polfin_noon": 4
   },
   "news": [
     {
@@ -818,6 +818,31 @@
       "title": "【硬门槛】马来西亚通信监管机构向 Anthropic 索取信息，涉针对选民的 AI 政治影响行动",
       "wave": "午间",
       "why": "这是把模型被用于选举操控的行业报告，推进到目标国监管机构的正式问询。后续是否立案，仍取决于 Anthropic 的答复与证据。"
+    },
+    {
+      "angle": "出口管制",
+      "arch_impact": null,
+      "background": "晨间已报英伟达第四季度展望不假设任何来自中国的数据中心计算收入。市场仍在追问对华获批产品此前实际卖了多少、现在是否还在出货。",
+      "channel": "公开信号（彭博法律；财报电话会转述）",
+      "detail": true,
+      "facts": "彭博法律 11-18 04:10 UTC（12:10 +08）报道，临时 CEO Colette Kress 在周二分析师财报电话会上说：第三季度向中国出售了 24 亿美元获许可的 Hopper 数据中心产品；但“指引不再包含任何获许可的 Hopper 数据中心产品，我们也不再向中国发运获许可的 Hopper 数据中心产品。” 报道指出，尽管美方去年已批准向中国销售该型号的一个版本，公司仍停止出货。本报未打开完整付费页，以彭博法律可见段落及 Business Standard、CNBC-TV18 等转述为准。此条只进政治金融，不与晨间财报要闻双挂。",
+      "finsec": false,
+      "first_source_at": "彭博法律标注 2026-11-18 04:10 UTC（12:10 +08）；讲话来自 11-17 财报电话会",
+      "hard_gate": true,
+      "id": "pf-20261118-08",
+      "links": [
+        {
+          "label": "彭博法律",
+          "url": "https://news.bloomberglaw.com/international-trade/nvidia-stops-selling-ai-chips-to-china-despite-us-approval"
+        },
+        {
+          "label": "Business Standard 转述",
+          "url": "https://www.business-standard.com/world-news/nvidia-stops-shipping-hopper-ai-chips-to-china-despite-us-approval-126111800204_1.html"
+        }
+      ],
+      "title": "【续报/硬门槛】临时 CEO Kress：Q3 对华售出 24 亿美元获批 Hopper 数据中心产品，并称已停止出货",
+      "wave": "午间",
+      "why": "这把晨间的“展望不含中国数据中心计算收入”推进到两个更硬的事实：上季仍有 24 亿美元获批对华销售，以及管理层明确宣布已停止出货。对渠道库存、授权销售和政策摇摆都有直接影响。"
     }
   ],
   "schema": "qianji.briefing.daily.v1",
@@ -831,8 +856,8 @@
     "GH Archive 缺源",
     "午间增量：X Home 续扫 + 公开搜索；站外印证（众议院中国特别委员会声明、Axios、Wiz / Aikido、Equinor 官网、JPCERT/CC 快报、The Star / 海峡时报、路透电讯）"
   ],
-  "summary": "主线仍是 OpenAI 正式推出 GPT-6.2 Astra 与 Sol，以及英伟达在人事动荡中交出财年第三季度业绩。午间增量：众议院中国特别委员会、外交事务委员会与情报委员会 11-17 声明，黄仁勋已同意于 12 月 1 日、英伟达总法律顾问 Tim Teter 于 12 月 2 日接受三委员会闭门书面记录问询；路透根据章程与持股数据指出，黄仁勋仍可按代理投票准入规则最多提名两名董事。马来西亚通信及多媒体委员会（MCMC）已向 Anthropic 索取更多信息，涉该司此前报告的针对马来西亚选民的政治影响行动。安全面，Wiz 披露微软 PyPI 包 agent-framework 的 1.26.1 与 1.26.2 被上传凭据窃取程序，已隔离，根因尚未确认；挪威能源公司 Equinor 官方称侦测到针对部分 IT 系统的进行中网络攻击，暂无数据被窃迹象、生产未受影响；JPCERT/CC 就 Java4Shell（CVE-2026-114938）发布快报，转述研究者已在 Keycloak、Jira、Confluence、Jenkins 等应用上实证无需认证的远程代码执行，截至 11 月 18 日尚未确认实际攻击利用。晨间已报：Astra / Sol 即日在 ChatGPT Work、Codex 与 API 开放；CISA 要求立即修补 Java4Shell，KEV 新增 Puppet Enterprise RCE；WSJ 称 SEC 对英伟达民事调查（SEC 拒评、公司未回应）；董事会不打算请回黄仁勋；FinCEN 发布强化 CDD 拟议规则；英伟达展望不计入中国数据中心计算收入。",
+  "summary": "主线仍是 OpenAI 正式推出 GPT-6.2 Astra 与 Sol，以及英伟达在人事动荡中交出财年第三季度业绩。午间增量：众议院中国特别委员会、外交事务委员会与情报委员会 11-17 声明，黄仁勋已同意于 12 月 1 日、英伟达总法律顾问 Tim Teter 于 12 月 2 日接受三委员会闭门书面记录问询；路透根据章程与持股数据指出，黄仁勋仍可按代理投票准入规则最多提名两名董事。马来西亚通信及多媒体委员会（MCMC）已向 Anthropic 索取更多信息，涉该司此前报告的针对马来西亚选民的政治影响行动。临时 CEO Colette Kress 在财报电话会上说，第三季度向中国出售了 24 亿美元获许可的 Hopper 数据中心产品，并称已停止此类出货、指引不再计入。安全面，Wiz 披露微软 PyPI 包 agent-framework 的 1.26.1 与 1.26.2 被上传凭据窃取程序，已隔离，根因尚未确认；挪威能源公司 Equinor 官方称侦测到针对部分 IT 系统的进行中网络攻击，暂无数据被窃迹象、生产未受影响；JPCERT/CC 就 Java4Shell（CVE-2026-114938）发布快报，转述研究者已在 Keycloak、Jira、Confluence、Jenkins 等应用上实证无需认证的远程代码执行，截至 11 月 18 日尚未确认实际攻击利用。晨间已报：Astra / Sol 即日在 ChatGPT Work、Codex 与 API 开放；CISA 要求立即修补 Java4Shell，KEV 新增 Puppet Enterprise RCE；WSJ 称 SEC 对英伟达民事调查（SEC 拒评、公司未回应）；董事会不打算请回黄仁勋；FinCEN 发布强化 CDD 拟议规则；英伟达展望不计入中国数据中心计算收入。",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-18T13:02:00+08:00",
+  "updated_at": "2026-11-18T13:18:00+08:00",
   "wave": "午间"
 }
