@@ -361,24 +361,24 @@
     ]
   },
   "metrics": {
-    "finsec": 1,
+    "finsec": 2,
     "gh_newcomers": 7,
     "gh_rising": 10,
-    "hard_gate": 2,
-    "home_related": "4/10",
-    "news": 6,
-    "news_detail": 6,
+    "hard_gate": 4,
+    "home_related": "6/16",
+    "news": 9,
+    "news_detail": 9,
     "news_detail_morning": 6,
-    "news_detail_noon": 0,
+    "news_detail_noon": 3,
     "news_morning": 6,
-    "news_noon": 0,
+    "news_noon": 3,
     "papers": 2,
-    "polfin": 4,
-    "polfin_detail": 4,
+    "polfin": 7,
+    "polfin_detail": 7,
     "polfin_detail_morning": 4,
-    "polfin_detail_noon": 0,
+    "polfin_detail_noon": 3,
     "polfin_morning": 4,
-    "polfin_noon": 0
+    "polfin_noon": 3
   },
   "news": [
     {
@@ -534,6 +534,77 @@
       "title": "CISA KEV 新增 Puppet Enterprise 反序列化 RCE（CVE-2026-115731）",
       "wave": "晨间",
       "why": "KEV 入选意味着 CISA 认定已见实网利用，联邦机构有补丁截止日期。Puppet 常用于配置与自动化，一旦服务端被控，影响会连到大量管理节点。"
+    },
+    {
+      "arch_impact": "CI 与云工作负载若自动拉取最新 PyPI 版本，会在解释器启动时暴露令牌。需要把官方包名也纳入供应链监控，并检查是否安装过 1.26.1 / 1.26.2。",
+      "background": "Microsoft Agent Framework 的官方 PyPI 包 agent-framework 是常用的代理开发组件。Wiz 称其周下载约 4.1 万、月下载接近 20 万。",
+      "channel": "公开信号（Wiz / Aikido）",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "Wiz 写：2026-11-17 20:35 UTC（11-18 04:35 +08）有人在 PyPI 上传 1.26.1，约 21:08 UTC 再传 1.26.2；约 21:30 UTC 两版本已不可用。安装后会在 site-packages 放入 .pth 文件，Python 一启动就运行凭据窃取程序，不必 import 该包。收集范围包括含 TOKEN、SECRET、AZURE、GITHUB 等字样的环境变量、本机凭据文件，以及 Azure 与 GitHub Actions 相关令牌，并外发到 webhook.site。Wiz 称该外发地址属于免费档、可记录的请求有上限，但已发出的请求里仍可能含有效凭据。微软 GitHub 仓库没有 python-1.26.1 标签或相应发布；1.26.1 只有 wheel，且仍依赖 agent-framework-core 1.26.0，表明可能并非项目常规发布流程。根因尚未确认。Wiz 提到今年早些时候另一个微软 Python 包 durabletask 曾因 PyPI 令牌被盗而失陷，但未把两事关联。目前未见微软官方事件说明。安全版本为 1.26.0。Aikido 与 StepSecurity 有相互印证。晨间未覆盖。",
+      "finsec": false,
+      "first_source_at": "2026-11-17 20:35 UTC（11-18 04:35 +08）",
+      "hard_gate": false,
+      "id": "n-20261118-07",
+      "links": [
+        {
+          "label": "Wiz",
+          "url": "https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi"
+        },
+        {
+          "label": "Aikido",
+          "url": "https://www.aikido.dev/blog/two-malicious-agent-framework-releases-hit-pypi-in-33-minutes"
+        }
+      ],
+      "title": "【补收】微软 PyPI 包 agent-framework 出现恶意版本，启动即窃取云与 CI 凭据",
+      "wave": "午间",
+      "why": "这是打在高下载量官方包名上的供应链投毒，作用点在解释器启动而不是业务 import，云与 CI 凭据可能被直接带走。根因未明，不能写成“微软源码仓库已被植入”。若环境安装过 1.26.1 或 1.26.2，应固定回 1.26.0、重建环境并轮换可能暴露的密钥。"
+    },
+    {
+      "arch_impact": null,
+      "background": "Equinor 是挪威主要能源公司，向欧洲多国供应油气。",
+      "channel": "公开信号（公司官网）",
+      "detail": true,
+      "domain": "其他安全",
+      "facts": "公司官网新闻标注 2026-11-17 18:55 CET（约 11-18 01:55 +08）称，已侦测到针对部分 IT 系统的进行中网络攻击，并已调集资源以制止攻击并恢复完整性。声明写：暂无数据被窃迹象，攻击未影响运营与生产，正通报相关当局，有新情况再更新。同一页面另有 19:40 CET 的更新时间戳。晨间未收录。攻击方、手法与受影响系统范围尚未公布。",
+      "finsec": false,
+      "first_source_at": "2026-11-17 18:55 CET（约 11-18 01:55 +08）",
+      "hard_gate": false,
+      "id": "n-20261118-08",
+      "links": [
+        {
+          "label": "Equinor 声明",
+          "url": "https://www.equinor.com/news/20261711-equinor-detected-cyber-attack"
+        }
+      ],
+      "title": "【补收】Equinor：侦测到针对部分 IT 系统的进行中网络攻击",
+      "wave": "午间",
+      "why": "这是欧洲关键能源企业的正式网攻声明。目前只确认部分 IT 系统受影响、生产未停，不宜外推到工业控制网或已造成数据泄露。"
+    },
+    {
+      "arch_impact": "与晨间相同：需把 JDK/运行时当作隐藏资产排查。午间新增的是 CERT 对多款中间件无认证 RCE 实证的正式转述，以及 ARM64 通常不受影响、需 AVX-512 VBMI 等条件。",
+      "background": "晨间已报 CISA 要求立即修补 CVE-2026-114938（Java4Shell），并记下关注流转述 Calif 声称可在 Jira、Confluence、Jenkins、Keycloak 上不登录利用，当时未打开原报告。",
+      "channel": "公开信号（JPCERT 官方快报与官方帖）",
+      "detail": true,
+      "domain": "其他安全",
+      "facts": "JPCERT/CC 2026-11-18 发布 CyberNewsFlash，转述安全研究组织 Calif 于 11-17 披露：漏洞在 OpenJDK Base64 解码加速路径的内存损坏。JPCERT 写明，Calif 称已在 Keycloak、Atlassian Jira、Confluence、Jenkins 等应用上实证无需认证的远程代码执行，并公开了用于复现内存损坏的概念验证代码。截至 11 月 18 日，JPCERT 尚未确认该漏洞已在实际攻击中被利用；利用需满足特定条件，包括 x86-64 上支持 AVX-512 VBMI 的处理器，并称 ARM64 不受影响。影响范围包括 OpenJDK 17.0.6 之后的脆弱版本，以及 Oracle、Amazon Corretto、Eclipse Temurin、微软构建、Azul Zulu、Red Hat 等多种发行版。OpenJDK 与 Oracle 已于 11-17 发布相关安全信息与更新。若不能立即升级，快报转述可用临时 JVM 选项关闭该加速路径，但可能影响性能，须在本环境验证。本报不转载利用细节。",
+      "finsec": true,
+      "first_source_at": "JPCERT 快报日期 2026-11-18；@jpcert 帖 2026-11-18 12:43 +08",
+      "hard_gate": false,
+      "id": "n-20261118-09",
+      "links": [
+        {
+          "label": "JPCERT 快报",
+          "url": "https://www.jpcert.or.jp/newsflash/2026111801.html"
+        },
+        {
+          "label": "官方帖",
+          "url": "https://x.com/jpcert/status/2122913612381692364"
+        }
+      ],
+      "title": "【续报】JPCERT/CC：多款 Java 应用上已实证 Java4Shell 无需认证即可远程执行代码",
+      "wave": "午间",
+      "why": "把晨间尚待核实的产品点名，推进到国家级 CERT 的正式转述：多款常见企业应用上已有无需登录的代码执行实证。同时 JPCERT 明确尚未看到实网利用，修补优先级仍然高，但不要把“已大规模在野利用”写成既成事实。"
     }
   ],
   "papers": [
@@ -668,6 +739,85 @@
       "title": "【硬门槛】FinCEN 发布强化客户尽职调查拟议规则，落实行政令 14406",
       "wave": "晨间",
       "why": "这是美国反洗钱规则的正式修订征询，直接改受益所有人核验的频次与可收集范围。对银行和清算机构，意味着 KYC 流程与系统收口要随之调整，但目前还是拟议规则。"
+    },
+    {
+      "angle": "国会",
+      "arch_impact": null,
+      "background": "黄仁勋辞职后，国会要求了解先进芯片是否流入受限制实体，以及公司与相关人物的角色。11 月 12 日，众议院外交事务、情报与中国特别委员会主席已致函要求出席。",
+      "channel": "公开信号（委员会声明、Axios；参院部分为 Politico 转述）",
+      "detail": true,
+      "facts": "三委员会主席 John Moolenaar、Brian Mast、Rick Crawford 在 2026-11-17 声明中说，前 CEO 黄仁勋与英伟达总法律顾问 Tim Teter 已自愿同意接受三委员会的书面记录问询（transcribed interviews，即闭门、留有书面记录的问询）。声明写黄仁勋将于 12 月 1 日、Teter 于 12 月 2 日到场。Axios 引英伟达声明称：“We look forward to meeting with the Chairmen on December 2.” 问到黄仁勋方面时，Axios 写其代表指向他当日关于是否回归 CEO 的声明，未另就问询本身置评。另有 Politico 报道称他同意出席参议院银行委员会作证；斯科特此前曾请求 12 月 3 日公开听证，但截至本波未见正式排期确认，日期仍以众议院声明为准。晨间未覆盖。",
+      "finsec": false,
+      "first_source_at": "众议院中国特别委员会声明日期 2026-11-17；Axios 同日报道",
+      "hard_gate": true,
+      "id": "pf-20261118-05",
+      "links": [
+        {
+          "label": "委员会声明",
+          "url": "https://chinaselectcommittee.house.gov/media/press-releases/jensen-huang-and-nvidia-agree-to-appear-before-congress"
+        },
+        {
+          "label": "Axios",
+          "url": "https://www.axios.com/2026/11/17/nvidia-jensen-huang-congress-testify-dates"
+        }
+      ],
+      "title": "【续报/硬门槛】黄仁勋同意 12 月 1 日接受三家众议院委员会闭门问询，英伟达总法 12 月 2 日到场",
+      "wave": "午间",
+      "why": "这是把人事与出口争议推进到国会正式问询时间表。闭门书面记录不是公开听证会，但前 CEO 与总法分日到场，说明调查已进入取证阶段。"
+    },
+    {
+      "angle": "治理",
+      "arch_impact": null,
+      "background": "董事会已表示不打算请回黄仁勋，市场在追问他离开 CEO 后还剩多少制度性影响力。",
+      "channel": "公开信号（路透电讯；官方 X 帖 11-18 08:45 +08）",
+      "detail": true,
+      "facts": "路透 11-17 16:59 ET（约 11-18 05:59 +08）根据代理投票与公司文件报道：连续三年持有不少于 3% 投票权的股东，可提名董事并进入公司代理材料，通常在 6 月年会上表决；符合条件的股东最多可提名两名。LSEG 数据显示，黄仁勋及相关实体持股已超过三年、目前约 3.5%，因此符合该门槛。被提名人须符合独立董事等章程条件，股东仍需投票通过，公司也可因违反章程等原因排除候选人。路透称英伟达与黄仁勋代表未回应置评。这是文件推出来的权利，不是已经提名，也不保证获得席位。",
+      "finsec": false,
+      "first_source_at": "2026-11-17 16:59 ET（约 11-18 05:59 +08）",
+      "hard_gate": false,
+      "id": "pf-20261118-06",
+      "links": [
+        {
+          "label": "路透稿（Investing 转载）",
+          "url": "https://www.investing.com/news/stock-market-news/former-nvidia-ceo-jensen-huang-can-nominate-two-directors-to-company-board-filings-show-5034176"
+        },
+        {
+          "label": "路透官方帖",
+          "url": "https://x.com/Reuters/status/2122853628436164666"
+        }
+      ],
+      "title": "【续报】路透：按公司章程与持股，黄仁勋仍可最多提名两名董事",
+      "wave": "午间",
+      "why": "在董事会明确不请回的同时，创始人仍可能通过代理投票准入影响下届董事会构成。这不是新的监管决定，而是章程与持股带来的持续性治理变量。"
+    },
+    {
+      "angle": "监管",
+      "arch_impact": null,
+      "background": "Anthropic 曾在 9 月报告称，其 Claude 被用于一套主要针对马来西亚选民的商业化选举操控平台，并已终止相关账户。",
+      "channel": "关注流（@business）+ 公开报道（The Star / 海峡时报 / 彭博）",
+      "detail": true,
+      "facts": "马来西亚通讯部 11-17 书面国会答复（The Star 11-18 08:50 MYT，《海峡时报》与彭博同日转述）称，马来西亚通信及多媒体委员会（MCMC）正在向 Anthropic 索取更多信息与澄清，以便在充分证据基础上评估后续行动。部里转述 Anthropic 的说法：海外实体用 Claude 开发定向系统、假社交账号和伪造新闻网站，并指向伊斯坦布尔的 BBS Bilisim Teknolojileri；相关 Claude 账户已终止并采取缓解措施。MCMC 将根据管辖权与《1998 年通信及多媒体法》《2025 年在线安全法》等决定是否采取进一步行动，必要时与执法、安全机构和平台合作。通讯部还称数字部正在起草人工智能治理法案。目前是索信息，不是已经处罚。",
+      "finsec": false,
+      "first_source_at": "The Star 见报 2026-11-18 08:50 MYT；国会书面答复日期 2026-11-17",
+      "hard_gate": true,
+      "id": "pf-20261118-07",
+      "links": [
+        {
+          "label": "The Star",
+          "url": "https://www.thestar.com.my/news/nation/2026/11/18/mcmc-seeks-details-from-anthropic-over-alleged-ai-use-in-political-manipulation-targeting-msia-parliament-told"
+        },
+        {
+          "label": "海峡时报",
+          "url": "https://www.straitstimes.com/asia/se-asia/malaysia-seeks-details-from-anthropic-over-ai-influence-campaign"
+        },
+        {
+          "label": "彭博官方帖",
+          "url": "https://x.com/business/status/2122901401193927095"
+        }
+      ],
+      "title": "【硬门槛】马来西亚通信监管机构向 Anthropic 索取信息，涉针对选民的 AI 政治影响行动",
+      "wave": "午间",
+      "why": "这是把模型被用于选举操控的行业报告，推进到目标国监管机构的正式问询。后续是否立案，仍取决于 Anthropic 的答复与证据。"
     }
   ],
   "schema": "qianji.briefing.daily.v1",
@@ -678,10 +828,11 @@
     "公开 X @dair_ai",
     "GitHub Trending daily HTML + GitHub API enrich",
     "GitStock daily API（日键 2026-11-17 UTC）",
-    "GH Archive 缺源"
+    "GH Archive 缺源",
+    "午间增量：X Home 续扫 + 公开搜索；站外印证（众议院中国特别委员会声明、Axios、Wiz / Aikido、Equinor 官网、JPCERT/CC 快报、The Star / 海峡时报、路透电讯）"
   ],
-  "summary": "主线是 OpenAI 正式推出 GPT-6.2 Astra 与 Sol，以及英伟达在人事动荡中交出财年第三季度业绩。Astra 被定位为面向最难项目的前沿模型，Sol 为日常高效模型，即日起在 ChatGPT Work 与 Codex 向 Plus、Pro、Enterprise、Edu 开放，API 同步提供；官方称 Astra 在 Agents’ Last Exam 上高于 GPT-6 Astra 5.2 分、成本不到三分之一，并达到准备框架（Preparedness Framework，模型风险分级）下网络安全 Critical、生化为 High，且是首个外部发布即达到 AI 自我改进 High 的模型。Google 官方称 Gemini 4 Hydrogen 已在 Search 全球上线；微软 Ignite 同期发布 Copilot Workspaces、Code 2 与 Microsoft Perception 正式可用。安全面，CISA 要求立即修补 Oracle Java 危急漏洞 Java4Shell（CVE-2026-114938）；KEV 目录同日新增 Perforce Puppet Enterprise 反序列化远程代码执行（CVE-2026-115731）。政经硬门槛是《华尔街日报》援引知情人士称 SEC 已对英伟达启动民事调查、关注信息披露是否误导投资者（SEC 拒评、公司未回应）；董事会一致接受黄仁勋辞职且不打算请回，黄仁勋则称收到大量请其回归的支持。官方财报展望第四季度营收约 1300 亿美元，并写明不假设任何来自中国的数据中心计算收入。财政部 FinCEN 同日发布强化客户尽职调查拟议规则，落实行政令 14406。",
+  "summary": "主线仍是 OpenAI 正式推出 GPT-6.2 Astra 与 Sol，以及英伟达在人事动荡中交出财年第三季度业绩。午间增量：众议院中国特别委员会、外交事务委员会与情报委员会 11-17 声明，黄仁勋已同意于 12 月 1 日、英伟达总法律顾问 Tim Teter 于 12 月 2 日接受三委员会闭门书面记录问询；路透根据章程与持股数据指出，黄仁勋仍可按代理投票准入规则最多提名两名董事。马来西亚通信及多媒体委员会（MCMC）已向 Anthropic 索取更多信息，涉该司此前报告的针对马来西亚选民的政治影响行动。安全面，Wiz 披露微软 PyPI 包 agent-framework 的 1.26.1 与 1.26.2 被上传凭据窃取程序，已隔离，根因尚未确认；挪威能源公司 Equinor 官方称侦测到针对部分 IT 系统的进行中网络攻击，暂无数据被窃迹象、生产未受影响；JPCERT/CC 就 Java4Shell（CVE-2026-114938）发布快报，转述研究者已在 Keycloak、Jira、Confluence、Jenkins 等应用上实证无需认证的远程代码执行，截至 11 月 18 日尚未确认实际攻击利用。晨间已报：Astra / Sol 即日在 ChatGPT Work、Codex 与 API 开放；CISA 要求立即修补 Java4Shell，KEV 新增 Puppet Enterprise RCE；WSJ 称 SEC 对英伟达民事调查（SEC 拒评、公司未回应）；董事会不打算请回黄仁勋；FinCEN 发布强化 CDD 拟议规则；英伟达展望不计入中国数据中心计算收入。",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-18T08:01:31+08:00",
-  "wave": "晨间"
+  "updated_at": "2026-11-18T13:02:00+08:00",
+  "wave": "午间"
 }
