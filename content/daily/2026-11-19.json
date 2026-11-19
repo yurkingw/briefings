@@ -307,24 +307,24 @@
     ]
   },
   "metrics": {
-    "finsec": 3,
+    "finsec": 4,
     "gh_newcomers": 4,
     "gh_rising": 10,
-    "hard_gate": 1,
-    "home_related": "4/10",
-    "news": 9,
-    "news_detail": 6,
+    "hard_gate": 3,
+    "home_related": "7/13",
+    "news": 10,
+    "news_detail": 7,
     "news_detail_morning": 6,
-    "news_detail_noon": 0,
+    "news_detail_noon": 1,
     "news_morning": 9,
-    "news_noon": 0,
+    "news_noon": 1,
     "papers": 2,
-    "polfin": 1,
-    "polfin_detail": 1,
+    "polfin": 3,
+    "polfin_detail": 3,
     "polfin_detail_morning": 1,
-    "polfin_detail_noon": 0,
+    "polfin_detail_noon": 2,
     "polfin_morning": 1,
-    "polfin_noon": 0
+    "polfin_noon": 2
   },
   "news": [
     {
@@ -551,6 +551,35 @@
       "title": "OpenAIDevs：可等待工作流最高省 40% token",
       "wave": "晨间",
       "why": "昨日发布的主办模型补了一条延迟换成本的官方定价，不单列新产品。"
+    },
+    {
+      "arch_impact": "银行与交易网站大量间接依赖 PHP（包括供应商门户与内容系统）。即使不是默认配置可打，也需要在补丁窗口内完成版本确认与灰度升级。",
+      "background": "PHP 是 WordPress、Laravel 等大量网站的服务端语言。上月刚修过 PHP2Shell（CVE-2026-109618 / CVE-2026-109619）无认证远程代码执行，并已出现有限实网利用。",
+      "channel": "关注流 + 公开信号（php.net 官方公告 / The Hacker News）",
+      "detail": true,
+      "domain": "其他网络安全",
+      "facts": "PHP 安全团队于 2026-11-18 17:09 UTC（11-19 01:09 +08）在官网发布《Upcoming Critical PHP Security Release》：定于 11-19 14:00–14:30 UTC（22:00–22:30 +08）发布覆盖所有受支持版本的安全更新，属常规四周周期；最高严重度为 CRITICAL，但官方写明关键级问题需要非默认配置或少见部署。技术细节与修复版本号将随包发布；截至午间扫描时包尚未发布，本报不以媒体猜测的 CVE 编号代替官方披露。The Hacker News 11-19 12:36 +08 转发预告，并称预计包含会话上传进度路径上的远程代码执行（文中写 CVE-2026-115560，条件为运行时把 session.serialize_handler 切到 php，且 session.upload_progress.enabled 为默认开启）；该编号与利用条件尚未出现在 php.net 公告中，只作媒体引述。THN 建议在升级前设置 session.upload_progress.enabled=0；PHP 官网 10-23 已就会话上传进度发过信息性建议，当时是针对已修复的 CVE-2026-109619 缓解措施。晨报未收录该预告。",
+      "finsec": true,
+      "first_source_at": "php.net 公告时间 2026-11-18 17:09 UTC（11-19 01:09 +08）",
+      "hard_gate": false,
+      "id": "n-20261119-10",
+      "links": [
+        {
+          "label": "php.net 公告",
+          "url": "https://www.php.net/archive/2026.php#2026-11-18-1"
+        },
+        {
+          "label": "The Hacker News",
+          "url": "https://thehackernews.com/2026/11/php-warns-of-critical-security-flaws.html"
+        },
+        {
+          "label": "THN 帖",
+          "url": "https://x.com/TheHackersNews/status/2123274064446017575"
+        }
+      ],
+      "title": "PHP：今日将发布覆盖所有受支持版本的关键安全更新",
+      "wave": "午间",
+      "why": "影响面是所有受支持版本，发布时间就在今日晚间。关键级虽被官方限定为少见配置，但上月 PHP2Shell 已证明同类问题可以很快进入利用工具链，运维应准备好在窗口内升级。"
     }
   ],
   "papers": [
@@ -598,6 +627,68 @@
       "title": "民主党议员要求 Cantor Fitzgerald 提供记录，查 Lutnick 家族英伟达持仓与实体清单决策",
       "wave": "晨间",
       "why": "把出口管制的笔、家族券商的英伟达仓位，以及南亚数据中心通道，扣在同一条政治—金融链上。调查结果会影响商务部实体清单是否终于落笔，也会测试内幕利益冲突规则能否约束实权部门首长。"
+    },
+    {
+      "angle": "出口管制/峰会外交",
+      "arch_impact": "若 2–3 年后放行 Blackwell，等于在下一代芯片出现后，把当前旗舰档重新定义为可对华销售的「上一代」。金融机构与云厂商对东南亚算力布局、实体清单与许可预期都要按这个时间尺度重估。",
+      "background": "黄仁勋因与被美方指认为中国情报人员的黄乐（Alice Huang）关系曝光后辞职。特朗普此时在深圳出席亚太经合组织（APEC）峰会，并刚与习近平晚宴。",
+      "channel": "关注流 + 公开信号（Bloomberg / Anadolu）",
+      "detail": true,
+      "facts": "特朗普在深圳接受 Fox News 采访（节目于 11-18 播出）。彭博 11-19 报道：他称与习近平「友谊很好」，淡化英伟达间谍丑闻；在被问及是否与习近平讨论黄仁勋时说，「我们没有讨论这件事。我可能只是简短提了一下，因为这是悲剧…他是如此杰出的人。」被问及黄乐是否间谍、是否构成国家安全威胁时，他说「我没听说她是间谍」「她是买芯片的商人」；并说「任何一个从中国来的漂亮女人，他们都把她当成间谍」。同一采访中，他就英伟达 Blackwell 芯片对华销售称：「两三年后，如果我还在，我会说，可以了，现在可以卖 Blackwell，因为他们会有别的东西。」并称目前只允许销售他认为已半过时的 H200，Blackwell「非常新」，「再过一年就会过时」。彭博两篇专文与 Anadolu、路透等转述同一采访。这是总统口头表态，不是已经签署的出口许可。",
+      "finsec": false,
+      "first_source_at": "Bloomberg 帖 2026-11-19 12:25 +08（Blackwell）与 12:40 +08（淡化丑闻）",
+      "hard_gate": true,
+      "id": "pf-20261119-02",
+      "links": [
+        {
+          "label": "彭博·淡化丑闻",
+          "url": "https://www.bloomberg.com/news/articles/2026-11-19/trump-hails-great-ties-with-xi-downplays-nvidia-spy-scandal"
+        },
+        {
+          "label": "彭博·Blackwell",
+          "url": "https://www.bloomberg.com/news/articles/2026-11-19/trump-suggests-us-can-sell-blackwell-chips-to-china-in-future"
+        },
+        {
+          "label": "Anadolu",
+          "url": "https://www.aa.com.tr/en/americas/-trump-says-he-might-have-referred-just-briefly-to-nvidia-s-jensen-huang-in-talks-with-chinas-xi/4129930"
+        },
+        {
+          "label": "@business",
+          "url": "https://x.com/business/status/2123275113562792260"
+        }
+      ],
+      "title": "特朗普淡化英伟达间谍丑闻，并称两三年后可考虑对华销售 Blackwell",
+      "wave": "午间",
+      "why": "把间谍案的政治降温，与未来放开 Blackwell 对华销售的时间表，放在同一场峰会采访里。这会直接冲击国会正在推进的限制法案，也会被市场读成对芯片出口政策的前瞻口径。"
+    },
+    {
+      "angle": "出口管制/供应链",
+      "arch_impact": "远程租用东南亚机架、再把算力提供给中国大型科技公司的结构，正在被新的出口规则收紧。银行、云厂商和投资机构若为这类机房融资或投保，需要重新评估最终用户与军方关联风险。",
+      "background": "Megaspeed 被指在东南亚机房囤积英伟达高端芯片并向中国客户出租算力。晨报已记民主党就 Lutnick 家族持仓与实体清单决策取证；本条是《纽约时报》对新的供应链关系调查。",
+      "channel": "关注流 + 公开信号（纽约时报 / 作者帖 / 转载）",
+      "detail": true,
+      "facts": "Paul Mozur、Adam Satariano 报道（网址日期 2026-11-18，作者帖 11-19 09:07 +08）：三位知情人士称，阿里巴巴是 Megaspeed 的客户与资金后盾；Megaspeed 数年来采购了超过 40 亿美元的英伟达芯片。阿里巴巴 2017 年参与创办之江实验室（Zhejiang Lab）；该实验室与中国军方有关联，研究方向包括将人工智能用于自动化网络攻击和战争推演。现任主任王坚曾任阿里巴巴 CTO，与黄仁勋有长期交情。报道写明：尚不能确定经 Megaspeed 供应的芯片是否从阿里巴巴流入该实验室。报道还称，2022 年英伟达销售团队将阿里巴巴介绍给黄乐（此介绍最早由 The Information 报道）；并称阿里子公司与 Megaspeed 的协议约定，若 Megaspeed 无法履约，服务器、芯片和知识产权将回到阿里巴巴。本报未能打开纽约时报付费墙全文，事实依据作者公开帖、t.co 跳转到的纽约时报网址，以及 Business Standard / DNYUZ 对原文的转载，并在此标明。",
+      "finsec": false,
+      "first_source_at": "作者帖 2026-11-19 09:07 +08；网址日期 2026-11-18",
+      "hard_gate": true,
+      "id": "pf-20261119-03",
+      "links": [
+        {
+          "label": "纽约时报",
+          "url": "https://www.nytimes.com/2026/11/18/technology/nvidia-alibaba-china-military.html"
+        },
+        {
+          "label": "作者帖",
+          "url": "https://x.com/paulmozur/status/2123221602833948753"
+        },
+        {
+          "label": "Business Standard 转载",
+          "url": "https://www.business-standard.com/world-news/how-nvidia-chips-came-within-reach-of-chinese-military-despite-restrictions-126111900113_1.html"
+        }
+      ],
+      "title": "纽约时报：阿里巴巴为 Megaspeed 客户与资金后盾，并与之江实验室共同经办",
+      "wave": "午间",
+      "why": "把阿里巴巴、Megaspeed、军方关联实验室和英伟达销售介绍放在同一条链上，正是华盛顿担心的「一层层外包后芯片靠近军队」情景。报道本身没有完成「芯片已进入实验室」的举证，但这已足够把出口管制的尽职调查问题再往上推一层。"
     }
   ],
   "schema": "qianji.briefing.daily.v1",
@@ -606,10 +697,11 @@
     "公开 X search_posts_all / search_news",
     "公开检索与站外印证（Anthropic 官网、Google Neon 博文、nginx 安全公告与 Wiz、CISA KEV、众议院司法少数党新闻稿 / Reuters / Politico / FT、CERT-FR / The Hacker News 对 F5 K000164058 的转述、美联社、arXiv）",
     "公开 X @dair_ai",
-    "GitHub Trending daily HTML + API enrich；GitStock 日键 2026-11-18 UTC；GH Archive 缺源"
+    "GitHub Trending daily HTML + API enrich；GitStock 日键 2026-11-18 UTC；GH Archive 缺源",
+    "午间公开检索与站外印证（php.net 安全预告与 The Hacker News、Bloomberg / Anadolu 对特朗普 Fox News 采访的转述、纽约时报 Mozur / Satariano 专文及 Business Standard 转载）；关注流 Home 午间 3 页，实际窗 10:05–12:47 +08，缺口 07:40–10:05 +08 由公开搜索补，不假装扫全"
   ],
-  "summary": "主线是 Anthropic 将 IPO 定价为每股 83 美元，代号 ANT，预计 2026-11-19 在纳斯达克开盘；以及 Google 推出 Gemini 4 家族中位型号 Neon。Anthropic 官方公告：发行 9.80 亿股 A 类普通股，其中公司出售 9.5635 亿股，现有股东出售约 2365 万股；预计 11-20 交割，承销商有 30 天期权再购最多 1.47 亿股。按官方发行价与公司出售股数粗算，公司侧募资约 794 亿美元（未扣费用）；美联社报道估值为 1.5 万亿美元，官方公告未写市值。Gemini 4 Neon 定位在 Carbon 与 Hydrogen 之间，官方称 Artificial Analysis Intelligence Index（xhigh）第 3、61 分，Vals Index 第 2（70.9%），API 定价每百万 token 输入 3 美元、输出 15 美元，1M 上下文，即日起向 Gemini API / AI Studio、Gemini for business，以及 Pro/Ultra 订阅的 Gemini 应用与 Antigravity 放量；Cursor 同步接入。政经硬门槛是众议院司法与外交事务委员会少数党领袖 Raskin、Meeks、Kamlager-Dove 致函 Cantor Fitzgerald 董事长 Brandon Lutnick，要求提供记录，以查清商务部长 Howard Lutnick 在其家族公司仍持有大量英伟达股票期间，是否阻碍将涉嫌向中国转运受限芯片的 Megaspeed 列入实体清单。安全面，nginx 官方将 CVE-2026-123007 定为 HTTP/2 流控内存损坏（major），受影响 1.9.5–1.31.8，请升级到 1.31.9 或 1.30.7；Wiz 另称可造成无认证远程代码执行。CISA 于 11-18 将 4 条已在野利用漏洞列入 KEV：Apache Axis（CVE-2026-90436）、REDCap（CVE-2026-90817）、LiteLLM（CVE-2026-40217）、群晖 DSM（CVE-2024-10441）。F5 同日发布 BIG-IP 数据面 6 个危急漏洞（公告 K000164058），在特定 iRule / APM 配置下可使 TMM 崩溃，并可能被用于远程代码执行，目前只有工程热修复、无变通办法。",
+  "summary": "主线是 Anthropic 将 IPO 定价为每股 83 美元，代号 ANT，预计 2026-11-19 在纳斯达克开盘；以及 Google 推出 Gemini 4 家族中位型号 Neon。Anthropic 官方公告：发行 9.80 亿股 A 类普通股，其中公司出售 9.5635 亿股，现有股东出售约 2365 万股；预计 11-20 交割，承销商有 30 天期权再购最多 1.47 亿股。按官方发行价与公司出售股数粗算，公司侧募资约 794 亿美元（未扣费用）；美联社报道估值为 1.5 万亿美元，官方公告未写市值。Gemini 4 Neon 定位在 Carbon 与 Hydrogen 之间，官方称 Artificial Analysis Intelligence Index（xhigh）第 3、61 分，Vals Index 第 2（70.9%），API 定价每百万 token 输入 3 美元、输出 15 美元，1M 上下文，即日起向 Gemini API / AI Studio、Gemini for business，以及 Pro/Ultra 订阅的 Gemini 应用与 Antigravity 放量；Cursor 同步接入。政经硬门槛是众议院司法与外交事务委员会少数党领袖 Raskin、Meeks、Kamlager-Dove 致函 Cantor Fitzgerald 董事长 Brandon Lutnick，要求提供记录，以查清商务部长 Howard Lutnick 在其家族公司仍持有大量英伟达股票期间，是否阻碍将涉嫌向中国转运受限芯片的 Megaspeed 列入实体清单。安全面，nginx 官方将 CVE-2026-123007 定为 HTTP/2 流控内存损坏（major），受影响 1.9.5–1.31.8，请升级到 1.31.9 或 1.30.7；Wiz 另称可造成无认证远程代码执行。CISA 于 11-18 将 4 条已在野利用漏洞列入 KEV：Apache Axis（CVE-2026-90436）、REDCap（CVE-2026-90817）、LiteLLM（CVE-2026-40217）、群晖 DSM（CVE-2024-10441）。F5 同日发布 BIG-IP 数据面 6 个危急漏洞（公告 K000164058），在特定 iRule / APM 配置下可使 TMM 崩溃，并可能被用于远程代码执行，目前只有工程热修复、无变通办法。午间增量：PHP 安全团队预告今日 14:00–14:30 UTC（22:00–22:30 +08）发布覆盖所有受支持版本的关键安全更新，最高严重度为 CRITICAL，但官方写明关键级问题需非默认或少见配置，技术细节与版本号将随包发布；晨报未收录该预告，The Hacker News 今日转发。特朗普在深圳接受 Fox News 采访，淡化英伟达间谍丑闻，称或只向习近平「简短提及」黄仁勋，并表示两三年后若 Blackwell 不再是最先进芯片，可考虑对华销售。纽约时报（Mozur / Satariano）报道阿里巴巴是 Megaspeed 的客户与资金后盾，并共同创办与中国军方有关联的之江实验室；报道写明尚不能确定 Megaspeed 芯片是否流入该实验室。",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-19T07:57:03+08:00",
-  "wave": "晨间"
+  "updated_at": "2026-11-19T12:58:00+08:00",
+  "wave": "午间"
 }
