@@ -1,0 +1,1087 @@
+{
+  "decisions": [
+    {
+      "actions_p0": "24–48h 内盘点 Check Point 网关（含 Mobile Access 门户）、F5 BIG-IP、vCenter、nginx 与 PHP 运行时的公网暴露和补丁构建号；PHP2Shell 窗口内未打补丁或出现异常的实例按失陷排查。同步完成 Java4Shell 与本周 KEV（UnrealIRCd、Puppet、Axis / REDCap / LiteLLM / 群晖）的紧急修补。",
+      "actions_p1": "5 个工作日内完成剩余边缘设备与 Web 栈补丁（含 PostgreSQL 18.7 等安全版，如环境在用），并复查 VPN、跳板和邮件网关的异常登录。",
+      "actions_p2": "把远程网关和虚拟化管理面列为高权限控制面，准备备用管理通道，避免在未补丁期间重新暴露公网管理入口。",
+      "arch_impact": "把防火墙/负载均衡/vCenter 等公网管理入口视为与身份系统同级的控制面：先热修，再按异常登录、新建管理员和向下游推送的脚本做失陷排查；已打过热修仍中招的，按下游完整沦陷处置，而不是只改版本号。",
+      "control_domains": "变更 · 事件 · 韧性 · TPRM · 公网管理面",
+      "happened": "Check Point 确认 PHP2Shell 与本地提权已被串联利用，失陷「单一地区、数十套未打补丁网关」，补丁在攻击开始前一周已放出；媒体称部分攻击打到 ESXi 擦除。同周 F5 公布六个数据面危急漏洞（CVSS 9.8，特定配置下可能 RCE）、nginx HTTP/2 内存损坏、vCenter 认证绕过（CVSS 9.8，无变通办法）、PHP 正式发布覆盖受支持版本的安全更新，CISA 将 Java4Shell 定为危急、JPCERT 确认多应用无认证 RCE，KEV 另增 UnrealIRCd、Puppet Enterprise、Axis / REDCap / LiteLLM / 群晖 DSM 等。",
+      "judgment": "本周最大的架构课仍是「已有热修 ≠ 已安全」。公网管理面热修必须与失陷排查绑在一起。",
+      "title": "公网管理面与在野漏洞：Check Point 网关已在实网被打到 root，叠加 F5、nginx、vCenter、PHP 与 Java4Shell / KEV",
+      "why": "网关、负载均衡、虚拟化管理面和语言运行时在同一窗口进入紧急补丁期，且已有边界设备实网利用。这是本周最硬的公网管理面与边缘风险。"
+    },
+    {
+      "actions_p0": "24–48h 内盘点 Fireworks 及其他模型推理供应商的共享密钥、市场缓存和连接过的工作区；窗口期内安装过 agent-framework 的环境先轮换云/CI 凭据。",
+      "actions_p1": "5 个工作日内核对本组织是否加载 Optimizely 或其他可写第三方 JS，补上脚本完整性监测；评估第三方推理端点的权重核验能力。",
+      "actions_p2": "把「模型供应商 + 实验平台 + 包仓库」写入统一的高权限第三方清单，并规定密钥泄露后的市场缓存失效流程。",
+      "arch_impact": "把模型托管、标签/实验平台和智能体框架按高权限第三方管理：共享密钥要可轮换、市场缓存和 Project JS 要有完整性校验，CI 安装要锁哈希；对第三方推理端点，要能核验权重或签名，而不能只信域名。",
+      "control_domains": "TPRM · IAM · 变更 · 事件",
+      "happened": "Cursor 调查更新称 10 月攻击始于 Fireworks 暴露的厂商密钥，并由此把恶意 Claude Code 扩展写入应用市场缓存；Uber 确认同一供应商入侵导致司机驾照等个人数据被盗。Optimizely Project JS 被写入恶意脚本，约 178 家机构的访客在官方 CDN 域名下执行载荷。PyPI 上的微软 agent-framework 出现恶意版本，启动即窃取云与 CI 凭据。Prime Intellect 另披露 DeepSeek V4.1 Flash 端点曾被擅自换成去拒绝版权重。",
+      "judgment": "供应链事件的共同点是：调用链看起来还是官方域名和官方包名。控制要点是完整性与密钥范围，而不是事后再问「是不是我们自己的代码被入侵」。",
+      "title": "AI 与软件供应链：Fireworks 厂商密钥、Optimizely Project JS 与 PyPI 恶意包，叠加 DeepSeek 端点权重被掉包",
+      "why": "模型推理供应商、实验平台第三方脚本、智能体框架的包仓库，以及推理端点的权重完整性，本周同时被打穿。密钥、脚本写权限和「你以为在调用的那份模型」都不再能默认信任。"
+    },
+    {
+      "actions_p0": "立即核对本组织或关键对手方是否在窗口内使用非官方渠道购入的 Trezor 设备；对 Skladon / Coinone 可能波及的客户通讯，按定向诈骗预案处理。",
+      "actions_p1": "5 个工作日内复查交易所与托管对手方的外包客服、开户证件和提现白名单；对司法部公示的限制资产地址做屏蔽核验。",
+      "actions_p2": "把硬件钱包供应链和客服外包写入资金业务的第三方清单，并准备备用提现通道。",
+      "arch_impact": "硬件钱包只走官方渠道并核验固件；把外包客服和仓配视为可接触客户身份与资金咨询记录的高权限第三方。对受事件波及的交易所对手方，要能独立核验提现与冻结路径，而不是只听平台声明。",
+      "control_domains": "TPRM · 事件 · 热签提现 · IAM",
+      "happened": "Trezor 确认三台经 CryptoBilis 售出的 Safe 5 遭硬件植入，可旁路复制恢复词并经移动网络外传；同周物流商 Skladon 泄露约 2.7 万笔订单联系数据。韩国交易所 Coinone 称客服外包商 MetaM 服务器遭入侵，可能泄露证件号、银行账号、密码与钱包地址等咨询记录。美国司法部宣布已获授权扣押或限制超过 12 亿美元据称由朝鲜 TraderTraitor 从币安窃取的加密资产，并拆除 FaceStealer 基础设施。",
+      "judgment": "热签和提现的失败往往发生在「设备看起来是真的」「客服看起来是官方的」这一层。来源核查与外包暴露面，要比事后补偿更重要。",
+      "title": "热签与交易对手：Trezor 转售设备遭硬件植入，叠加仓配泄露与交易所外包商失陷；司法部限制超 12 亿美元据称来自币安的被盗资产",
+      "why": "热签设备的来源和仓配、交易所的外包客服，都是资金和身份数据的实际控制点。追赃与扣押是另一条线，不能替代对现有提现和开户通道的核验。"
+    },
+    {
+      "actions_p0": "先明确本组织是否允许员工或客户把支付卡、Wallet 或银行账户接到通用助手；若允许，列出批准、撤销和争议处理路径。",
+      "actions_p1": "5 个工作日内评估收款侧能否识别支付代币 / agent 发起交易，并检查 Plaid 类只读连接的数据范围。",
+      "actions_p2": "跟踪 FinCEN CDD 评论期，以及英国技术能力通知对设备加密与备份策略的后续公开范围；不把未公开条文当成已落地义务。",
+      "arch_impact": "把 agent 支付与账单连接当成高敏感授权：默认最小范围、可撤回、可审计，交易要能区分「人批过的 agent 代付」。不要把「每笔需生物识别」或「官方只读」写成权限已经被锁死。FinCEN 拟议规则需评估实施成本，但尚非最终规则。",
+      "control_domains": "IAM · 变更 · 热签提现 · 韧性",
+      "happened": "OpenAI 推出 ChatGPT Wallet，dots agent 可在用户逐笔生物识别批准后用支付代币代付，真实卡号不给商户或 agent。Google 让美国 Gemini 应用用户接入 Google Wallet（只读账单，不能划转），并可经 Plaid 连接银行账户。同周可引用的监管尾部：FinCEN 发布强化客户尽职调查拟议规则（见政治金融）；英国调查权力法庭确认内政大臣已向苹果发出技术能力通知，具体条文未公开。",
+      "judgment": "Agent 支付是新产品，不是演示。控制重点是授权边界和可审计性；监管尾部要跟踪，但不要把拟议规则或未公开通知写成已经生效的强制项。",
+      "title": "Agent 支付与账单授权：ChatGPT Wallet 可代付，Gemini 可读取 Google Wallet；监管尾部见 FinCEN CDD 与英国对苹果的技术能力通知",
+      "why": "支付代币和只读账单把「助手能看到或花出钱」写成产品开关。企业收款和风控要识别 agent 发起的交易；用户侧则要防止把误答当成转账或理财建议。监管尾部会改变尽职调查成本和设备侧执法预期，但不替代本周已经落地的产品开关。"
+    }
+  ],
+  "gaps": [
+    "全周 GH Archive 缺源（无 GCP/BigQuery）；周涨星为日热榜 gained 累计，非 WatchEvent 真差量",
+    "新锐无一仓多日连上，gained=null，并已说明缺周差量",
+    "Anthropic 首日市值口径冲突，未采单一市值；开盘约 111 美元、发行外私募加总等未作硬事实",
+    "「国家冠军」计划以 WSJ 报道为准，路透写明尚未独立核实",
+    "SEC 民事调查以 WSJ 官方帖及转述为准，本台未打开 WSJ 付费页，SEC 尚未发布公告",
+    "F5 BIG-IP 六条危急漏洞以 CERT-FR 与媒体对 K000164058 的引述为准，本台未打开需登录的 F5 知识库全文",
+    "Drupal SA-CORE-2026-017 官方正文曾被 JS 挑战挡住，日更以 CERT-FR / Pantheon / THN 转述为准",
+    "部分条目精确源时沿用日更 first_source_at，未做独立逐条复核",
+    "11-15 盘中公开 inbox 上传曾报 transport_forbidden；本周内容以日更 JSON（含盘中增量）与台账为准",
+    "周报公开 upload 仍为 OFF，本回合只写本地 export，不直推公仓、不称部署"
+  ],
+  "github": {
+    "meta": {
+      "archive": "missing",
+      "archive_note": "全周 GH Archive 缺源（无 GCP/BigQuery）。各工作日 GitStock 可用，日键多为前一 UTC 日；Trending 可用。",
+      "note": "周涨星为 11-16–11-20 日热榜 gained 累加（周末 11-14/15 未拉榜），非 WatchEvent 真差量。新锐本周无多日连上，gained=null。已滤游戏作弊、盗版安装包与星/watch 农场。涨星∩新锐周内重合=0。",
+      "overlap_rising_newcomers": 0,
+      "sources_missing": [
+        "gh_archive"
+      ],
+      "sources_ok": [
+        "gitstock",
+        "trending"
+      ],
+      "window": "2026-11-16–2026-11-20"
+    },
+    "newcomers": [
+      {
+        "days_seen": [
+          "11-20"
+        ],
+        "gained": null,
+        "owner": "iamajmeena",
+        "rank": 1,
+        "repo": "neonclipping",
+        "slogan": "本地把链接切成带字幕的竖屏片段",
+        "stars": 354,
+        "url": "https://github.com/iamajmeena/neonclipping",
+        "what": "本地开源剪辑引擎：粘贴链接，约 2 分钟得到带字幕的 9:16 片段。",
+        "why": "11-20 新锐入选，见榜总星 354，仓库体量与 fork 看得见实质代码。据见榜与关注度入选，不推断增长因果，缺周涨星差量。"
+      },
+      {
+        "days_seen": [
+          "11-17"
+        ],
+        "gained": null,
+        "owner": "siliconjungle",
+        "rank": 2,
+        "repo": "shapeshift-labs-ink-studio",
+        "slogan": "把像素风高斯溅射做成立体动画工具包",
+        "stars": 197,
+        "url": "https://github.com/siliconjungle/shapeshift-labs-ink-studio",
+        "what": "JavaScript 工具包，用来雕刻有向距离立体、烘焙成像素风高斯溅射（Gaussian splat），并让它们运动、破碎和生长；可在 Node 或浏览器里用。",
+        "why": "11-17 新锐入选，见榜总星 197，描述和文档完整。据见榜入选，不推断增长因果，缺周涨星差量。"
+      },
+      {
+        "days_seen": [
+          "11-17"
+        ],
+        "gained": null,
+        "owner": "chuanqisun",
+        "rank": 3,
+        "repo": "spaceship",
+        "slogan": "用 60 帧交互去驾驶模型注意力",
+        "stars": 177,
+        "url": "https://github.com/chuanqisun/spaceship",
+        "what": "实验性 IDE / 交互演示，假设未来大模型能到约 60 帧交互，展示焦点监视、注意力锁定、向量转向和实时重生成等操控方式。",
+        "why": "11-17 新锐入选，见榜总星 177，README 和在线 demo 清楚。据见榜入选，不推断增长因果，缺周涨星差量。"
+      },
+      {
+        "days_seen": [
+          "11-16"
+        ],
+        "gained": null,
+        "owner": "atlas7283",
+        "rank": 4,
+        "repo": "steam-library-bridge",
+        "slogan": "把模拟器和其他商店的游戏加进 Steam 库",
+        "stars": 176,
+        "url": "https://github.com/atlas7283/steam-library-bridge",
+        "what": "Windows 小工具，把模拟器、Epic、GOG 和电脑游戏连同封面、成就和时长加进 Steam 库。",
+        "why": "11-16 新锐入选，见榜总星 176，描述清楚、许可证明确。据见榜入选，不推断增长因果，缺周涨星差量。"
+      },
+      {
+        "days_seen": [
+          "11-19"
+        ],
+        "gained": null,
+        "owner": "geerlingguy",
+        "rank": 5,
+        "repo": "chronytop",
+        "slogan": "给 chrony 做终端监控界面",
+        "stars": 111,
+        "url": "https://github.com/geerlingguy/chronytop",
+        "what": "用终端界面监控 chrony NTP 时间服务。",
+        "why": "11-19 新锐入选，见榜总星 111；知名运维作者上线的小工具。据见榜入选，不推断增长因果，缺周涨星差量。"
+      },
+      {
+        "days_seen": [
+          "11-16"
+        ],
+        "gained": null,
+        "owner": "cnrad",
+        "rank": 6,
+        "repo": "interspace",
+        "slogan": "可定制的 macOS 空间切换器",
+        "stars": 138,
+        "url": "https://github.com/cnrad/interspace",
+        "what": "一个强调速度和可定制性的 macOS Space 切换工具。",
+        "why": "11-16 新锐入选，见榜总星 138。据见榜入选，不推断增长因果，缺周涨星差量。"
+      },
+      {
+        "days_seen": [
+          "11-20"
+        ],
+        "gained": null,
+        "owner": "tracebit-com",
+        "rank": 7,
+        "repo": "turingpot",
+        "slogan": "开源智能体蜜罐，用来观察进攻框架",
+        "stars": 28,
+        "url": "https://github.com/tracebit-com/turingpot",
+        "what": "开源 AI 智能体蜜罐概念验证，用来观察 ARTEX 等自主进攻框架。",
+        "why": "11-20 新锐入选，见榜总星 28；安全公司仓，属防御向研究而非攻击工具。据见榜入选，不推断增长因果，缺周涨星差量。"
+      },
+      {
+        "days_seen": [
+          "11-18"
+        ],
+        "gained": null,
+        "owner": "prusa3d",
+        "rank": 8,
+        "repo": "prusa-connect",
+        "slogan": "把 Prusa 打印机连到本地服务器",
+        "stars": 120,
+        "url": "https://github.com/prusa3d/prusa-connect",
+        "what": "Prusa Connect 的本地服务器，用于管理自家打印机。",
+        "why": "11-18 新锐入选，见榜总星 120，厂商官方仓库。据见榜入选，不推断增长因果，缺周涨星差量。"
+      },
+      {
+        "days_seen": [
+          "11-17"
+        ],
+        "gained": null,
+        "owner": "boringmarketer",
+        "rank": 9,
+        "repo": "boring-marketing-skills",
+        "slogan": "给智能体一组可落地的营销技能",
+        "stars": 127,
+        "url": "https://github.com/boringmarketer/boring-marketing-skills",
+        "what": "31 项面向 AI 智能体的免费营销技能：调研、定位、文案、页面、SEO、AI 搜索、广告、邮件与内容，另带本地商家包，MIT 许可。",
+        "why": "11-17 新锐入选，见榜总星 127，定位具体、许可明确。据见榜入选，不推断增长因果，缺周涨星差量。"
+      },
+      {
+        "days_seen": [
+          "11-17"
+        ],
+        "gained": null,
+        "owner": "nagavineerpasam",
+        "rank": 10,
+        "repo": "systems-to-ai-reading-map",
+        "slogan": "从体系结构读到交付 LLM 的书单图",
+        "stars": 92,
+        "url": "https://github.com/nagavineerpasam/systems-to-ai-reading-map",
+        "what": "把 8 本常见工程书拆成 112 个真实章节主题，按「机器→操作系统→数据系统→系统设计→可靠性→机器学习系统→交付 LLM」排序。",
+        "why": "11-17 新锐入选，见榜总星 92，条目可核对到原书章节。据见榜入选，不推断增长因果，缺周涨星差量。"
+      }
+    ],
+    "rising": [
+      {
+        "break_star": "破1万星",
+        "days_seen": [
+          "11-16",
+          "11-17",
+          "11-18",
+          "11-19",
+          "11-20"
+        ],
+        "gained": 5960,
+        "gained_week_approx": 5960,
+        "owner": "elementalsouls",
+        "rank": 1,
+        "repo": "Claude-BugHunter",
+        "slogan": "把漏洞狩猎打成 Claude 技能包",
+        "stars": 12474,
+        "url": "https://github.com/elementalsouls/Claude-BugHunter",
+        "what": "一套面向漏洞狩猎与外部红队的 Claude Code 技能包。",
+        "why": "本周五日均见热榜，日热榜 gained 累计 +5960，总星至 12,474 并破 1 万星；仅为榜单观察，未核实传播或增长因果。"
+      },
+      {
+        "days_seen": [
+          "11-16",
+          "11-17",
+          "11-18"
+        ],
+        "gained": 4695,
+        "gained_week_approx": 4695,
+        "owner": "dream-num",
+        "rank": 2,
+        "repo": "univer",
+        "slogan": "把 AI 办公套件嵌进你的产品",
+        "stars": 28885,
+        "url": "https://github.com/dream-num/univer",
+        "what": "Univer Office SDK：在产品里提供编辑、计算、协作与文件处理，面向人和 AI 代理。",
+        "why": "本周三日连上并居日榜前列，日热榜 gained 累计 +4695，总星至 28,885；仅为榜单观察，未核实增长因果。"
+      },
+      {
+        "days_seen": [
+          "11-18",
+          "11-19",
+          "11-20"
+        ],
+        "gained": 3450,
+        "gained_week_approx": 3450,
+        "owner": "obra",
+        "rank": 3,
+        "repo": "superpowers",
+        "slogan": "一套可落地的智能体技能方法论",
+        "stars": 322050,
+        "url": "https://github.com/obra/superpowers",
+        "what": "一套 agentic skills 框架与软件开发方法论。",
+        "why": "本周三日见榜，末日领涨 +2029，日热榜 gained 累计 +3450，总星至 322,050；超高星仓再爆，仅为榜单观察。"
+      },
+      {
+        "break_star": "破7万星",
+        "days_seen": [
+          "11-18",
+          "11-19",
+          "11-20"
+        ],
+        "gained": 2786,
+        "gained_week_approx": 2786,
+        "owner": "mvanhorn",
+        "rank": 4,
+        "repo": "last30days-skill",
+        "slogan": "跨 Reddit/X/HN 做有依据的调研技能",
+        "stars": 70773,
+        "url": "https://github.com/mvanhorn/last30days-skill",
+        "what": "让代理跨 Reddit、X、YouTube、HN、Polymarket 和网络做调研，再汇成有依据的摘要。",
+        "why": "本周三日见榜，日热榜 gained 累计 +2786，总星至 70,773 并破 7 万星；仅为榜单观察。"
+      },
+      {
+        "days_seen": [
+          "11-16",
+          "11-17",
+          "11-18"
+        ],
+        "gained": 2627,
+        "gained_week_approx": 2627,
+        "owner": "ag-ui-protocol",
+        "rank": 5,
+        "repo": "ag-ui",
+        "slogan": "把 Agent 接进前端的协议",
+        "stars": 19978,
+        "url": "https://github.com/ag-ui-protocol/ag-ui",
+        "what": "AG-UI：Agent-用户交互协议，把代理接进前端应用。",
+        "why": "本周三日连上，日热榜 gained 累计 +2627，总星至 19,978；仅为榜单观察。"
+      },
+      {
+        "break_star": "破4千星",
+        "days_seen": [
+          "11-18",
+          "11-19"
+        ],
+        "gained": 2704,
+        "gained_week_approx": 2704,
+        "owner": "google-research",
+        "rank": 6,
+        "repo": "paper-orchestra",
+        "slogan": "多代理自动写研究论文",
+        "stars": 4226,
+        "url": "https://github.com/google-research/paper-orchestra",
+        "what": "Google Research 的多代理框架，用来自动写 AI 研究论文。",
+        "why": "本周两日见榜，累计 +2704，总星从约 2,943 到 4,226 并破 4 千星；仅为榜单观察。"
+      },
+      {
+        "days_seen": [
+          "11-16",
+          "11-17",
+          "11-18"
+        ],
+        "gained": 2398,
+        "gained_week_approx": 2398,
+        "owner": "alibaba",
+        "rank": 7,
+        "repo": "open-code-review",
+        "slogan": "确定性流水线加 LLM 的代码评审",
+        "stars": 53709,
+        "url": "https://github.com/alibaba/open-code-review",
+        "what": "阿里混合架构代码评审工具：确定性流水线加 LLM Agent，行级评论。",
+        "why": "本周三日见榜，日热榜 gained 累计 +2398，总星至 53,709；仅为榜单观察。"
+      },
+      {
+        "days_seen": [
+          "11-16",
+          "11-17",
+          "11-18"
+        ],
+        "gained": 2240,
+        "gained_week_approx": 2240,
+        "owner": "backnotprop",
+        "rank": 8,
+        "repo": "plannotator",
+        "slogan": "人在环上指挥 agent 的工作区",
+        "stars": 13056,
+        "url": "https://github.com/backnotprop/plannotator",
+        "what": "用于塑形、决策、计划、批注并把反馈一键发回代理的工作区。",
+        "why": "本周三日见榜，日热榜 gained 累计 +2240，总星至 13,056；仅为榜单观察。"
+      },
+      {
+        "break_star": "破1万星",
+        "days_seen": [
+          "11-16",
+          "11-17",
+          "11-19",
+          "11-20"
+        ],
+        "gained": 1460,
+        "gained_week_approx": 1460,
+        "owner": "google-labs-code",
+        "rank": 9,
+        "repo": "stitch-skills",
+        "slogan": "给 Stitch MCP 用的一套 Agent 技能",
+        "stars": 10706,
+        "url": "https://github.com/google-labs-code/stitch-skills",
+        "what": "面向 Stitch MCP 服务器的 Agent Skills 库，兼容 Antigravity、Gemini CLI、Claude Code、Cursor。",
+        "why": "本周四日见榜，日热榜 gained 累计 +1460，总星至 10,706 并破 1 万星；仅为榜单观察。"
+      },
+      {
+        "break_star": "破6万星",
+        "days_seen": [
+          "11-19",
+          "11-20"
+        ],
+        "gained": 1283,
+        "gained_week_approx": 1283,
+        "owner": "HKUDS",
+        "rank": 10,
+        "repo": "CLI-Anything",
+        "slogan": "让所有软件都能被智能体当命令行用",
+        "stars": 60530,
+        "url": "https://github.com/HKUDS/CLI-Anything",
+        "what": "香港大学数据科学实验室的项目，让智能体把各类软件当命令行来驱动。",
+        "why": "本周两日见榜，累计 +1283，总星至 60,530 并破 6 万星；仅为榜单观察。"
+      }
+    ]
+  },
+  "metrics": {
+    "decisions": 4,
+    "gh_newcomers": 10,
+    "gh_rising": 10,
+    "news_featured": 10,
+    "papers_featured": 8,
+    "polfin": 10
+  },
+  "news": [
+    {
+      "arch_impact": "后续应以生效后的登记文件与交易所数据为准，不要把冲突市值或未证实募资总额写成已定价结果。",
+      "background": "上周路演给出每股 70–78 美元的定价区间。本周正式定价并在纳斯达克上市，代码 ANT。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "AI产业",
+      "facts": "Anthropic 于 2026-11-18 发布定价公告：公开发行定价每股 83 美元，拟在纳斯达克上市，代码 ANT，预计 11-19 开盘。11-19 为首个交易日。@CNBC 与 @business（Bloomberg）多条同步写明收盘 97.17 美元，较发行价 83 美元约涨 17%；@FT 写上涨 17%、收盘约 97 美元。公司新闻室截本周仍只有定价公告，无首日成交官方稿。市值口径存在冲突（盘中曾见 2 万亿、有报道写收盘 1.3 万亿、定价时美联社估 1.5 万亿），本条不采单一市值。开盘约 111 美元、发行外私募加总等数字来源不一或官网未证，不作硬事实。",
+      "finsec": false,
+      "first_seen": "2026-11-19",
+      "first_source_at": "官方定价公告 2026-11-18；收盘续报 2026-11-20 05:16 Asia/Shanghai",
+      "hard_gate": false,
+      "id": "w47-n-01",
+      "links": [
+        {
+          "label": "Anthropic 定价公告",
+          "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
+        },
+        {
+          "label": "官方主帖",
+          "url": "https://x.com/AnthropicAI/status/2123196808675405860"
+        },
+        {
+          "label": "美联社",
+          "url": "https://apnews.com/article/anthropic-ipo-pricing-70b660ddf900d90bbf484ecdf1fb441c"
+        },
+        {
+          "label": "CNBC 收盘帖",
+          "url": "https://x.com/CNBC/status/2123525749126688809"
+        },
+        {
+          "label": "Bloomberg 收盘帖",
+          "url": "https://x.com/business/status/2123525150410989788"
+        },
+        {
+          "label": "FT",
+          "url": "https://www.ft.com/content/2b203097-7c61-464f-810f-962912a133dd"
+        }
+      ],
+      "title": "Anthropic IPO 定价每股 83 美元，ANT 首日收盘 97.17 美元、约涨 17%",
+      "why": "定价 83 美元高出上周区间上限，首日收盘仍较发行价上涨约 17%，把「本月上市」落成可核对的交易结果。估值争论不要盖过已核事实：官方定价、代码、收盘价与涨幅。"
+    },
+    {
+      "background": "上周已有 Gemini 4 Hydrogen 等供给。本周 OpenAI、Google 与阿里再把新一代主办模型推进付费工作流和 API。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "11-16：阿里 / Qwen 正式发布 Qwen4-Max，官方称新 MoE、原生视觉、100 万 token 上下文，API 已在 QwenCloud 上线。11-18：OpenAI 推出 GPT-6.2 Astra 与 Sol，即日起在 ChatGPT Work / Codex / API 可用；Astra 定位最难项目，Sol 定位日常高效；Astra API 输入/输出价格较 GPT-6 Astra 低 20%。同日 Google 称 Gemini 4 Hydrogen 已在 Search 全球上线。11-19：Google 推出 Gemini 4 Neon，Cursor 同步接入。同周指针（不单占名额）：Genie 4 向 Gemini API / AI Studio 开放，Mac 版 Gemini 应用上线 computer use。评测数字出自厂方配置，不是本台独立复现。",
+      "finsec": false,
+      "first_seen": "2026-11-16",
+      "first_source_at": "Qwen 官方帖 2026-11-16；GPT-6.2 官方帖 2026-11-18 01:54 Asia/Shanghai；Neon 2026-11-19",
+      "hard_gate": false,
+      "id": "w47-n-02",
+      "links": [
+        {
+          "label": "OpenAI：GPT-6.2 Astra/Sol",
+          "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol"
+        },
+        {
+          "label": "官方主帖",
+          "url": "https://x.com/OpenAI/status/2122750124543926515"
+        },
+        {
+          "label": "Google：Gemini 4 Neon",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+        },
+        {
+          "label": "Qwen 官方帖",
+          "url": "https://x.com/Alibaba_Qwen/status/2122148127520289151"
+        },
+        {
+          "label": "Qwen 博客",
+          "url": "https://qwen.ai/blog?id=qwen4-max"
+        },
+        {
+          "label": "Hydrogen 进入 Search",
+          "url": "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/"
+        }
+      ],
+      "title": "实验室供给周：GPT-6.2 Astra/Sol、Gemini 4 Neon、Qwen4-Max",
+      "why": "这是一周内的供给结构变化：OpenAI 新一代工作流模型、Google 新旗舰与搜索落地、阿里开源阵营的 Max 档同时到位，会立刻改写默认模型、价格带和「规划/执行」分工。"
+    },
+    {
+      "background": "黄仁勋辞任后的首份季报。对华销售与出口许可是本周政治金融主线，财报把「中国数据中心计算收入」从展望中单列出去。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "AI产业",
+      "facts": "英伟达公布 2027 财年第三季（官方新闻稿）：营收 1158 亿美元；展望下季营收 1300 亿美元，并且明确不计入中国数据中心计算收入。这是公司正式口径，不是分析师推算。对华出货是否停止、已批准Hopper 规模等政治金融细节见本栏之外的「政治金融」。",
+      "finsec": false,
+      "first_seen": "2026-11-18",
+      "first_source_at": "2026-11-18（官方新闻稿与官方帖）",
+      "hard_gate": false,
+      "id": "w47-n-03",
+      "links": [
+        {
+          "label": "官方新闻稿",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027"
+        },
+        {
+          "label": "官方帖",
+          "url": "https://x.com/nvidianewsroom/status/2122805252533670248"
+        }
+      ],
+      "title": "英伟达 Q3 营收 1158 亿美元，展望 1300 亿且不计入中国数据中心计算收入",
+      "why": "这是全球最重要的算力供应商在治理危机中交出的正式数字，也把「中国数据中心收入不再计入展望」写成可引用的财务边界，会直接影响供应链与客户的资本开支预期。"
+    },
+    {
+      "arch_impact": "把模型托管/推理供应商按高权限第三方管理：盘点共享密钥与市场缓存、轮换暴露凭据，并核对该供应商是否还连接其他生产工作区或客户数据。",
+      "background": "Fireworks AI 是开源模型托管与推理供应商。10 月事件后，本周调查更新把影响面从单一开发工具扩到出行平台的个人数据。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "Cursor 于调查更新中称，10 月攻击始于 Fireworks 暴露的厂商密钥，攻击者由此把恶意 Claude Code 扩展写入其应用市场缓存。Uber 确认同一供应商遭入侵，司机驾照图像与从中提取的姓名、地址、出生日期和驾照号被盗，多州已发通知。这是同一供应商失陷的两条已核后果，不是两起无关事件。",
+      "finsec": false,
+      "first_seen": "2026-11-15",
+      "first_source_at": "Cursor 调查更新与 Uber 确认（日更 2026-11-15）",
+      "hard_gate": false,
+      "id": "w47-n-04",
+      "links": [
+        {
+          "label": "Cursor 调查更新",
+          "url": "https://cursor.com/blog/security-incident-update"
+        },
+        {
+          "label": "10 月 30 日安全通告",
+          "url": "https://cursor.com/blog/claude-code-extension-security-notice"
+        },
+        {
+          "label": "TechCrunch：Uber 确认",
+          "url": "https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/"
+        },
+        {
+          "label": "爱荷华州检察长通知",
+          "url": "https://www.iowaattorneygeneral.gov/media/cms/11102026_Uber_Technologies_Inc_089721E61CBAB.pdf"
+        }
+      ],
+      "title": "Fireworks 失陷半径扩大：Cursor 应用市场缓存被写入恶意扩展，Uber 确认司机驾照等数据被盗",
+      "why": "把「模型推理供应商」写成高权限第三方：一把厂商密钥既可以污染开发者工具供应链，也可以带走下游客户的证件数据。对采购与 TPRM 来说，密钥托管、市场缓存完整性和司机/客户 PII 要放进同一张暴露面。"
+    },
+    {
+      "arch_impact": "把实验/标签管理平台的 Project JS 写权限视为生产发布权；核对应急期内的脚本变更，并为第三方脚本加完整性监测。",
+      "background": "Optimizely Web 让客户从其 CDN 加载 snippet，并可在仪表板里写 Project JavaScript，随每页执行。被信任的第三方脚本一旦被改写，会被全站访客执行。",
+      "channel": "关注流 + 公开信号（Helme / Report URI）",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "Scott Helme / Report URI 公开跟踪称，攻击者把恶意加载器写进多个客户的 Project JS，文件仍由 cdn.optimizely.com 下发，不是 CDN 缓存投毒。文称 11-16 共 178 家组织受影响，点名 Zoom、BBC、CNN、Salesforce、GitLab、IKEA、HSBC、Equifax、Air France-KLM、Ledger、Peacock 等；Optimizely 自身站点也中招。载荷可替换加密货币地址、偷刷卡号与 CVV、窥 cookie。数字与名单以 Report URI 跟踪为准。",
+      "finsec": false,
+      "first_seen": "2026-11-17",
+      "first_source_at": "公开追踪帖 2026-11-17 04:10:49 Asia/Shanghai；注入约 2026-11-16 12:21 +08",
+      "hard_gate": false,
+      "id": "w47-n-05",
+      "links": [
+        {
+          "label": "Report URI 博文",
+          "url": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/"
+        },
+        {
+          "label": "Helme 帖",
+          "url": "https://x.com/Scott_Helme/status/2122422157959471456"
+        }
+      ],
+      "title": "Optimizely Project JS 被写入恶意脚本，约 178 家机构访客遭投毒",
+      "why": "这是典型的「受信任第三方 JS 被改写」供应链事件：站点自身代码未被入侵，访客仍会在正常证书和域名下执行恶意代码。受影响面含金融、媒体与密码钱包，对 CSP、第三方脚本完整性监测和实验平台权限隔离都是直接考验。"
+    },
+    {
+      "arch_impact": "锁定包来源与版本哈希，盘点窗口期内安装过该包的环境并轮换云/CI 凭据；不要把 PyPI 最新版默认当成已审组件。",
+      "background": "微软开源的 agent-framework 被广泛用于搭建智能体。包名一旦被仿冒或被塞进恶意版本，安装即等于把云与 CI 密钥交给攻击者。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "Wiz 与 Aikido 披露：PyPI 上的 Microsoft agent-framework 出现恶意版本，安装启动后即窃取云与 CI 凭据。Aikido 称两个恶意版本在 33 分钟内被发布。这是针对智能体开发工具链的包仓库投毒，不是模型漏洞。",
+      "finsec": false,
+      "first_seen": "2026-11-18",
+      "first_source_at": "2026-11-18 午间补收（Wiz / Aikido）",
+      "hard_gate": false,
+      "id": "w47-n-06",
+      "links": [
+        {
+          "label": "Wiz",
+          "url": "https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi"
+        },
+        {
+          "label": "Aikido",
+          "url": "https://www.aikido.dev/blog/two-malicious-agent-framework-releases-hit-pypi-in-33-minutes"
+        }
+      ],
+      "title": "微软 PyPI 包 agent-framework 出现恶意版本，启动即窃取云与 CI 凭据",
+      "why": "智能体框架本身拥有云凭证和流水线权限。恶意包把「pip install」变成一次凭据收割，直接影响开发机、CI 和云控制面。"
+    },
+    {
+      "arch_impact": "优先盘点公网或伙伴可访问的 Java 应用与中间件，按厂商与 JPCERT 指引完成补丁或临时阻断；补丁后仍要查异常进程与新建账户。",
+      "background": "Java 反序列化与表达式注入类缺陷一旦进入可匿名访问的接口，就会从「框架漏洞」变成可远程打穿的应用漏洞。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "CISA 于 2026-11-17 左右就 Java4Shell（CVE-2026-114938）发布危急警报，要求立即修补。11-18 JPCERT/CC 续报：在多款 Java 应用上已实证，无需认证即可远程执行代码。这是从官方危急定级到多应用无认证 RCE 实证的同周收口，不是重复传谣。",
+      "finsec": false,
+      "first_seen": "2026-11-18",
+      "first_source_at": "CISA 警报 2026-11-17；JPCERT 快报 2026-11-18",
+      "hard_gate": false,
+      "id": "w47-n-07",
+      "links": [
+        {
+          "label": "CISA 警报",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching"
+        },
+        {
+          "label": "CISA 官方帖",
+          "url": "https://x.com/CISACyber/status/2122821451635916849"
+        },
+        {
+          "label": "JPCERT 快报",
+          "url": "https://www.jpcert.or.jp/newsflash/2026111801.html"
+        },
+        {
+          "label": "JPCERT 官方帖",
+          "url": "https://x.com/jpcert/status/2122913612381692364"
+        }
+      ],
+      "title": "Java4Shell：CISA 要求立即修补，JPCERT 确认多款 Java 应用无需认证即可远程执行代码",
+      "why": "「立即修补」加上「无需认证即可 RCE」意味着暴露在公网或半公网的 Java 应用要按紧急窗口处理，而不是按常规月度补丁轮转。"
+    },
+    {
+      "arch_impact": "24–48 小时内盘点 Check Point 网关、F5 BIG-IP、vCenter、nginx、PHP 与本周 KEV 资产的暴露面与补丁状态；已打过热修仍出现异常登录或新建管理员的，按下游完整沦陷做排查。",
+      "background": "远程网关、负载均衡、虚拟化管理面和语言运行时一旦被未认证打穿，就会成为内网和客户终端的入口。本周多条官方补丁与在野利用叠在同一窗口。",
+      "channel": "双通路",
+      "detail": true,
+      "domain": "网络安全 · 公网管理面",
+      "facts": "Check Point 确认 PHP2Shell（CVE-2026-109618、CVE-2026-109619）与本地提权 CVE-2026-123039 已被串联利用，失陷「单一地区、数十套未打补丁网关」，10 月 23 日已有热修；媒体称部分攻击经 SSH 打到 ESXi 擦除。F5 带外通知 K000164058：六个数据面危急漏洞（CVE-2026-121805 等，CVSS 9.8），特定 iRule/APM 配置下可致 TMM 崩溃并可能 RCE，目前只有工程热修复；本台未打开需登录的 F5 知识库全文，以 CERT-FR 与媒体引述为准。nginx 披露 CVE-2026-123007 HTTP/2 流控内存损坏，官方请升级到 1.31.9 / 1.30.7。Broadcom 通报 vCenter 认证绕过 CVE-2026-123890，CVSS 9.8，无变通办法。PHP 先预告、后正式发布覆盖受支持版本的关键安全更新，并推出 8.6.0（8.2.36–8.5.13）。CISA KEV 本周新增 UnrealIRCd CVE-2026-114713（联邦截止日期 11-16）、Puppet Enterprise 反序列化 RCE CVE-2026-115731，以及 Axis / REDCap / LiteLLM / 群晖 DSM 等在野条目。",
+      "finsec": false,
+      "first_seen": "2026-11-14",
+      "first_source_at": "Check Point 公告 2026-11-12；其余官方补丁窗 2026-11-15–11-20",
+      "hard_gate": false,
+      "id": "w47-n-08",
+      "links": [
+        {
+          "label": "Check Point 公告",
+          "url": "https://blog.checkpoint.com/security/security-advisory-active-exploitation-of-php2shell-and-local-privilege-escalation/"
+        },
+        {
+          "label": "nginx 安全公告",
+          "url": "https://nginx.org/en/security_advisories.html"
+        },
+        {
+          "label": "CERT-FR：F5",
+          "url": "https://www.cert.cyber.gouv.fr/avis/CERTFR-2026-AVI-1567/"
+        },
+        {
+          "label": "Broadcom VMSA-2026-0009",
+          "url": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39495"
+        },
+        {
+          "label": "php.net",
+          "url": "https://www.php.net/archive/2026.php#2026-11-19-4"
+        },
+        {
+          "label": "CISA KEV 目录",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        }
+      ],
+      "title": "边缘与管理面热修周：Check Point PHP2Shell 实网利用，叠加 F5、nginx、vCenter、PHP 与 KEV",
+      "why": "这不是单点漏洞，而是一周内网关、负载均衡、虚拟化管理面、Web 服务器和语言运行时同时进入紧急窗口，其中 PHP2Shell 已有实网利用。公网管理面要按「热修 + 失陷排查」一起做，而不是只改版本号。"
+    },
+    {
+      "arch_impact": "只从官方渠道采购并核验包装与固件；对窗口期内经 CryptoBilis 购入的设备按官方指引处置。Skladon 受影响客户要把来自「官方订单」的电话和邮件一律视为高风险社会工程来源。",
+      "background": "硬件钱包的风险不只在芯片与固件，还在二次销售和仓配环节。本周两条官方更新把植入与物流数据泄露并行摆上桌面。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "Trezor 11-12 更新调查：已检查设备中确认三台 Safe 5 含硬件植入，均购自转售商 CryptoBilis（Tokopedia、Shopee 及直接购买），购买窗口 2026-08-20 至 09-23；植入加在主板和屏幕之间，旁路复制显示和输入，识别恢复词或通行口令后经移动网络外传；官方称当时没有客户报失资金，并发布可阻止已发现植入继续采集的固件。11-16/17 再报物流商 Skladon 于 11-07 遭未授权访问，约 2.7 万笔 8 月 9 日至 11 月 7 日订单的姓名、电话、送货地址、邮箱与订单明细可能被导出；Trezor 称自身系统未被入侵，钱包备份与 PIN 不在泄露范围。这是两条并行供应链事件，不要合成「官方钱包被攻破」。",
+      "finsec": true,
+      "first_seen": "2026-11-14",
+      "first_source_at": "Trezor 调查更新 2026-11-12；Skladon 博文日期 2026-11-16，官方帖 2026-11-17 00:18 Asia/Shanghai",
+      "hard_gate": false,
+      "id": "w47-n-09",
+      "links": [
+        {
+          "label": "Trezor 植入调查",
+          "url": "https://trezor.io/blog/news/our-cryptobilis-investigation-what-we-found-and-what-weve-changed"
+        },
+        {
+          "label": "此前告警",
+          "url": "https://trezor.io/blog/news/implant-reported-in-a-trezor-sold-by-cryptobilis"
+        },
+        {
+          "label": "Skladon 泄露博文",
+          "url": "https://trezor.io/blog/news/data-breach-at-trezor-shipping-partner-skladon"
+        },
+        {
+          "label": "官方帖",
+          "url": "https://x.com/Trezor/status/2122363569891135655"
+        }
+      ],
+      "title": "Trezor：经转售商售出的 Safe 5 遭硬件植入，物流商 Skladon 另泄露约 2.7 万笔订单联系数据",
+      "why": "热签设备如果来自非官方渠道，屏幕上看到的输入也可能被旁路复制；即使设备本身没被改固件，仓配泄露的真实姓名和地址也足以用于定向诈骗。对保管和提现流程，这是来源核查与提货渠道问题，不是单靠固件版本能覆盖的。"
+    },
+    {
+      "arch_impact": "支付与账单连接应按高敏感授权管理：默认最小范围、可撤回、可审计；不要把「每笔需生物识别」或「官方只读」写成权限已经被锁死。",
+      "background": "智能体一直能比较商品或读取邮件，但把支付凭证和账单数据交给对话式助手，是另一层风险边界。本周 OpenAI 与 Google 几乎同时打开这扇门。",
+      "channel": "公开信号",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "OpenAI 11-13 发布 ChatGPT Wallet：先通过 dots 向美国 ChatGPT Pro 用户开放，与美国运通、Mastercard、Visa 合作。agent 可代为购物，但每笔须展示商品、总额和所用卡，并用 Face ID 或指纹批准；批准后卡组织提供支付代币，真实卡号不分享给商户或 agent。Google 官方博文称，美国所有 Gemini 应用用户可把 Google Wallet 接入 Personal Intelligence，用于基于消费习惯的回答，并可选通过 Plaid 连接信用卡和银行账户；官方写明只能读取账户信息，不能划转、管理或投资资金，可随时关闭。",
+      "finsec": false,
+      "first_seen": "2026-11-14",
+      "first_source_at": "ChatGPT Wallet 官方博文 2026-11-13 23:00 Asia/Shanghai；Google 主帖 2026-11-14 01:27 +08",
+      "hard_gate": false,
+      "id": "w47-n-10",
+      "links": [
+        {
+          "label": "ChatGPT Wallet 博文",
+          "url": "https://openai.com/index/introducing-chatgpt-wallet"
+        },
+        {
+          "label": "CNBC",
+          "url": "https://www.cnbc.com/2026/11/13/openai-chatgpt-wallet-dot-purchases.html"
+        },
+        {
+          "label": "Google Wallet 接入说明",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/"
+        },
+        {
+          "label": "Google 主帖",
+          "url": "https://x.com/Google/status/2121293823837921433"
+        }
+      ],
+      "title": "Agent 支付轨道落地：ChatGPT Wallet 可代付，Gemini 接入 Google Wallet 只读账单",
+      "why": "这是把「agent 发起、用户批准」的支付，以及「助手可读账单」写成消费级产品。对企业风控要识别这类交易；对用户则要看批准界面是否真能拦住误付，以及只读账单会不会被当成财务建议。"
+    }
+  ],
+  "news_digest": "10 条详卡（非整周合订；精选 List → 详卡）。主线：Anthropic IPO 定价 83 美元、ANT 首日收盘约 +17% ｜ GPT-6.2 Astra/Sol、Gemini 4 Neon、Qwen4-Max ｜ Fireworks / Optimizely / PyPI 供应链 ｜ 边缘与管理面热修（PHP2Shell、F5、nginx、vCenter、Java4Shell）。政经角见「政治金融」。",
+  "papers": [
+    {
+      "dair_url": "https://x.com/dair_ai/status/2123065951256244262",
+      "short": "CoT 可控性会降低可监控性",
+      "url": "https://arxiv.org/abs/2611.21799",
+      "what": "用多人设重写数学推理轨迹做监督微调，训练里并没有躲避监控的例子，但 gpt-oss-20b 变体在隐蔽侧任务上的 CoT 可监控性（g-mean²）从 0.94 降到 0.68，明确要求藏起来时到 0.22。透明提示可部分挽回。作者含 OpenAI 的 Olivia Watkins 等（部分工作在 OpenAI 完成）。",
+      "why": "把「让模型更会控制自己怎么写推理」和「监控还能不能看见隐藏目标」扣在一起，对链路运维的 CoT 监控设计有直接警示。本周仍值得看，不是题录。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2123511637584036078",
+      "short": "Safe Personal RSI",
+      "url": "https://arxiv.org/abs/2611.23651",
+      "what": "面向个人健康助手 Kicker 的更新评估组件。递归自我改进被限制为只能改自己的指令，权重与运行时代码保持固定。每条拟议更新都要在 29 个可执行案例上测试；失败则回滚。@dair_ai 称该更新门在 21 次有风险的自我提议中拒绝了 20 次；一次被接受的修复把攻击违规从 10.7% 降到 0%。",
+      "why": "把「个人助手自我改指令」做成可拒绝、可回滚的测试门，并给出攻击违规与任务完成的具体数字。与本周「模型能否自己学会自我改进」对读。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2123133649109524568",
+      "short": "智能体还要别人教它如何自我改进吗？",
+      "url": "https://arxiv.org/abs/2611.23219",
+      "what": "MIT CSAIL 与图宾根大学的工作。问题是：模型越来越强之后，是否仍需人工指定自我改进流程。设定是游戏测试：冻结的 LLM 智能体获得计算预算和简单工具，可自己写练习游戏、观看另一份自己游玩，并编辑文本文件中的方法。@omarsar0 提醒：没有显式的自我改进循环，有能力的模型在具备工具时仍可能自我改进，这与安全相关。",
+      "why": "把「要不要规定自我改进算法」做成可测实验，而不是口号；对安全讨论有直接含义。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2121614134001467703",
+      "short": "MetaPI",
+      "url": "https://arxiv.org/abs/2611.10026",
+      "what": "把现成的智能体基准改造成间接提示注入评测集：寻找可注入位置、生成攻击目标、优化自适应载荷，并在真实环境检查。已用于 AppWorld、VitaBench 等。",
+      "why": "@dair_ai 在周榜之外单独推荐。把效用基准变成攻击面测试，比另起一套「安全基准」更接近真实工作流。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2123422574902440184",
+      "short": "GUARD",
+      "url": "https://arxiv.org/abs/2611.23476",
+      "what": "Google 方向的工作（@dair_ai / @omarsar0 如此标注）。智能体常用冻结基座模型加可编辑的提示、技能与记忆套件；无外部打分的自我编辑容易局部回退和遗忘。GUARD 在不更新权重的前提下做套件的持续进化，并处理局部过拟合、灾难性遗忘和记忆污染。",
+      "why": "针对正在流行的「冻结模型 + 可改套件」自我改进，给出不依赖外部评分器的稳定方法。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2122703815992602992",
+      "short": "EfficientSkill",
+      "url": "https://arxiv.org/abs/2611.19823",
+      "what": "Google 论文先让技能跑准再裁剪长度：先无长度惩罚地学出可靠技能，再在准确率门槛下压缩指令、限制回合并把可复用代码捷径移出。在 12 组配置里有 11 组输出 token 较无约束 EvoSkill 减少，最高约 80%，准确率还上升。",
+      "why": "直接回应「技能越补越长、越贵」的实战问题。有 arXiv 全文，不是题录。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2122806742048448924",
+      "short": "CompoundingKernel",
+      "url": "https://arxiv.org/abs/2611.19230",
+      "what": "亚马逊多代理搜索系统从零开始写 GPU kernel，在 SOL-ExecBench 公开 L1/L2/量化榜排第一；235 题均有站点核实的正确 kernel，209 道公开题几何平均较基线快 4.40 倍。",
+      "why": "把「自我迭代写核心」做到可对照的公开榜单，并指出限制因素是可靠测量速率而不是代理数量。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2123091409435853190",
+      "short": "RAG in a Trenchcoat / Bridge",
+      "url": "https://arxiv.org/abs/2611.22179",
+      "what": "一套刻意做得很瘦的代理记忆：按块写观察笔记，用 BM25 加向量检索，按时间顺序展示。在 LongMemEval-S 与 BEAM 上与既有 SOTA 在自助法区间内持平，EverMemBench 较最佳基线高 5.7–6.3 分；作者还做了五组对抗探针，证明「检回了什么」和「代理能不能照做」不是一回事。",
+      "why": "直接对着当前 agent 记忆框架越堆越厚的做法。W46 已精选的 WikiTrace / SoMem 本周不复贴，这条是本周新的「瘦记忆」对照。"
+    }
+  ],
+  "polfin": [
+    {
+      "angle": "出口管制 / 许可证透明度",
+      "background": "对华先进芯片出口一直是口头争议。本周委员会把商务部许可证汇总公开，第一次给出可引用的批准规模。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "众议院外交委员会主席 Brian Mast 于 2026-11-19 依据《出口管制改革法》公开 BIS 许可证材料。委员会摘要引用 BIS 2026-05-11 汇总：截至该日，BIS 收到向中国公司出售 3,444,160 枚受管制集成电路的申请，覆盖英伟达 H200 与 AMD MI325X；经 21 份许可证批准 879,868 枚，其中包括阿里巴巴 75,000、腾讯及其子公司 150,000、百度 43,000、比亚迪 4,000。这四家均出现在国防部 1260H「中国军工企业」名单（委员会文件写作 Department of War）。申请总量里，阿里巴巴及其子公司申请数为 948,950 枚，与获批数不是同一口径。委员会与路透均写明，批准不等于已经完成对华出货，实际装运量仍不清楚。英伟达对 CNBC 表示，审批附带严格条件和限量，尽管拿到部分许可证，公司此后已停止向中国出货 H200。AMD 称遵守美国出口管制。主席新闻稿另有较重措辞，摘要正文更谨慎；本条以摘要数字和「批准≠出货」为准。",
+      "first_source_at": "委员会新闻稿 2026-11-19；路透主帖 2026-11-20 10:06 Asia/Shanghai",
+      "hard_gate": true,
+      "id": "w47-pf-01",
+      "links": [
+        {
+          "label": "委员会新闻稿",
+          "url": "https://foreignaffairs.house.gov/news/press-releases/chairman-brian-mast-exercises-legislative-authority-to-publicly-release-ai-chip-license-information-for-china"
+        },
+        {
+          "label": "摘要 PDF",
+          "url": "https://democrats-foreignaffairs.house.gov/wp-content/uploads/2026/11/11.19.26-ECRA-Information-Disclosure-HFAC-Summary.pdf"
+        },
+        {
+          "label": "路透帖",
+          "url": "https://x.com/Reuters/status/2123598909771571245"
+        }
+      ],
+      "title": "【硬门槛】众议院外交委员会公开：BIS 截至 5 月 11 日已批准向中国公司出口 879,868 枚先进 AI 芯片",
+      "why": "这是本周最硬的官方数据：不是传闻中的「可能卖了多少」，而是已批准的许可证规模，并且点名包含军工名单上的公司。后续争论必须把批准量、实际出货量和后来的停运声明分开写。"
+    },
+    {
+      "angle": "出口管制 / 远程访问",
+      "background": "此前管制主要盯「芯片运出境」。东南亚数据中心和远程调用先进算力，是被指用来绕过管制的新路径。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "美国商务部 BIS 于 2026-11-16 发布临时最终规则（IFR），官方明确写「由财政部与国家安全委员会撰写并按其指示发布」，旨在防止通过第三国数据中心的远程计算安排，绕过对先进超级智能（SI）芯片与服务器的现有管制。BIS 称 IFR 已展出（on display），已打开的新闻稿未写死「立即生效」，也未展开具体门槛或国别许可清单。具体门槛与生效时点以正文 / 联邦公报为准。",
+      "first_source_at": "BIS 新闻稿 2026-11-16；WSJ 帖 2026-11-17 02:00 Asia/Shanghai",
+      "hard_gate": true,
+      "id": "w47-pf-02",
+      "links": [
+        {
+          "label": "BIS 新闻稿",
+          "url": "https://www.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology"
+        },
+        {
+          "label": "WSJ 帖",
+          "url": "https://x.com/WSJ/status/2122389319407083962"
+        }
+      ],
+      "title": "【硬门槛】BIS 限制经第三国数据中心远程访问先进超级智能芯片与服务器",
+      "why": "这是把出口管制从「芯片实物离境」延伸到「远程访问算力」的硬规则，而且由财政部与 NSC 主导、BIS 落章，直接对准本周东南亚数据中心和 Megaspeed 争议。"
+    },
+    {
+      "angle": "出口管制 / 转运与诉讼",
+      "background": "Megaspeed 是本轮对华芯片转运争议的核心中间商。本周调查报道、资金关系与股东诉讼把同一条线往前推了三步。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "WSJ 调查称，东南亚数据中心利用出口管制缺口，向中国公司提供英伟达算力并掩盖走私；Megaspeed 记录显示近 120 亿美元受限芯片订单。纽约时报随后报道，阿里巴巴为 Megaspeed 的客户与资金后盾，并与之江实验室共同经办。11-20 路透称，阿里巴巴在纽约南区被股东提起拟议集体诉讼，指其隐瞒与 Megaspeed 及涉嫌间谍的关系。近 120 亿美元是报道中的订单记录，不是已核装运量；诉讼尚为拟议集体诉讼，不是已判决事实。",
+      "first_source_at": "WSJ 调查见 2026-11-16；纽时 2026-11-18/19；诉讼路透帖 2026-11-20",
+      "hard_gate": true,
+      "id": "w47-pf-03",
+      "links": [
+        {
+          "label": "WSJ 调查存档",
+          "url": "https://archive.ph/S6PCq"
+        },
+        {
+          "label": "WSJ 帖",
+          "url": "https://x.com/WSJ/status/2122000527235932367"
+        },
+        {
+          "label": "纽约时报",
+          "url": "https://www.nytimes.com/2026/11/18/technology/nvidia-alibaba-china-military.html"
+        },
+        {
+          "label": "路透诉讼帖",
+          "url": "https://x.com/Reuters/status/2123607328633016475"
+        }
+      ],
+      "title": "【硬门槛】WSJ：东南亚数据中心与 Megaspeed 近 120 亿美元受限芯片订单；纽时称阿里为客户与资金后盾，阿里在纽约被诉",
+      "why": "许可证数字、转运调查和股东诉讼开始咬合：一边是已批准的对华出货许可，一边是被指用于绕过管制的中间商结构。阿里从「客户名单上的公司」变成被诉未充分披露的上市公司。"
+    },
+    {
+      "angle": "出口政策 / 公司治理",
+      "background": "财长贝森特本周把英伟达对华销售动机、董事会答问和临时 CEO 的出货口径放到同一条政策线上，白宫随后又给出更长周期的销售设想。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "贝森特质疑英伟达是否为冲营收推动疑似对华非法销售，要求董事会与外聘律师 10 日内作答，并主张外聘 CEO；他还指责商务部未对 Megaspeed 实施出口管制，并称财政部赞成限制。临时 CEO Kress 称，Q3 对华售出 24 亿美元获批 Hopper 数据中心产品，并称已停止出货。特朗普随后淡化英伟达间谍丑闻，并称两三年后可考虑对华销售 Blackwell。10 日答复是政治要求，不是已完成的正式执法时限；Blackwell 对华销售是口头设想，不是已生效许可。",
+      "first_source_at": "贝森特相关 2026-11-15/16；Kress 2026-11-18；特朗普表述 2026-11-19",
+      "hard_gate": true,
+      "id": "w47-pf-04",
+      "links": [
+        {
+          "label": "Axios：贝森特",
+          "url": "https://www.axios.com/2026/11/15/bessent-nvidia-earnings-china-chip-sales-ceo"
+        },
+        {
+          "label": "路透：财政部赞成限制 Megaspeed",
+          "url": "https://www.reuters.com/business/retail-consumer/bessent-says-treasury-favored-limits-megaspeed-2026-11-13/"
+        },
+        {
+          "label": "彭博法律：停止对华出货",
+          "url": "https://news.bloomberglaw.com/international-trade/nvidia-stops-selling-ai-chips-to-china-despite-us-approval"
+        },
+        {
+          "label": "彭博：可考虑 Blackwell",
+          "url": "https://www.bloomberg.com/news/articles/2026-11-19/trump-suggests-us-can-sell-blackwell-chips-to-china-in-future"
+        }
+      ],
+      "title": "【硬门槛】贝森特要求 10 日内作答并主张外聘 CEO；Kress 称 Q3 对华售出 24 亿美元获批 Hopper 后已停运；特朗普称两三年后可考虑 Blackwell",
+      "why": "政策信号在同一周里左右摆动：一边是财长要追责并停运已批准产品，一边是总统放出未来可售更先进芯片的风声。对供应链而言，可核对的是 Kress 的 24 亿美元与「已停运」，不是口头上的两三年后。"
+    },
+    {
+      "angle": "公司治理 / 国会问询",
+      "background": "上周董事会已接受黄仁勋辞任。本周把「会不会回来」「还能不能影响董事会」和「何时面对国会」写成可核对的节点。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "黄仁勋同意 12 月 1 日接受三家众议院委员会闭门问询，英伟达总法 12 月 2 日到场。路透称，按公司章程与持股，黄仁勋仍可最多提名两名董事。董事会一致接受其辞职，且不打算请回。路透此前还报道，他曾向总法律顾问特特、首席营销官瓦贡费尔德等隐瞒与 Alice Huang 关系性质。FT 称董事会曾接触 Arm CEO 勒内·哈斯作为继任人选之一，彭博称公司表示物色传闻为时过早。闭门问询不是公开听证；提名权不等于已经指派新董事。",
+      "first_source_at": "委员会声明与路透 2026-11-18；隐瞒关系报道 2026-11-14",
+      "hard_gate": true,
+      "id": "w47-pf-05",
+      "links": [
+        {
+          "label": "委员会声明",
+          "url": "https://chinaselectcommittee.house.gov/media/press-releases/jensen-huang-and-nvidia-agree-to-appear-before-congress"
+        },
+        {
+          "label": "Axios 日期",
+          "url": "https://www.axios.com/2026/11/17/nvidia-jensen-huang-congress-testify-dates"
+        },
+        {
+          "label": "路透：仍可提名两名董事",
+          "url": "https://www.investing.com/news/stock-market-news/former-nvidia-ceo-jensen-huang-can-nominate-two-directors-to-company-board-filings-show-5034176"
+        },
+        {
+          "label": "路透：隐瞒关系",
+          "url": "https://www.reuters.com/world/china/ex-nvidia-ceo-misled-top-lawyer-affair-with-chinese-businesswoman-sources-say-2026-11-14/"
+        }
+      ],
+      "title": "【硬门槛】黄仁勋同意 12 月 1 日接受三家众议院委员会闭门问询，仍可提名两名董事；董事会不打算请回",
+      "why": "辞任并没有让问责线结束：12 月 1–2 日是明确的国会节点，保留董事提名权意味着治理结构仍可能被前 CEO 影响。是否请回与谁接任，目前仍以董事会「不打算请回」和「搜寻尚未有官方结果」为准。"
+    },
+    {
+      "angle": "监管调查",
+      "background": "黄仁勋事件后，披露是否充分、对华销售相关陈述是否误导投资者，从媒体调查走进监管程序。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "WSJ 报道称，SEC 在黄仁勋事件后对英伟达启动民事调查，关注点包括公司披露是否误导投资者；来源为知情人士。彭博法律写英伟达未回应采访，SEC 拒绝置评。The Verge 还提调查部分涉及公司如何披露新加坡收入（Megaspeed 所在地）。本台未打开 WSJ 付费页，以 WSJ 官方帖及转述为准；SEC 本身尚未发布公告。加州总检察长 Bonta 随后向英伟达发出调查传票，加州司法部有正式新闻稿。民事调查和州检察长传票都不是已认定违法。",
+      "first_source_at": "WSJ 官方帖 2026-11-18 04:59 Asia/Shanghai；加州司法部新闻稿见 2026-11-20 晨间",
+      "hard_gate": true,
+      "id": "w47-pf-06",
+      "links": [
+        {
+          "label": "WSJ 官方帖",
+          "url": "https://x.com/WSJ/status/2122796879725363307"
+        },
+        {
+          "label": "TechCrunch 转述",
+          "url": "https://techcrunch.com/2026/11/17/sec-reportedly-investigating-nvidia-amid-huang-exit/"
+        },
+        {
+          "label": "加州司法部",
+          "url": "https://oag.ca.gov/news/press-releases/attorney-general-bonta-serves-investigative-subpoena-nvidia"
+        }
+      ],
+      "title": "【硬门槛】WSJ：SEC 对英伟达启动民事调查；加州总检察长向英伟达发出调查传票",
+      "why": "联邦证券监管和州检察长同步进场，意味着英伟达的对华销售与信息披露要从舆情变成可强制取证的程序。12 月国会问询之外，又多了两条法律轨道。"
+    },
+    {
+      "angle": "利益冲突 / 国会监督",
+      "background": "商务部长 Lutnick 的家族公司持仓，以及总统账户买卖英伟达，是本周被拿到监督桌上的两条利益冲突线。目前都还没有「下令或内幕交易」的已证结论。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "众议院司法、外交事务等委员会少数党领袖于 2026-11-18 致函 Cantor Fitzgerald 董事长 Brandon Lutnick，要求提供记录，以确定商务部长 Howard Lutnick 在家族公司仍持有数亿美元规模英伟达股票期间，是否阻碍将 Megaspeed 列入实体清单。新闻稿称 Lutnick 上任前 Cantor 披露持有超过 350 万股英伟达，确认后所有权转给子女信托，审查期间披露持仓减近一半，至 2026 年 3 月底仍持约 3.10 亿美元；议员要求保留 2024 年 1 月以来相关记录，并在 12-01 前书面答复。CNBC 根据特朗普财产披露分析：重返白宫以来其投资账户至少 103 次买卖英伟达，交易金额合计 2700 万至 9750 万美元（披露只给区间）；白宫称独立顾问管理、总统不介入。11-20 续报其 9 月定期交易披露还买过 Palantir 与 SpaceX。稿件写明目前没有总统下单或利用内幕的证据，本报不下该结论。",
+      "first_source_at": "少数党新闻稿标注 2026-11-18；CNBC 约 2026-11-17 05:52 +08；9 月披露续报 2026-11-20",
+      "hard_gate": true,
+      "id": "w47-pf-07",
+      "links": [
+        {
+          "label": "司法委员会少数党新闻稿",
+          "url": "https://democrats-judiciary.house.gov/media-center/press-releases/ranking-members-raskin-meeks-and-kamlager-dove-probe-whether-lutnick-s-family-finances-shaped-his-response-to-the-nvidia-spy-scandal"
+        },
+        {
+          "label": "Politico",
+          "url": "https://www.politico.com/news/2026/11/18/democrats-congress-lutnick-nvidia-01171921"
+        },
+        {
+          "label": "CNBC：特朗普账户交易",
+          "url": "https://www.cnbc.com/2026/11/16/trump-nvidia-stock-trades-jensen-huang.html"
+        },
+        {
+          "label": "白宫 9 月定期交易 PDF",
+          "url": "https://www.whitehouse.gov/wp-content/uploads/2026/11/President-Donald-J.-Trump-Periodic-Transaction-Report-09.17.26.pdf"
+        }
+      ],
+      "title": "【硬门槛】议员要求 Cantor 提供 Lutnick 家族英伟达持仓记录；特朗普账户交易英伟达的披露被补齐",
+      "why": "这是把「谁在决策对华芯片限制」和「谁在同一时期持有或交易英伟达」放在同一时间线上的监督动作。12 月 1 日是 Cantor 函件的书面节点，也与黄仁勋闭门问询同一天，值得并读，但不要写成已经证实的交易违规。"
+    },
+    {
+      "angle": "模型治理 / 跨境监管",
+      "background": "蒸馏是用强模型输出训练学生模型的常见技术，并不必然违法。本周它被写成可能对冲芯片管制的产业工具，同时出现针对选民的跨境监管问询。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "路透审阅 300 余份中国学术论文、专利、公司披露、招聘启事与政府文件后称，用美国领先模型输出训练国产模型的做法，已从学术实验进入工业应用。路透还披露：7 月成都会晤上，美国商务部官员曾向中方监管部门警告，部分大规模采集美国模型输出的行为可能构成知识产权盗窃（三位知情人士）；中方官员称蒸馏是标准技术、愿在确属知识产权盗窃时采取行动。这不是新的成文禁令。马来西亚通信与多媒体委员会（MCMC）向 Anthropic 索取信息，涉及针对选民的 AI 政治影响行动；以议会答问和当地媒体报道为准。",
+      "first_source_at": "路透官方帖 2026-11-17 11:50:12 Asia/Shanghai；MCMC 报道 2026-11-18",
+      "hard_gate": true,
+      "id": "w47-pf-08",
+      "links": [
+        {
+          "label": "路透独家",
+          "url": "https://www.reuters.com/world/china/china-taps-us-ai-models-train-homegrown-rivals-chip-curbs-bite-2026-11-17/"
+        },
+        {
+          "label": "路透帖",
+          "url": "https://x.com/Reuters/status/2122537762439975368"
+        },
+        {
+          "label": "The Star：MCMC",
+          "url": "https://www.thestar.com.my/news/nation/2026/11/18/mcmc-seeks-details-from-anthropic-over-alleged-ai-use-in-political-manipulation-targeting-msia-parliament-told"
+        },
+        {
+          "label": "海峡时报",
+          "url": "https://www.straitstimes.com/asia/se-asia/malaysia-seeks-details-from-anthropic-over-ai-influence-campaign"
+        }
+      ],
+      "title": "【硬门槛】路透独家：中国实体以蒸馏用美国模型输出训练国产模型；马来西亚 MCMC 向 Anthropic 索取信息",
+      "why": "在 BIS 远程访问新规之后，蒸馏成为芯片管制有效性的新争议面：即使芯片出不去，模型输出仍可能被用来训练国产系统。马来西亚对 Anthropic 的问询则说明，模型供应商开始直接面对外国选举监管，而不只是美国出口管制。"
+    },
+    {
+      "angle": "国际协调 / 产业政策 / 金融稳定",
+      "background": "本周同时出现三份宏观文本：一份已签署的国际声明，一份尚未被独立核实的产业政策报道，以及美联储对金融体系风险的例行调查。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "美国与九个 Pax Silica 伙伴于 11-15 签署《旧金山宣言》，把超智能 / AI 供应链敏感技术与关键基础设施列为共同防护对象，国务院公布全文。WSJ 报道特朗普政府计划将英伟达、亚马逊、微软、OpenAI、Anthropic 等二十余家列为 AI「国家冠军」，以助海外扩张；路透转述该报道并写明尚未独立核实，本条保持这一保留。美联储 11-13《金融稳定报告》：9–10 月调查中，将人工智能列为突出风险的市场联系人占 87%（春季 50%）；与先进计算相关的债务发行到 2026-10 已超过 6800 亿美元；相关公共债务余额到 10 月估计超过 1.1 万亿美元。87% 是联系人调查结果，不等同于美联储理事会自己的风险排序。",
+      "first_source_at": "FSR 官方日期 2026-11-13（本周补报）；宣言与国家冠军报道 2026-11-16",
+      "hard_gate": true,
+      "id": "w47-pf-09",
+      "links": [
+        {
+          "label": "国务院：《旧金山宣言》",
+          "url": "https://www.state.gov/releases/office-of-the-spokesman/2026/11/the-san-francisco-declaration-on-the-secure-foundations-of-enduring-prosperity"
+        },
+        {
+          "label": "美联储 FSR PDF",
+          "url": "https://www.federalreserve.gov/publications/files/financial-stability-report-20261113.pdf"
+        },
+        {
+          "label": "WSJ 国家冠军帖",
+          "url": "https://x.com/WSJ/status/2122178271886422524"
+        },
+        {
+          "label": "路透转述（写明未核实）",
+          "url": "https://money.usnews.com/investing/news/articles/2026-11-15/trump-administration-to-name-nvidia-other-ai-firms-as-us-national-champions-wsj-reports"
+        }
+      ],
+      "title": "【硬门槛】美与九个伙伴签署《旧金山宣言》；「国家冠军」计划尚待核实；美联储 FSR 将 AI 列为突出风险",
+      "why": "国际声明把 AI 供应链写成共同防护对象，FSR 则把 AI 估值、网络攻击和融资杠杆写成金融稳定问题。『国家冠军』若落实，会改变海外扩张的政治背书，但在被独立核实或官方公布前，不能当成已生效政策。"
+    },
+    {
+      "angle": "金融监管",
+      "background": "客户尽职调查（CDD）是银行和货币服务商识别受益所有人和账户风险的基础规则。本周财政部把强化方案正式送进拟议规则程序。",
+      "channel": "公开信号",
+      "detail": true,
+      "facts": "FinCEN 发布强化客户尽职调查拟议规则，落实行政令 14406。财政部有正式新闻稿和官方帖。这是拟议规则，不是已经生效的最终规则；评论期与最终文本以联邦公报为准。可与上周已报道的制裁/关户线对照，但不把旧闻复贴成新的强制节点。",
+      "first_source_at": "财政部新闻稿见 2026-11-18 晨间",
+      "hard_gate": true,
+      "id": "w47-pf-10",
+      "links": [
+        {
+          "label": "财政部新闻稿",
+          "url": "https://home.treasury.gov/news/press-releases/sb0691/"
+        },
+        {
+          "label": "官方帖",
+          "url": "https://x.com/USTreasury/status/2122757357348561008"
+        }
+      ],
+      "title": "【硬门槛】FinCEN 发布强化客户尽职调查拟议规则，落实行政令 14406",
+      "why": "若最终落地，受影响的是开户、受益所有人和持续监控的基线，而不是单一交易所事件。对银行、支付和加密业务的 TPRM 与客户尽职调查流程，这是需要提前评估实施成本的监管硬节点。"
+    }
+  ],
+  "schema": "qianji.briefing.weekly.v1",
+  "sources": [
+    "千机阁台账与日更 briefings/daily（2026-11-14–11-20）",
+    "官方通告 / CISA / BIS / 财政部·FinCEN / 众议院外交委员会 / OpenAI / Anthropic / Google / 英伟达财报 / Check Point / Trezor / Broadcom / php.net",
+    "@dair_ai 论文窗；GitStock+Trending（全周 GH Archive 缺源，周涨星为日榜累计）",
+    "口径 briefings-polfin-column §11 改帽与 weekly-news-gh-parity"
+  ],
+  "summary": "本周主线三线并行。实验室与资本：Anthropic 按每股 83 美元定价并在纳斯达克以 ANT 上市，首日收盘 97.17 美元、约涨 17%；OpenAI 推出 GPT-6.2 Astra/Sol，Google 推出 Gemini 4 Neon，阿里发布 Qwen4-Max；英伟达公布 Q3 营收 1158 亿美元，展望 1300 亿且不计入中国数据中心计算收入。政治金融：众议院外交委员会公开 BIS 许可证，截至 5 月 11 日已批准向中国公司出口 879,868 枚先进 AI 芯片；BIS 同时限制经第三国数据中心远程访问先进芯片与服务器。安全：Fireworks 供应商失陷波及 Cursor 与 Uber，Optimizely 第三方脚本与 PyPI 恶意包打到软件供应链，Check Point 网关、F5、nginx、vCenter、PHP 与 Java4Shell 构成边缘与管理面热修周。详卡与 SA 见「金融决策」。",
+  "timezone": "Asia/Shanghai",
+  "updated_at": "2026-11-20T18:27:46+08:00",
+  "week": "2026-W47",
+  "window": {
+    "end": "2026-11-20",
+    "note": "覆盖上周五 W46 定稿后至本周五（含 11-14/15 周末，因 W46 周五窗未收入）；ISO 周 W47 至周日未满",
+    "start": "2026-11-14"
+  }
+}
