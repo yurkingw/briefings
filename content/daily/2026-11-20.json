@@ -356,21 +356,21 @@
     "finsec": 5,
     "gh_newcomers": 6,
     "gh_rising": 10,
-    "hard_gate": 2,
+    "hard_gate": 4,
     "home_related": "10/17",
-    "news": 14,
-    "news_detail": 8,
+    "news": 17,
+    "news_detail": 11,
     "news_detail_morning": 8,
-    "news_detail_noon": 0,
+    "news_detail_noon": 3,
     "news_morning": 14,
-    "news_noon": 0,
+    "news_noon": 3,
     "papers": 5,
-    "polfin": 3,
-    "polfin_detail": 2,
+    "polfin": 5,
+    "polfin_detail": 4,
     "polfin_detail_morning": 2,
-    "polfin_detail_noon": 0,
+    "polfin_detail_noon": 2,
     "polfin_morning": 3,
-    "polfin_noon": 0
+    "polfin_noon": 2
   },
   "news": [
     {
@@ -702,6 +702,77 @@
       "title": "Axios 报道：白宫国家网络总监 Sean Cairncross 将离职（本环境未打开 Axios 正文，以转述帖与链接为准）",
       "wave": "晨间",
       "why": "这是联邦网络政策协调职位的关键退出信号，会发生在芯片出口与网络政策争议正密集的时候。"
+    },
+    {
+      "arch_impact": null,
+      "background": "晨报已记 GPT-Live-1.1 进入 API，以及 Dots 向 Plus / Business Standard 放量，未覆盖这条开发者接口规则。",
+      "channel": "关注流 + 公开信号（官方帖 / 开发者文档）",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "@OpenAIDevs 于 2026-11-20 07:56 +08 称：使用 GPT-6.2 的 agent 可在 Responses API 上延续此前推理，以减少 token、增加缓存命中。从最新前沿模型起，每条 reasoning item（推理项，即模型写下的中间思考）与它之前的对话历史绑定；改动更早消息会导致后续推理被丢弃。官方文档《Keep the prefix unchanged》写明：前缀被改后，API 会丢弃其后的推理项，模型可能重做推理，成本与延迟上升，质量也可能下降。官方建议尽量只追加、不改前缀，并用 configuration_update、additional_tools 等方式调整推理力度、工具或输出格式。主帖扫盘时约 613 赞、约 5.3 万次展示。",
+      "finsec": false,
+      "first_source_at": "官方帖 2026-11-20 07:56 +08",
+      "hard_gate": false,
+      "id": "n-20261120-15",
+      "links": [
+        {
+          "label": "官方主帖",
+          "url": "https://x.com/OpenAIDevs/status/2123566018866151579"
+        },
+        {
+          "label": "文档",
+          "url": "https://developers.openai.com/api/docs/guides/keep-prefix-unchanged"
+        }
+      ],
+      "title": "OpenAI：GPT-6.2 在 Responses API 把推理项与对话前缀绑定，改前缀会丢弃后续推理",
+      "wave": "午间",
+      "why": "这是把“别改历史、只往后续写”写成接口硬规则，会直接影响 agent 的缓存费用和推理质量。不是 GPT-6.2 模型发布的复述。"
+    },
+    {
+      "arch_impact": null,
+      "background": "这是模型托管服务的供应链完整性事件。官方通告日期为 11-19，事件发生在 11-8 至 11-10；晨报未收。",
+      "channel": "公开信号（厂商通告）",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "Prime Intellect 安全通告 PI-SA-2026-001（2026-11-19）：2026-11-08 01:24 UTC 至 11-10 06:35 UTC，未经授权的一方把 deepseek/deepseek-v4.1-flash 端点背后的部署，替换成公开可获取的 abliterated（去拒绝，即削弱或去掉拒答）权重。聊天模板、分词器和服务配置未改。公司自测能力基准 GPQA Diamond、τ-bench 无明显变化，但拒答在 JailbreakBench 从 100 条中的 98 条降至 1 条，StrongREJECT 从 313 条中的 304 条降至 2 条，HarmBench 从 240 条中的 198 条降至 0。公司称已联系受影响客户；若业务依赖模型拒答，应复查该时段输出。目前未发现提示词或回复被记录或离开该集群，也未发现其他模型、密钥或凭证受影响。调查仍在进行，通告未说明攻击者如何获得管理权限。",
+      "finsec": false,
+      "first_source_at": "通告标注 2026-11-19；本波午间核到原文",
+      "hard_gate": false,
+      "id": "n-20261120-16",
+      "links": [
+        {
+          "label": "PI-SA-2026-001",
+          "url": "https://www.primeintellect.ai/security/advisories/deepseek-v4-1-flash-model-substitution"
+        }
+      ],
+      "title": "Prime Intellect 披露：DeepSeek V4.1 Flash 端点曾被擅自换成去拒绝版权重",
+      "wave": "午间",
+      "why": "这是把“模型被换成看起来差不多、但几乎不再拒绝危险请求”写成厂商公告。能力分数不变，不等于行为没变。"
+    },
+    {
+      "arch_impact": null,
+      "background": "technical capability notice（技术能力通知，依据《2016 年调查权力法》第 253 条，可要求相关运营商具备协助执法或情报的技术能力）是否已发给苹果，英政府此前主张既不证实也不否认（NCND）。",
+      "channel": "公开信号（法庭官网判决）+ 关注流转述",
+      "detail": true,
+      "domain": "网络安全",
+      "facts": "调查权力法庭 2026-11-19 作出公开判决 [2026] UKIPTrib 9（Apple Inc 诉内政大臣；Privacy International、Liberty 等另案并列）。法庭驳回内政大臣关于“在本程序中确认已向苹果发出技术能力通知会损害国家安全”的主张，并写明：事实是，内政大臣已向苹果发出该通知。确认这一事实后，相关实体听证可大部分在公开庭进行。通知的具体条文是否公开，法庭认为要等证据交换后再划界，本判决不处理。判决同时指出，已有获授权的对外通报，使该事实在公开领域实质上已知。",
+      "finsec": false,
+      "first_source_at": "判决日期 2026-11-19；关注流 @IntCyberDigest 2026-11-20 10:30 +08",
+      "hard_gate": false,
+      "id": "n-20261120-17",
+      "links": [
+        {
+          "label": "判决页",
+          "url": "https://www.judiciary.uk/judgments/apple-inc-v-home-secretary-and-others/"
+        },
+        {
+          "label": "公开判决 PDF",
+          "url": "https://www.judiciary.uk/wp-content/uploads/2026/11/OPEN-Judgment-Apple-Inc.-and-Privacy-Int.-Ors.pdf"
+        }
+      ],
+      "title": "英国调查权力法庭：可在公开程序中确认内政大臣已向苹果发出技术能力通知",
+      "wave": "午间",
+      "why": "这是法院把“有没有这张通知”从既不证实也不否认里拉出来，允许公开审理。不等于已经公布通知内容，也不等于已裁定通知本身合法。"
     }
   ],
   "papers": [
@@ -816,6 +887,60 @@
       "title": "【续报】Tim Scott 称愿考虑让 Bessent 与 Lutnick 就对华芯片一并作证（正式邀请未确认）",
       "wave": "晨间",
       "why": "若成行，这会把对华芯片决策的两个内阁部门放到同一场听证上。目前仍是「愿意考虑」，不是已发出的正式邀请。"
+    },
+    {
+      "angle": "监管/出口管制",
+      "arch_impact": "许可数据把对华先进芯片出口从政策辩论落实为可核验的批准账本，影响后续出口管制、实体清单与金融机构对相关供应链披露的评估。批准数不可直接当作到货量。",
+      "background": "黄仁勋离职后，对华芯片管制持续受国会审视。晨报已记加州总检察长传票，未覆盖这批许可证数据。",
+      "channel": "公开信号（委员会新闻稿与摘要 PDF / 路透 / CNBC）",
+      "detail": true,
+      "facts": "众议院外交委员会主席 Brian Mast 于 2026-11-19 依据《出口管制改革法》公开商务部工业与安全局（BIS）许可证材料。委员会摘要引用 BIS 2026-05-11 汇总：截至该日，BIS 收到向中国公司出售 3,444,160 枚受管制集成电路的申请，覆盖英伟达 H200 与 AMD MI325X；BIS 经 21 份许可证批准 879,868 枚，其中包括阿里巴巴 75,000、腾讯及其子公司 150,000、百度 43,000、比亚迪 4,000。这四家均出现在国防部 1260H「中国军工企业」名单（委员会文件写作 Department of War）。申请总量里，阿里巴巴及其子公司的申请数为 948,950 枚，与获批数不是同一口径。委员会与路透均写明，批准不等于已经完成对华出货，实际装运量仍不清楚。英伟达对 CNBC 表示，审批附带严格条件和限量，尽管拿到部分许可证，公司此后已停止向中国出货 H200。AMD 称遵守美国出口管制。主席新闻稿还写“英伟达申请依赖可能的走私前线”，这是委员会表述；摘要正文更谨慎，只写多家安装或收货实体（如 Maginfra、Beijing New Matrix、Aivres）存在转用风险的公开报道，且所有英伟达与 AMD 申请都自称转移风险为“低”。",
+      "finsec": false,
+      "first_source_at": "委员会新闻稿 2026-11-19；FT / 彭博约 08:57–09:05 +08；路透主帖 2026-11-20 10:06 +08",
+      "hard_gate": true,
+      "id": "pf-20261120-04",
+      "links": [
+        {
+          "label": "委员会新闻稿",
+          "url": "https://foreignaffairs.house.gov/news/press-releases/chairman-brian-mast-exercises-legislative-authority-to-publicly-release-ai-chip-license-information-for-china"
+        },
+        {
+          "label": "摘要 PDF",
+          "url": "https://democrats-foreignaffairs.house.gov/wp-content/uploads/2026/11/11.19.26-ECRA-Information-Disclosure-HFAC-Summary.pdf"
+        },
+        {
+          "label": "路透帖",
+          "url": "https://x.com/Reuters/status/2123598909771571245"
+        }
+      ],
+      "title": "【硬门槛】众议院外交委员会公开：BIS 截至 5 月 11 日已批准向中国公司出口 879,868 枚英伟达/AMD 先进 AI 芯片",
+      "wave": "午间",
+      "why": "这是迄今较细的对华先进芯片许可公开账，把批准数量、对象以及其中是否在军工名单上摊到台面上。不能把批准数直接写成已经运抵中国的数量。"
+    },
+    {
+      "angle": "证券诉讼",
+      "arch_impact": "股东诉讼把出口管制风险、供应链关系与年报披露义务绑在同一案由上，相关中概 ADR 的信息披露与合规暴露需要单独评估。目前仅为起诉，不是判决。",
+      "background": "昨日午间已报《纽约时报》称阿里巴巴为 Megaspeed 客户与资金后盾。本条是随后在曼哈顿联邦法院出现的拟议集体诉讼，不是同一篇报道的复述。",
+      "channel": "公开信号（路透）",
+      "detail": true,
+      "facts": "路透 11-19 报道（Jonathan Stempel）：股东 Withida Bihan 于周四在纽约南区联邦法院提起拟议集体诉讼，指控阿里巴巴在 2024、2025、2026 年报中知悉且实质性低估出口管制违规或涉嫌违规可能损害业务的风险，从而推高股价。诉状把阿里巴巴与新加坡公司 Megaspeed 的关系，以及 Megaspeed 高管 Alice Huang（与黄仁勋无亲属关系）同黄仁勋的关系列为关键隐瞒事项，并称阿里巴巴已成为 Megaspeed 的“主导”客户。原告称，上周媒体报道后阿里巴巴股价四个交易日跌 14%。集体诉讼期间为 2024-05-23 至 2026-11-11，索赔金额未具体列出。CEO 吴泳铭同为被告。路透称阿里巴巴当时未立即置评。这是指控，不是法院认定的事实。",
+      "finsec": false,
+      "first_source_at": "路透稿标注 2026-11-19；路透主帖 2026-11-20 10:40 +08",
+      "hard_gate": true,
+      "id": "pf-20261120-05",
+      "links": [
+        {
+          "label": "路透帖",
+          "url": "https://x.com/Reuters/status/2123607328633016475"
+        },
+        {
+          "label": "路透短链",
+          "url": "https://reut.rs/3WEol4F"
+        }
+      ],
+      "title": "【硬门槛】阿里巴巴在纽约被股东起诉，指其隐瞒与 Megaspeed 及涉嫌间谍的关系",
+      "wave": "午间",
+      "why": "英伟达相关丑闻的民事追责已从英伟达自身，扩到被指为 Megaspeed 重要客户的阿里巴巴，并把年报披露和出口管制风险直接连在一起。"
     }
   ],
   "schema": "qianji.briefing.daily.v1",
@@ -826,8 +951,8 @@
     "公开 X @dair_ai",
     "GitHub Trending daily HTML + API enrich；GitStock 日键 2026-11-19 UTC；GH Archive 缺源"
   ],
-  "summary": "主线是 Anthropic（代号 ANT）纳斯达克首日收盘 97.17 美元，较发行价 83 美元约上涨 17%。Google 把 Genie 4 开放给 Gemini API 与 AI Studio，并在 Mac 版 Gemini 应用上线 computer use。政经硬门槛是加州总检察长 Bonta 向英伟达发出调查传票，要求说明先进芯片或机密信息是否可能流入中国，以及公司是否误导投资者。安全面，PHP 已正式发布 8.5.13、8.4.28、8.3.37、8.2.36 安全更新并推出 8.6.0；Broadcom 通报 vCenter 认证绕过 CVE-2026-123890（CVSS 9.8，无变通办法）。",
+  "summary": "午间增量：众议院外交委员会公开 BIS 许可证数据，截至 2026-05-11 已批准向中国公司出口 879,868 枚英伟达 H200 / AMD MI325X，其中包括已列入国防部中国军工企业名单的阿里巴巴、腾讯、百度和比亚迪；实际出货量仍不清楚。阿里巴巴在纽约被股东起诉，指其隐瞒与 Megaspeed 的关系。产品侧，OpenAI 把 GPT-6.2 Responses API 的推理项与对话前缀绑定。安全面，Prime Intellect 披露 DeepSeek 端点曾被换成去拒绝版；英国调查权力法庭确认内政大臣已向苹果发出技术能力通知。晨间主线（Anthropic 收盘约 +17%、Genie 4 与 Mac computer use、加州总检察长传票、PHP 与 vCenter）仍成立。",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-20T08:30:00+08:00",
-  "wave": "晨间"
+  "updated_at": "2026-11-20T12:55:00+08:00",
+  "wave": "午间"
 }
