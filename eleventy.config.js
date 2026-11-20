@@ -31,6 +31,7 @@ import {
   rankLabel,
   remainderNews,
   saSteps,
+  textList,
   selectHot,
   statusItems,
   statusParts,
@@ -96,6 +97,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("boardInsight", (rows, meta, kind) => boardInsight(rows, meta, kind));
   eleventyConfig.addFilter("summaryView", (meta) => summaryView(meta));
   eleventyConfig.addFilter("saSteps", (decisions) => saSteps(decisions));
+  eleventyConfig.addFilter("textList", (value) => textList(value));
   eleventyConfig.addFilter("finalJudgments", (decisions) => finalJudgments(decisions));
   eleventyConfig.addFilter("financeLead", (briefing) => financeLead(briefing));
   eleventyConfig.addFilter("rankLabel", (rank) => rankLabel(rank));
