@@ -1,0 +1,683 @@
+{
+  "date": "2026-11-23",
+  "github": {
+    "meta": {
+      "archive": "missing",
+      "archive_note": "GH Archive 缺源（无 GCP/BigQuery）；规则双榜重合（热榜∩Archive）=0；涨星∩新锐=0；涨星 10 条，新锐经脚本初筛后再人工去掉作弊/破解/星农场，保留 8 条，不凑满 10。GitStock OK，日键 2026-11-22（UTC），GitStock∩Trending 在今日 Top10 为 10/10。",
+      "gitstock_date_key": "2026-11-22",
+      "gitstock_date_key_tz": "UTC",
+      "gitstock_trending_overlap": "10/10",
+      "hot_tag": "热榜",
+      "newcomer_count": 8,
+      "overlap_hot_archive": 0,
+      "overlap_rising_newcomers": 0,
+      "rising_count": 10,
+      "sources_missing": [
+        "gh_archive"
+      ],
+      "sources_ok": [
+        "gitstock",
+        "trending"
+      ]
+    },
+    "newcomers": [
+      {
+        "age_h": 11.8,
+        "break": null,
+        "gained": null,
+        "gained_week_approx": null,
+        "lang": "Swift",
+        "license": "MIT",
+        "owner": "os6",
+        "owner_type": "个人开发者",
+        "rank": 1,
+        "repo": "nospeaker",
+        "seen": "首见",
+        "slogan": "让 Mac 触控板用触觉马达「说话」",
+        "stars": 398,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/os6/nospeaker",
+        "what": "用 MacBook 触控板的触觉马达发声或传讯的 Swift 小工具。",
+        "why": "新仓约 12 小时内拿到约 398 星，创意明确，不是常见的星农场模板。"
+      },
+      {
+        "age_h": 11.9,
+        "break": null,
+        "gained": null,
+        "gained_week_approx": null,
+        "lang": "Python",
+        "license": "Apache-2.0",
+        "owner": "memoryoffish",
+        "owner_type": "个人开发者",
+        "rank": 2,
+        "repo": "film-director-skill-plugin",
+        "seen": "首见",
+        "slogan": "把剧本交给智能体去当导演",
+        "stars": 64,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/memoryoffish/film-director-skill-plugin",
+        "what": "给编程智能体用的导演技能与插件，覆盖分镜、Blender 代理和声音，想从剧本走到成片。",
+        "why": "新的 agent-skill 形态，方向清楚，星数与 fork 比例正常。"
+      },
+      {
+        "age_h": 10.5,
+        "break": null,
+        "gained": null,
+        "gained_week_approx": null,
+        "lang": "Python",
+        "license": "MIT",
+        "owner": "tommyquak",
+        "owner_type": "个人开发者",
+        "rank": 3,
+        "repo": "peatguard",
+        "seen": "首见",
+        "slogan": "用卫星雷达帮村庄做泥炭地修复",
+        "stars": 49,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/tommyquak/peatguard",
+        "what": "面向印尼 Kalimantan 乡村泥炭地修复的卫星雷达工具，含 NISAR L 波段接入、时序与验证。",
+        "why": "新仓题目具体，不像模板化的技能包或游戏修改器。"
+      },
+      {
+        "age_h": 16.6,
+        "break": null,
+        "gained": null,
+        "gained_week_approx": null,
+        "lang": "Kotlin",
+        "license": "Apache-2.0",
+        "owner": "midplane",
+        "owner_type": "组织",
+        "rank": 4,
+        "repo": "taar",
+        "seen": "首见",
+        "slogan": "给家人用的一条私密通讯线路",
+        "stars": 67,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/midplane/taar",
+        "what": "Kotlin 项目，定位为家庭私密通讯线路。",
+        "why": "新仓描述克制，语言与许可证完整，不是今日新锐里大量出现的农场仓。"
+      },
+      {
+        "age_h": 22.4,
+        "break": null,
+        "gained": null,
+        "gained_week_approx": null,
+        "lang": "Python",
+        "license": "MIT",
+        "owner": "tamnd",
+        "owner_type": "个人开发者",
+        "rank": 5,
+        "repo": "riemann-handbook",
+        "seen": "首见",
+        "slogan": "把一份声称的黎曼猜想证明写成手册",
+        "stars": 52,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/tamnd/riemann-handbook",
+        "what": "作者将自己在 tamnd/riemann-lean 中的材料写成数学手册（PDF/EPUB）。本报不核实该证明是否成立。",
+        "why": "周末已有黎曼猜想被证明的传闻簇；这个新仓是可点击的文本产物，值得单独标清「声称」而非当作已证实。"
+      },
+      {
+        "age_h": 9.5,
+        "break": null,
+        "gained": null,
+        "gained_week_approx": null,
+        "lang": "Python",
+        "license": "GPL-3.0",
+        "owner": "AliHesham2",
+        "owner_type": "个人开发者",
+        "rank": 6,
+        "repo": "Tarjuman",
+        "seen": "首见",
+        "slogan": "在电脑上给会议做实时语音翻译字幕",
+        "stars": 26,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/AliHesham2/Tarjuman",
+        "what": "本地 Whisper 加云端翻译，把会议或视频的语音实时叠成字幕，目前英到阿，并计划更多语言。",
+        "why": "场景清楚，许可证与 fork 都在，适合作为新锐里的实用工具样本。"
+      },
+      {
+        "age_h": 12.5,
+        "break": null,
+        "gained": null,
+        "gained_week_approx": null,
+        "lang": "Python",
+        "license": "MIT",
+        "owner": "benjiyaya",
+        "owner_type": "个人开发者",
+        "rank": 7,
+        "repo": "ComfyUI-ReaVideoBreakdown",
+        "seen": "首见",
+        "slogan": "用 ComfyUI 把视频按镜头拆开反推",
+        "stars": 23,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/benjiyaya/ComfyUI-ReaVideoBreakdown",
+        "what": "ComfyUI 插件，按镜头做视频逆向拆解，并写成 rea-video 风格的 VIDEO.md，走原生 VLM 文本编码器。",
+        "why": "新插件切口具体，贴合视频生成工作流，但星数仍低，当作新锐观察即可。"
+      },
+      {
+        "age_h": 14.5,
+        "break": null,
+        "gained": null,
+        "gained_week_approx": null,
+        "lang": "Python",
+        "license": "MIT",
+        "owner": "nickvasilescu",
+        "owner_type": "个人开发者",
+        "rank": 8,
+        "repo": "os1-her",
+        "seen": "首见",
+        "slogan": "一个偏《Her》的语音优先个人系统",
+        "stars": 25,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/nickvasilescu/os1-her",
+        "what": "语音优先的个人操作系统实验，作者称基于 Hermes、Fish Audio、LiveKit 等拼接。同一作者昨日新锐曾出现过 openman。",
+        "why": "新仓方向明确，fork 不少，属于个人系统或语音助手实验而非农场模板。"
+      }
+    ],
+    "rising": [
+      {
+        "age_h": 4836,
+        "break": null,
+        "gained": 1721,
+        "gained_week_approx": 1721,
+        "lang": "Python",
+        "license": "MIT",
+        "owner": "elementalsouls",
+        "owner_type": "个人开发者",
+        "rank": 1,
+        "repo": "Claude-BugHunter",
+        "seen": "续见",
+        "slogan": "把漏洞狩猎做成 Claude Code 技能包",
+        "stars": 17740,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/elementalsouls/Claude-BugHunter",
+        "what": "面向漏洞狩猎与外部红队的 Claude Code 技能包，含多类漏洞模式与攻击面矩阵。",
+        "why": "连续在榜，今日以约 +1,721 星领涨，技能包形态仍贴合安全研究场景。"
+      },
+      {
+        "age_h": 22826,
+        "break": null,
+        "gained": 910,
+        "gained_week_approx": 910,
+        "lang": "TypeScript",
+        "license": "AGPL-3.0",
+        "owner": "firecrawl",
+        "owner_type": "开源组织",
+        "rank": 2,
+        "repo": "firecrawl",
+        "seen": "续见",
+        "slogan": "一个 API 喂饱智能体的网页与数据源",
+        "stars": 207009,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/firecrawl/firecrawl",
+        "what": "给智能体用的搜索、抓取与多数据源访问底座。",
+        "why": "高星基础设施仓继续补星，重回到涨星前列。"
+      },
+      {
+        "age_h": 9820,
+        "break": null,
+        "gained": 785,
+        "gained_week_approx": 785,
+        "lang": "Shell",
+        "license": "MIT",
+        "owner": "obra",
+        "owner_type": "个人开发者",
+        "rank": 3,
+        "repo": "superpowers",
+        "seen": "续见",
+        "slogan": "一套可落地的智能体技能方法论",
+        "stars": 324145,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/obra/superpowers",
+        "what": "一套 agentic skills 框架与软件开发方法论。",
+        "why": "超高星仓库连续在榜，今日再升约 785 星。"
+      },
+      {
+        "age_h": 28675,
+        "break": "破 15,000 星",
+        "gained": 690,
+        "gained_week_approx": 690,
+        "lang": "Python",
+        "license": "GPL-3.0",
+        "owner": "XiaoYouChR",
+        "owner_type": "个人开发者",
+        "rank": 4,
+        "repo": "Ghost-Downloader-3",
+        "seen": "续见",
+        "slogan": "把常用下载能力收进一个开源客户端",
+        "stars": 15104,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/XiaoYouChR/Ghost-Downloader-3",
+        "what": "开源下载器客户端，定位把常见下载需求收在一起。",
+        "why": "昨日已在榜，今日继续以约 +690 星往前排。"
+      },
+      {
+        "age_h": 6225,
+        "break": null,
+        "gained": 687,
+        "gained_week_approx": 687,
+        "lang": "Python",
+        "license": "Apache-2.0",
+        "owner": "HKUDS",
+        "owner_type": "开源组织",
+        "rank": 5,
+        "repo": "CLI-Anything",
+        "seen": "续见",
+        "slogan": "让所有软件长出智能体可调用的命令行",
+        "stars": 62762,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/HKUDS/CLI-Anything",
+        "what": "让现有软件对智能体变成可调用的 CLI / 技能入口。",
+        "why": "高星仓连续在榜，今日再升约 687 星。"
+      },
+      {
+        "age_h": 7275,
+        "break": null,
+        "gained": 673,
+        "gained_week_approx": 673,
+        "lang": "Python",
+        "license": "MIT",
+        "owner": "mvanhorn",
+        "owner_type": "个人开发者",
+        "rank": 6,
+        "repo": "last30days-skill",
+        "seen": "续见",
+        "slogan": "把近一个月的公开讨论收成有根据的摘要",
+        "stars": 72690,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/mvanhorn/last30days-skill",
+        "what": "跨 Reddit、X、YouTube、HN、Polymarket 与网页做近期调研摘要的智能体技能。",
+        "why": "连续在榜，今日再升约 673 星。"
+      },
+      {
+        "age_h": 12067,
+        "break": null,
+        "gained": 640,
+        "gained_week_approx": 640,
+        "lang": "Python",
+        "license": "MIT",
+        "owner": "zhouxiaoka",
+        "owner_type": "个人开发者",
+        "rank": 7,
+        "repo": "autoclip",
+        "seen": "今日新上",
+        "slogan": "一条长视频链接，自动剪成可发布短片",
+        "stars": 13412,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/zhouxiaoka/autoclip",
+        "what": "开源 AI 视频剪辑桌面工具，把播客、访谈、课程等长视频自动剪成短视频并生成字幕与文案。",
+        "why": "今日新进 Top10，日涨约 640 星，剪辑工具仍是热门入口。"
+      },
+      {
+        "age_h": 4068,
+        "break": null,
+        "gained": 617,
+        "gained_week_approx": 617,
+        "lang": "Shell",
+        "license": "NOASSERTION",
+        "owner": "mjmirza",
+        "owner_type": "个人开发者",
+        "rank": 8,
+        "repo": "app-store-compliance",
+        "seen": "续见",
+        "slogan": "上架被拒套路与合规截止日期的预检手册",
+        "stars": 3958,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/mjmirza/app-store-compliance",
+        "what": "面向 App Store / Google Play 常见拒审模式、隐私清单与法规截止日期的预检手册和技能。",
+        "why": "昨日已在榜，今日继续以约 +617 星往上走。"
+      },
+      {
+        "age_h": 37805,
+        "break": null,
+        "gained": 537,
+        "gained_week_approx": 537,
+        "lang": "TypeScript",
+        "license": "NOASSERTION",
+        "owner": "toeverything",
+        "owner_type": "开源组织",
+        "rank": 9,
+        "repo": "AFFiNE",
+        "seen": "今日新上",
+        "slogan": "开源的规划与知识库，不想只用 Notion",
+        "stars": 76804,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/toeverything/AFFiNE",
+        "what": "开源知识库，把规划、整理和创作放在同一工作区，强调隐私与可定制。",
+        "why": "今日新进 Top10，日涨约 537 星。"
+      },
+      {
+        "age_h": 7446,
+        "break": null,
+        "gained": 516,
+        "gained_week_approx": 516,
+        "lang": "TypeScript",
+        "license": "Apache-2.0",
+        "owner": "google-labs-code",
+        "owner_type": "大厂官方",
+        "rank": 10,
+        "repo": "stitch-skills",
+        "seen": "续见",
+        "slogan": "给 Stitch MCP 用的一批标准 Agent Skills",
+        "stars": 11904,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/google-labs-code/stitch-skills",
+        "what": "面向 Stitch MCP 服务器的 Agent Skills 库，兼容 Antigravity、Gemini CLI、Claude Code、Cursor 等。",
+        "why": "连续在榜，今日再升约 516 星。"
+      }
+    ]
+  },
+  "metrics": {
+    "finsec": 1,
+    "gh_newcomers": 8,
+    "gh_rising": 10,
+    "hard_gate": 1,
+    "home_related": "3/7",
+    "news": 5,
+    "news_detail": 4,
+    "news_detail_morning": 4,
+    "news_detail_noon": 0,
+    "news_morning": 5,
+    "news_noon": 0,
+    "papers": 5,
+    "polfin": 2,
+    "polfin_detail": 1,
+    "polfin_detail_morning": 1,
+    "polfin_detail_noon": 0,
+    "polfin_morning": 2,
+    "polfin_noon": 0
+  },
+  "news": [
+    {
+      "arch_impact": null,
+      "background": "如何度量并约束前沿模型的预训练进度，一直缺少可跨实验室对照的尺子。Dario Amodei 此前主张「pace the frontier」，提出共同安全标准与对不受控进展设限；要设限，先要约定怎么量速度。",
+      "channel": "关注流 + 公开信号（官网博文 / @merettm / @sama / TechCrunch）",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "OpenAI 首席科学家 Jakub Pachocki 于 11-22 发表官方博文《Perplexity and Intelligence》，并在 @merettm 发帖同步。文中把内部留出集上的 log-perplexity（交叉熵损失）公开：GPT-3.5 约 0.99、GPT-4 约 0.91；写明现已降至 0.8 以下，并在网络安全与数学看到「变革性」能力；约 0.76 的模型开始对开放数学问题给出他称为突破性的结果。他建议把困惑度作为跨实验室对照的共同度量，并提议设定基于困惑度及其他指标的共同上限，在对模型行为的理解与监控达到可核对里程碑（例如思维链监控的继任方案）之前，开发者承诺不越过。文中并估计，进入约 0.68–0.7 窗口还可能再出现今天未在测的能力。数字基于公司内部代码库的固定快照，不能直接拿来给所有模型排座次。Sam Altman 引述该文称，这是 OpenAI「近来最重要的一篇发布」，并希望行业就共同上限达成一致。TechCrunch 有报道。本条不采社交转述中未在官网出现的具体型号对照数字。",
+      "finsec": false,
+      "first_source_at": "@merettm 2026-11-23 01:03 CST；官网博文日期 2026-11-22",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "n-20261123-01",
+      "links": [
+        {
+          "label": "OpenAI 博文",
+          "url": "https://openai.com/index/perplexity-and-intelligence/"
+        },
+        {
+          "label": "Pachocki 帖",
+          "url": "https://x.com/merettm/status/2124549218995949967"
+        },
+        {
+          "label": "Altman 帖",
+          "url": "https://x.com/sama/status/2124551594691932405"
+        },
+        {
+          "label": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/22/openais-chief-scientist-has-thoughts-on-how-to-limit-ai-development/"
+        }
+      ],
+      "title": "OpenAI 首席科学家公开预训练困惑度，提议行业共同上限",
+      "wave": "晨间",
+      "why": "这是 OpenAI 少见地主动公开内部预训练尺子，并把「共同安全上限」从口号写成一项可讨论的度量提案。它不等于行业已经接受设限，但把争论从下游基准转向预训练进度本身。"
+    },
+    {
+      "arch_impact": "AI 推理供应链的数据滞留与转发风险已从研究演示变成平台强制下架；依赖 ZDR 条款的工作流应改以供应商可验证的技术路径为准。",
+      "background": "OpenRouter 把用户请求路由到多家第三方推理供应商。Dragos 等研究者近日用金丝雀测试暴露出部分供应商的提示词泄露与数据政策未被遵守；周日盘中因研究本身早于窗口且已有报道，未单列成条。本条记平台侧的正式处置。",
+      "channel": "关注流 + 公开信号（OpenRouter 公告 / THN / @rauchg）",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "OpenRouter 在 11-22 官方公告《Data Processing Incidents on Inference Providers》中写明：研究结果并未显示 OpenRouter 自身被入侵或遭未授权访问，但针对具体推理供应商有新发现。公司已下架 3 家供应商，取消 125 个端点的 Zero Data Retention（零数据保留，ZDR）资格——其中包含研究者点名的供应商，也有作为预防措施拿下的端点——并通知所有可能受影响的客户。公告列出已收到的供应商说明，包括 Atlas Cloud、Novita（涉及 MiniMax 请求）、Phala 11 月初步事件报告，以及 Together 称 2026 年 6–7 月请求发生提示词泄露。OpenRouter 并未确认被下架的三家就是上述名单。后续动作包括把研究者的检测方法纳入持续检查，并核验请求是否被转发到第三方。致谢 Dragos 报告。The Hacker News 于 13:09 CST 率先在关注频道发出。",
+      "finsec": false,
+      "first_source_at": "@TheHackersNews 2026-11-22 13:09 CST；官方公告日期 2026-11-22",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "n-20261123-02",
+      "links": [
+        {
+          "label": "OpenRouter 公告",
+          "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/"
+        },
+        {
+          "label": "THN 帖",
+          "url": "https://x.com/TheHackersNews/status/2124369776827097236"
+        }
+      ],
+      "title": "OpenRouter 下架 3 家推理供应商，125 个端点取消零数据保留资格",
+      "wave": "晨间",
+      "why": "零数据保留是企业把提示词交给第三方推理时最常用的合同承诺之一。平台一次性拿下上百个端点，说明这条承诺在路由层并不能自动成立，客户需要重新盘点自己的供应商路径。"
+    },
+    {
+      "arch_impact": null,
+      "background": "Ghostscript 常被 ImageMagick、Pillow、libvips 等库在后台调用，用来处理 PDF、PostScript 或伪装成图片的文档。应用不一定意识到自己把上传文件交给了它。",
+      "channel": "公开信号（pwn.ai / THN / NVD）",
+      "detail": true,
+      "domain": "其他网络安全",
+      "facts": "pwn.ai（Paulos Yibelo）发布 Upload2Shell 研究，漏洞编号 CVE-2026-125396：Ghostscript 10.08.0 之前，Type 1 字体加载路径存在释放后使用，可绕过 -dSAFER 沙箱，在渲染进程里执行攻击者指定的命令。研究称在约 10 款常见应用中演示成功。无需登录的路径包括：对 Debian 13 共享打印队列投递 IPP 作业（以 lp 身份执行）、Roundcube 在收件人打开邮件时为附件生成缩略图，以及 WordPress 插件 Forminator、Essential Addons for Elementor 的公开上传表单。WordPress 核心路径需要 Author 及以上的上传权限，并另有 CVE-2026-65640 修复。上游 Artifex 已于 2026-09-08 发布 Ghostscript 10.08.0；THN 称目前未见在野利用报告。THN 文章发布于 11-22。",
+      "finsec": false,
+      "first_source_at": "pwn.ai 研究稿日期 2026-11-21；THN 2026-11-22 13:30 CST",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261123-03",
+      "links": [
+        {
+          "label": "pwn.ai",
+          "url": "https://pwn.ai/upload2shell"
+        },
+        {
+          "label": "THN",
+          "url": "https://thehackernews.com/2026/11/researchers-demonstrate-ghostscript.html"
+        },
+        {
+          "label": "NVD",
+          "url": "https://nvd.nist.gov/vuln/detail/cve-2026-125396"
+        }
+      ],
+      "title": "Ghostscript CVE-2026-125396（Upload2Shell）：上传或预览即可打到渲染进程",
+      "wave": "晨间",
+      "why": "漏洞本身 9 月已修，但利用面在上传、预览和打印这些日常功能里，许多线上应用可能仍带着旧库。该条的新闻点是研究把「文件名是 PNG 也会进 Ghostscript」这条路径写清楚，并给出可核对的下游案例。"
+    },
+    {
+      "arch_impact": "软件分发常用的第三方收款平台一旦存下 CVV，就会把多品牌顾客的卡数据集中暴露；商户应核对自己是否走该通道，并按发卡行通知处理换卡。",
+      "background": "Cleverbridge 为软件与 SaaS 厂商提供结账与订阅收款，公开客户名单包括 Red Hat、SUSE、Tenable、Veeam、Jamf、Sony、Parallels 等。公司未说明哪些商家的买家受影响。",
+      "channel": "关注流 + 公开信号（BleepingComputer 转述官方披露 / @IntCyberDigest）",
+      "detail": true,
+      "domain": "其他网络安全",
+      "facts": "BleepingComputer 11-22 报道并引用公司安全事件披露：Cleverbridge 于 2026-11-04 发现未授权活动，曾短暂下线相关系统，当天恢复；事后调查认定第三方复制了平台上存储的支付卡数据。公司从 11-20 开始通知受影响客户。公开披露页未列明被复制的字段，但 BC 见到的通知写明包含用于付款的卡号、有效期和 CVV/CVC，并称姓名、联系方式或账单地址等其他个人数据未被复制。公司未公布入侵方式、驻留时间和受影响人数。本环境未打开公司披露页原文，字段细节以 BC 对官方声明与通知的转述为准。关注流 @IntCyberDigest 于 11-23 06:06 CST 转发。",
+      "finsec": true,
+      "first_source_at": "BleepingComputer 2026-11-22（稿件时刻 10:43 AM，未标明时区）；@IntCyberDigest 2026-11-23 06:06 CST",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "n-20261123-04",
+      "links": [
+        {
+          "label": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/cleverbridge-warns-hackers-stole-credit-card-numbers-cvvs-in-data-breach/"
+        },
+        {
+          "label": "IntCyberDigest 帖",
+          "url": "https://x.com/IntCyberDigest/status/2124625540636147972"
+        }
+      ],
+      "title": "Cleverbridge 确认支付卡数据被复制，通知称含卡号、有效期与 CVV",
+      "wave": "晨间",
+      "why": "软件业一条常用的第三方结账通道确认丢了卡号和 CVV，影响面可能跨越多家安全与基础软件厂商的顾客，属于支付数据事件，而不是单一品牌官网被黑。"
+    },
+    {
+      "arch_impact": null,
+      "background": "英伟达芯片与整机交付持续紧张，已签约订单也面临改价压力。",
+      "channel": "公开信号（FT）",
+      "detail": false,
+      "domain": "AI产品",
+      "facts": "英国《金融时报》11-22 报道称，戴尔、HPE、联想与超微等供应商正在把英伟达驱动的 AI 服务器价格上调最多约 45%，且发生在合同签订数月之后，理由是算力需求推高成本。本环境未打开 FT 正文，以 @FT 原帖表述为准。",
+      "finsec": false,
+      "first_source_at": "@FT 2026-11-22 19:30 CST",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261123-05",
+      "links": [
+        {
+          "label": "FT 帖",
+          "url": "https://x.com/FT/status/2124465449874198939"
+        }
+      ],
+      "title": "FT：戴尔、HPE、联想与超微等把英伟达 AI 服务器价格上调最多约 45%",
+      "wave": "晨间",
+      "why": "这是把芯片供应紧张写成已签约客户的改价事实，会影响数据中心资本开支的落地价格，但不是新的监管动作，故不进政治金融栏。"
+    }
+  ],
+  "papers": [
+    {
+      "dair_url": "https://x.com/dair_ai/status/2124510548070895895",
+      "short": "Self-Improvement Memory：把改过的原因留下",
+      "url": "https://arxiv.org/abs/2611.18856",
+      "what": "当模型或基准换掉时，只保存演进后的 harness 代码，会丢掉「当初为什么改」。SIM 按反复出现的问题归档每次编辑的理由、预期、实际结果和评测上下文，让提议者与选择器在下一轮先读这份记录。四个领域的实验称，它在跨数据集和跨模型设置里优于只保留 harness 或只保留根因的续写；十次编程运行中 9 次提高，平均加 2.36 分。",
+      "why": "自动改 harness 时，失败原因往往比最终代码更值钱。有 arXiv。通路论文栏/@dair_ai。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2124510548070895895",
+      "short": "AutoRL：让多智能体盯着一场强化学习训练",
+      "url": "https://arxiv.org/abs/2611.17790",
+      "what": "美团与合作高校的工作。AutoRL 用监测智能体盯训练动态，异常时再由提议与编排智能体决定热更新或从检查点重启，而不是走固定配方。文中称：Qwen3 在 AIME 2024 从 46.67% 提到 66.67%，AIME 2025 与 HMMT 2025 各加 11.67 分；在 LongCat-Flash-Lite 的智能体编程上，pass@1 从 52.29% 提到 65.13%。作者把验证成本列为仍未解决的问题。",
+      "why": "它把「有人值守的 RL 训练」写成可中途改配方的多智能体流程，并给出可核对的基准数字。有 arXiv。通路论文栏/@dair_ai。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2124510548070895895",
+      "short": "Weight-Space Programming：不靠反向传播，直接把权重写成代码",
+      "url": "https://arxiv.org/abs/2611.18114",
+      "what": "微软研究院等提出可解释的权重空间编程（iWSP）：由大模型智能体用代码直接写出网络权重与特征，在 30–50 轮里测试并改写，不做梯度训练。文中称，以 Claude Opus 5.5 为智能体时，26 次算法任务都在留出集上达到 100% 准确率，能工作的最小模型中位参数量 166；在视觉皮层等脑数据上，也用来做可解释的编码模型。arXiv:2611.18114。",
+      "why": "它把「模型为什么这样预测」写成可逐行阅读的程序，而不是再训练一个黑盒。有 arXiv。通路论文栏/@dair_ai。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2124510548070895895",
+      "short": "EfficientSkill：先把技能学准，再把提示词剪短",
+      "url": "https://arxiv.org/abs/2611.19823",
+      "what": "Google 与普渡的工作。技能优化器常在每次失败后追加规则，文件越来越长、循环超时。EfficientSkill 分两阶段：先不惩罚长度、把准确率抬到目标；再在准确率不回退的前提下压缩指令、限制轮次，并把可复用代码挪到不占提示词的工作区工具里。文中称在四套模型、三个基准的 12 组设置里，有 11 组输出 token 下降。",
+      "why": "它把「技能文件越写越长」当成必须单独优化的目标，而不是准确率的副作用。有 arXiv。通路论文栏/@dair_ai。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2124510548070895895",
+      "short": "CompoundingKernel：从零搜索就能上榜的 GPU 核",
+      "url": "https://arxiv.org/abs/2611.19230",
+      "what": "Amazon 的工作。上千个智能体并行搜索 GPU 核，不提供参考实现或官方分数。作者称在 SOL-ExecBench 的 L1、L2 与量化公开榜上排第一，235 道题都有通过验证的核，209 道公开题相对基准参考实现约 4.40 倍。控制端比编码的 UCB 树搜索在同等墙钟下 38 题中赢 35 题。作者认为限制扩展的是可靠评测的速率，而不是智能体数量。",
+      "why": "把「多智能体刷基准」的瓶颈写回到评测吞吐量，这对类似搜索系统比再加代理更关键。有 arXiv。通路论文栏/@dair_ai。"
+    }
+  ],
+  "polfin": [
+    {
+      "angle": "出口管制 / 公司治理",
+      "arch_impact": "对华先进芯片的合规追问已从国会时间表，进一步变成财政部对临时管理层要书面说明；在答复落地前，公司的出口合规叙事与高管安排都会受其牵引。",
+      "background": "黄仁勋请辞后，美国政府与国会继续追问英伟达对华先进芯片销售与出口合规。众议院三委员会闭门问询定在 12 月 1 日，已在上周周报记下，本条不重复当作新宣布。新事实是财政部长周日的电视访谈。",
+      "channel": "公开信号（CBS / 路透 / @Reuters / @FT）",
+      "detail": true,
+      "facts": "财政部长 Scott Bessent 周日上 CBS《Face the Nation》，称美国仍在向英伟达寻求关于对华芯片销售的答案，「我们确实需要答复」。他说已经与临时管理层、牵头董事及其律师接触，并称英伟达宜尽快行动，因为政府想弄清「当时的文化是什么」。Bessent 还说，需要看清谁负责合规，「是下层、中层，还是一直到顶层」。路透报道，被问及是否认同特朗普希望黄仁勋道歉并回归时，Bessent 表示还需要更多信息，「得看清责任停在哪一层——这些不合规是不是底层的恶意行为者造成的」。谈到与 Alice Huang 相关传闻时，他把「一个人的过失」和「有没有合规文化」区分开来，并说前者「某种程度上是障眼法（kind of a canard）」。CBS 播出相关内容的报道时间为 11-22 13:48 ET（2026-11-23 02:48 CST）；路透稿更新于 11-22 12:54 ET（2026-11-23 01:54 CST）。董事会不打算重新聘用黄仁勋等安排，仍以周报已记节点为准，不在此当作新宣布。",
+      "finsec": false,
+      "first_source_at": "路透 2026-11-23 01:54 CST；CBS 2026-11-23 02:48 CST（访谈为美国东部时间周日上午）",
+      "hard_gate": true,
+      "home_related": false,
+      "id": "pf-20261123-01",
+      "links": [
+        {
+          "label": "CBS",
+          "url": "https://www.cbsnews.com/news/bessent-nvidia-china-ai-chips-alice-huang-canard/"
+        },
+        {
+          "label": "路透转载",
+          "url": "https://www.investing.com/news/stock-market-news/us-seeks-answers-on-nvidias-sale-of-chips-to-china-bessent-says-5044083"
+        },
+        {
+          "label": "路透帖",
+          "url": "https://x.com/Reuters/status/2124587510596575679"
+        },
+        {
+          "label": "FT 帖",
+          "url": "https://x.com/FT/status/2124570386884936002"
+        }
+      ],
+      "title": "【硬门槛】Bessent：仍未得到英伟达对华芯片销售的答复，回归问题要先看责任停在哪一层",
+      "wave": "晨间",
+      "why": "这是财政部长在镜头前把「10 天内要答案」写成尚未得到答复，并把黄仁勋能否回归明确绑到合规责任链，而不是人事传闻本身。对出口管制执行和英伟达治理来说，这是可核对的新表态。"
+    },
+    {
+      "angle": "电信监管 / 对等限制",
+      "arch_impact": null,
+      "background": "美国联邦通信委员会近期限制中国电信运营商直接接入美国号码资源，中方作出外交与监管回应。",
+      "channel": "公开信号（路透）",
+      "detail": false,
+      "facts": "路透 11-22 报道，中国反对美国 FCC 禁止中国电信运营商直接接入美国电话号码。本条以 @Reuters 原帖为准，未打开更长官方声明全文。最早可见帖文时间为 2026-11-22 13:10 CST。",
+      "finsec": false,
+      "first_source_at": "@Reuters 2026-11-22 13:10 CST",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "pf-20261123-02",
+      "links": [
+        {
+          "label": "路透帖",
+          "url": "https://x.com/Reuters/status/2124369824755159382"
+        }
+      ],
+      "title": "路透：中国反对美国 FCC 禁止中国电信直接接入美国电话号码",
+      "wave": "晨间",
+      "why": "这是电信互联与号码资源上的对等限制信号，属于监管政治，但细节仍偏短，故不单列详卡。"
+    }
+  ],
+  "schema": "qianji.briefing.daily.v1",
+  "sources": [
+    "X Home（关注流；晨间 3 页，实际窗 2026-11-23 04:03–07:42 +08；请求 start_time 2026-11-22T05:00:00Z，因时间线密度在第 3 页仍停在 20:03Z，未接到周日 13:00 水位；缺口 11-22 13:00 至 11-23 04:03 由公开信号补，不假装扫全）",
+    "公开 X search_posts_all / search_news",
+    "公开检索与站外印证（OpenAI 博文、TechCrunch、OpenRouter 公告、pwn.ai、THN、NVD、BleepingComputer 转述 Cleverbridge 披露、CBS、路透转载、FT 原帖）",
+    "公开 X @dair_ai（周精选文章 + 近 36h 帖）",
+    "GitHub Trending daily HTML + API enrich；GitStock 日键 2026-11-22 UTC；GH Archive 缺源"
+  ],
+  "summary": "OpenAI 首席科学家 Jakub Pachocki 发表《Perplexity and Intelligence》，公开内部预训练 log-perplexity（GPT-3.5 约 0.99、GPT-4 约 0.91，现已低于 0.8），并提议用困惑度等指标设定行业共同上限，越过前须先达到可核对的监控里程碑。安全面，OpenRouter 因推理供应商数据处理问题下架 3 家、取消 125 个端点的零数据保留资格；pwn.ai 披露 Ghostscript CVE-2026-125396（Upload2Shell），影响约 10 款常见应用的上传或预览路径。支付通道上，Cleverbridge 确认支付卡数据（含卡号、有效期与 CVV）被复制。政治金融上，财政部长 Bessent 周日表示仍未从英伟达得到对华芯片销售与合规问题的答复，并称要先看清责任停在哪一层，再谈黄仁勋是否回归。",
+  "timezone": "Asia/Shanghai",
+  "updated_at": "2026-11-23T08:25:00+08:00",
+  "wave": "晨间"
+}
