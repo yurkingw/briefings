@@ -417,21 +417,21 @@
     "finsec": 1,
     "gh_newcomers": 8,
     "gh_rising": 10,
-    "hard_gate": 1,
-    "home_related": "3/7",
-    "news": 5,
-    "news_detail": 4,
+    "hard_gate": 2,
+    "home_related": "3/10",
+    "news": 7,
+    "news_detail": 6,
     "news_detail_morning": 4,
-    "news_detail_noon": 0,
+    "news_detail_noon": 2,
     "news_morning": 5,
-    "news_noon": 0,
+    "news_noon": 2,
     "papers": 5,
-    "polfin": 2,
-    "polfin_detail": 1,
+    "polfin": 3,
+    "polfin_detail": 2,
     "polfin_detail_morning": 1,
-    "polfin_detail_noon": 0,
+    "polfin_detail_noon": 1,
     "polfin_morning": 2,
-    "polfin_noon": 0
+    "polfin_noon": 1
   },
   "news": [
     {
@@ -571,6 +571,58 @@
       "title": "FT：戴尔、HPE、联想与超微等把英伟达 AI 服务器价格上调最多约 45%",
       "wave": "晨间",
       "why": "这是把芯片供应紧张写成已签约客户的改价事实，会影响数据中心资本开支的落地价格，但不是新的监管动作，故不进政治金融栏。"
+    },
+    {
+      "arch_impact": null,
+      "background": "智谱（z.ai）上一款旗舰 GLM-5.3 及视觉向的 GLM-5.3-Flash 分别在 8 月发布。截至午间，官方文档与 release notes 仍未列出 5.4，此前缺少可核对的产品说明。",
+      "channel": "公开信号（@ZixuanLi_ / @Zai_org 转发）",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "11 月 23 日 12:18 CST，z.ai Lead @ZixuanLi_ 发帖称「GLM-5.4 is now available to all GLM Coding Plan users」，并写明新增视觉能力、更强的综合编程表现；对使用每周配额的用户，额度较 GLM-5.3 多 50%。2 分钟后，官方账号 @Zai_org 转发该帖。本环境核验 docs.z.ai 的 New Released 页仍止于 GLM-5.3 / 5.3-Flash，未见 5.4 博文或更新说明。参数规模、Loop Transformer、1M 上下文等社交转述未出现在上述官方或负责人原文中，本条不采。",
+      "finsec": false,
+      "first_source_at": "@ZixuanLi_ 2026-11-23 12:18 CST；@Zai_org 转发 12:20 CST",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261123-06",
+      "links": [
+        {
+          "label": "Zixuan Li 帖",
+          "url": "https://x.com/ZixuanLi_/status/2124719275864670681"
+        },
+        {
+          "label": "Z.ai 官方转发",
+          "url": "https://x.com/Zai_org/status/2124719658074825004"
+        }
+      ],
+      "title": "智谱 GLM-5.4 向 Coding Plan 用户开放，官方称新增视觉能力、周额度较 5.3 多 50%",
+      "wave": "午间",
+      "why": "这是官方账号背书的产品上线信号，但还不是一份完整技术发布稿。订阅用户已经能切到新模型，公开文档却尚未跟上，评估只能以负责人声明和实际产品列表为准。"
+    },
+    {
+      "arch_impact": null,
+      "background": "今晨已报：OpenAI 首席科学家 Pachocki 公开内部预训练 log-perplexity，并提议行业共同上限。当时还没有其他头部实验室给出可对照的自身数字。",
+      "channel": "公开信号（@mustafasuleyman 长帖与配图）",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "微软 AI CEO Mustafa Suleyman 于 2026-11-23 08:37 CST 转引 Pachocki 原帖，称「fully support OpenAI's transparency initiative」。长帖写明：在 OpenAI 许可下，于其评测集报告 MAI-2 Base 的 log-perplexity 为 0.819，「与 GPT-5.6 Sol 基座同一量级」；两家模型使用同一分词器（tokenizer，把文本切成模型可计算的词片），因而数字可直接比较。他同时指出，日后跨实验室比较可能需要改报 bits-per-byte（按原始字节计的压缩效率），且能使用 OpenAI 评测集是特例，还需要共同的新评测集。配图标题为 Base model log-perplexity，红线标出 MAI-1 Base 0.878、MAI-2 Base 0.819。他另贴了 2026-10-15 的微软 AI 博文《Frontier Pre-training at Microsoft AI》（MAI Base 2 预训练说明），该文并非本日新发，不作为新模型发布依据。",
+      "finsec": false,
+      "first_source_at": "@mustafasuleyman 2026-11-23 08:37 CST",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261123-07",
+      "links": [
+        {
+          "label": "Suleyman 帖",
+          "url": "https://x.com/mustafasuleyman/status/2124663594449318173"
+        },
+        {
+          "label": "Pachocki 原帖",
+          "url": "https://x.com/merettm/status/2124549218995949967"
+        }
+      ],
+      "title": "【续报】微软 AI CEO 支持 OpenAI 困惑度透明度倡议，报告 MAI-2 Base 为 0.819",
+      "wave": "午间",
+      "why": "这是 Pachocki 提案后第一家给出可对照数字的头部实验室，把「共同尺子」从倡议推进到一次实际对表。它仍是特例（共用分词器与评测集），不等于行业已经接受共同上限。"
     }
   ],
   "papers": [
@@ -666,6 +718,40 @@
       "title": "路透：中国反对美国 FCC 禁止中国电信直接接入美国电话号码",
       "wave": "晨间",
       "why": "这是电信互联与号码资源上的对等限制信号，属于监管政治，但细节仍偏短，故不单列详卡。"
+    },
+    {
+      "angle": "公司治理 / 白宫干预",
+      "arch_impact": "在董事会已公开排除恢复、财政部仍待答复的窗口里，总统书面再施压会把英伟达的 CEO 搜寻与对华合规说明同时放到政治聚光灯下。",
+      "background": "黄仁勋 11 月 12 日请辞后，英伟达董事长 Harvey Jones 已在上周财报会上表示董事会一致接受辞职、不打算恢复其 CEO 职务，并聘请猎头寻找正式继任。周六午间已报特朗普公开支持并呼吁黄道歉回归；今晨 Bessent 则把「能否回归」绑到合规责任尚未查清。本条只记此后新出现的书面表态，不重复董事会决议本身。",
+      "channel": "公开信号（Truth Social / The National / Investing.com 转载路透）",
+      "detail": true,
+      "facts": "特朗普于 2026-11-22 21:54 ET（2026-11-23 10:54 CST）在 Truth Social 发帖：「I hope the Board of Nvidia rehires Jensen Huang. It would be the best thing for the Company, and also, for the U.S.A.」这是周五「second chance」口头表态之后、直接点名董事会的书面再呼吁，时间点在今晨定稿之后。The National 于 11-23 报道转述了该帖，并再次对照董事会已拒绝恢复的立场。Investing.com 同时转载了路透对同一表态的报道。本条不以无法核对的营收或持股传闻为准。",
+      "finsec": false,
+      "first_source_at": "Truth Social 2026-11-23 10:54 CST",
+      "hard_gate": true,
+      "home_related": false,
+      "id": "pf-20261123-03",
+      "links": [
+        {
+          "label": "Truth Social 原帖",
+          "url": "https://truthsocial.com/@realDonaldTrump/117663497310955803"
+        },
+        {
+          "label": "Truth 存档",
+          "url": "https://www.trumpstruth.org/statuses/43709"
+        },
+        {
+          "label": "The National",
+          "url": "https://www.thenationalnews.com/news/us/2026/11/23/trump-calls-on-nvidia-board-to-rehire-jensen-huang-after-scandal/"
+        },
+        {
+          "label": "Investing.com 转载路透",
+          "url": "https://www.investing.com/news/stock-market-news/trump-urges-nvidia-board-to-rehire-jensen-huang-5044292"
+        }
+      ],
+      "title": "【续报】【硬门槛】特朗普在 Truth Social 再呼吁英伟达董事会重新聘用黄仁勋",
+      "wave": "午间",
+      "why": "白宫把人事压力写成给董事会的公开书面要求，与财政部长「先查清责任层再谈回归」的口径并不自动同向。对公司治理和出口合规叙事，这是可核对的新文本，而不是把上周的口头表态再念一遍。"
     }
   ],
   "schema": "qianji.briefing.daily.v1",
@@ -674,10 +760,15 @@
     "公开 X search_posts_all / search_news",
     "公开检索与站外印证（OpenAI 博文、TechCrunch、OpenRouter 公告、pwn.ai、THN、NVD、BleepingComputer 转述 Cleverbridge 披露、CBS、路透转载、FT 原帖）",
     "公开 X @dair_ai（周精选文章 + 近 36h 帖）",
-    "GitHub Trending daily HTML + API enrich；GitStock 日键 2026-11-22 UTC；GH Archive 缺源"
+    "GitHub Trending daily HTML + API enrich；GitStock 日键 2026-11-22 UTC；GH Archive 缺源",
+    "公开 X @ZixuanLi_ / @Zai_org（GLM-5.4 Coding Plan 上线声明与官方转发）",
+    "公开 X @mustafasuleyman（支持 Pachocki 倡议并报告 MAI-2 Base 0.819）",
+    "Truth Social 原帖、The National、Investing.com 转载路透（特朗普再呼吁董事会重聘黄仁勋）",
+    "docs.z.ai New Released（午间核验仍止于 GLM-5.3 / 5.3-Flash）",
+    "微软 AI 博文 Frontier Pre-training at Microsoft AI（2026-10-15，仅作既有背景，非本日新发）"
   ],
-  "summary": "OpenAI 首席科学家 Jakub Pachocki 发表《Perplexity and Intelligence》，公开内部预训练 log-perplexity（GPT-3.5 约 0.99、GPT-4 约 0.91，现已低于 0.8），并提议用困惑度等指标设定行业共同上限，越过前须先达到可核对的监控里程碑。安全面，OpenRouter 因推理供应商数据处理问题下架 3 家、取消 125 个端点的零数据保留资格；pwn.ai 披露 Ghostscript CVE-2026-125396（Upload2Shell），影响约 10 款常见应用的上传或预览路径。支付通道上，Cleverbridge 确认支付卡数据（含卡号、有效期与 CVV）被复制。政治金融上，财政部长 Bessent 周日表示仍未从英伟达得到对华芯片销售与合规问题的答复，并称要先看清责任停在哪一层，再谈黄仁勋是否回归。",
+  "summary": "午间增量：智谱 z.ai Lead @ZixuanLi_ 宣布 GLM-5.4 已向所有 GLM Coding Plan 用户开放（官方账号 @Zai_org 转发），新增视觉能力、编程表现增强，周额度较 5.3 多 50%；微软 AI CEO Mustafa Suleyman 公开支持 OpenAI 的预训练透明度倡议，并在 OpenAI 许可下报告 MAI-2 Base 在其评测集上的 log-perplexity 为 0.819，与 GPT-5.6 Sol 基座同一量级。政治金融上，特朗普于 10:54 CST 在 Truth Social 书面再呼吁英伟达董事会重新聘用黄仁勋（董事会上周已表态不打算恢复）。晨间主线仍是 Pachocki 的共同上限提案、OpenRouter 下架 3 家推理供应商、Ghostscript Upload2Shell、Cleverbridge 卡数据被复制，以及 Bessent 称仍未得到英伟达对华芯片销售的答复。",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-23T08:25:00+08:00",
-  "wave": "晨间"
+  "updated_at": "2026-11-23T13:00:00+08:00",
+  "wave": "午间"
 }
