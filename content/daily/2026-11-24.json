@@ -235,24 +235,24 @@
     ]
   },
   "metrics": {
-    "finsec": 0,
+    "finsec": 1,
     "gh_newcomers": 0,
     "gh_rising": 10,
-    "hard_gate": 2,
-    "home_related": "5/9",
-    "news": 7,
-    "news_detail": 6,
+    "hard_gate": 3,
+    "home_related": "8/12",
+    "news": 9,
+    "news_detail": 8,
     "news_detail_morning": 6,
-    "news_detail_noon": 0,
+    "news_detail_noon": 2,
     "news_morning": 7,
-    "news_noon": 0,
+    "news_noon": 2,
     "papers": 3,
-    "polfin": 2,
-    "polfin_detail": 2,
+    "polfin": 3,
+    "polfin_detail": 3,
     "polfin_detail_morning": 2,
-    "polfin_detail_noon": 0,
+    "polfin_detail_noon": 1,
     "polfin_morning": 2,
-    "polfin_noon": 0
+    "polfin_noon": 1
   },
   "news": [
     {
@@ -396,6 +396,46 @@
       "title": "【补报】npm 库 binary-parser CVE-2026-134814（CVSS 9.2）：控制解析器定义即可注入 JavaScript",
       "wave": "晨间",
       "why": "攻击面取决于调用方是否允许外部控制解析器定义；维护者划清了受信任定义解析不受信任数据不受影响。披露距维护者公告已有约 12 天，作为补报记下。"
+    },
+    {
+      "arch_impact": null,
+      "background": "10 月 29 日前后，币安热钱包遭窃，损失规模以数十亿美元计。美国此前已协助冻结部分被盗资产，并有过追回进展报道。今晨未覆盖此项新的司法动作。",
+      "channel": "关注流 + 公开信号（司法部新闻稿 / @FBICyberBranch / @cz_binance 转发）",
+      "detail": true,
+      "domain": "其他网络安全",
+      "facts": "美国司法部于 2026-11-23（周一）宣布，已就超过 11 亿美元的加密资产提起民事没收程序；这部分资金被指是朝鲜行为体从币安窃得并清洗后的 USDC（Circle 发行的美元稳定币）。声明写明，这是协助币安追回超过 60 亿美元被盗资产的一部分；自约 10 月 29 日盗窃发生以来，美方已协助冻结、扣押和/或返还来自多个来源、价值超过 29 亿美元的加密资产。这批超过 11 亿美元的 USDC 此前已根据政府申请被限制令冻住，此次是在同一批资产上提起没收诉讼。联邦调查局、特勤局与国税局刑事调查部门正在调查，Circle 提供了协助。FBI 网络分部账号于 11-24 04:00 CST 发布同一通报。本条记录的是已提起诉讼，不是已经完成的最终没收。",
+      "finsec": true,
+      "first_source_at": "司法部新闻稿标注 2026-11-23（周一）；@FBICyberBranch 2026-11-24 04:00 CST",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "n-20261124-08",
+      "links": [
+        "https://www.justice.gov/opa/pr/united-states-files-action-recover-more-1-billion-cryptocurrency-assets-stolen-north-korean",
+        "https://x.com/FBICyberBranch/status/2124956323821338802",
+        "https://x.com/cz_binance/status/2125085599388545151"
+      ],
+      "title": "【续报】美国司法部对币安被盗资金提起超过 11 亿美元的民事没收程序",
+      "wave": "午间",
+      "why": "这把「已冻结」推进到向法院申请没收，是这起大型交易所被盗案里可核对的新法律步骤。金额仍只覆盖被盗总额的一部分，且须等法院裁定。"
+    },
+    {
+      "arch_impact": null,
+      "background": "韩国电力公社（KEPCO）是韩国主要电力企业，也是国家控股的关键基础设施运营商。",
+      "channel": "关注流（@Dinosn）+ 公开信号（BleepingComputer 转述官方公告）",
+      "detail": true,
+      "domain": "其他网络安全",
+      "facts": "据 BleepingComputer 转述公司周日公告：KEPCO 于 11 月 20 日确认，其电费平台 KEPCO ON 与电子采购系统 SRM 遭未授权访问。公司称已阻断外部 IP 并暂停受影响服务。公告列出三类暴露对象：650,487 名 KEPCO ON 客户的姓名、身份信息、电话、地址、银行名称与账号、卡发行方与卡号等计费信息；426,827 名企业代表的姓名、身份信息、邮箱与公司地址；442,934 名员工的姓名、所属、工号、手机、邮箱与公司电话，合计超过 152 万人。公司称攻击使用了「人工智能等先进技术」，但未说明初始入口。韩国个人信息保护委员会确认，KEPCO 在 11 月 19 日收到声称已窃取数据的邮件；一个使用「Noiem」化名的账号 11 月 19 日在黑客论坛上声称持有用户与供应商数据，归属仍未证实。KEPCO 称正在直接通知当事人，并与政府和金融当局协调防范盗用。本环境以 BleepingComputer 对官方公告的转述为准。",
+      "finsec": false,
+      "first_source_at": "KEPCO 周日公告（BleepingComputer 称 published Sunday）；BleepingComputer 文 2026-11-23",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "n-20261124-09",
+      "links": [
+        "https://www.bleepingcomputer.com/news/security/south-koreas-power-giant-kepco-confirms-data-breach-impacting-15-million/"
+      ],
+      "title": "韩国电力公社确认数据泄露，影响约 152 万人，含银行卡信息",
+      "wave": "午间",
+      "why": "这是国家级电力公司的计费与采购系统被打开，而且客户侧含银行和卡号。影响面是关键基础设施，加上可直接用于盗刷和定向诈骗的支付数据。"
     }
   ],
   "papers": [
@@ -465,6 +505,26 @@
       "title": "【硬门槛】【续报】BIS 将 Megaspeed 及相关共 7 家实体列入实体清单",
       "wave": "晨间",
       "why": "实体清单加上「推定拒绝」，等于把这条被指用于转移先进 AI 芯片的商业通道从调查对象改成默认不准供货。它与黄仁勋复职出现在同一新闻周期，会成为国会和加州司法审查的新事实。"
+    },
+    {
+      "angle": "出口管制",
+      "arch_impact": "出口管制从许可证默认拒绝，扩展到第三国数据中心的托管与租赁拒绝，新加坡—马来西亚这一转口与算力落地点开始出现本地执行层。",
+      "background": "今晨已报：美国商务部 BIS 把新加坡 Megaspeed International 及相关共 7 家实体列入实体清单（预定 11 月 25 日正式刊登），适用推定拒绝。本条记马来西亚随后宣布的本地执行步骤，不重复清单本身。",
+      "channel": "关注流 + 公开信号（《新海峡时报》转述 MITI 声明 / @business）",
+      "detail": true,
+      "facts": "马来西亚投资、贸易及工业部（MITI）表示，将通过马来西亚投资发展局（MIDA）通知本地数据中心运营商，不得为这 7 家实体提供托管、出租机位或相关服务。部方声明称，马来西亚「不会允许自己被用作规避出口管制的通道」，并将对违法者采取行动。部方同时澄清：被美方列在马来西亚名下的 Speedmatrix Sdn Bhd 与 MSFusion Sdn Bhd 并非马来西亚本土企业——Speedmatrix 是新加坡 Megaspeed International 的全资子公司；根据 MIDA 记录，清单中的 PT Megaspeed International 也不是马来西亚公司，也不是在马的数据中心运营商或租户。其余实体包括新加坡的 Megaspeed International Pte Ltd、Apex Enterprise Solutions (Singapore) Pte Ltd、Swiftdata Pte Ltd，以及泰国的 Megaspeed (Thailand) Co Ltd。《新海峡时报》于 11 月 23 日 23:11 CST 报道该声明；Bloomberg 账号 @business 于 11-24 12:20 CST 亦报道马来西亚将劝告数据中心运营商不要为这七家新列入美国贸易黑名单的公司提供托管、租用或服务。Bloomberg 原文链接本环境未见实体字段，事实以 NST 转述的部方声明为主。",
+      "finsec": false,
+      "first_source_at": "NST 2026-11-23 23:11 CST；@business 2026-11-24 12:20 CST",
+      "hard_gate": true,
+      "home_related": true,
+      "id": "pf-20261124-03",
+      "links": [
+        "https://www.nst.com.my/news/nation/2026/11/1584499/ministry-warns-data-centres-over-us-blacklisted-firms",
+        "https://x.com/business/status/2125082012180484325"
+      ],
+      "title": "【硬门槛】【续报】马来西亚将通知本地数据中心，不得为美实体清单上的 7 家实体托管或提供服务",
+      "wave": "午间",
+      "why": "美国清单管的是受出口管理条例管辖的物项；马来西亚这一步是把限制延伸到机柜、电力和数据中心服务。没有本地配合，实体清单很容易被转成「换个机房继续跑」。"
     }
   ],
   "schema": "qianji.briefing.daily.v1",
@@ -491,8 +551,8 @@
     "GitHub Trending",
     "GitStock"
   ],
-  "summary": "英伟达董事会一致决定，立即恢复黄仁勋担任总裁、首席执行官并重回董事会；声明称决策过程听取了美国政府高层意见，并判断复职不构成国家安全风险。独立调查与新设的国家安全和出口管制委员会仍将继续。周一美股英伟达上涨逾 30%。同日，商务部 BIS 把 Megaspeed 及相关共 7 家实体列入实体清单（预定 11 月 25 日正式刊登）。产品与安全面上，Anthropic 推出 Claude Ship（Team/Enterprise 测试）并把连接器与技能收成插件；智谱官方发布 GLM-5.4 Loop Transformer 博文（续报昨日非正式细节）；OpenAI 与 Cisco 开源 Linux 运行时 Shirudo；CrowdStrike 宣布以全股票交易收购 Zscaler，估值约 439 亿美元。",
+  "summary": "午间增量：美国司法部对币安被盗资金中超过 11 亿美元的 USDC 提起民事没收程序，指其为朝鲜行为体所得，并称自约 10 月 29 日盗窃以来已协助冻结、扣押或返还超过 29 亿美元；韩国电力公社确认约 152 万人的数据被暴露，客户侧含银行和卡号。政治金融上，马来西亚投资、贸易及工业部将通知本地数据中心，不得为美实体清单上的 7 家实体提供托管或服务。晨间主线仍是英伟达董事会恢复黄仁勋职务（声明称听取美国政府高层意见，周一股价上涨逾 30%）、BIS 将 Megaspeed 及相关 7 家实体列入实体清单，以及 Anthropic Claude Ship、智谱 GLM-5.4、Shirudo 与 CrowdStrike 收购 Zscaler。",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-24T08:25:00+08:00",
-  "wave": "晨间"
+  "updated_at": "2026-11-24T13:20:00+08:00",
+  "wave": "午间"
 }
