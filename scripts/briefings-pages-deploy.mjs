@@ -1,4 +1,6 @@
-import { deploymentBody, deployUploadedArtifact, PagesDeployError } from "../lib/pages-deploy.js";
+import { deploymentBody, deployUploadedArtifact, pagesDiagnosticLine, PagesDeployError } from "../lib/pages-deploy.js";
+
+export { pagesActionsRequest } from "../lib/pages-deploy.js";
 
 export async function deployFromActions({
   artifactId,
@@ -9,6 +11,7 @@ export async function deployFromActions({
   sleep,
   now,
   timeoutMs,
+  emit,
 }) {
   const [owner, repo] = String(repository || "").split("/");
   deploymentBody({
@@ -20,6 +23,14 @@ export async function deployFromActions({
   try {
     oidcToken = await getIdToken();
   } catch {
+    if (typeof emit === "function") {
+      try {
+        const line = pagesDiagnosticLine({ code: "oidc_unavailable" });
+        if (line) emit(line);
+      } catch {
+        // The diagnostic sink must not replace the deployment result.
+      }
+    }
     throw new PagesDeployError("oidc_unavailable");
   }
   return deployUploadedArtifact({
@@ -32,6 +43,7 @@ export async function deployFromActions({
     sleep,
     now,
     timeoutMs,
+    emit,
   });
 }
 

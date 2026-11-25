@@ -75,6 +75,11 @@ test("pages workflow deploys the uploaded artifact id", () => {
   assert.match(pagesDeploy, /ARTIFACT_ID: \$\{\{ steps\.pages-artifact\.outputs\.artifact-id \}\}/);
   assert.match(pagesDeploy, /actions\/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3/);
   assert.match(pagesDeploy, /scripts\/briefings-pages-deploy\.mjs/);
+  assert.match(pagesDeploy, /pagesActionsRequest/);
+  assert.match(pagesDeploy, /emit: \(line\) => core\.info\(line\)/);
+  assert.equal(pagesDeploy.includes("error.message"), false);
+  assert.equal(pagesDeploy.includes("error.stack"), false);
+  assert.equal(pagesDeploy.includes("error.response"), false);
   assert.equal(pagesDeploy.includes("actions/deploy-pages@"), false);
   assert.match(deploy, /test "\$tip" = "\$\{\{ needs\.process\.outputs\.content_sha \}\}"/);
   assert.equal(deploy.includes("actions: write"), false);

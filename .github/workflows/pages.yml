@@ -120,22 +120,20 @@ jobs:
             }
             core.info(`pages_artifact_id=${artifactId}`)
             const { pathToFileURL } = require("node:url")
-            const { deployFromActions } = await import(pathToFileURL(`${process.env.GITHUB_WORKSPACE}/scripts/briefings-pages-deploy.mjs`).href)
+            const { deployFromActions, pagesActionsRequest } = await import(pathToFileURL(`${process.env.GITHUB_WORKSPACE}/scripts/briefings-pages-deploy.mjs`).href)
             try {
               const pageUrl = await deployFromActions({
                 artifactId,
                 buildVersion: process.env.GITHUB_SHA,
                 repository: process.env.GITHUB_REPOSITORY,
                 getIdToken: () => core.getIDToken(),
-                request: async (method, route, body) => {
-                  try {
-                    const response = await github.request(`${method} ${route}`, body || {})
-                    return { status: response.status, body: response.data }
-                  } catch (error) {
-                    if (typeof error.status === "number") return { status: error.status }
-                    throw new Error("transport_failed")
-                  }
-                },
+                emit: (line) => core.info(line),
+                request: (method, route, body) => pagesActionsRequest(
+                  (route, parameters) => github.request(route, parameters),
+                  method,
+                  route,
+                  body,
+                ),
               })
               core.setOutput("page_url", pageUrl)
             } catch (error) {

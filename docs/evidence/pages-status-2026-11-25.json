@@ -1,0 +1,62 @@
+{
+  "method": "GET",
+  "client": "gh api",
+  "note": "Bodies are the complete gh api stdout. The session read was not saved to disk at the time; these bytes are that stdout. The reread is a later call of the same path. No token, request body, or response header is included.",
+  "control": {
+    "role": "success",
+    "run_id": 45604679565,
+    "sha": "e12b11e21fdea75f9a73bdc042ab81977c8e4bb6",
+    "artifact_id": 15015789905,
+    "path": "/repos/yurkingw/briefings/pages/deployments/e12b11e21fdea75f9a73bdc042ab81977c8e4bb6",
+    "session_stdout": {
+      "exit": 0,
+      "body_bytes": 20,
+      "body": {
+        "status": "succeed"
+      }
+    },
+    "reread_clock": "2026-11-25T12:32:47Z",
+    "reread_stdout": {
+      "exit": 0,
+      "body_bytes": 20,
+      "body": {
+        "status": "succeed"
+      }
+    }
+  },
+  "variable": {
+    "role": "failure",
+    "run_id": 45612559797,
+    "sha": "57e3472ccaf7f08b246a5fc9eb650582fba0c60c",
+    "artifact_id": 15020581433,
+    "path": "/repos/yurkingw/briefings/pages/deployments/57e3472ccaf7f08b246a5fc9eb650582fba0c60c",
+    "session_stdout": {
+      "exit": 0,
+      "body_bytes": 30,
+      "body": {
+        "status": "deployment_failed"
+      }
+    },
+    "reread_clock": "2026-11-25T12:32:47Z",
+    "reread_stdout": {
+      "exit": 0,
+      "body_bytes": 13,
+      "body": {
+        "status": ""
+      }
+    }
+  },
+  "zero_sha_probe": {
+    "role": "not_a_deployment",
+    "sha": "0000000000000000000000000000000000000000",
+    "path": "/repos/yurkingw/briefings/pages/deployments/0000000000000000000000000000000000000000",
+    "reread_clock": "2026-11-25T12:32:47Z",
+    "reread_stdout": {
+      "exit": 0,
+      "body_bytes": 13,
+      "body": {
+        "status": ""
+      }
+    }
+  }
+}
