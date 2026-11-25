@@ -14,7 +14,7 @@
 
 失败按步骤分开：构建是 `npm run build`，上传是 upload-artifact，tip 是 `Refuse a stale tip`，创建和轮询是 deployment 步的固定 code（`create_rejected`、`deployment_id_invalid`、`deployment_failed`、`timeout`、`oidc_unavailable`），ack 只在 deploy success 之后。日志可以有 `pages_artifact_id=` 加十进制 id。不写 token、OIDC、请求体或原始异常。
 
-一次成功不保证以后永不失败。OIDC、REST、超时、并发 push 导致的 stale-tip 拒绝，都仍会使这次发布失败并跳过 ack。库测试和 workflow 断言是模拟；run `45604679565` 是已有真实基线，不把两者当成同一次证据。
+一次成功不保证以后永不失败。OIDC、REST、超时、并发 push 导致的 stale-tip 拒绝，都仍会使这次发布失败并跳过 ack。重跑、中断和 ack 门禁的检查是子进程加上从 `pages.yml` 读出的 `if`，不是 GitHub Actions 本身。run `45604679565` 仍是唯一已完成的真实基线。
 
 生产路径不是把本地 ready 或 raw 直推进 `content/`。box 上 `stageReady` 之后，`scripts/briefings-upload.mjs` 只把公开 envelope 写到 `_inbox/daily/YYYY-MM-DD.json` 或 `_inbox/weekly/YYYY-Www.json`。`BRIEFINGS_PUBLISH_TOKEN` 只从本次调用的环境对象读入。进程里没有这个自有属性，或值不是一段非空且只含 `A-Za-z0-9._-` 的字符串时，命令退出 50，`attempts` 为 0，不发 HTTP。token 不进参数、日志、结果行或 Actions secret。退出 50 只说明这次进程在请求之前没有通过本地字符类检查。GitHub 返回 401 或 403 时走退出 40、`transport_forbidden`，并且 `attempts` 至少为 1。
 
