@@ -12,9 +12,11 @@
 
 没有 runtime token 的观察不能代表这次部署。生产 workflow 不再跑那一步。
 
-失败按步骤分开：构建是 `npm run build`，上传是 upload-artifact，tip 是 `Refuse a stale tip`，创建和轮询是 deployment 步的固定 code（`create_rejected`、`deployment_id_invalid`、`deployment_failed`、`timeout`、`oidc_unavailable`），ack 只在 deploy success 之后。日志可以有 `pages_artifact_id=` 加十进制 id。不写 token、OIDC、请求体或原始异常。
+失败按步骤分开：构建是 `npm run build`，上传是 upload-artifact，tip 是 `Refuse a stale tip`，创建和轮询是 deployment 步的固定 code（`create_rejected`、`deployment_id_invalid`、`deployment_failed`、`timeout`、`oidc_unavailable`），ack 只在 deploy success 之后。日志可以有 `pages_artifact_id=` 加十进制 id，以及一行 `pages_deploy`。这一行只在核对之后写出 `phase`（`create` 或 `poll`）、HTTP 整数、id（十进制或等于本次 `pages_build_version` 的 SHA）、官方 `pages_status`、既有固定 `code`。不写 token、OIDC、请求体、响应体、响应头或原始异常。
 
-一次成功不保证以后永不失败。OIDC、REST、超时、并发 push 导致的 stale-tip 拒绝，都仍会使这次发布失败并跳过 ack。重跑、中断和 ack 门禁的检查是子进程加上从 `pages.yml` 读出的 `if`，不是 GitHub Actions 本身。run `45604679565` 仍是唯一已完成的真实基线。
+一次成功不保证以后永不失败。OIDC、REST、超时、并发 push 导致的 stale-tip 拒绝，都仍会使这次发布失败并跳过 ack。重跑、中断和 ack 门禁的检查是子进程加上从 `pages.yml` 读出的 `if`，不是 GitHub Actions 本身。run `45604679565`（#80）仍是唯一已完成的真实成功基线。
+
+run `45612559797`（#81）是合入 `57e3472ccaf7f08b246a5fc9eb650582fba0c60c` 后的自然 push。process 打出的 manifest `items` 为空。`planInbox` 在 push 且收件箱为空时返回 `rebuild`，`ack` 为空，因此 ack 输出是 `false`；ack job 这次也因为 deploy 不是 success 而跳过。公网仍是 #80。#81 的部署请求形状没有改。Pages 当前状态接口当时对本次 SHA 返回 `deployment_failed`，后来同路径再读是空 `status`；该接口没有原因字段。`deployment_failed` 不是平台事故结论，日志里的固定码也不是亲见的创建或轮询响应。契约和这次诊断的边界写在 `docs/pages-deploy-contract.md`。防复发没有完成。
 
 生产路径不是把本地 ready 或 raw 直推进 `content/`。box 上 `stageReady` 之后，`scripts/briefings-upload.mjs` 只把公开 envelope 写到 `_inbox/daily/YYYY-MM-DD.json` 或 `_inbox/weekly/YYYY-Www.json`。`BRIEFINGS_PUBLISH_TOKEN` 只从本次调用的环境对象读入。进程里没有这个自有属性，或值不是一段非空且只含 `A-Za-z0-9._-` 的字符串时，命令退出 50，`attempts` 为 0，不发 HTTP。token 不进参数、日志、结果行或 Actions secret。退出 50 只说明这次进程在请求之前没有通过本地字符类检查。GitHub 返回 401 或 403 时走退出 40、`transport_forbidden`，并且 `attempts` 至少为 1。
 
