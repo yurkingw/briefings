@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import { spawn, spawnSync } from "node:child_process";
 import fs from "node:fs";
-import http from "node:http";
+import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import {
   backendIdsFromRuntimeToken,
-  listArtifactsOnce,
+  observeSdkList,
   publicObservation,
   resultsHost,
 } from "../../lib/pages-artifact-observe.js";
@@ -15,6 +15,7 @@ import {
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const RUN = "11111111-1111-4111-8111-111111111111";
 const JOB = "22222222-2222-4222-8222-222222222222";
+const SECRET = "https://results.example.test/twirp/ListArtifacts?sig=secret-token";
 
 function jwt(payload) {
   const body = Buffer.from(JSON.stringify(payload)).toString("base64url");
@@ -24,100 +25,6 @@ function jwt(payload) {
 const token = jwt({
   scp: `Actions.ExampleScope Actions.Results:${RUN}:${JOB}`,
   secret: "do-not-keep",
-});
-
-test("runtime token parsing keeps only two uuid results ids", () => {
-  const ids = backendIdsFromRuntimeToken(token);
-  assert.equal(ids.workflowRunBackendId, RUN);
-  assert.equal(ids.workflowJobRunBackendId, JOB);
-  assert.equal(JSON.stringify(ids).includes("do-not-keep"), false);
-  assert.equal(JSON.stringify(ids).includes(token), false);
-  assert.equal(backendIdsFromRuntimeToken(jwt({ scp: "Actions.Results:not-a-uuid:also-bad" })).resultsScopePresent, false);
-});
-
-test("public observation drops raw messages, stacks, and urls", () => {
-  const leaked = "https://results.example.test/twirp/ListArtifacts Bearer " + token;
-  const out = publicObservation({
-    list: "error",
-    errorCode: "list_failed",
-    errorMessage: leaked,
-    stack: leaked,
-    url: leaked,
-    uploadedId: "14985772868",
-    uploadedDigestPresent: true,
-  });
-  const text = JSON.stringify(out);
-  assert.equal(text.includes("http"), false);
-  assert.equal(text.includes(token), false);
-  assert.equal(text.includes("errorMessage"), false);
-  assert.equal(out.errorCode, "list_failed");
-  assert.equal(out.uploadedId, "14985772868");
-  assert.equal(publicObservation({ list: "error", errorCode: "print the url " + leaked }).errorCode, undefined);
-});
-
-test("one list request reports count, id match, forbidden, and shape without the body", async () => {
-  const calls = [];
-  const secretBody = { artifacts: [], signed_url: "https://blob.example.test/x?sig=secret", msg: token };
-  const result = await listArtifactsOnce({
-    token,
-    resultsUrl: "https://results.example.test/twirp/old?sig=secret",
-    fetchImpl: async (url, init) => {
-      calls.push({ href: url.href, body: init.body, authorization: init.headers.authorization });
-      return { status: 200, async json() { return secretBody; } };
-    },
-  });
-  assert.equal(calls.length, 1);
-  assert.equal(calls[0].href, "https://results.example.test/twirp/github.actions.results.api.v1.ArtifactService/ListArtifacts");
-  assert.deepEqual(JSON.parse(calls[0].body), {
-    workflow_run_backend_id: RUN,
-    workflow_job_run_backend_id: JOB,
-  });
-  assert.equal(result.rows.length, 0);
-  assert.equal(JSON.stringify(result).includes("sig=secret"), false);
-  assert.equal(JSON.stringify(result).includes(token), false);
-
-  const forbidden = await listArtifactsOnce({
-    token,
-    resultsUrl: "https://results.example.test",
-    fetchImpl: async () => ({ status: 403, async json() { return { message: token }; } }),
-  });
-  assert.deepEqual(forbidden, { errorCode: "list_forbidden", httpStatus: 403 });
-
-  const matched = await listArtifactsOnce({
-    token,
-    resultsUrl: "https://results.example.test",
-    fetchImpl: async () => ({
-      status: 200,
-      async json() {
-        return {
-          artifacts: [{
-            name: "github-pages",
-            database_id: "14985772868",
-            size: "677455",
-            workflow_job_run_backend_id: JOB,
-            digest: { value: "ab".repeat(32) },
-            signed_url: "https://blob.example.test/x?sig=secret",
-          }, {
-            name: "github-pages",
-            database_id: "2",
-            size: "3",
-            workflow_job_run_backend_id: "33333333-3333-4333-8333-333333333333",
-          }],
-        };
-      },
-    }),
-  });
-  assert.equal(matched.rows.length, 2);
-  assert.equal(matched.rows[0].jobScopeMatch, true);
-  assert.equal(matched.rows[1].jobScopeMatch, false);
-  assert.equal(JSON.stringify(matched).includes("sig=secret"), false);
-
-  const broken = await listArtifactsOnce({
-    token,
-    resultsUrl: "https://results.example.test",
-    fetchImpl: async () => { throw new Error("https://results.example.test/down " + token); },
-  });
-  assert.deepEqual(broken, { errorCode: "list_failed" });
 });
 
 function run(command, args, options) {
@@ -134,47 +41,199 @@ function run(command, args, options) {
   });
 }
 
-test("the observe command prints one whitelist line and exits 0 when the service fails", async () => {
-  const server = http.createServer((request, response) => {
-    request.resume();
-    response.writeHead(500, { "content-type": "application/json" });
-    response.end(JSON.stringify({ message: "https://results.example.test/secret", token }));
+function fakeNpm(dir, code) {
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "npm"), `#!/bin/sh
+echo '${SECRET}'
+echo '${SECRET}' >&2
+exit ${code}
+`, { mode: 0o755 });
+}
+
+function fakeArtifact(dir, body) {
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "package.json"), JSON.stringify({ name: "@actions/artifact", main: "index.js" }));
+  fs.writeFileSync(path.join(dir, "index.js"), body);
+}
+
+test("runtime token parsing keeps only two uuid results ids", () => {
+  const ids = backendIdsFromRuntimeToken(token);
+  assert.equal(ids.workflowRunBackendId, RUN);
+  assert.equal(ids.workflowJobRunBackendId, JOB);
+  assert.equal(JSON.stringify(ids).includes("do-not-keep"), false);
+  assert.equal(JSON.stringify(ids).includes(token), false);
+  assert.equal(backendIdsFromRuntimeToken(jwt({ scp: "Actions.Results:not-a-uuid:also-bad" })).resultsScopePresent, false);
+});
+
+test("public observation drops raw messages, stacks, and urls", () => {
+  const out = publicObservation({
+    list: "error",
+    errorCode: "list_failed",
+    errorMessage: SECRET,
+    stack: SECRET,
+    url: SECRET,
+    uploadedId: "14985772868",
+    uploadedDigestPresent: true,
   });
-  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
-  const { port } = server.address();
-  const result = await run("sh", [path.join(repo, "scripts/briefings-pages-artifact-observe.sh")], {
+  const text = JSON.stringify(out);
+  assert.equal(text.includes(SECRET), false);
+  assert.equal(text.includes("errorMessage"), false);
+  assert.equal(out.errorCode, "list_failed");
+  assert.equal(out.uploadedId, "14985772868");
+  assert.equal(publicObservation({ list: "error", errorCode: SECRET }).errorCode, undefined);
+});
+
+test("the supported list call takes no arguments and hides sdk text", async () => {
+  const calls = [];
+  const failed = await observeSdkList({
+    listArtifacts(...args) {
+      calls.push(args);
+      process.stdout.write(`${SECRET}\n`);
+      process.stderr.write(`${SECRET}\n`);
+      throw new Error(`Failed to ListArtifacts: ${SECRET}`);
+    },
+  });
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].length, 0);
+  assert.deepEqual(failed, { list: "error", errorCode: "list_failed" });
+
+  const listed = await observeSdkList({
+    listArtifacts() {
+      return {
+        artifacts: [{
+          name: "github-pages",
+          id: 14985772868,
+          size: 677455,
+          signedUrl: SECRET,
+          url: SECRET,
+        }, { name: "bad name", id: 1, size: 1 }],
+      };
+    },
+  });
+  const text = JSON.stringify(listed);
+  assert.equal(text.includes(SECRET), false);
+  assert.equal(text.includes("signedUrl"), false);
+  assert.equal(listed.rows.length, 1);
+  assert.equal(listed.rows[0].id, "14985772868");
+  assert.equal(listed.dropped, 1);
+  assert.equal(resultsHost(`https://results.example.test/twirp/list?sig=${SECRET}`), "results.example.test");
+});
+
+test("a throwing official client prints one code and not the sdk message", async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "observe-artifact-"));
+  fakeArtifact(dir, `exports.DefaultArtifactClient = class {
+  listArtifacts() {
+    process.stdout.write(${JSON.stringify(`${SECRET}\n`)});
+    process.stderr.write(${JSON.stringify(`${SECRET}\n`)});
+    throw new Error(${JSON.stringify(SECRET)});
+  }
+};
+`);
+  const result = await run(process.execPath, [path.join(repo, "scripts/briefings-pages-artifact-observe.mjs")], {
     cwd: repo,
     env: {
       PATH: process.env.PATH,
+      PAGES_OBSERVE_ARTIFACT_PACKAGE: dir,
       ACTIONS_RUNTIME_TOKEN: token,
-      ACTIONS_RESULTS_URL: `http://127.0.0.1:${port}/twirp/old?sig=secret`,
+      ACTIONS_RESULTS_URL: `https://results.example.test/twirp/old?sig=${SECRET}`,
       UPLOADED_ARTIFACT_ID: "14985772868",
       UPLOADED_ARTIFACT_DIGEST: "ab".repeat(32),
     },
   });
-  await new Promise((resolve) => server.close(resolve));
+  fs.rmSync(dir, { recursive: true, force: true });
   assert.equal(result.status, 0);
+  assert.equal(result.stdout.includes(SECRET), false);
   assert.equal(result.stdout.includes(token), false);
-  assert.equal(result.stdout.includes("results.example.test"), false);
-  assert.equal(result.stdout.includes("sig=secret"), false);
   assert.equal(result.stdout.includes("do-not-keep"), false);
-  assert.equal(result.stderr || "", "");
+  assert.equal(result.stderr.includes(SECRET), false);
   const body = JSON.parse(result.stdout);
   assert.equal(body.list, "error");
-  assert.equal(body.errorCode, "list_http_status");
-  assert.equal(body.httpStatus, 500);
+  assert.equal(body.errorCode, "list_failed");
   assert.equal(body.uploadedId, "14985772868");
+  assert.equal(body.workflowRunBackendId, RUN);
+  assert.equal(body.resultsHost, "results.example.test");
 });
 
-test("a missing observe command still exits 0 with a fixed code and no stderr", () => {
-  const guarded = spawnSync("sh", [path.join(repo, "scripts/briefings-pages-artifact-observe.sh")], {
-    cwd: path.join(repo, "test"),
-    encoding: "utf8",
-    env: { PATH: process.env.PATH },
+test("install output is discarded and install failure does not fail the step", async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "observe-npm-"));
+  fakeNpm(dir, 1);
+  const result = await run("sh", [path.join(repo, "scripts/briefings-pages-artifact-observe.sh")], {
+    cwd: repo,
+    env: { PATH: `${dir}:${process.env.PATH}` },
   });
-  assert.equal(guarded.status, 0);
-  assert.equal(guarded.stderr, "");
-  assert.equal(JSON.parse(guarded.stdout).errorCode, "list_failed");
+  fs.rmSync(dir, { recursive: true, force: true });
+  assert.equal(result.status, 0);
+  assert.equal(result.stdout.includes(SECRET), false);
+  assert.equal(result.stderr, "");
+  assert.equal(JSON.parse(result.stdout).errorCode, "install_failed");
+});
+
+test("a successful install that prints a secret still cannot leak it or block", async () => {
+  const npmDir = fs.mkdtempSync(path.join(os.tmpdir(), "observe-npm-"));
+  const artifactDir = fs.mkdtempSync(path.join(os.tmpdir(), "observe-artifact-"));
+  fakeNpm(npmDir, 0);
+  fakeArtifact(artifactDir, `exports.DefaultArtifactClient = class {
+  listArtifacts() {
+    process.stdout.write(${JSON.stringify(`${SECRET}\n`)});
+    throw new Error(${JSON.stringify(SECRET)});
+  }
+};
+`);
+  const result = await run("sh", [path.join(repo, "scripts/briefings-pages-artifact-observe.sh")], {
+    cwd: repo,
+    env: {
+      PATH: `${npmDir}:${process.env.PATH}`,
+      PAGES_OBSERVE_ARTIFACT_PACKAGE: artifactDir,
+      ACTIONS_RUNTIME_TOKEN: token,
+    },
+  });
+  fs.rmSync(npmDir, { recursive: true, force: true });
+  fs.rmSync(artifactDir, { recursive: true, force: true });
+  assert.equal(result.status, 0);
+  assert.equal(result.stdout.includes(SECRET), false);
+  assert.equal(result.stdout.includes(token), false);
+  assert.equal(result.stderr, "");
+  assert.equal(JSON.parse(result.stdout).errorCode, "list_failed");
+});
+
+test("the output filter keeps one schema line and drops raw text", () => {
+  const result = spawnSync(process.execPath, [path.join(repo, "scripts/briefings-pages-artifact-observe-filter.mjs")], {
+    input: `${SECRET}\n{"observe":"pages-artifact-list","list":"error","errorCode":"list_failed","errorMessage":${JSON.stringify(SECRET)}}\n`,
+    encoding: "utf8",
+  });
+  assert.equal(result.status, 0);
+  assert.equal(result.stdout.includes(SECRET), false);
+  assert.equal(JSON.parse(result.stdout).errorCode, "list_failed");
+});
+
+test("observation sources do not build an authenticated results request", () => {
+  const files = [
+    "lib/pages-artifact-observe.js",
+    "scripts/briefings-pages-artifact-observe.mjs",
+    "scripts/briefings-pages-artifact-observe.sh",
+    "scripts/briefings-pages-artifact-observe-filter.mjs",
+    ".github/workflows/pages.yml",
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(repo, file), "utf8");
+    assert.equal(text.includes("twirp"), false, file);
+    assert.equal(text.includes("Bearer"), false, file);
+    assert.equal(text.toLowerCase().includes("authorization"), false, file);
+    assert.equal(text.includes("fetch("), false, file);
+  }
+});
+
+test("the artifact package is locked to the published 2.1.3 tarball", () => {
+  const manifest = JSON.parse(fs.readFileSync(path.join(repo, "tools/pages-artifact-observe/package.json"), "utf8"));
+  const lock = JSON.parse(fs.readFileSync(path.join(repo, "tools/pages-artifact-observe/package-lock.json"), "utf8"));
+  assert.equal(manifest.dependencies["@actions/artifact"], "2.1.3");
+  const artifact = lock.packages["node_modules/@actions/artifact"];
+  assert.equal(artifact.version, "2.1.3");
+  assert.equal(artifact.integrity, "sha512-ovuxwbMn0aX8zeQ2ORiZZ0KQYhWwW4NuTCBie530rvxUqaq/83XpqWl1/tHONJuVkck46lfShxjfxhLywTKwyg==");
+  assert.equal(lock.packages["node_modules/@actions/http-client"].version, "2.2.0");
+  assert.equal(lock.packages["node_modules/@actions/core"].version, "1.10.1");
+  assert.equal(lock.packages["node_modules/@actions/github"].version, "5.1.1");
+  assert.equal(lock.packages["node_modules/@octokit/request-error"].version, "5.1.1");
 });
 
 test("pages workflow does not let observation block deploy", () => {
@@ -187,9 +246,11 @@ test("pages workflow does not let observation block deploy", () => {
   assert.match(step, /continue-on-error: true/);
   assert.match(step, /briefings-pages-artifact-observe\.sh/);
   assert.equal(step.includes("npm install"), false);
-  assert.equal(step.includes("ACTIONS_RUNTIME_TOKEN"), false);
   assert.equal(deploy.slice(pages).includes("continue-on-error"), false);
   assert.match(deploy, /test "\$tip" = "\$\{\{ needs\.process\.outputs\.content_sha \}\}"/);
   assert.equal(deploy.includes("actions: write"), false);
-  assert.equal(resultsHost("https://results.example.test/twirp/list?sig=abc"), "results.example.test");
+  assert.equal(yaml.includes("PAGES_OBSERVE_ARTIFACT_PACKAGE"), false);
+  const shell = fs.readFileSync(path.join(repo, "scripts/briefings-pages-artifact-observe.sh"), "utf8");
+  assert.match(shell, /npm ci --omit=dev --ignore-scripts --prefix tools\/pages-artifact-observe/);
+  assert.equal(shell.includes("npm install"), false);
 });
