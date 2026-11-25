@@ -1,13 +1,27 @@
 import { deploymentBody, deployUploadedArtifact, PagesDeployError } from "../lib/pages-deploy.js";
 
-export async function deployFromActions({ artifactId, buildVersion, repository, getIdToken, request }) {
+export async function deployFromActions({
+  artifactId,
+  buildVersion,
+  repository,
+  getIdToken,
+  request,
+  sleep,
+  now,
+  timeoutMs,
+}) {
   const [owner, repo] = String(repository || "").split("/");
   deploymentBody({
     artifactId: artifactId || "",
     buildVersion: buildVersion || "",
     oidcToken: "x",
   });
-  const oidcToken = await getIdToken();
+  let oidcToken;
+  try {
+    oidcToken = await getIdToken();
+  } catch {
+    throw new PagesDeployError("oidc_unavailable");
+  }
   return deployUploadedArtifact({
     artifactId,
     buildVersion,
@@ -15,6 +29,9 @@ export async function deployFromActions({ artifactId, buildVersion, repository, 
     owner,
     repo,
     request,
+    sleep,
+    now,
+    timeoutMs,
   });
 }
 
