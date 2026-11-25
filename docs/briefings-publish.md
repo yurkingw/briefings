@@ -1,8 +1,20 @@
 # briefings 离线发布契约
 
-状态：离线判定和 ready 旁车已在本仓。上传 CLI 在没有 `BRIEFINGS_PUBLISH_TOKEN` 时不发 HTTP。例行未改。token 未写入仓库或 Actions secret。真实链路尚未跑通。
+状态：离线判定和 ready 旁车已在本仓。上传 CLI 在没有 `BRIEFINGS_PUBLISH_TOKEN` 时不发 HTTP。例行未改。token 未写入仓库或 Actions secret。Pages 部署已有一次真实成功；上传令牌注入仍未验证。
 
-真实链路 `export → GitHub → Actions → 公网` **未验证**。失败告警是否盖住 Pages，以及部署前核验到 `deploy-pages` 返回之间的 TOCTOU，也 **未验证**。
+真实链路 `export → GitHub → Actions → 公网` 里，上传 CLI 的令牌注入和晨间自然首跑仍 **未验证**。Pages 部署在 2026-11-25 的 run `45604679565` 上用上传返回的制品 id 完成过一次 process、deploy 和 ack。失败告警是否盖住 Pages，以及 stale-tip 通过之后到 Pages API 返回之间的窗口，仍 **未验证**。
+
+## Pages 制品绑定
+
+正式部署只把 `steps.pages-artifact.outputs.artifact-id` 交给 `POST /repos/{owner}/{repo}/pages/deployments` 的 `artifact_id`。不按制品名再列一次，也不读取 job 范围列表。`overwrite: true` 会先删一份同名制品再上传；job 范围列表曾经在删除成功后仍交出旧 id，Pages API 因此 400。那次列表为什么仍是旧 id，以及更早的 Found 0，都还没有服务端解释。正式路径不依赖那次列表。
+
+重跑 head 早于 `e12b11e21fdea75f9a73bdc042ab81977c8e4bb6` 的 workflow run，包括 #79（head `847ddf90391fbf61d027f831de780da174bba937`），执行的仍是当时的 `deploy-pages` 按名列表。安全恢复是在当前 `main` 上新开一次 run，不是重跑旧 run。
+
+没有 runtime token 的观察不能代表这次部署。生产 workflow 不再跑那一步。
+
+失败按步骤分开：构建是 `npm run build`，上传是 upload-artifact，tip 是 `Refuse a stale tip`，创建和轮询是 deployment 步的固定 code（`create_rejected`、`deployment_id_invalid`、`deployment_failed`、`timeout`、`oidc_unavailable`），ack 只在 deploy success 之后。日志可以有 `pages_artifact_id=` 加十进制 id。不写 token、OIDC、请求体或原始异常。
+
+一次成功不保证以后永不失败。OIDC、REST、超时、并发 push 导致的 stale-tip 拒绝，都仍会使这次发布失败并跳过 ack。重跑、中断和 ack 门禁的检查是子进程加上从 `pages.yml` 读出的 `if`，不是 GitHub Actions 本身。run `45604679565` 仍是唯一已完成的真实基线。
 
 生产路径不是把本地 ready 或 raw 直推进 `content/`。box 上 `stageReady` 之后，`scripts/briefings-upload.mjs` 只把公开 envelope 写到 `_inbox/daily/YYYY-MM-DD.json` 或 `_inbox/weekly/YYYY-Www.json`。`BRIEFINGS_PUBLISH_TOKEN` 只从本次调用的环境对象读入。进程里没有这个自有属性，或值不是一段非空且只含 `A-Za-z0-9._-` 的字符串时，命令退出 50，`attempts` 为 0，不发 HTTP。token 不进参数、日志、结果行或 Actions secret。退出 50 只说明这次进程在请求之前没有通过本地字符类检查。GitHub 返回 401 或 403 时走退出 40、`transport_forbidden`，并且 `attempts` 至少为 1。
 
