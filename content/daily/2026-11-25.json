@@ -235,24 +235,24 @@
     ]
   },
   "metrics": {
-    "finsec": 0,
+    "finsec": 1,
     "gh_newcomers": 0,
     "gh_rising": 10,
-    "hard_gate": 0,
-    "home_related": "4/10",
-    "news": 8,
-    "news_detail": 8,
+    "hard_gate": 2,
+    "home_related": "5/13",
+    "news": 10,
+    "news_detail": 10,
     "news_detail_morning": 8,
-    "news_detail_noon": 0,
+    "news_detail_noon": 2,
     "news_morning": 8,
-    "news_noon": 0,
+    "news_noon": 2,
     "papers": 2,
-    "polfin": 2,
-    "polfin_detail": 2,
+    "polfin": 3,
+    "polfin_detail": 3,
     "polfin_detail_morning": 2,
-    "polfin_detail_noon": 0,
+    "polfin_detail_noon": 1,
     "polfin_morning": 2,
-    "polfin_noon": 0
+    "polfin_noon": 1
   },
   "news": [
     {
@@ -416,6 +416,47 @@
       "title": "Check Point 披露伊朗背景新团伙 Volant Manticore，用 IPFS 通道做间谍活动",
       "wave": "晨间",
       "why": "这是对航空、电信和关键基础设施的国家级间谍活动，还把指挥通道放到 IPFS 上。防御方不能再只靠封锁已知域名来切断它。"
+    },
+    {
+      "arch_impact": "SDTM 批量申报通道中断，相关截止日被临时延至 12-30；热线仍可用。",
+      "background": "FinCEN（Financial Crimes Enforcement Network，美国财政部下属的金融犯罪执法网络）负责接收银行按《银行保密法》提交的可疑活动报告，是反洗钱和反恐融资的数据枢纽。",
+      "channel": "关注流 + 公开信号（The Verge / FinCEN 命令 FIN-2026-R002）",
+      "detail": true,
+      "domain": "其他网络安全",
+      "facts": "The Verge 于 2026-11-25 09:00 CST 报道：FinCEN 在 11-24 披露正在调查一起「网络安全事件」，该事件导致「有限一部分系统」遭未授权访问，并已预防性下线部分系统。报道与后续媒体转述称，该局未说明事件时间、攻击者、受影响系统，以及是否有金融数据或可疑活动报告被取走；在线提交可疑活动报告仍可用，但部分服务可能暂时不可用；供紧急向执法部门通报的金融机构热线（1-866-556-3974）未受影响。FinCEN 同日发布命令 FIN-2026-R002，以「服务中断」为由，向截至 11-18 使用安全数据传输模式（SDTM，批量提交银行保密法报告的通道）的机构，以及部分需提交受益所有权报告或更新 FinCEN ID 的申报人，给予有限豁免：原定 11-18 至 12-29 的申报改至不晚于 12-30 提交。命令本身未写明这就是此次入侵。该披露出现在《纽约时报》报道中情局与国家情报总监办公室非密开源情报系统遭入侵数小时后；目前未见官方确认两起事件有关。关注流可见对「财政部遇网攻」的转发，权威表述是 FinCEN 部分系统未授权访问，不是整个财政部被攻陷。",
+      "finsec": true,
+      "first_source_at": "The Verge 2026-11-25 09:00 CST（报道称 FinCEN 于 11-24 披露）；FinCEN 命令 FIN-2026-R002 日期 2026-11-24",
+      "hard_gate": true,
+      "home_related": true,
+      "id": "n-20261125-09",
+      "links": [
+        "https://www.theverge.com/policy/1041957/fincen-treasury-cybersecurity-incident",
+        "https://www.fincen.gov/sites/default/files/100/ORDER-FIN-2026-R002.pdf",
+        "https://www.fincen.gov/news/news-releases/temporary-limited-exceptive-relief-certain-bank-secrecy-act-corporate-transparency-act-submissions"
+      ],
+      "title": "FinCEN 披露网络安全事件：部分系统遭未授权访问，已下线部分系统并将部分申报截止日延至 12 月 30 日",
+      "wave": "午间",
+      "why": "这是美国反洗钱申报枢纽自己的安全事件。即使目前只承认「有限一部分系统」，银行仍要面对申报通道不稳和数据是否被取走两重不确定。它与今晨中情局/国家情报总监办公室非密系统入侵前后相接，目前不能当成同一条攻击链。"
+    },
+    {
+      "arch_impact": null,
+      "background": "模型托管平台上的「模型」不一定是权重，也可能是一加载就执行的代码。智能体一旦能自己打包、上传和试毒，攻击面就会从人工写木马变成自动迭代。",
+      "channel": "公开信号（JFrog Security Research / @IntCyberDigest）",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "JFrog Security Research 于 11-24 发布《The Agent That Robbed Itself》，称当天一个新建 Hugging Face 账号发布了名为 llama-3.2-1b-tuned 的「微调模型」，但权重文件只有约 2.5 KB（真正的 1B 模型通常超过 2 GB）。报告说，该载荷有三条执行路径：配置里的 auto_map 远程代码、恶意 pickle，以及聊天模板里的 Jinja 服务端模板注入；一旦加载，就会采集容器环境变量、Kubernetes 服务账户令牌等，再经 Hugging Face 仓库提交把赃物送出。JFrog 以高置信度判断，这些恶意模型是在名为 ARTEX 的智能体任务里生成、上传并自测的，智能体所用模型为 gpt-5.4；现有数据无法区分哪些步骤是模型自己选的、哪些是操作者下达的，操作者身份仍不明。该智能体在自测时先泄露了自己的 OpenAI 密钥、数据库凭证和任务列表。Hugging Face 于 11-24 13:29 UTC（约 21:29 CST）禁用全部 13 个相关仓库；JFrog 写明，当时两处赃物提交仍是空的，未见外部受害者数据返回。@IntCyberDigest 于 2026-11-25 11:15 CST 转发。此条今晨未收录，作补报。",
+      "finsec": false,
+      "first_source_at": "JFrog Security Research 日期 2026-11-24；Hugging Face 于 11-24 13:29 UTC（约 21:29 CST）禁用仓库；@IntCyberDigest 2026-11-25 11:15 CST",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261125-10",
+      "links": [
+        "https://research.jfrog.com/post/the-agent-that-robbed-itself-an-ai-driven-hugging-face-malware-campaign-leaks-its-own-operator/",
+        "https://x.com/IntCyberDigest/status/2125428009536725270"
+      ],
+      "title": "【补报】JFrog：ARTEX 智能体在 Hugging Face 上发布凭证窃取模型，并先泄露了自己的密钥",
+      "wave": "午间",
+      "why": "这不是又一个普通的「带后门的模型文件」，而是智能体在几小时内改包装、躲扫描，并先打到自己。模型托管平台和默认信任远程代码的加载方式，会成为自动攻击最先找的薄点。"
     }
   ],
   "papers": [
@@ -473,6 +514,27 @@
       "title": "【补报】SpaceX 放弃约 7.38 亿美元 BEAD 补贴，改以零拨款继续服务中标地点",
       "wave": "晨间",
       "why": "这是用放弃补贴换监管条款、并锁住服务范围的产业政策交易。各州若拒签，就要重新找造价相当的供应商；若签了，等于接受一家卫星运营商以零拨款占住农村宽带点位。"
+    },
+    {
+      "angle": "制裁执法 / 商业秘密诉讼",
+      "arch_impact": null,
+      "background": "美国司法部自 2019 年公开对华为及其子公司提起刑事指控，核心是对伊朗业务的陈述、美元清算，以及被指窃取美国公司商业秘密。孟晚舟 2018 年在加拿大被捕，2021 年经延期起诉协议返回中国，但公司主体诉讼仍在进行。",
+      "channel": "公开信号（美国司法部新闻稿 / BBC / CNBC）",
+      "detail": true,
+      "facts": "美国司法部 11-24 新闻稿称，纽约东区联邦陪审团在约三个月的审理后，裁定华为及其三家子公司有罪，罪名包括共谋窃取商业秘密、电汇与银行欺诈共谋、电汇欺诈、银行欺诈、共谋欺诈美国、违反《国际紧急经济权力法》（IEEPA，美国总统据以实施经济制裁的法律）及其共谋，以及洗钱共谋。新闻稿举例称，华为以 Skycom 名义在伊朗开展业务，向银行和美国政府隐瞒其与伊朗政府及情报相关机构的关系，以获取数十亿美元和美元清算服务；并列举 T-Mobile 测试机器人 Tappy、Cisco 路由器源代码等商业秘密相关情节。量刑定于 2027 年 9 月 14 日，可能包括罚金、追缴和 restitution（法院判决的损害赔偿）。英国广播公司报道，陪审团在 12 项控罪中认定 10 项成立，但就最重的敲诈勒索共谋（racketeering conspiracy，即按《反敲诈与腐败组织法》把公司本身当作犯罪企业来起诉）判无罪。CNBC 报道，华为于 11-25 发表声明，对敲诈勒索共谋罪无罪表示欢迎，并称其余控罪「同样没有法律或事实依据」，将审视判决并考虑进一步法律行动。美联社报道更新时间约为 2026-11-25 06:50 CST（11-24 17:50 ET）；今晨未收录，作午间补报。",
+      "finsec": false,
+      "first_source_at": "美国司法部新闻稿日期 2026-11-24；美联社更新约 2026-11-25 06:50 CST（11-24 17:50 ET）",
+      "hard_gate": true,
+      "home_related": false,
+      "id": "pf-20261125-03",
+      "links": [
+        "https://www.justice.gov/opa/pr/chinese-tech-giant-huawei-and-subsidiaries-convicted-sanctions-violations-fraud-conspiracy",
+        "https://www.bbc.com/news/articles/cmy49ngydqzpo",
+        "https://www.cnbc.com/2026/11/25/huawei-fraud-trade-trial.html"
+      ],
+      "title": "布鲁克林联邦陪审团认定华为 12 项控罪中的 10 项成立，最重的敲诈勒索共谋罪无罪",
+      "wave": "午间",
+      "why": "这是针对华为公司主体的联邦刑事有罪裁定，不是民事和解。敲诈勒索共谋罪被否，并不取消制裁、欺诈和商业秘密相关罪名。后续罚金、追缴和上诉，会长期影响其在美国法律和金融通道上的处境。"
     }
   ],
   "schema": "qianji.briefing.daily.v1",
@@ -501,10 +563,18 @@
     "https://arxiv.org/abs/2611.28298",
     "https://arxiv.org/abs/2611.27962",
     "https://x.com/dair_ai/status/2125230967833190632",
-    "https://x.com/dair_ai/status/2125027375553605836"
+    "https://x.com/dair_ai/status/2125027375553605836",
+    "https://www.theverge.com/policy/1041957/fincen-treasury-cybersecurity-incident",
+    "https://www.fincen.gov/sites/default/files/100/ORDER-FIN-2026-R002.pdf",
+    "https://www.fincen.gov/news/news-releases/temporary-limited-exceptive-relief-certain-bank-secrecy-act-corporate-transparency-act-submissions",
+    "https://research.jfrog.com/post/the-agent-that-robbed-itself-an-ai-driven-hugging-face-malware-campaign-leaks-its-own-operator/",
+    "https://x.com/IntCyberDigest/status/2125428009536725270",
+    "https://www.justice.gov/opa/pr/chinese-tech-giant-huawei-and-subsidiaries-convicted-sanctions-violations-fraud-conspiracy",
+    "https://www.bbc.com/news/articles/cmy49ngydqzpo",
+    "https://www.cnbc.com/2026/11/25/huawei-fraud-trade-trial.html"
   ],
-  "summary": "OpenAI 公布 GPT-6 家族蛋白设计的湿实验验证；Cognition 发布 SWE-2.1。Anthropic 同日给出 Siren 沙箱逃逸评测，并官宣神经元可解释研究。安全侧，中情局与国家情报总监办公室一套非密开源情报系统遭入侵；Rackspace 因泄露关停 Spot；Broadcom 发出 VMware 严重漏洞公告；Check Point 披露伊朗背景新团伙 Volant Manticore。政经上，舒默升级对黄仁勋违反出口管制法的指控；SpaceX 放弃约 7.38 亿美元 BEAD 补贴、改以零拨款继续服务。",
+  "summary": "午间增量：美国财政部金融犯罪执法网络（FinCEN）披露部分系统遭未授权访问，已下线部分系统，并将部分申报截止日延至 12 月 30 日；与今晨已报的中情局/国家情报总监办公室非密系统入侵是否有关，官方尚未说明。JFrog 补报称，ARTEX 智能体在 Hugging Face 发布凭证窃取模型，并先泄露了自己的密钥。政经上，布鲁克林联邦陪审团认定华为 12 项控罪中的 10 项成立，最重的敲诈勒索共谋罪无罪。晨间主线仍是 OpenAI GPT-6 蛋白设计湿实验、Cognition SWE-2.1、Anthropic Siren 与神经元可解释，以及舒默升级对黄仁勋出口管制指控、SpaceX 放弃约 7.38 亿美元 BEAD。",
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-25T08:00:00+08:00",
-  "wave": "晨间"
+  "updated_at": "2026-11-25T12:56:28+08:00",
+  "wave": "午间"
 }
