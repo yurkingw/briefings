@@ -113,10 +113,34 @@ jobs:
           UPLOADED_ARTIFACT_ID: ${{ steps.pages-artifact.outputs.artifact-id }}
           UPLOADED_ARTIFACT_DIGEST: ${{ steps.pages-artifact.outputs.artifact-digest }}
         run: sh scripts/briefings-pages-artifact-observe.sh
+      # deploy-pages@d6db901 asks the job-scoped list for an id. On the noon
+      # rerun that list still returned the id overwrite had deleted. Pages
+      # deploys the id this upload step just finalized.
       - id: deployment
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          ARTIFACT_ID: ${{ steps.pages-artifact.outputs.artifact-id }}
         with:
-          artifact_name: github-pages
+          retries: "0"
+          script: |
+            const { pathToFileURL } = require("node:url")
+            const { deployFromActions } = await import(pathToFileURL(`${process.env.GITHUB_WORKSPACE}/scripts/briefings-pages-deploy.mjs`).href)
+            const pageUrl = await deployFromActions({
+              artifactId: process.env.ARTIFACT_ID,
+              buildVersion: process.env.GITHUB_SHA,
+              repository: process.env.GITHUB_REPOSITORY,
+              getIdToken: () => core.getIDToken(),
+              request: async (method, route, body) => {
+                try {
+                  const response = await github.request(`${method} ${route}`, body || {})
+                  return { status: response.status, body: response.data }
+                } catch (error) {
+                  if (typeof error.status === "number") return { status: error.status, body: error.response && error.response.data }
+                  throw error
+                }
+              },
+            })
+            core.setOutput("page_url", pageUrl)
 
   ack:
     needs: [process, deploy]

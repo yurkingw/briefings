@@ -61,19 +61,21 @@ test("overwrite leaves exactly one github-pages artifact for deploy-pages", () =
   assert.throws(() => selectPagesArtifact(stillTwo), /Artifact count is 2/);
 });
 
-test("pages workflow uploads and deploys the same artifact name", () => {
+test("pages workflow deploys the uploaded artifact id", () => {
   const yaml = fs.readFileSync(path.join(repo, ".github/workflows/pages.yml"), "utf8");
   const deploy = yaml.slice(yaml.indexOf("\n  deploy:\n"), yaml.indexOf("\n  ack:\n"));
   const uploadAt = deploy.indexOf("actions/upload-artifact@");
-  const deployAt = deploy.indexOf("actions/deploy-pages@");
+  const deployAt = deploy.indexOf("id: deployment");
   assert.ok(uploadAt >= 0 && deployAt > uploadAt);
   const upload = deploy.slice(uploadAt, deployAt);
   const pagesDeploy = deploy.slice(deployAt);
   assert.match(upload, /actions\/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02/);
   assert.match(upload, /name: github-pages/);
   assert.match(upload, /overwrite: true/);
-  assert.match(pagesDeploy, /actions\/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e/);
-  assert.match(pagesDeploy, /artifact_name: github-pages/);
+  assert.match(pagesDeploy, /ARTIFACT_ID: \$\{\{ steps\.pages-artifact\.outputs\.artifact-id \}\}/);
+  assert.match(pagesDeploy, /actions\/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3/);
+  assert.match(pagesDeploy, /scripts\/briefings-pages-deploy\.mjs/);
+  assert.equal(pagesDeploy.includes("actions/deploy-pages@"), false);
   assert.match(deploy, /test "\$tip" = "\$\{\{ needs\.process\.outputs\.content_sha \}\}"/);
   assert.equal(deploy.includes("actions: write"), false);
   const ack = yaml.slice(yaml.indexOf("\n  ack:\n"));
