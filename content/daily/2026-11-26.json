@@ -1,0 +1,652 @@
+{
+  "date": "2026-11-26",
+  "github": {
+    "meta": {
+      "archive": "missing_no_gcp",
+      "gitstock_date": "2026-11-25",
+      "gitstock_ok": true,
+      "intersect_gitstock_trending_top10": "10/10",
+      "note": "GH Archive 缺源（无 GCP）；涨星按热榜今日涨星排序。GitStock 日键 2026-11-25 UTC（11-26 为 404）。新锐经人工剔除作弊/破解/非授权移植/星农场后保留 2 条。今日无新的整数关口破星。",
+      "rising_newcomer_overlap": 0,
+      "trending_ok": true
+    },
+    "newcomers": [
+      {
+        "age_h": 16,
+        "break": null,
+        "created_at": "2026-11-25T07:28:51Z",
+        "gained": null,
+        "gained_week_approx": null,
+        "lang": "Assembly",
+        "license": "MIT",
+        "owner": "alesha-pro",
+        "owner_type": "个人",
+        "rank": 1,
+        "repo": "alesha-pro/llm.asm",
+        "seen": "首见",
+        "slogan": "纯汇编写出的小模型推理与训练玩具",
+        "stars": 197,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/alesha-pro/llm.asm",
+        "what": "用 100% x86-64 NASM 汇编实现 Qwen3-0.6B 推理、可引导的裸机系统和 Mini-GPT 训练器，不依赖 C 或 libc。",
+        "why": "新仓首日靠「零依赖汇编复现 LLM」的硬核演示吸星，技术叙事清楚，不像同批游戏修改器或空描述仓。"
+      },
+      {
+        "age_h": 14,
+        "break": null,
+        "created_at": "2026-11-25T09:26:33Z",
+        "gained": null,
+        "gained_week_approx": null,
+        "lang": "JavaScript",
+        "license": "MIT",
+        "owner": "Moh4696",
+        "owner_type": "个人",
+        "rank": 2,
+        "repo": "Moh4696/inkworks-skill",
+        "seen": "首见",
+        "slogan": "用工程图纸风画出可交互的 3D 原理页",
+        "stars": 159,
+        "tags": [
+          "新锐"
+        ],
+        "url": "https://github.com/Moh4696/inkworks-skill",
+        "what": "面向 Claude Code 等编码代理的技能，生成工程图纸风格的交互式 3D 原理解释页。",
+        "why": "新仓定位清楚，是说明类智能体技能，而不是破解或星农场模板。"
+      }
+    ],
+    "rising": [
+      {
+        "age_h": 4908,
+        "break": null,
+        "gained": 1644,
+        "gained_week_approx": 1644,
+        "lang": "Python",
+        "license": "MIT",
+        "owner": "elementalsouls",
+        "owner_type": "个人",
+        "rank": 1,
+        "repo": "elementalsouls/Claude-BugHunter",
+        "seen": "续见",
+        "slogan": "用 Claude 去挖洞的技能大礼包",
+        "stars": 22956,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/elementalsouls/Claude-BugHunter",
+        "what": "A Claude Code skill bundle for bug hunting and external red-team work - 85 skills, 16 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
+        "why": "连续多日占据涨星榜首位，安全向 Claude Code 技能包仍在吸星。"
+      },
+      {
+        "age_h": 5357,
+        "break": null,
+        "gained": 1133,
+        "gained_week_approx": 1133,
+        "lang": "HTML",
+        "license": "MIT",
+        "owner": "cathrynlavery",
+        "owner_type": "个人",
+        "rank": 2,
+        "repo": "cathrynlavery/diagram-design",
+        "seen": "续见",
+        "slogan": "给编码代理用的编辑风示意图",
+        "stars": 72998,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/cathrynlavery/diagram-design",
+        "what": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, Qoder, and Pi. 52 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+        "why": "继续留在双榜，示意图技能包的日涨星仍高。"
+      },
+      {
+        "age_h": 22898,
+        "break": null,
+        "gained": 1131,
+        "gained_week_approx": 1131,
+        "lang": "TypeScript",
+        "license": "AGPL-3.0",
+        "owner": "firecrawl",
+        "owner_type": "组织",
+        "rank": 3,
+        "repo": "firecrawl/firecrawl",
+        "seen": "续见",
+        "slogan": "给智能体用的搜索与网页采集底层",
+        "stars": 210006,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/firecrawl/firecrawl",
+        "what": "Knowledge infrastructure to make your agents smarter. Search, scrape and access 550+ data providers through one API.",
+        "why": "智能体数据采集底座再次回到双榜前列。"
+      },
+      {
+        "age_h": 6297,
+        "break": null,
+        "gained": 1094,
+        "gained_week_approx": 1094,
+        "lang": "Python",
+        "license": "Apache-2.0",
+        "owner": "HKUDS",
+        "owner_type": "组织",
+        "rank": 4,
+        "repo": "HKUDS/CLI-Anything",
+        "seen": "续见",
+        "slogan": "让所有软件都能被智能体当命令行用",
+        "stars": 65652,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/HKUDS/CLI-Anything",
+        "what": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+        "why": "「把任意软件变成智能体可调用接口」仍是热门叙事。"
+      },
+      {
+        "age_h": null,
+        "break": "破 75,000 星",
+        "gained": 950,
+        "gained_week_approx": 950,
+        "lang": "Python",
+        "license": "—",
+        "owner": "mvanhorn",
+        "owner_type": "组织",
+        "rank": 5,
+        "repo": "mvanhorn/last30days-skill",
+        "seen": "续见",
+        "slogan": "把近 30 天的全网讨论收成有根据的摘要",
+        "stars": 75060,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/mvanhorn/last30days-skill",
+        "what": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
+        "why": "信息综合类技能连续两日留在热榜。"
+      },
+      {
+        "age_h": 28747,
+        "break": null,
+        "gained": 950,
+        "gained_week_approx": 950,
+        "lang": "Python",
+        "license": "GPL-3.0",
+        "owner": "XiaoYouChR",
+        "owner_type": "个人",
+        "rank": 6,
+        "repo": "XiaoYouChR/Ghost-Downloader-3",
+        "seen": "续见",
+        "slogan": "一个下载器打通各种源",
+        "stars": 18213,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/XiaoYouChR/Ghost-Downloader-3",
+        "what": "The only downloader you need. 下载器的集大成者。",
+        "why": "工具型下载器靠实用性继续涨星。"
+      },
+      {
+        "age_h": null,
+        "break": null,
+        "gained": 902,
+        "gained_week_approx": 902,
+        "lang": "Shell",
+        "license": "—",
+        "owner": "obra",
+        "owner_type": "组织",
+        "rank": 7,
+        "repo": "obra/superpowers",
+        "seen": "续见",
+        "slogan": "可落地的智能体技能与开发方法",
+        "stars": 326570,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/obra/superpowers",
+        "what": "An agentic skills framework & software development methodology that works.",
+        "why": "高星技能框架仍有稳定日增量。"
+      },
+      {
+        "age_h": null,
+        "break": null,
+        "gained": 868,
+        "gained_week_approx": 868,
+        "lang": "Python",
+        "license": "—",
+        "owner": "zhouxiaoka",
+        "owner_type": "组织",
+        "rank": 8,
+        "repo": "zhouxiaoka/autoclip",
+        "seen": "续见",
+        "slogan": "一条链接自动切出短视频",
+        "stars": 16117,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/zhouxiaoka/autoclip",
+        "what": "AutoClip｜一个链接，一键出片。开源 AI 视频剪辑桌面工具，将播客、访谈、课程等长视频自动剪成短视频，生成字幕、封面和发布文案，适配抖音、小红书、TikTok、Reels 与 YouTube Shorts。Open-source AI video clipping & content repurposing.",
+        "why": "长视频自动切片工具维持高日涨。"
+      },
+      {
+        "age_h": 4140,
+        "break": null,
+        "gained": 853,
+        "gained_week_approx": 853,
+        "lang": "Shell",
+        "license": "NOASSERTION",
+        "owner": "mjmirza",
+        "owner_type": "个人",
+        "rank": 9,
+        "repo": "mjmirza/app-store-compliance",
+        "seen": "续见",
+        "slogan": "上架被拒模式与合规检查清单",
+        "stars": 6461,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/mjmirza/app-store-compliance",
+        "what": "Avoid common App Store and Google Play rejections. Open playbook and pre-submission guard with 124 documented rejection patterns and fixes, privacy manifest and Data safety checks, 114 tracked deadlines (EU AI Act, DSA, COPPA, age laws), and a skill for AI coding agents.",
+        "why": "应用商店与监管合规清单被编码代理用户持续加星。"
+      },
+      {
+        "age_h": 20443,
+        "break": null,
+        "gained": 828,
+        "gained_week_approx": 828,
+        "lang": "Python",
+        "license": "Apache-2.0",
+        "owner": "jingyaogong",
+        "owner_type": "个人",
+        "rank": 10,
+        "repo": "jingyaogong/minimind",
+        "seen": "续见",
+        "slogan": "两小时从零训一个小模型",
+        "stars": 70924,
+        "tags": [
+          "热榜",
+          "GitStock∩Trending"
+        ],
+        "url": "https://github.com/jingyaogong/minimind",
+        "what": "🧠 两小时从 0 训出你的 64M 大模型。Train your own 64M LLM from scratch in 2 hours.",
+        "why": "小模型从零训练教程仓继续高位运行，昨日已越过 7 万星。"
+      }
+    ]
+  },
+  "metrics": {
+    "finsec": 0,
+    "gh_newcomers": 2,
+    "gh_rising": 10,
+    "hard_gate": 0,
+    "home_related": "6/14",
+    "news": 11,
+    "news_detail": 10,
+    "news_detail_morning": 7,
+    "news_detail_noon": 3,
+    "news_morning": 8,
+    "news_noon": 3,
+    "papers": 5,
+    "polfin": 3,
+    "polfin_detail": 3,
+    "polfin_detail_morning": 2,
+    "polfin_detail_noon": 1,
+    "polfin_morning": 2,
+    "polfin_noon": 1
+  },
+  "news": [
+    {
+      "arch_impact": null,
+      "background": "Anthropic 与 OpenAI 在编码智能体上持续对峙。关注流出现前 Anthropic Claude Code 团队工程师的转会声明。",
+      "channel": "关注流（@trq212 本人声明）",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "Thariq Shihipar（@trq212）于 2026-11-26 03:38 CST 发帖称已加入 OpenAI，并对在 Anthropic 的经历表示骄傲，称两家公司在未来都有重要角色。帖文互动约 1.96 万、曝光约 88 万，显著高于其基线。外界讨论多称其参与 Claude Code 的技能、上下文工程与 Agent SDK 工作；其本人帖文未细列职衔。另有讨论提到 OpenAI 同时迎来 @_catwu，本栏未独立核到当事人声明，不作定论。",
+      "finsec": false,
+      "first_source_at": "@trq212 2026-11-26 03:38 CST",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "n-20261126-01",
+      "links": [
+        "https://x.com/trq212/status/2125675533761671405"
+      ],
+      "title": "Thariq Shihipar 加入 OpenAI",
+      "wave": "晨间",
+      "why": "这是编码智能体赛道上可核到的关键招聘信号，直接关系到 Claude Code 与 OpenAI 编码产品的人才对流。"
+    },
+    {
+      "arch_impact": null,
+      "background": "企业把前沿模型用于敏感工作，核心顾虑是提示词与数据在推理过程中被谁看到。",
+      "channel": "公开信号（@sama / OpenAI 官方页；关注流 6 页未覆盖此时段，由公开搜索补）",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "Sam Altman（@sama）于 2026-11-26 01:12 CST 称，OpenAI 正在与一小群客户测试 Private Inference，作为 OpenAI Private Intelligence 的最新能力，并强调更强的隐私保护才能让前沿模型进入更多工作。官方页将其标为 Alpha / API Preview，并与 Zero Data Retention 并列，称对合格工作负载使用机密计算（confidential computing）和可验证控制。公开页未给出一般可用日期、完整模型清单或定价。",
+      "finsec": false,
+      "first_source_at": "@sama 2026-11-26 01:12 CST；官方产品页同期可见",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261126-02",
+      "links": [
+        "https://openai.com/business/private-intelligence/",
+        "https://x.com/sama/status/2125638790593274259"
+      ],
+      "title": "OpenAI 小范围测试 Private Inference",
+      "wave": "晨间",
+      "why": "这是 OpenAI 把企业隐私从「承诺不训练」推进到「推理过程本身可隔离」的产品化步骤，会成为企业采购与合规对照的新基准。"
+    },
+    {
+      "arch_impact": null,
+      "background": "Messages API 是客户与 Claude Code、Cowork 等自家应用调用 Claude 的主通路。官方称 2024 年初至 2026 年秋流量约增 1800 倍，Python 实现的单请求 CPU 成本成为瓶颈。",
+      "channel": "公开信号（Anthropic 工程博客 / @AnthropicAI）",
+      "detail": true,
+      "domain": "AI产品",
+      "facts": "Anthropic 于 11-25 发布工程博客，介绍把 Messages API 从 Python 迁到 Rust：Claude 约一周写出核心请求路径初版，随后把生产 API 本身当作校验器，在生产流量上对比差异并自动派智能体修复，全程未停机、也未冻结功能开发。结果是单请求 CPU 约降 70%、首 token 中位时延约降 20%。@AnthropicAI 于 2026-11-26 00:26 CST 发帖。",
+      "finsec": false,
+      "first_source_at": "Anthropic 博客日期 2026-11-25；@AnthropicAI 2026-11-26 00:26 CST",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261126-03",
+      "links": [
+        "https://www.anthropic.com/engineering/migrating-api-to-rust",
+        "https://x.com/AnthropicAI/status/2125627317263466739"
+      ],
+      "title": "Anthropic 将 Messages API 迁至 Rust",
+      "wave": "晨间",
+      "why": "这是把智能体用在实盘核心 API 迁移上的官方案例，也说明验证比生成更难时，生产流量对照可以补上测试套件覆盖不到的差异。"
+    },
+    {
+      "arch_impact": null,
+      "background": "密码管理器被攻破时，公众首先问的是保管库（vault）和主密钥是否还在。1Password 以往把「零知识、本地密钥」当作核心承诺。",
+      "channel": "关注流（@IntCyberDigest、@business）+ 公开信号（1Password 官方公告）",
+      "detail": true,
+      "domain": "其他安全",
+      "facts": "1Password 于 2026-11-26 01:28 CST 发官方帖并发布事件说明：11-19 开始调查员工企业 GitHub 账户被盗用；攻击者借该账户访问私有源码，并向后端服务推送恶意代码，下载了部分客户的账户记录，包括登录用姓名与邮箱、账户与用户标识、创建与最近登录时间、公钥、SRP 参数，以及邀请、开通和账户恢复邮件链接中的令牌。官方称保管库内容、其中条目及保护它们的密钥未被访问，客户不必改 1Password 主密码或已存密码。攻击者还进入了 CI/CD，官方已轮换可能暴露的内部凭证，并称未发现客户账户被接管的内部证据。完成邀请或恢复仍需 SSO 或发到注册邮箱的校验码；为降低暴力猜测，校验码已从 6 位数字改为 10 位字母数字。少数处于开通/恢复状态的用户已单独通知。官方提醒警惕冒充 1Password 的邀请或恢复邮件。关注流可见 @IntCyberDigest 快讯与彭博转述。",
+      "finsec": false,
+      "first_source_at": "1Password 官方帖与博客 2026-11-26 01:28 CST",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "n-20261126-04",
+      "links": [
+        "https://1password.com/blog/update-on-nov-2026-security-incident",
+        "https://x.com/1Password/status/2125642686443258030"
+      ],
+      "title": "1Password：员工 GitHub 被盗，部分客户账户信息被拷",
+      "wave": "晨间",
+      "why": "保管库虽未被打开，泄露的姓名、邮箱和恢复令牌足以支撑精准钓鱼。密码管理器的开发者权限与 CI/CD 仍是可打的管理面。"
+    },
+    {
+      "arch_impact": null,
+      "background": "PHP2Shell（CVE-2026-109618 / CVE-2026-109619）此前已允许未认证攻击者在 PHP worker 权限下远程执行代码。Fragnesia（CVE-2026-46300）是 Linux 内核 XFRM ESP-in-TCP 子系统的本地提权漏洞，可把低权限升到 root。CISA 曾在 10-28 提示两者被链式利用。",
+      "channel": "公开信号（Palo Alto 安全公告 PAN-SA-2026-0015 / Bleeping Computer / The Hacker News）",
+      "detail": true,
+      "domain": "其他安全",
+      "facts": "Palo Alto Networks 于 11-25 发布 PAN-SA-2026-0015，确认已观察到针对暴露在公网的 PAN-OS 管理接口利用 CVE-2026-46300。官方称目前已知唯一利用路径，是先通过公网管理面打 PHP2Shell，再打 Fragnesia；若管理面已限制为可信内网地址，风险显著降低；已修补 PHP2Shell 对应版本的设备也受保护。公告列出 PAN-OS 10.2 / 11.1 / 11.2 / 12.1 / 12.2 多个热修版本。Bleeping Computer 与 The Hacker News 于当日下午至晚间报道。官方公告未在正文中做国家背景归因。",
+      "finsec": false,
+      "first_source_at": "官方公告日期 2026-11-25；The Hacker News 2026-11-25 21:11 CST",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261126-05",
+      "links": [
+        "https://security.paloaltonetworks.com/PAN-SA-2026-0015",
+        "https://www.bleepingcomputer.com/news/security/palo-alto-networks-warns-of-fragnesia-flaw-exploited-in-pan-os-attacks/"
+      ],
+      "title": "Palo Alto 确认 PAN-OS 管理面遭 Fragnesia 在野利用",
+      "wave": "晨间",
+      "why": "这是把已在通用 Linux 上出现的提权链，正式确认打到防火墙管理面。公网暴露的管理接口仍是第一风险，补丁与收敛暴露面需要同时做。"
+    },
+    {
+      "arch_impact": null,
+      "background": "Drupal 核心安装器 install.php 在特定条件下可被用来尝试「重新安装」站点，从而导致接管或远程代码执行。Drupal 安全公告 SA-CORE-2026-017（CVE-2026-132165，常被称作 Fail2Install）于 11-18 发布，由 Anthropic OSS Scanner 发现。昨日晨报与午间未收录后续在野确认。",
+      "channel": "公开信号（Drupal 官方公告更新 / CISA KEV / Bleeping Computer）；关注流 6 页未覆盖此时段",
+      "detail": true,
+      "domain": "其他安全",
+      "facts": "Drupal 安全团队在公告中更新：已收到报告，该漏洞最早于 2026-11-19 19:00 UTC 在活站点上被利用。CISA 于 2026-11-24 将其列入已知被利用漏洞目录（KEV）。受影响版本需升至 Drupal 10.6.22、11.3.22 或 11.4.13；不能马上升级时应在 Web 服务器层挡住 /core/install.php，并避免 Web 进程可写 settings.php。Bleeping Computer 于 2026-11-25 18:12 CST 报道「正在被用来劫持站点」。",
+      "finsec": false,
+      "first_source_at": "Drupal 公告日期 2026-11-18；在野更新指向 2026-11-19 19:00 UTC；CISA KEV 2026-11-24；本栏 11-26 晨间补报",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261126-06",
+      "links": [
+        "https://www.drupal.org/sa-core-2026-017",
+        "https://www.cisa.gov/news-events/alerts/2026/11/24/cisa-adds-three-known-exploited-vulnerabilities-catalog"
+      ],
+      "title": "【补报】Drupal 安装器漏洞已在野，CISA 列入 KEV",
+      "wave": "晨间",
+      "why": "这是未认证即可打安装器的高危缺陷，且已从「已修补」进入「已在野 + KEV」。政府与企业的 Drupal 站点若未挡住安装器，窗口已经打开数日。"
+    },
+    {
+      "arch_impact": null,
+      "background": "安全厂商的安全管理服务器一旦失守，攻击者拿到的是防火墙策略、对象库和后续横向移动的跳板。GreyNoise 于 11-23 发表战役分析，The Hacker News 于 11-25 14:59 CST 放大；昨日午间未收录。",
+      "channel": "公开信号（GreyNoise 报告 / The Hacker News）；关注流 6 页未覆盖此时段",
+      "detail": true,
+      "domain": "其他安全",
+      "facts": "GreyNoise 将活动追踪为 GT13，称确认攻击窗口约 2026-10-17 至 11-02，影响到至少 22 家机构、24 台 Check Point Security Management Server，分布在英、爱、法、荷、美、中、澳等 17 个国家或地区，行业含金融服务、能源、政府、交通、采矿、工程和制造。攻击者使用 99 个 IP（多为 ExpressVPN 出口或失陷设备），并以一台失陷服务器作为中继保存命令结果与窃取数据。利用或尝试的漏洞包括 Check Point SmartConsole 认证绕过 CVE-2026-16232，以及 Rejetto HFS、Citrix、Ivanti、Windows NetLogon 等。GreyNoise 明确不归因到已知组织，并写明「相信」攻击者使用了大模型与智能体做扫描、利用和自动化操作，而非已有确凿的工具链证据。其对活动的可见性约在 11-02 停止，但因持久访问仍预计战役可能继续，并称正与各国 CERT 通报受害者。",
+      "finsec": false,
+      "first_source_at": "GreyNoise 报告日期 2026-11-23；The Hacker News 2026-11-25 14:59 CST；本栏 11-26 晨间补报",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261126-07",
+      "links": [
+        "https://www.greynoise.io/blog/check-point-security-management-servers-intrusion-campaign"
+      ],
+      "title": "【补报】GreyNoise：至少 22 家机构的 Check Point 管理服务器遭入侵",
+      "wave": "晨间",
+      "why": "这是针对安全管理平面的多国入侵，而不是单台网关被扫。是否「AI 驱动」目前只是观测判断，不能当成归因结论；应优先盘点暴露的 Check Point 管理面并查 SmartConsole 相关补丁。"
+    },
+    {
+      "arch_impact": null,
+      "background": "GeoServer 日前刚修补两枚漏洞。",
+      "channel": "公开信号（The Hacker News）",
+      "detail": false,
+      "domain": "其他安全",
+      "facts": "The Hacker News 称这两枚漏洞已被利用，研究指可与其他缺陷链式打到未认证远程代码执行。本栏未在晨间独立核到项目方事故说明，故不进详卡。",
+      "finsec": false,
+      "first_source_at": "The Hacker News 2026-11-25 20:51 CST",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261126-08",
+      "links": [
+        "https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html"
+      ],
+      "title": "GeoServer 两枚刚补漏洞据报已被利用",
+      "wave": "晨间",
+      "why": "补丁发布次日即 reportedly 在野，属于需要尽快核对资产暴露面的信号，但证据链弱于已核官方公告的条目。"
+    },
+    {
+      "arch_impact": null,
+      "background": "攻击性智能体框架（agentic offensive frameworks，即用大模型自动侦察和利用漏洞的工具包）开始在公网暴露。安全团队会把其中一部分当合法渗透测试工具，犯罪团伙也可以用它们降低入侵门槛。",
+      "channel": "关注流（@IntCyberDigest）+ 公开信号（Shadowserver 官网）",
+      "detail": true,
+      "domain": "AI安全",
+      "facts": "Shadowserver 于 2026-11-25 发表扫描与蜜罐报告。截至 11-23，其每日全网扫描在 15 个框架上识别出约 4200 个公网暴露实例，较前一日不足 3700 上升；当周高点超过 4300，主要由当日 PentestCode 增至 600 以上带动。约一半在亚洲、三分之一以上在北美。多数日子约 70% 为 ARTEX（FBI 曾就其发布预警），其次 CyberStrikeAI 约 500、PentestCode 约 600；ARTEX 分支 AntiFox 增长最快。11-09 至 11-23，80 余个被指纹识别为攻击框架的 IP 对 Shadowserver 全球蜜罐产生超过 1 万次事件，近九成跑的是 ARTEX Gateway，源地址地理上集中在美国和香港，且几乎都在云网上。约六成 IP 试图把流量转发到其他目标，支付、银行和加密服务占转发请求的四成以上（大多来自两个 IP）；也有探测 n8n、Dify、Flowise、MLflow、MCP 以及编码助手凭据和 .env 的行为。报告强调并非所有框架都用于恶意用途，扫描到的是公网暴露实例。",
+      "finsec": false,
+      "first_source_at": "Shadowserver 报告日期 2026-11-25；关注流 @IntCyberDigest 2026-11-26 12:15 CST",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "n-20261126-09",
+      "links": [
+        "https://www.shadowserver.org/news/agentic-ai-attack-frameworks-in-the-wild-what-our-scans-and-honeypots-show/",
+        "https://x.com/IntCyberDigest/status/2125805495412003039"
+      ],
+      "title": "Shadowserver：约 4200 台智能体攻击框架暴露在公网",
+      "wave": "午间",
+      "why": "这把「AI 黑客智能体」从个案变成可计量的攻击面：数千个控制台或 API 暴露在公网上，且已有部分对蜜罐发起真实利用和中继。运营方应盘点是否误把 ARTEX 类框架或分支持久暴露，并检查云上出站中继与凭据文件。"
+    },
+    {
+      "arch_impact": null,
+      "background": "CISA 的已知被利用漏洞目录（KEV Catalog）是美国联邦民事机构必须优先修补的清单；一旦列入，通常意味着已有在野利用证据。今晨已补报 Drupal 安装器漏洞于 11-24 列入 KEV，本批为另一则 11-25 公告。",
+      "channel": "公开信号（CISA 公告）；关注流 3 页实际窗未覆盖此公告时段",
+      "detail": true,
+      "domain": "其他安全",
+      "facts": "CISA 于 2026-11-25 公告，再向 KEV 目录新增 10 个已有在野利用证据的漏洞：Danfoss AK-SM 800A 系列 3 个（路径遍历 CVE-2023-25914、输入验证 CVE-2023-25915、认证不当 CVE-2025-41450）；HPE Juniper Session Smart Conductor/Router 操作系统命令注入 CVE-2026-103406；Mitel MiCollab 5 个（危险类型未限制上传 CVE-2026-133275、XML 注入 CVE-2026-133303、弱认证 CVE-2026-133311、命令注入 CVE-2026-133323、未安全失败 CVE-2026-133324）；以及 Vates Xen Orchestra 输入类型验证不当 CVE-2026-133469。公告同时指向 BOD 26-04：联邦民事机构须优先修复会在利用后完全控制暴露资产的高风险 KEV，并在打补丁前检查是否已被入侵。CISA 鼓励所有组织按同样原则处理。",
+      "finsec": false,
+      "first_source_at": "CISA 公告日期 2026-11-25；本栏 11-26 午间补报",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "n-20261126-10",
+      "links": [
+        "https://www.cisa.gov/news-events/alerts/2026/11/25/cisa-adds-10-known-exploited-vulnerabilities-catalog"
+      ],
+      "title": "【补报】CISA 新列入 10 个已在野利用漏洞，含 Mitel MiCollab 与 Juniper 命令注入",
+      "wave": "午间",
+      "why": "这不是单点 CVE，而是一批已在野的管理面、协作系统和路由设备漏洞，其中 Mitel 与 Juniper 命令注入尤其值得立刻盘点公网暴露实例。与今晨 Drupal KEV 补报不是同一批。"
+    },
+    {
+      "arch_impact": null,
+      "background": "韩国大型虚拟资产交易所 Bithumb 曾在 10 月 29 日就内部移动集团办公系统 DaouOffice（多友办公）信息泄露发过公告；当时外界印象是入侵窗口很短。",
+      "channel": "公开信号（Bithumb 官方公告）+ 关注流（@TheHackersNews）",
+      "detail": true,
+      "domain": "其他安全",
+      "facts": "Bithumb 于 2026-11-25 18:00（韩国时间，约 17:00 CST）更新公告，称同一事故的后续排查确认：外部未授权人员在 10 月 12 日 13:49 至 10 月 27 日 15:22 进入该内部系统并带走个人信息和文件，窗口约 15 天。受影响对象包括客户、合作厂商员工和现任或前任员工；已确认泄露项可含会员号、姓名、手机、邮箱、出生日期、居民登记号、护照号、驾照号、银行账号、住址、证件复印件、职业与职场信息、交易记录和钱包地址，并非每名当事人都具备全部字段。公司称该系统与交易所账户及客户资产数据库分离，尚未发现交易系统或客户库被直接入侵；已阻断路径并停用该集团办公系统，同时提供个人泄露查询、单独通知和咨询窗口。The Hacker News 于 11-26 12:47 CST 转发此更新。今晨未收录，作午间补报。",
+      "finsec": false,
+      "first_source_at": "Bithumb 公告 2026-11-25 18:00 KST（约 17:00 CST）；关注流 @TheHackersNews 2026-11-26 12:47 CST；本栏 11-26 午间补报",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "n-20261126-11",
+      "links": [
+        "https://feed.bithumb.com/notice/1655458",
+        "https://x.com/TheHackersNews/status/2125813585314234407"
+      ],
+      "title": "【补报】Bithumb 确认入侵窗口为 15 天，并扩大个人与金融数据泄露范围",
+      "wave": "午间",
+      "why": "交易所安全事件的关键变化不是又被黑一次，而是窗口从外界以为的约 1 小时被修正为两周，且泄露项扩大到身份证件和银行、钱包信息，二次诈骗和定向钓鱼风险显著上升。"
+    }
+  ],
+  "papers": [
+    {
+      "dair_url": "https://x.com/dair_ai/status/2125596877966213596",
+      "short": "Delegent",
+      "url": "https://arxiv.org/abs/2611.33098",
+      "what": "滑铁卢大学提出把日常编码与检索子任务交给本地小模型、由前沿模型总控的多智能体外壳，称在未测到性能损失的情况下，前沿模型成本最高可降约 67%（编码）和 59%（检索）。",
+      "why": "它直接回答「怎么把智能体账单打下来」，而且是可复现的外壳设计，不是只调模型。有 arXiv。通路论文栏/@dair_ai。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2125393287314104619",
+      "short": "ComputeWise",
+      "url": "https://arxiv.org/abs/2611.31027",
+      "what": "Salesforce AI Research 与 Datadog 用可回放的模拟 GPU 衡量研究型智能体的算力浪费：在他们的设定里，只有约 52% 的 GPU 时间用在得出答案所必需的计算，约 22% 是多余工作、26% 空转；配套的调度插件把多余时间大幅压下来。",
+      "why": "谁在跑自动实验，谁就该看智能体是不是把 GPU 空转掉。有 arXiv，并有开源仓库。通路论文栏/@dair_ai。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2125605478017167727",
+      "short": "TimeTravelContainer",
+      "url": "https://arxiv.org/abs/2611.32255",
+      "what": "NVIDIA 提出基于 gVisor 的无根容器运行时，可对正在运行的容器做 live-fork（进程、内存、文件系统与网络），方便智能体做有状态的分叉探索。",
+      "why": "沙箱是规模化智能体探索的基础设施。这篇把「克隆一个正在跑的会话」做成可引用的系统论文。有 arXiv。通路论文栏/@dair_ai。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2125436641938423917",
+      "short": "ShellBench",
+      "url": "https://arxiv.org/abs/2611.32946",
+      "what": "新基准给出 100 道来自真实日常请求的任务，同时评正确性与安全性，并比较不同模型与五种智能体外壳。",
+      "why": "它把「模型重要还是 harness 重要」放到同一套日常任务上比，适合做选型和回归，而不是只看竞赛题。有 arXiv。通路论文栏/@dair_ai。"
+    },
+    {
+      "dair_url": "https://x.com/dair_ai/status/2125404524407878042",
+      "short": "MLEvolver 外壳",
+      "url": "https://arxiv.org/abs/2611.28244",
+      "what": "港科大、东京大学、台湾大学与 NVIDIA AI Technology Center 分析自进化研究型智能体的上下文与技能机制，提出结合上下文折叠与删除长期不用技能的 MLEvolver 外壳，并报告在 MLE-Bench Lite 上 72.7% 奖牌率等结果。",
+      "why": "自动科研智能体容易把上下文和技能库堆满。这篇把「记什么、删什么」写成可检验的外壳设计。有 arXiv。通路论文栏/@dair_ai。"
+    }
+  ],
+  "polfin": [
+    {
+      "angle": "产业政策/关税",
+      "arch_impact": null,
+      "background": "美最高法院 2026-02 裁定一批关税违宪后，行政当局改用《1974 年贸易法》第 301 条等路径重建关税工具。USTR 于 2026-03-11 对 16 个经济体的制造业结构性过剩产能自行立案。",
+      "channel": "公开信号（USTR 官方新闻稿）+ 关注流（@business 等转述印度税率）",
+      "detail": true,
+      "facts": "2026-11-25，美国贸易代表 Jamieson Greer 认定中国、欧盟、新加坡、瑞士、印尼、马来西亚、柬埔寨、泰国、韩国、越南、台湾、孟加拉、日本、印度共 14 个经济体与结构性过剩产能相关的做法不合理且负担或限制美国商务，可依 301(b) 采取行动；墨西哥与挪威暂未作认定。USTR 对这 14 个经济体的全部商品提议加征关税（附表列明豁免），幅度从欧盟、日本、韩国、瑞士、台湾最高约 15%，到越南最高约 35%；中国最高约 20%（需扣已有强迫劳动 301 税率，Annex A 商品最高约 10%，另有更高备选税率）。尚未谈妥协议的经济体被摆出「谈成则降、谈不成则更高」的结构：印度为最高约 25%，若达成回应性协议则为 17%；新加坡最高约 20%/谈成 10%；越南最高约 35%/谈成 20%。书面意见与听证申请截止 2027-01-05，听证计划 2027-01-25 起在国际贸易委员会举行。关税尚未生效。关注流可见彭博对印度税率与协议挂钩的转述。",
+      "finsec": false,
+      "first_source_at": "USTR 新闻稿日期 2026-11-25；公开报道见 WSJ 2026-11-25 21:51 CST、Reuters 22:10 CST",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "pf-20261126-01",
+      "links": [
+        "https://ustr.gov/about/policy-offices/press-office/press-releases/2026/november/ustr-makes-determinations-and-proposes-actions-14-section-301-investigations-relating-structural"
+      ],
+      "title": "USTR：14 个经济体因制造业过剩产能被 301 认定，并提议加征关税",
+      "wave": "晨间",
+      "why": "这是用 301 调查结果，把被最高法院推翻的全球关税，改头换面成对主要贸易伙伴的「过剩产能」税。半导体、汽车、光伏、医药等供应链都会被重新计价，协议挂钩条款会把未完成的双边谈判直接变成税率杠杆。"
+    },
+    {
+      "angle": "出口管制/公司治理",
+      "arch_impact": null,
+      "background": "前日与昨日已报 Nvidia 董事会风波、对华芯片出口管制争议，以及关于 Alice Huang 与中国国家安全部联系的报道。市场仍在消化黄仁勋去职又復職对数据中心投资的冲击。",
+      "channel": "关注流（@WSJ、@CNN、@business）",
+      "detail": true,
+      "facts": "华尔街日报于 2026-11-26 06:27 CST 报道，美国官员向国会工作人员表示，没有证据显示与黄仁勋有婚外关系的一名中国科技高管是受中国情报部门指使、去刺探这位 Nvidia 首席执行官。关注流同时可见副总统 JD Vance 称联邦官员告知他，已被重新任命的黄仁勋并未接受调查；彭博称受该事件牵连，部分数据中心交易停滞。本栏只采官方口径与主流媒体转述，不扩展未证实的个人指控。",
+      "finsec": false,
+      "first_source_at": "@WSJ 2026-11-26 06:27 CST",
+      "hard_gate": false,
+      "home_related": true,
+      "id": "pf-20261126-02",
+      "links": [
+        "https://x.com/WSJ/status/2125717938984391057",
+        "https://on.wsj.com/4tlo1nj"
+      ],
+      "title": "【续报】美官员：无证据显示与黄仁勋有染的中国高管受情报部门指使",
+      "wave": "晨间",
+      "why": "「是否间谍案」从爆料到官员澄清，会直接改变出口管制、国会问询和黄仁勋治理危机的政治温度，也会左右对 Nvidia 及下游资本开支的风险溢价。"
+    },
+    {
+      "angle": "信用评级/公司治理",
+      "arch_impact": null,
+      "background": "黄仁勋在约 11 天内去职再被董事会一致请回，叠加出口管制与对华业务质疑，评级机构开始把关键人物风险和董事会独立性写成正式信用因素。",
+      "channel": "公开信号（Reuters 官方帖 + CNBC 引述标普备忘录）",
+      "detail": true,
+      "facts": "标普全球评级（S&P Global Ratings）周三将英伟达 AA 信用评级列入 CreditWatch Negative（负面信用观察），理由是管理与治理风险上升。路透社于 2026-11-26 08:00 CST 率先发官方帖，通讯稿导语称这标志着较大可能下调评级。CNBC 援引标普备忘录称：若治理框架的缺陷持续，未来 90 天内评级可能下调一档至 AA-；只有在调查或披露进一步损害声誉或前景时，才可能超出这一档。标普写道，围绕 CEO 的消息以及潜在违反出口管制的问题，暴露了董事会结构、组成与有效性方面的脆弱性；其对董事会是否已采取补救措施尚不知情。备忘录点名主席 Harvey Jones 与早期投资人 Tench Coxe 自 1993 年起在董事会任职，Brooke Seawell 于 1997 年加入，Mark Stevens 在 1993–2006 年后于 2008 年回归，长期任职可能损害独立性。Andrew Chang 与 David Tsui 还写到，弱的高管监督和缺乏继任计划把关键人物风险推到前台，去职与复职并未回答董事会对高管行为准则的监督问题；标普计划与董事会和管理层会面。穆迪已于 11-18 将展望由正面调为稳定，并在黄仁勋周一回归后维持该展望。CNBC 称英伟达 6 月刚发行约 250 亿美元投资级债券（此前标普刚把评级从 AA- 上调至 AA），在美高等级公司债指数中约有 325 亿美元债券。路透全文因站点限制未能打开，定性与 Reuters 通讯稿导语及 @Reuters 官方帖一致，细节以 CNBC 对标普备忘录的引述为准。",
+      "finsec": false,
+      "first_source_at": "Reuters 官方帖 2026-11-26 08:00 CST；CNBC 稿注明发表于 11-25 21:57 ET",
+      "hard_gate": false,
+      "home_related": false,
+      "id": "pf-20261126-03",
+      "links": [
+        "https://x.com/Reuters/status/2125741529683710157",
+        "https://www.cnbc.com/2026/11/26/nvidia-market-governance-risk.html"
+      ],
+      "title": "S&P 将英伟达 AA 评级列入 CreditWatch Negative，指治理与董事会监督风险上升",
+      "wave": "午间",
+      "why": "这是把治理危机从舆论写成融资成本：CreditWatch Negative 本身就会压债券价格、抬升收益率。它也说明，即使行政当局协调复职、股价一度大涨，评级机构仍认为董事会监督和中国业务内控没有被回答。"
+    }
+  ],
+  "schema": "qianji.briefing.daily.v1",
+  "sources": [
+    "https://x.com/trq212/status/2125675533761671405",
+    "https://openai.com/business/private-intelligence/",
+    "https://x.com/sama/status/2125638790593274259",
+    "https://www.anthropic.com/engineering/migrating-api-to-rust",
+    "https://x.com/AnthropicAI/status/2125627317263466739",
+    "https://1password.com/blog/update-on-nov-2026-security-incident",
+    "https://x.com/1Password/status/2125642686443258030",
+    "https://security.paloaltonetworks.com/PAN-SA-2026-0015",
+    "https://www.bleepingcomputer.com/news/security/palo-alto-networks-warns-of-fragnesia-flaw-exploited-in-pan-os-attacks/",
+    "https://www.drupal.org/sa-core-2026-017",
+    "https://www.cisa.gov/news-events/alerts/2026/11/24/cisa-adds-three-known-exploited-vulnerabilities-catalog",
+    "https://www.greynoise.io/blog/check-point-security-management-servers-intrusion-campaign",
+    "https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html",
+    "https://ustr.gov/about/policy-offices/press-office/press-releases/2026/november/ustr-makes-determinations-and-proposes-actions-14-section-301-investigations-relating-structural",
+    "https://x.com/WSJ/status/2125717938984391057",
+    "https://arxiv.org/abs/2611.33098",
+    "https://arxiv.org/abs/2611.31027",
+    "https://arxiv.org/abs/2611.32255",
+    "https://arxiv.org/abs/2611.32946",
+    "https://arxiv.org/abs/2611.28244",
+    "https://www.shadowserver.org/news/agentic-ai-attack-frameworks-in-the-wild-what-our-scans-and-honeypots-show/",
+    "https://x.com/IntCyberDigest/status/2125805495412003039",
+    "https://www.cisa.gov/news-events/alerts/2026/11/25/cisa-adds-10-known-exploited-vulnerabilities-catalog",
+    "https://feed.bithumb.com/notice/1655458",
+    "https://x.com/TheHackersNews/status/2125813585314234407",
+    "https://x.com/Reuters/status/2125741529683710157",
+    "https://www.cnbc.com/2026/11/26/nvidia-market-governance-risk.html"
+  ],
+  "summary": "晨间：Thariq Shihipar 加入 OpenAI，OpenAI 测试 Private Inference，Anthropic 将 Messages API 迁至 Rust；1Password 员工 GitHub 被盗（保管库未破），Palo Alto 确认 PAN-OS 管理面遭利用。午间：S&P 将英伟达 AA 评级列入 CreditWatch Negative；CISA 新列入 10 个已在野利用漏洞；Shadowserver 统计约 4200 台公网暴露的智能体攻击框架；【补报】Bithumb 确认入侵窗口为 15 天并扩大个人与金融数据泄露范围。",
+  "timezone": "Asia/Shanghai",
+  "updated_at": "2026-11-26T13:00:00+08:00",
+  "wave": "午间"
+}
